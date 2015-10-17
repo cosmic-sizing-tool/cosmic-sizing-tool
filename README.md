@@ -1,1 +1,1 @@
-# cosmiz-sizing-tool
+# cosmic-sizing-tool
