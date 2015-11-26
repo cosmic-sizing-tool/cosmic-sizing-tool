@@ -1,0 +1,33 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Boostrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+        <title>Cosmic sizing tool - @title</title>
+    </head>
+    <body>
+        <h1>Cosmic sizing tool - @title</h1>
+
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div>
+              <ul class="nav navbar-nav">
+                <li><a href="@routes.Application.index()">Home</a></li>
+                <li><a href="@routes.Application.team()">Team</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        @content
+
+        <div class="footer navbar-fixed-bottom">footer</div>
+    </body>
+</html>
