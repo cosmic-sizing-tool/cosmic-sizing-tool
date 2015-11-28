@@ -7,7 +7,4 @@ target
 /.settings
 /RUNNING_PID
 /.sbtserver
-/project/.sbtserver.lock
-/project/eclipse.sbt
-/project/play-fork-run.sbt
-/project/sbt-ui.sbt
+/project
