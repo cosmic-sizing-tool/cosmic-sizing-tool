@@ -16,7 +16,7 @@ public class Organization {
 
     public static void add(Project proj)
     {
-        projects.add(proj)
+        projects.add(proj);
     }
 
 }
