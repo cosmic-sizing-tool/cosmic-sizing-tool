@@ -23,13 +23,13 @@ public class TeamMemberCtrl extends Controller {
 		u1.id = 12L;
 		u1.name = "Jhone";
 		u1.password = "secret";
-		u1.email = "fuck@you.com";
+		u1.email = "paper@email.com";
 		u1.alias = "tantan";
 		u1.save();
 		return ok(index.render("Your new application is ready."));
 	}
 
-	// curl -H "Content-Type: application/json" -X POST -d
+//	 curl -H "Content-Type: application/json" -X POST -d
 	// '{"id":"123","name":"Jean-paeeul","alias":"jp21","password":"Jean@paul.com","email":"Jean-paul","inactive":"false"}'
 	// http://127.0.0.1:9000/users
 	public Result createUser() {
@@ -101,7 +101,7 @@ public class TeamMemberCtrl extends Controller {
 		List<TeamMember> user = TeamMember.find.where().ilike("email", email).findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
-			u1.setPassword(newPassword);
+			u1.password= newPassword;
 			u1.save();
 		}
 		return ok(index.render("updated"));
@@ -118,13 +118,13 @@ public class TeamMemberCtrl extends Controller {
 		if (user.size() == 1) {
 			u1 = user.get(0);
 			if (newEmail.length() != 0) {
-				u1.setEmail(newEmail);
+				u1.email = newEmail;
 				change = true;
 			} else if (newAlias.length() != 0) {
-				u1.setAlias(newAlias);
+				u1.alias = newAlias;
 				change = true;
 			} else if (newPassword.length() != 0) {
-				u1.setPassword(newPassword);
+				u1.password = newPassword;
 				change = true;
 			}
 
