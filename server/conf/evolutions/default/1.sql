@@ -9,33 +9,33 @@ create table organisation (
   constraint pk_organisation primary key (id))
 ;
 
-create table team_member (
+create table user (
   id                        bigint not null,
   alias                     varchar(255),
   name                      varchar(255),
   password                  varchar(255),
   email                     varchar(255),
   deleted                   boolean,
-  constraint uq_team_member_email unique (email),
-  constraint pk_team_member primary key (id))
+  constraint uq_user_email unique (email),
+  constraint pk_user primary key (id))
 ;
 
 
-create table organisation_team_member (
+create table organisation_user (
   organisation_id                bigint not null,
-  team_member_id                 bigint not null,
-  constraint pk_organisation_team_member primary key (organisation_id, team_member_id))
+  user_id                        bigint not null,
+  constraint pk_organisation_user primary key (organisation_id, user_id))
 ;
 create sequence organisation_seq;
 
-create sequence team_member_seq;
+create sequence user_seq;
 
 
 
 
-alter table organisation_team_member add constraint fk_organisation_team_member_o_01 foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
+alter table organisation_user add constraint fk_organisation_user_organisa_01 foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
 
-alter table organisation_team_member add constraint fk_organisation_team_member_t_02 foreign key (team_member_id) references team_member (id) on delete restrict on update restrict;
+alter table organisation_user add constraint fk_organisation_user_user_02 foreign key (user_id) references user (id) on delete restrict on update restrict;
 
 # --- !Downs
 
@@ -43,13 +43,13 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists organisation;
 
-drop table if exists organisation_team_member;
+drop table if exists organisation_user;
 
-drop table if exists team_member;
+drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists organisation_seq;
 
-drop sequence if exists team_member_seq;
+drop sequence if exists user_seq;
 
