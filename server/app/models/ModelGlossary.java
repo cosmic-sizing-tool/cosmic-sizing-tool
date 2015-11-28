@@ -13,16 +13,40 @@ public class ModelGlossary extends Model{
     public final static String pathGlossary = System.getProperty("user.dir")+"/"+"Glossary.txt";
     ArrayList gloss = new ArrayList();
 
-
+	public String ReadFile (){
+		String chaine="";
+		String fichier ="Glossary.txt";
+		
+		//lecture du fichier texte	
+		try{
+			InputStream ips=new FileInputStream(fichier); 
+			InputStreamReader ipsr=new InputStreamReader(ips);
+			BufferedReader br=new BufferedReader(ipsr);
+			String ligne;
+			while ((ligne=br.readLine())!=null){
+				System.out.println(ligne);
+				chaine+=ligne+"\n";
+			}
+			br.close(); 
+		}		
+		catch (Exception e){
+			System.out.println(e.toString());
+		}
+	return chaine;
+	}
 
     void setGlossary(String language) {
 
         this.language = language;
-        //setChanged();
-        //notifyObservers();
     }
 
+	
+	
     public HashMap<String, String> getGlossary(String language) {
+		String chaine = ReadFile();
+		while (fichier.hasNextLigne()){
+			
+		}
         return new HashMap();
     }
 
