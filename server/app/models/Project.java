@@ -9,5 +9,9 @@ import java.util.Set;
 public class Project {
     Date timeStamp;
     //Enum type = { newProject, improvement}
-    Set<FunctionalProcess> functionalProcesses;
+    public Set<FunctionalProcess> functionalProcesses;
+
+    public Project() {
+        this.timeStamp = new Date();
+    }
 }

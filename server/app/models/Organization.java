@@ -11,13 +11,12 @@ public class Organization {
     static List<Project> projects;
 
     public Organization() {
-        timeStamp = new Date();
+        this.timeStamp = new Date();
     }
 
     public static void add(Project proj)
     {
-        projects.add(proj);
-        return;
+        projects.add(proj)
     }
 
 }
