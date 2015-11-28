@@ -10,16 +10,15 @@ public class Glossary extends Controller {
     private static HashMap<String, String> g; // The whole glossary
 
     // Shows the glossary, with or without filters
-    public HashMap<String, String> showGlossary(String filter1, String filter2, String filter3, boolean andSlashOr){
-        HashMap<String, String> glo = new HashMap();
+    public void showGlossary(String filter1, String filter2, String filter3, boolean andSlashOr){
         ModelGlossary m = new ModelGlossary();
 
         if (filter1.isEmpty() && filter2.isEmpty() && filter3.isEmpty()) {
             // get the glossary based on filters
-            glo = m.getGlossaryWithFilters(m.getLang(), filter1, filter2, filter3, andSlashOr);
+            g = m.getGlossaryWithFilters(filter1, filter2, filter3, andSlashOr);
+        } else {
+            g = m.getGlossary();
         }
-
-        return glo;
     }
 
     // Checks if a word is in the glossary

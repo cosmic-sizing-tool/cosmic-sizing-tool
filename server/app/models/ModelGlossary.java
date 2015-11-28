@@ -3,18 +3,19 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.io.*;
 
 import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
 public class ModelGlossary extends Model{
-    public final static String pathGlossary = System.getProperty("user.dir")+"/"+"Glossary.txt";
+    public final static String pathGlossary = System.getProperty("user.dir")+"/"+"glossary.txt";
     ArrayList gloss = new ArrayList();
 
 	public String ReadFile (){
 		String chaine="";
-		String fichier ="Glossary.txt";
+		String fichier ="glossary.txt";
 		
 		//lecture du fichier texte	
 		try{
@@ -31,7 +32,8 @@ public class ModelGlossary extends Model{
 		catch (Exception e){
 			System.out.println(e.toString());
 		}
-	return chaine;
+
+		return chaine;
 	}
 
 	
@@ -41,19 +43,23 @@ public class ModelGlossary extends Model{
 		String ligne = "" ;
 		String part [] = null ;
 		HashMap<String, String> H = new HashMap();
-		while (chaine.hasNextLigne()){
+
+		// TODO - arrange this to read file line by line and split it into an array
+		/*while (chaine.hasNextLigne()){
 			ligne = chaine.readLine();
 			part = ligne.split(":");
 			H[part[1]]=part[2];
 			
-		}
+		}*/
         return H;
     }
 
     public String getLang() {
-		HttpRequest langue = new HttpRequest();
-		return langue("content-Language");
 
+		// TODO - Read this from browser session
+		/*HttpRequest langue = new HttpRequest();
+		return langue("content-Language");*/
+		return "EN";
     }
 
     public HashMap<String, String> getGlossaryWithFilters(String filter1, String filter2, String filter3, boolean andSlashOr) {
