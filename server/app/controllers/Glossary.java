@@ -6,24 +6,17 @@ import views.html.*;
 import java.util.*;
 import models.*;
 
-public class ControllerGlossary extends Controller {
-    private ModelGlossary m; // Model of the glossary
-    private String language; // Language of the user
-    private HashMap<String, String> g; // The whole glossary
-
-    // Default constructor
-    public ControllerGlossary () {
-        m = new ModelGlossary();
-        language = m.getLang();
-        g = m.getGlossary(language);
-    }
+public class Glossary extends Controller {
+    private static HashMap<String, String> g; // The whole glossary
 
     // Shows the glossary, with or without filters
     public HashMap<String, String> showGlossary(String filter1, String filter2, String filter3, boolean andSlashOr){
         HashMap<String, String> glo = new HashMap();
+        ModelGlossary m = new ModelGlossary();
+
         if (filter1.isEmpty() && filter2.isEmpty() && filter3.isEmpty()) {
             // get the glossary based on filters
-            glo = m.getGlossaryWithFilters(language, filter1, filter2, filter3, andSlashOr);
+            glo = m.getGlossaryWithFilters(m.getLang(), filter1, filter2, filter3, andSlashOr);
         }
 
         return glo;
