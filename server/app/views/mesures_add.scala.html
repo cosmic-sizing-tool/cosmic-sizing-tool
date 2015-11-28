@@ -7,15 +7,16 @@
 
 	<div class="container" ng-controller="MesuresAddController">
 		<div ng-repeat="layer in layers">
-			<h1>{{ layer.name }}</h1>
+			Couche: <input type="text" class="form-control" ng-model="layer.name">
+			<br>
 			<div class="panel panel-default" ng-repeat="process in layer.processes">
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col col-md-1">
-							<input type="text" ng-model="process.ref" class="form-control">
+							Ref: <input type="text" ng-model="process.ref" class="form-control">
 						</div>
 						<div class="col col-md-11">
-							<input type="text" ng-model="process.name" class="form-control">
+							Processus fonctionnel: <input type="text" ng-model="process.name" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -24,19 +25,23 @@
 						<div class="row">
 						
 							<div class="col-md-1">
-							Name: <input type="text" ng-model="movement.name" class="form-control">
+							Ref: <input type="text" ng-model="movement.ref" class="form-control">
 							</div>
 							
-							<div class="col-md-3">
-							Ref: <input type ="text" ng-model="movement.ref" class ="form-control">
+							<div class="col-md-4">
+							Name: <input type ="text" ng-model="movement.name" class ="form-control">
 							</div>
 						
-							<div class="col-md-5">
+							<div class="col-md-2">
 							Movement: <input type ="text" ng-model="movement.movements" class ="form-control">
 							</div>
 							
 							<div class="col-md-3">
-							<input type ="text" ng-blur="addLine(process, $index)" ng-model="movement.comment" class ="form-control">
+							Commentaire: <input type ="text" ng-blur="addLine(process, $index, layer)" ng-model="movement.comment" class ="form-control">
+							</div>
+
+							<div class="col-md-2">
+								<input type="checkbox" ng-model="movement.isTriggeringEntry"> Triggering entry
 							</div>
 						</div>
 												
@@ -44,7 +49,6 @@
 				</div>
 			</div>
 		</div>		
-		
 
 	</div>
 

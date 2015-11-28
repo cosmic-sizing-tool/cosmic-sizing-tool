@@ -11,13 +11,13 @@ angular
       $scope.layers = [{
       	name: "Couche",
       	processes: [{
-      		ref: "1",
-      		name: "Processus",
+      		ref: "",
+      		name: "",
       		movements: [{
-      			ref: "1",
-      			name: "Data",
-      			movements: "ERX",
-      			comment: "commentaire",
+      			ref: "",
+      			name: "",
+      			movements: "",
+      			comment: "",
       			isTriggeringEntry: true
       		}]
       	}]
@@ -35,15 +35,32 @@ angular
       		});
       };
 
-      $scope.addLine = function (process, index) {
+      $scope.addLine = function (process, index, layer) {
         if(process.movements.length = (index + 1)) {
-          process.movements.push({
-            ref: "",
-            name: "",
-            movements: "",
-            comment: "",
-            isTriggeringEntry: false
-          })
+          var m = process.movements[index];
+          if(!m.ref && !m.name && !m.movements && !m.comment) {
+            layer.processes.push({
+              ref: "",
+              name: "",
+              movements: [{
+                ref: "",
+                name: "",
+                movements: "",
+                comment: "",
+                isTriggeringEntry: true
+              }]
+            });
+
+          } else {
+            process.movements.push({
+              ref: "",
+              name: "",
+              movements: "",
+              comment: "",
+              isTriggeringEntry: false
+            });
+          }
+          
         }
         console.log(process);
         console.log(index);
