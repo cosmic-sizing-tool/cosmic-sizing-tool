@@ -7,6 +7,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -16,6 +17,8 @@ public class ImportExcel extends ExcelFiles {
 
     public void importExcel(String filePath) throws IOException {
 
+        Project excelProject = new Project();
+
         Workbook workbook = getWorkbook(filePath);
 
         int numberOfSheets = workbook.getNumberOfSheets();
@@ -23,24 +26,20 @@ public class ImportExcel extends ExcelFiles {
 
         sheet = workbook.getSheetAt(0);
 
-        importSheetProjectData(sheet);
+        importSheetProjectData(sheet, excelProject);
 
         sheet = workbook.getSheetAt(1);
 
-        importSheetMeasure(sheet);
+        importSheetMeasure(sheet, excelProject);
     }
 
 
-    private void importSheetProjectData(Sheet sheet) {
+    private void importSheetProjectData(Sheet sheet, Project excelProject) {
         //String sheetName = sheet.getSheetName();
 
         int nbRow = sheet.getPhysicalNumberOfRows();
         int fRow = sheet.getFirstRowNum();
-        int nbCol = 0;
 
-        if (0 < nbRow) {
-            nbCol = sheet.getRow(fRow).getPhysicalNumberOfCells();
-        }
 
         Iterator iterRows = sheet.rowIterator();
         while (iterRows.hasNext()) {
@@ -62,7 +61,7 @@ public class ImportExcel extends ExcelFiles {
                             cell = (Cell) cells.next();
                             if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
                                 // System.out.println(cell.getStringCellValue());
-                                //?? = cell.getStringCellValue();
+                                excelProject.name = cell.getStringCellValue();
                             }
                         }
                     } else if (cellValue.equalsIgnoreCase("Stratégie de mesure")) {
@@ -70,7 +69,7 @@ public class ImportExcel extends ExcelFiles {
                             cell = (Cell) cells.next();
                             if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
                                 // System.out.println(cell.getStringCellValue());
-                                //?? = cell.getStringCellValue();
+                                excelProject.purposeOfMeasurement = cell.getStringCellValue();
                             }
                         }
                     } else if (cellValue.equalsIgnoreCase("Utilisateurs fonctionnels")) {
@@ -78,7 +77,9 @@ public class ImportExcel extends ExcelFiles {
                             cell = (Cell) cells.next();
                             if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
                                 //System.out.println(cell.getStringCellValue());
-                                //?? = cell.getStringCellValue();
+                                String s1 = cell.getStringCellValue();
+
+                                excelProject.functionalUsers = Arrays.asList(s1.split(","));
                             }
                         }
                     } else if (cellValue.equalsIgnoreCase("Niveau de granularité")) {
@@ -86,7 +87,7 @@ public class ImportExcel extends ExcelFiles {
                             cell = (Cell) cells.next();
                             if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
                                 //System.out.println(cell.getStringCellValue());
-                                //?? = cell.getStringCellValue();
+                                excelProject.granularity = cell.getStringCellValue();
                             }
                         }
                     } else if (cellValue.equalsIgnoreCase("Niveau de décomposition")) {
@@ -94,7 +95,7 @@ public class ImportExcel extends ExcelFiles {
                             cell = (Cell) cells.next();
                             if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
                                 // System.out.println(cell.getStringCellValue());
-                                //?? = cell.getStringCellValue();
+                                excelProject.levelOfDecomposition = cell.getStringCellValue();
                             }
                         }
                     }
@@ -105,7 +106,7 @@ public class ImportExcel extends ExcelFiles {
         }
     }
 
-    private void importSheetMeasure(Sheet sheet) {
+    private void importSheetMeasure(Sheet sheet, Project excelProject) {
         int nbRow = sheet.getPhysicalNumberOfRows();
         int fRow = sheet.getFirstRowNum();
         int nbCol = 0;
@@ -309,10 +310,5 @@ public class ImportExcel extends ExcelFiles {
 
     }
 
-    /*  // Test avec fichier
-    public static void main(String[] argv) throws IOException {
-        ImportExcel import1 = new ImportExcel();
-        import1.importExcel("C:\\Users\\Fran6\\Documents\\ImportTry.xlsx");
-    }
-    */
+
 }
