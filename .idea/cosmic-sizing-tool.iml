@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9" inherit-compiler-output="false">
-    <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="activator-launch-1.3.6" level="project" />
-  </component>
-</module>
