@@ -4,9 +4,11 @@ import com.avaje.ebean.Model;
 
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 public class FunctionalProcess extends Model {
     Date timeStamp;
+    UUID uniqueId;
     String documentId;
     String sectionId;
     enum QualityRating { NONE, A, B, C, D, E };
@@ -16,6 +18,7 @@ public class FunctionalProcess extends Model {
 
     public FunctionalProcess(String documentId, String sectionId, String description) {
         this.timeStamp = new Date();
+        this.uniqueId = UUID.randomUUID();
         this.documentId = documentId;
         this.sectionId = sectionId;
         this.description = description;
@@ -59,7 +62,7 @@ public class FunctionalProcess extends Model {
 
     @Override
     public int hashCode() {
-        return timeStamp.hashCode();
+        return uniqueId.hashCode();
     }
 
 }
