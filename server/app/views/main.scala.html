@@ -4,16 +4,16 @@
 
 <html lang="en">
     <head>
-        <!-- Jquery -->
-        <!--script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script-->
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script async src="@routes.Assets.versioned("javascripts/counter.js")" type="text/javascript"></script>
-        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
-        
+    	<!-- Jquery -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    
         <!-- Boostrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+
+        <script async src="@routes.Assets.versioned("javascripts/counter.js")" type="text/javascript"></script>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
         
         <title>Cosmic sizing tool - @title</title>
     </head>
@@ -30,42 +30,6 @@
             </div>
           </div>
         </nav>
-        
-    	<div id="clockdiv">
-		<div>
-			<span class="hours" id="idHour"> 0 </span>
-			<div class="smalltext">
-				Hours
-			</div>
-		</div>
-		<div>
-			<span class="minutes" id="idMin"> 0 </span>
-			<div class="smalltext">
-				Minutes
-			</div>
-		</div>
-		<br />
-		<button type="button" class="btn btn-success" id="idBtnStart" onclick="startButton('inputTest')">
-			<span class="glyphicon glyphicon-play"></span>
-		</button>
-		<button type="button" class="btn btn-primary hidden" id="idBtnPause" onclick="pauseButton('inputTest')" >
-			<span class="glyphicon glyphicon-pause"></span>
-		</button>
-		<button type="button" class="btn btn-danger" id="idBtnStop" onclick="stopButton('inputTest')">
-			<span class="glyphicon glyphicon-stop"></span>
-		</button>
-	</div>
-	
-	<div id ="inputTest">
-		<input type="text" class="form-control"  id="idUtl" disabled>
-	    <input type="text" class="form-control"  id="idUtl" disabled>
-	    <input type="text" class="form-control"  id="idUtl" disabled>
-	    <input type="text" class="form-control"  id="idUtl" disabled>
-	    <input type="text" class="form-control"  id="idUtl" disabled>
-	    <input type="text" class="form-control"  id="idUtl" disabled>
-	    <input type="text" class="form-control"  id="idUtl" disabled>
-	</div>
-        
 
         @content
 
