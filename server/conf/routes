@@ -17,7 +17,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET     /                           controllers.Application.index()
 GET		/usertest    				controllers.TeamMemberCtrl.index()
 #GET 	/user/settings     		    controllers.TeamMemberCtrl.settings()
-GET		/user/:userInfo     		controllers.TeamMemberCtrl.getUser(userInfo: Long)
+GET		/user/:userInfo     		controllers.TeamMemberCtrl.getUser(userInfo: String)
 POST	/users						controllers.TeamMemberCtrl.createUser()
 POST    /user/:id/orgs				controllers.TeamMemberCtrl.addOrganisation(id: Long)
 POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()

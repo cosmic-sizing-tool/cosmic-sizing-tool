@@ -29,7 +29,7 @@ public class TeamMemberCtrl extends Controller {
 		return ok(index.render("Your new application is ready."));
 	}
 
-//	 curl -H "Content-Type: application/json" -X POST -d
+	// curl -H "Content-Type: application/json" -X POST -d
 	// '{"id":"123","name":"Jean-paeeul","alias":"jp21","password":"Jean@paul.com","email":"Jean-paul","inactive":"false"}'
 	// http://127.0.0.1:9000/users
 	public Result createUser() {
@@ -39,7 +39,8 @@ public class TeamMemberCtrl extends Controller {
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
 		TeamMember u1 = new TeamMember();
-		u1.id = Long.parseLong(json.findPath("id").toString().replaceAll("\"", ""));
+		u1.id = Long.parseLong(json.findPath("id").toString()
+				.replaceAll("\"", ""));
 		u1.name = json.findPath("name").toString().replaceAll("\"", "");
 		u1.password = json.findPath("password").toString().replaceAll("\"", "");
 		u1.email = json.findPath("email").toString().replaceAll("\"", "");
@@ -49,49 +50,41 @@ public class TeamMemberCtrl extends Controller {
 		// read the JsonNode as a Person
 		return ok(index.render("createed"));
 	}
-	public static boolean isNumeric(String str)  
-	{  
-	  try  
-	  {  
-	    Long id = Long.parseLong(str);  
-	  }  
-	  catch(NumberFormatException nfe)  
-	  {  
-	    return false;  
-	  }  
-	  return true;  
+
+	public static boolean isNumeric(String str) {
+		try {
+			Long id = Long.parseLong(str);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
 	}
 
-	public Result getUser(long  id) {
-		try {
+	public Result getUser(String userInformation) {
+		JsonNode personJson = null;
+		if (isNumeric(userInformation)) {
+			Long id = Long.parseLong(userInformation);
 			TeamMember user = TeamMember.find.byId(id);
-    	    JsonNode personJson = Json.toJson(user);
-    	    return ok(personJson);
-		} catch (Exception e) {}
-    	
-    	try {   	    
-    	    JsonNode json = Json.parse(request().body().asJson().toString());
-        	String user_email = json.findPath("email").toString().replaceAll("\"", "");
-        	List<TeamMember> uListe = TeamMember.find.where().ilike("name", user_email).findList();
-        	TeamMember user = uListe.get(0);
-    		
-    		JsonNode personJson = Json.toJson(user);
-    	    return ok(personJson);
-		} catch (Exception e) {}
-    	
-    	return notFound("user error");
-		    	
-    
-		
-	
+			personJson = Json.toJson(user);
+		} else {
+			List<TeamMember> users = TeamMember.find.where()
+					.ilike("email", userInformation).findList();
+			if (users.size() == 1) {
+				personJson = Json.toJson(users);
+				
+			}
+		}
+		return ok(personJson);
 	}
 
 	// curl -H "Content-Type: application/json" -X POST -d
 	// '{"id":"11","name":"UQAM"}' http://127.0.0.1:9000/organisations
 	public Result addOrganisation(Long id) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		String OrganisationName = json.findPath("name").toString().replaceAll("\"", "");
-		List<Organisation> oListe = Organisation.find.where().ilike("name", OrganisationName).findList();
+		String OrganisationName = json.findPath("name").toString()
+				.replaceAll("\"", "");
+		List<Organisation> oListe = Organisation.find.where()
+				.ilike("name", OrganisationName).findList();
 		TeamMember user = TeamMember.find.byId(id);
 		user.organisations.add(oListe.get(0));
 		user.save();
@@ -101,11 +94,13 @@ public class TeamMemberCtrl extends Controller {
 	public Result updatePassword(String email) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
 		TeamMember u1 = new TeamMember();
-		String newPassword = json.findPath("newPassword").toString().replaceAll("\"", "");
-		List<TeamMember> user = TeamMember.find.where().ilike("email", email).findList();
+		String newPassword = json.findPath("newPassword").toString()
+				.replaceAll("\"", "");
+		List<TeamMember> user = TeamMember.find.where().ilike("email", email)
+				.findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
-			u1.password= newPassword;
+			u1.password = newPassword;
 			u1.save();
 		}
 		return ok(index.render("updated"));
@@ -113,12 +108,16 @@ public class TeamMemberCtrl extends Controller {
 
 	public Result updateInformation(String email) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		String newEmail = json.findPath("newemail").toString().replaceAll("\"", "");
-		String newAlias = json.findPath("newalias").toString().replaceAll("\"", "");
-		String newPassword = json.findPath("newpassword").toString().replaceAll("\"", "");
+		String newEmail = json.findPath("newemail").toString()
+				.replaceAll("\"", "");
+		String newAlias = json.findPath("newalias").toString()
+				.replaceAll("\"", "");
+		String newPassword = json.findPath("newpassword").toString()
+				.replaceAll("\"", "");
 		TeamMember u1 = new TeamMember();
 		boolean change = false;
-		List<TeamMember> user = TeamMember.find.where().ilike("email", email).findList();
+		List<TeamMember> user = TeamMember.find.where().ilike("email", email)
+				.findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
 			if (newEmail.length() != 0) {
