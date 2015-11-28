@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Quick start with dhtmlxGrid</title>
-    <link rel="STYLESHEET" type="text/css" href="../../public/lib/dhtmlxGrid/codebase/dhtmlxgrid.css">
-    <script src="../../public/lib/dhtmlxGrid/codebase/dhtmlxgrid.js"></script>
-</head>
-<body>
+
+@main("Pattern") {
     <div id="patron" style="width:800px;height:100px;">
       Patron: <input type="text">
       Charger patron: <input type="text">
     </div>  
-    <div id="grid_patron" style="width:800px;height:400px;"></div>  
+    <div id="grid_patron" style="width:800px;height:400px;"></div> 
+	<link rel="STYLESHEET" type="text/css" href='@routes.Assets.versioned("/lib/dhtmlxGrid/codebase/dhtmlxgrid.css")'>	
+	<script type="text/javascript" src='@routes.Assets.versioned("/lib/dhtmlxGrid/codebase/dhtmlxgrid.js")'></script>	
     <script>
-        mygrid = new dhtmlXGridObject('grid_patron'); 
+        mygrid = new dhtmlXGridObject('grid_patron');
         //the path to images required by grid
-        mygrid.setImagePath("../../public/lib/dhtmlxGrid/codebase/imgs/");
+        mygrid.setImagePath('@routes.Assets.versioned("/lib/dhtmlxGrid/codebase/imgs/")');
         mygrid.setHeader("Utilisateur,Processus Fonctionnel,Groupe de données,E,X,R,w");
         //the headers of columns
         mygrid.setInitWidths("100,200,200,25,25,25,25");
@@ -39,5 +34,4 @@
         };
         mygrid.parse(data,"json");
     </script>
-</body>
-</html>
+}

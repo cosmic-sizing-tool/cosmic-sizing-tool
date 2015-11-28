@@ -16,9 +16,14 @@ public class Application extends Controller {
         TeamMember member = new TeamMember();
         member.name = "bob";
         member.save();
-
+        TeamMember member2 = new TeamMember();
+        member2.name = "Cyril";
+        member2.save();
         List<TeamMember> members = TeamMember.find.all();
         return ok(team.render(members));
     }
-
+    public Result pattern(){
+        
+        return ok(pattern.render());
+    }
 }
