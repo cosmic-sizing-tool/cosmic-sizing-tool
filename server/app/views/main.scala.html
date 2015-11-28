@@ -4,13 +4,15 @@
 
 <html lang="en">
     <head>
+        <!-- Jquery -->
+        <script async src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script async src="@routes.Assets.versioned("javascripts/counter.js")" type="text/javascript"></script>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+        
         <!-- Boostrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <!-- Jquery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="@routes.Assets.versioned("javascripts/counter.js")" type="text/javascript"></script>
-
+        <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
         <title>Cosmic sizing tool - @title</title>
     </head>
     <body>
@@ -26,6 +28,32 @@
             </div>
           </div>
         </nav>
+        
+    	<div id="clockdiv">
+		<div>
+			<span class="hours" id="idHour"> 0 </span>
+			<div class="smalltext">
+				Hours
+			</div>
+		</div>
+		<div>
+			<span class="minutes" id="idMin"> 0 </span>
+			<div class="smalltext">
+				Minutes
+			</div>
+		</div>
+		<br />
+		<button type="button" class="btn btn-success" id="idBtnStart">
+			<span class="glyphicon glyphicon-play"></span>
+		</button>
+		<button type="button" class="btn btn-primary hide" id="idBtnPause">
+			<span class="glyphicon glyphicon-pause"></span>
+		</button>
+		<button type="button" class="btn btn-danger" id="idBtnStop">
+			<span class="glyphicon glyphicon-stop"></span>
+		</button>
+	</div>
+        
 
         @content
 
