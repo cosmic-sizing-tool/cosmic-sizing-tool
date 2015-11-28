@@ -2,22 +2,51 @@ package models;
 
 import java.util.*;
 import javax.persistence.*;
-
 import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
+
 @Entity
 public class TeamMember extends Model {
+    @Id
+    @Constraints.Min(10)
+    public Long id;
+    
+    @Constraints.Required
+    public String alias;
+    
+    @Constraints.Required
+    public String name;
+    
+    @Constraints.Required
+    public String password;
+    
+    @Constraints.Required
+    public String email;
+    
+    @Constraints.Required
+    boolean deleted;
+    
+    @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+    public List<Organisation> organisations = new ArrayList<Organisation>();
 
- @Id
- public Long id;
+    public static Finder<Long, TeamMember> find = new Finder<Long,TeamMember>(TeamMember.class);
 
- @Column(length = 255, nullable = false)
- @Constraints.MaxLength(255)
- @Constraints.Required
- public String name;
-
- public static Finder<Long,TeamMember> find = new Finder<Long,TeamMember>(Long.class, TeamMember.class); 
-
+    
+    public void setEmail(String email){
+    	this.email= email;
+    	
+    }
+    public void setName(String name){
+    	this.name= name;
+    	
+    }
+    public void setAlias(String alias){
+    	this.alias= alias;
+    	
+    }
+    public void setPassword(String password){
+    	this.password= password;
+    }
 }
