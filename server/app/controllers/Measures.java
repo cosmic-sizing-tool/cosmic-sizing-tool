@@ -8,7 +8,7 @@ import models.*;
 import com.fasterxml.jackson.databind.JsonNode;
 import play.mvc.Http.RequestBody;
 
-public class Mesures extends Controller {
+public class Measures extends Controller {
 
     public Result add() {
     	return ok(mesures_add.render());

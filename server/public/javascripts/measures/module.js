@@ -1,18 +1,18 @@
 "use strict"
 
-var mesuresconfig = {
-  app: 'mesures',
+var measuresconfig = {
+  app: 'measures',
   dependencies: [],
   registerModule:  function(module, dep) {
     angular.module(module, dep || []);
-    angular.module('mesures').requires.push(module);
+    angular.module('measures').requires.push(module);
   }
 };
 
 angular
-  .module('mesures', mesuresconfig.dependencies)
+  .module('measures', measuresconfig.dependencies)
   .constant('jQuery', $);
 
 angular.element(document).ready(function() {
-  angular.bootstrap(document, [mesuresconfig.app]);
+  angular.bootstrap(document, [measuresconfig.app]);
 });

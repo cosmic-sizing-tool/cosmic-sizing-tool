@@ -10,5 +10,5 @@ GET     /team                       controllers.Application.team()
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
 # Mesures
-GET     /mesures/add                controllers.Mesures.add()
-POST    /mesures/savetemp				controllers.Mesures.postSaveTemp()
+GET     /measures/add                controllers.Measures.add()
+POST    /measures/savetemp				 controllers.Measures.postSaveTemp()

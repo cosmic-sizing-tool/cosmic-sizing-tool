@@ -1,10 +1,10 @@
 "use strict"
 
-mesuresconfig.registerModule('mesures_add');
+measuresconfig.registerModule('measures_add');
 
 angular
-  .module('mesures_add')
-  .controller('MesuresAddController',[
+  .module('measures_add')
+  .controller('MeasuresAddController',[
     '$scope', '$window', '$http', 'jQuery',
     function ($scope, $window, $http, jQuery) {
 
@@ -24,7 +24,7 @@ angular
       }];
 
       $scope.save = function () {
-      	$http.post('/mesures/savetemp', $scope.layers)
+      	$http.post('/measures/savetemp', $scope.layers)
       		.success(function (data, status) {
       			console.log(data);
       			console.log(status);
