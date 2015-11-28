@@ -15,13 +15,13 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Home page
 GET     /                           controllers.Application.index()
-GET		/usertest    				controllers.TeamMemberCtrl.index()
-#GET 	/user/settings     		    controllers.TeamMemberCtrl.settings()
-GET		/user/:userInfo     		controllers.TeamMemberCtrl.getUser(userInfo: String)
-POST	/users						controllers.TeamMemberCtrl.createUser()
-POST    /user/:id/orgs				controllers.TeamMemberCtrl.addOrganisation(id: Long)
+GET		/usertest    				controllers.UserCtrl.index()
+#GET 	/user/settings     		    controllers.UserCtrl.settings()
+GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
+POST	/users						controllers.UserCtrl.createUser()
+POST    /user/:id/orgs				controllers.UserCtrl.addOrganisation(id: Long)
 POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
-PUT     /users/:email				controllers.TeamMemberCtrl.updateInformation(email: String)
+PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
  
  
 
