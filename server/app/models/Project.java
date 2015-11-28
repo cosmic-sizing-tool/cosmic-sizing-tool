@@ -11,7 +11,7 @@ import com.avaje.ebean.Model;
  */
 public class Project extends Model {
     Date timeStamp;
-    //Enum type = { newProject, improvement}
+    enum ProjectType { NEWPROJECT, IMPROVEMENT };
     public Set<FunctionalProcess> functionalProcesses;
 
     public Project() {
