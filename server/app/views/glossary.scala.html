@@ -1,6 +1,42 @@
 @(glossary: HashMap[String, String])
 
 @main("Glossary") {
+    <select style="width: 100px;">
+        <option value="1">
+            Opt 1
+        </option>
+        <option value="2">
+            Opt 2
+        </option>
+        <option value="3">
+            Opt 3
+        </option>
+    </select>
+    <select style="width: 100px;">
+        <option value="1">
+            Opt 11
+        </option>
+        <option value="2">
+            Opt 12
+        </option>
+        <option value="3">
+            Opt 13
+        </option>
+    </select>
+    <select style="width: 100px;">
+        <option value="1">
+            Opt 21
+        </option>
+        <option value="2">
+            Opt 22
+        </option>
+        <option value="3">
+            Opt 23
+        </option>
+    </select>
+    <input type="radio" name="andOr" value="OR" \>
+    <input type="radio" name="andOr" value="AND" \>
+
     <p>Glossary</p>
     <ul>
         @glossary.map { word =>

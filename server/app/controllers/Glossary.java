@@ -6,13 +6,13 @@ import views.html.*;
 import java.util.*;
 import models.*;
 
-public class ControllerGlossary extends Controller {
+public class Glossary extends Controller {
     private ModelGlossary m; // Model of the glossary
     private String language; // Language of the user
     private HashMap<String, String> g; // The whole glossary
 
     // Default constructor
-    public ControllerGlossary () {
+    public Glossary () {
         m = new ModelGlossary();
         language = m.getLang();
         g = m.getGlossary(language);
