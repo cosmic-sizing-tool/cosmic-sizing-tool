@@ -102,7 +102,9 @@ public class OrganisationCtrl extends Controller {
 
 		return exist;
 	}
-
+	/**public Result getUserAdmin(){
+		
+	}*/
 }
 
 

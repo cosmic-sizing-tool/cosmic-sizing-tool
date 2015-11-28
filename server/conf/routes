@@ -26,6 +26,7 @@ PUT     /users/:email/password      controllers.UserCtrl.updatePassword(email: S
 PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
 DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long) 
 DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long) 
+#GET 	/users/:id/orgs  					controllers.OrganisationCtrl.getUserAdmin(id: Long)
 
  
  
