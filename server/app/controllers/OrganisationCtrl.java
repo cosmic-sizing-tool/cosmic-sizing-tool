@@ -5,7 +5,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Organisation;
-import models.TeamMember;
+import models.User;
 //import models.User;
 import play.*;
 import play.db.ebean.Transactional;

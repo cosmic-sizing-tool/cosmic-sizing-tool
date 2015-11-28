@@ -8,7 +8,7 @@ import play.data.validation.*;
 
 
 @Entity
-public class TeamMember extends Model {
+public class User extends Model {
     @Id
     @Constraints.Min(10)
     public Long id;
@@ -33,7 +33,7 @@ public class TeamMember extends Model {
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
 
-    public static Finder<Long, TeamMember> find = new Finder<Long,TeamMember>(TeamMember.class);
+    public static Finder<Long, User> find = new Finder<Long,User>(User.class);
 
     
 

@@ -17,7 +17,7 @@ public class Organisation extends Model {
     public String name;
     
     @ManyToMany(cascade = CascadeType.ALL)
-    public List<TeamMember> users = new ArrayList<TeamMember>();
+    public List<User> users = new ArrayList<User>();
     
     public static Finder<Long, Organisation> find = new Finder<Long,Organisation>(Organisation.class);
 

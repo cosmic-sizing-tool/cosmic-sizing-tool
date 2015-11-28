@@ -13,11 +13,11 @@ public class Application extends Controller {
     }
 
     public Result team(){
-        TeamMember member = new TeamMember();
+        User member = new User();
         member.name = "bob";
         member.save();
 
-        List<TeamMember> members = TeamMember.find.all();
+        List<User> members = User.find.all();
         return ok(team.render(members));
     }
 

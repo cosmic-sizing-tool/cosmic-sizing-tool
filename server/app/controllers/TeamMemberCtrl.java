@@ -3,7 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Organisation;
-import models.TeamMember;
+import models.User;
 
 import play.*;
 import play.db.ebean.Transactional;
@@ -19,7 +19,7 @@ import com.avaje.ebean.*;
 public class TeamMemberCtrl extends Controller {
 
 	public Result index() {
-		TeamMember u1 = new TeamMember();
+		User u1 = new User();
 		u1.id = 12L;
 		u1.name = "Jhone";
 		u1.password = "secret";
@@ -38,7 +38,7 @@ public class TeamMemberCtrl extends Controller {
 
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		TeamMember u1 = new TeamMember();
+		User u1 = new User();
 		u1.id = Long.parseLong(json.findPath("id").toString()
 				.replaceAll("\"", ""));
 		u1.name = json.findPath("name").toString().replaceAll("\"", "");
@@ -64,10 +64,10 @@ public class TeamMemberCtrl extends Controller {
 		JsonNode personJson = null;
 		if (isNumeric(userInformation)) {
 			Long id = Long.parseLong(userInformation);
-			TeamMember user = TeamMember.find.byId(id);
+			User user = User.find.byId(id);
 			personJson = Json.toJson(user);
 		} else {
-			List<TeamMember> users = TeamMember.find.where()
+			List<User> users = User.find.where()
 					.ilike("email", userInformation).findList();
 			if (users.size() == 1) {
 				personJson = Json.toJson(users);
@@ -85,7 +85,7 @@ public class TeamMemberCtrl extends Controller {
 				.replaceAll("\"", "");
 		List<Organisation> oListe = Organisation.find.where()
 				.ilike("name", OrganisationName).findList();
-		TeamMember user = TeamMember.find.byId(id);
+		User user = User.find.byId(id);
 		user.organisations.add(oListe.get(0));
 		user.save();
 		return ok(index.render("added"));
@@ -93,10 +93,10 @@ public class TeamMemberCtrl extends Controller {
 
 	public Result updatePassword(String email) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		TeamMember u1 = new TeamMember();
+		User u1 = new User();
 		String newPassword = json.findPath("newPassword").toString()
 				.replaceAll("\"", "");
-		List<TeamMember> user = TeamMember.find.where().ilike("email", email)
+		List<User> user = User.find.where().ilike("email", email)
 				.findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
@@ -114,9 +114,9 @@ public class TeamMemberCtrl extends Controller {
 				.replaceAll("\"", "");
 		String newPassword = json.findPath("newpassword").toString()
 				.replaceAll("\"", "");
-		TeamMember u1 = new TeamMember();
+		User u1 = new User();
 		boolean change = false;
-		List<TeamMember> user = TeamMember.find.where().ilike("email", email)
+		List<User> user = User.find.where().ilike("email", email)
 				.findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
