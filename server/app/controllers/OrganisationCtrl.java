@@ -46,7 +46,7 @@ public class OrganisationCtrl extends Controller {
     }
 	public Result addAdminToAnOrganisation(long id) {
 		UserCtrl user = new UserCtrl();
-	//	if(organisationExist(id)){
+		if(organisationExist(id)){
 			JsonNode json = Json.parse(request().body().asJson().toString());
 		
 			Long idAdmin = Long.parseLong(json.findPath("idAdmin").toString()
@@ -65,33 +65,44 @@ public class OrganisationCtrl extends Controller {
 				return notFound(index.render("User not found!"));
 			}
 
-			
-		//}else{
-		//	return notFound(index.render("Organisation not found!"));
-		//}
-
-		
-		
-		
-		return ok(index.render("updated"));
-
-	}
-	
-	public boolean organisationExist(Long id){
-		boolean exist=false;
-
-		String idO = new String(id + "");
-		List<Organisation> organisation = Organisation.find.where().ilike("ADMINISTRATOR_ID",id.toString())
-				.findList();
-		
-		
-		if(organisation.size()!=0){ // le utilisateur 
-			exist=true;
+		}else{
+			return notFound(index.render("Organisation not found!"));
 		}
 		
 		
+		
+		return ok(index.render("deleted"));
+
+	}
+	public Result deleteOrganisation(Long id){
+
+		if(organisationExist(id)){
+			List<Organisation> organisation = Organisation.find.where().ilike("id",id.toString()).findList();
+			
+			for(int i=0;i<organisation.size();i++){
+				organisation.get(i).delete();
+			}
+			
+			
+		}else{
+			return notFound("Aucune organisation n'a été trouvé!");
+		}
+		
+		
+		return ok(index.render("deleted"));
+	}
+ 
+	public boolean organisationExist(long id) {
+
+		boolean exist = false;
+		Organisation organisation = Organisation.find.byId(id);
+		if (organisation != null) {
+			exist = true;
+		}
+
 		return exist;
 	}
+
 }
 
 
