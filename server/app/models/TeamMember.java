@@ -17,12 +17,14 @@ public class TeamMember extends Model {
     public String alias;
     
     @Constraints.Required
+    
     public String name;
     
     @Constraints.Required
     public String password;
     
     @Constraints.Required
+    @Column(unique = true) 
     public String email;
     
     @Constraints.Required

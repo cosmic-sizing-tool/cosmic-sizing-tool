@@ -16,6 +16,7 @@ create table team_member (
   password                  varchar(255),
   email                     varchar(255),
   deleted                   boolean,
+  constraint uq_team_member_email unique (email),
   constraint pk_team_member primary key (id))
 ;
 
