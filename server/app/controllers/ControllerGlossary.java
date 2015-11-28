@@ -7,24 +7,23 @@ import java.util.*;
 import models.*;
 
 public class ControllerGlossary extends Controller {
-    private ModelGlossaire m;
-    private ViewGlossaire v;
+    private ModelGlossary m;
     private String language;
-    private Map glossary;
+    private HashMap<String, String> g;
 
     // Default constructor
     public ControllerGlossary () {
-        this->m = new ModelGlossary();
-        this->language = this->m.getLang();
-        this->glossary = this->m.getGlossary(this->language);
+        m = new ModelGlossary();
+        language = m.getLang();
+        g = m.getGlossary(language);
     }
 
     // Shows the glossary, with or without filters
-    public Map<String, String> showGlossary(String filter1, String filter2, String filter3, boolean andSlashOr){
-        Map<String, String> glo;
+    public HashMap<String, String> showGlossary(String filter1, String filter2, String filter3, boolean andSlashOr){
+        HashMap<String, String> glo = new HashMap();
         if (filter1.isEmpty() && filter2.isEmpty() && filter3.isEmpty()) {
             // get the glossary based on filters
-            glo = this->m.getGlossaryWithFilters(this->language, filter1, filter2, filter3, andSlashOr);
+            glo = m.getGlossaryWithFilters(language, filter1, filter2, filter3, andSlashOr);
         }
 
         return glo;
@@ -32,11 +31,17 @@ public class ControllerGlossary extends Controller {
 
     // checks if a word is in the glossary
     public boolean isWordOfGlossary(String word){
-        return this->glossary.containsKey(word);
+        //return glossary.containsKey(word);
+        return true;
     }
 
     // get the description of a word
     public String getDescription(String word){
-        return this->glossary.get(word);
+        //return glossary.get(word).toString();
+        return "";
+    }
+
+    public Result glossary(){
+        return ok(glossary.render(g));
     }
 }

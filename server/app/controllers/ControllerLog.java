@@ -1,4 +1,4 @@
-package controllers;
+/*package controllers;
 
 import play.*;
 import play.mvc.*;
@@ -8,24 +8,21 @@ import models.*;
 
 public class ControllerLog extends Controller {
     private ModelLog m;
-    private ViewLog v;
 
     // Default constructor
-    public Log () {
-        this->m = new ModelLog();
+    public void Log () {
+        m = new ModelLog();
     }
 
     // method to show all logs (ie, general log page)
-    public showAllLogs(){
+    public void showAllLogs(){
         // get logs from the model
-        Logs logs = this->m.getLogs();
-
-        //send logs to the view
-        this->v.setLogs(logs);
+        Logs logs = m.getLogs();
     }
 
     // method to show logs from a filter
-    public showLogsFromFilter() {
+    public void showLogsFromFilter() {
 
     }
 }
+*/

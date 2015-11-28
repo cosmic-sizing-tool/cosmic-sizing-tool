@@ -1,10 +1,10 @@
-@(words: List[GlossaryWords])
+@(glossary: HashMap[String, String])
 
 @main("Glossary") {
     <p>Glossary</p>
     <ul>
-        @words.map { word =>
-            <li>@word.description</li>
+        @glossary.map { word =>
+            <li>@word</li>
         }
     </ul>
 }
