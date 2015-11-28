@@ -13,6 +13,8 @@ public class Application extends Controller {
     }
 
     public Result team(){
+        flash("success", "message de succes");
+        flash("error", "message d'erreur");
         TeamMember member = new TeamMember();
         member.name = "bob";
         member.save();
