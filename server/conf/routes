@@ -21,6 +21,7 @@ GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
 POST	/users						controllers.UserCtrl.createUser()
 POST    /user/:id/orgs				controllers.UserCtrl.addOrganisation(id: Long)
 POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
+PUT 	/organisations/:idUser		controllers.UserCtrl.addAdminToAnOrganisation(idUser: Long)
 PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
  
  

@@ -16,8 +16,16 @@ public class Organisation extends Model {
     @Constraints.Required
     public String name;
     
+    
+    
+    
     @ManyToMany(cascade = CascadeType.ALL)
     public List<User> users = new ArrayList<User>();
+    
+    
+    @ManyToOne
+    public User Administrator;
+    
     
     public static Finder<Long, Organisation> find = new Finder<Long,Organisation>(Organisation.class);
 

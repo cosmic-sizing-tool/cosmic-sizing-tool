@@ -143,4 +143,29 @@ public class UserCtrl extends Controller {
 		return ok(index.render("updated"));
 
 	}
+	public Result addAdminToAnOrganisation(long id) {
+		JsonNode json = Json.parse(request().body().asJson().toString());
+		
+		String idOrganisation = json.findPath("idAdmin").toString()
+				.replaceAll("\"", "");
+		
+		System.out.println(userExist(10));	
+		
+		
+		
+		return ok(index.render("updated"));
+
+	}
+	
+	public boolean userExist(long id){
+		System.out.println("test");
+		boolean exist=false;
+		User user = User.find.byId(id);
+		if(user!=null){
+			exist=true;
+		}
+		
+		return exist;
+	}
+	
 }
