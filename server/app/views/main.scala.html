@@ -25,7 +25,13 @@
             </div>
           </div>
         </nav>
-
+@if(flash.containsKey("error")) {
+          <div class="well">
+              <div id="error-message" class="text-danger">
+                  @flash.get("error")
+              </div>
+           </div>
+  }
         @content
 
         <div class="footer navbar-fixed-bottom">footer</div>
