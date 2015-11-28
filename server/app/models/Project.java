@@ -1,17 +1,19 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import com.avaje.ebean.Model;
 
-
-/**
- * Created by louis on 15-11-28.
- */
 public class Project extends Model {
     Date timeStamp;
-    //Enum type = { newProject, improvement}
+    String name;
+    String purposeOfMeasurement;
+    List<String> functionalUsers;
+    String granularity;
+    String levelOfDecomposition;
+    enum ProjectType { NEWPROJECT, IMPROVEMENT };
     public Set<FunctionalProcess> functionalProcesses;
 
     public Project() {

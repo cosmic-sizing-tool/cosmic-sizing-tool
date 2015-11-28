@@ -4,9 +4,6 @@ import java.util.Date;
 
 import com.avaje.ebean.Model;
 
-/**
- * Created by louis on 15-11-28.
- */
 public class DataGroup extends Model {
     Date timeStamp;
     String description;
@@ -19,6 +16,11 @@ public class DataGroup extends Model {
     public DataGroup(String description) {
         this.timeStamp = new Date();
         this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+        return timeStamp.hashCode();
     }
 
 }

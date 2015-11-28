@@ -5,18 +5,16 @@ import com.avaje.ebean.Model;
 import java.util.Date;
 import java.util.Set;
 
-/**
- * Created by louis on 15-11-28.
- */
 public class FunctionalProcess extends Model {
     Date timeStamp;
-    int documentId;
-    int sectionId;
-    int qualityRating;
+    String documentId;
+    String sectionId;
+    enum QualityRating { NONE, A, B, C, D, E };
+    QualityRating qualityRating;
     String description;
     public Set<DataGroup> dataGroups;
 
-    public FunctionalProcess(int documentId, int sectionId, String description) {
+    public FunctionalProcess(String documentId, String sectionId, String description) {
         this.timeStamp = new Date();
         this.documentId = documentId;
         this.sectionId = sectionId;
@@ -27,19 +25,27 @@ public class FunctionalProcess extends Model {
         return timeStamp;
     }
 
-    public int getDocumentId() {
+    public String getDocumentId() {
         return documentId;
     }
 
-    public int getSectionId() {
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getSectionId() {
         return sectionId;
     }
 
-    public int getQualityRating() {
+    public void setSectionId(String sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    public QualityRating getQualityRating() {
         return qualityRating;
     }
 
-    public void setQualityRating(int qualityRating) {
+    public void setQualityRating(QualityRating qualityRating) {
         this.qualityRating = qualityRating;
     }
 
@@ -50,4 +56,10 @@ public class FunctionalProcess extends Model {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public int hashCode() {
+        return timeStamp.hashCode();
+    }
+
 }
