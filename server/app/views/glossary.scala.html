@@ -1,10 +1,10 @@
-@(members: List[GlossaryWords])
+@(words: List[GlossaryWords])
 
 @main("Glossary") {
     <p>Glossary</p>
     <ul>
         @words.map { word =>
-            <li>@word.name</li>
+            <li>@word.description</li>
         }
     </ul>
 }
