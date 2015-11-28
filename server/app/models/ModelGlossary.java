@@ -9,28 +9,18 @@ import play.data.format.*;
 import play.data.validation.*;
 
 public class ModelGlossary extends Model{
-    private String language;
     public final static String pathGlossary = System.getProperty("user.dir")+"/"+"Glossary.txt";
-    ArrayList gloss = new ArrayList();
-
-
-
-    void setGlossary(String language) {
-
-        this.language = language;
-        //setChanged();
-        //notifyObservers();
-    }
+    HashMap<String, String> gloss = new ArrayList();
 
     public HashMap<String, String> getGlossary(String language) {
         return new HashMap();
     }
 
     public String getLang() {
-        return language;
+        return "EN"; // TODO - Get this from session
     }
 
-    public HashMap<String, String> getGlossaryWithFilters(String language, String filter1, String filter2, String filter3, boolean andSlashOr) {
+    public HashMap<String, String> getGlossaryWithFilters(String filter1, String filter2, String filter3, boolean andSlashOr) {
         return new HashMap();
     }
 }
