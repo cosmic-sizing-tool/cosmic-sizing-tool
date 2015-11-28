@@ -1,0 +1,189 @@
+body {
+    background-color: #B9CAD0;
+	font-family: Helvetica;
+
+}
+
+
+
+
+
+
+h3 {
+	
+    margin: 5px;
+
+}
+
+
+#header {
+
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin:5px; 
+   
+
+
+    background-color:#1D7394;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+#nav {
+	
+
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    
+    
+
+
+    line-height:30px;
+    background-color:#1D7394;
+    height: 300px;
+    width: 20%;
+    float:left;
+    padding:5px;
+}
+#section {
+    width:70%;
+    float:left;
+    padding:10px;
+}
+#footer {
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin:5px; 
+    
+
+    background-color:#1D7394;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+
+
+
+
+
+.article {
+    padding:5px; 
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin:5px; 
+}
+
+
+
+
+input[type=text] {
+    padding:5px; 
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    width: 70%;
+}
+input[type=text]:focus {
+
+    border-color:#333; 
+}
+
+input[type=submit] {
+
+    padding:5px 15px; 
+    background:#ECE3AF; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+
+.a_query{
+    
+    padding:5px; 
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+}
+
+.colapse{
+    padding:5px; 
+    border:2px solid #01374C; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.queryId{
+
+    padding:5px 15px; 
+    background:#01374C; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    float: left;
+
+}
+
+.querySring{
+
+    padding:5px 15px; 
+    background:#045472; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    float: left;
+
+}
+
+
+.buttons{
+
+    float: right;
+
+}
+
+#main_list_content{
+
+    display: inline;
+}
+
+
+
+#leftSection{
+float:left;
+width:100%;
+overflow:hidden;
+}
+
+#rigthSection{
+float:left;
+width:100%;
+overflow:hidden;
+} 
+
+table {
+    table-layout: fixed;
+    width: 100%;   
+}
+
+
+th,td {
+   
+   font-size: 10px;
+   
+   
+   
+    word-wrap: break-word;
+}
+
+
+
+
