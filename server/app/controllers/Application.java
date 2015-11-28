@@ -1,10 +1,13 @@
 package controllers;
 
 import play.*;
+import play.data.*;
 import play.mvc.*;
 import views.html.*;
 import java.util.*;
 import models.*;
+import play.data.Form;
+import static play.data.Form.*;
 
 public class Application extends Controller {
 
@@ -12,13 +15,69 @@ public class Application extends Controller {
         return ok(index.render("Your new application is ready."));
     }
 
+    public Result login() {
+        return ok(
+            login.render(form(Login.class))
+        );
+    }    
+       
     public Result team(){
         TeamMember member = new TeamMember();
         member.name = "bob";
+        member.password = "bob";
+        member.email = "bob@bob.com";
         member.save();
 
         List<TeamMember> members = TeamMember.find.all();
         return ok(team.render(members));
     }
+    
+    public Result authenticate() {
+        Form<Login> loginForm = form(Login.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+            return badRequest(login.render(loginForm));
+        } else {
+            session().clear();
+            session("email", loginForm.get().email);
+            List<TeamMember> members = TeamMember.find.all();
+            
+            for(int i=0;i<members.size();i++){
+                if(members.get(i).email.equals(loginForm.get().email)){
+                    if(members.get(i).password.equals(loginForm.get().password)){
+                        return ok(index.render("bienvenue: "+loginForm.get().email));
+                    }else
+                    {
+                        return ok(index.render("Le mot de passe n'est pas le bon pour cet uttilisateur."));
+                    }
+                    
+                }
+                    
+            }
+            return ok(index.render("L'uttilisateur n'existe pas."));
+            //return redirect(routes.Application.index());
+        }
+           
+        
+    }
+    
+    public static class Login {
 
+        public String email;
+        public String password;
+
+        public String validate() {
+            //List<TeamMember> members = TeamMember.find.all();
+            //members.contains(TE);
+            
+           //if (User.authenticate(email, password) == null) {
+            /// return "Invalid user or password";
+            //}
+            
+            return null;
+        }        
+        
+    }
+    
 }
+
+
