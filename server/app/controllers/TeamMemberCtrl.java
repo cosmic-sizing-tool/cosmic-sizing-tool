@@ -61,25 +61,29 @@ public class TeamMemberCtrl extends Controller {
 	  }  
 	  return true;  
 	}
-	/**public Result getUser(String  userInformation) {
-		if(isNumeric(userInformation)){
-		    Long id = Long.parseLong(userInformation);  
-			User user = User.find.byId(id);
-			JsonNode personJson = Json.toJson(user);
-		}else{
-			List<User> users = User.find.where().ilike("email", userInformation).findList();
-			if(users.size()==1){
-				
-			}
-		}
-	
-		return ok(personJson);
-	}*/
-	public Result getUser(long  id) {
 
-		TeamMember user = TeamMember.find.byId(id);
-        JsonNode personJson = Json.toJson(user);
-        return ok(personJson);
+	public Result getUser(long  id) {
+		try {
+			TeamMember user = TeamMember.find.byId(id);
+    	    JsonNode personJson = Json.toJson(user);
+    	    return ok(personJson);
+		} catch (Exception e) {}
+    	
+    	try {   	    
+    	    JsonNode json = Json.parse(request().body().asJson().toString());
+        	String user_email = json.findPath("email").toString().replaceAll("\"", "");
+        	List<TeamMember> uListe = TeamMember.find.where().ilike("name", user_email).findList();
+        	TeamMember user = uListe.get(0);
+    		
+    		JsonNode personJson = Json.toJson(user);
+    	    return ok(personJson);
+		} catch (Exception e) {}
+    	
+    	return notFound("user error");
+		    	
+    
+		
+	
 	}
 
 	// curl -H "Content-Type: application/json" -X POST -d
