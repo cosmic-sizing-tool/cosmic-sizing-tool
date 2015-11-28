@@ -6,10 +6,6 @@ import java.util.Set;
 
 import com.avaje.ebean.Model;
 
-
-/**
- * Created by louis on 15-11-28.
- */
 public class Project extends Model {
     Date timeStamp;
     String name;
