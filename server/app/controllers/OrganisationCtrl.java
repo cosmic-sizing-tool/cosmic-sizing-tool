@@ -11,8 +11,8 @@ import play.*;
 import play.db.ebean.Transactional;
 import play.libs.Json;
 import play.mvc.*;
-
 import views.html.*;
+
 import com.avaje.ebean.*;
 
 
@@ -41,6 +41,39 @@ public class OrganisationCtrl extends Controller {
     	// read the JsonNode as a Person
     	return ok(index.render("created"));
     }
+	public Result addAdminToAnOrganisation(long id) {
+		if(organisationExist(id)){
+			JsonNode json = Json.parse(request().body().asJson().toString());
+		
+			Long idAdmin = Long.parseLong(json.findPath("idAdmin").toString()
+					.replaceAll("\"", ""));
+			
+			Organisation o1 = new Organisation();
+			o1.id = id;
+			User user = new User();
+			user =  User.find.byId(idAdmin);
+		 
+			o1.save();
+			
+			
+		}
+
+		
+		
+		
+		return ok(index.render("updated"));
+
+	}
+	
+	public boolean organisationExist(long id){
+		boolean exist=false;
+		Organisation organisation = Organisation.find.byId(id);
+		if(organisation!=null){
+			exist=true;
+		}
+		
+		return exist;
+	}
 }
 
 

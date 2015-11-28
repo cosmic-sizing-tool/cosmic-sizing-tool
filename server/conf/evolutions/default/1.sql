@@ -6,7 +6,6 @@
 create table organisation (
   id                        bigint not null,
   name                      varchar(255),
-  administrator_id          bigint,
   constraint pk_organisation primary key (id))
 ;
 
@@ -31,8 +30,6 @@ create sequence organisation_seq;
 
 create sequence user_seq;
 
-alter table organisation add constraint fk_organisation_Administrator_1 foreign key (administrator_id) references user (id) on delete restrict on update restrict;
-create index ix_organisation_Administrator_1 on organisation (administrator_id);
 
 
 

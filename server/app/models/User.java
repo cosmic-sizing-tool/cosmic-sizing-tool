@@ -33,8 +33,8 @@ public class User extends Model {
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    public List<Organisation> administrators = new ArrayList<Organisation>();
+ //   @ManyToOne(cascade = CascadeType.ALL)
+//    public List<Organisation> administrators = new ArrayList<Organisation>();
     public static Finder<Long, User> find = new Finder<Long,User>(User.class);
 
     

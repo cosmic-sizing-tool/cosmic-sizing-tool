@@ -23,8 +23,7 @@ public class Organisation extends Model {
     public List<User> users = new ArrayList<User>();
     
     
-    @ManyToOne
-    public User Administrator;
+   
     
     
     public static Finder<Long, Organisation> find = new Finder<Long,Organisation>(Organisation.class);
