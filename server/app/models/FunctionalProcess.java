@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by louis on 15-11-28.
  */
-public class FunctionalProcess {
+public class FunctionalProcess extends Model {
     Date timeStamp;
     int documentId;
     int sectionId;

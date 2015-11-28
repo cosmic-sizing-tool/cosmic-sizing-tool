@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by louis on 15-11-28.
  */
-public class DataGroup {
+public class DataGroup extends Model {
     Date timeStamp;
     String description;
     public boolean entry;

@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by louis on 15-11-28.
  */
-public class Project {
+public class Project extends Model {
     Date timeStamp;
     //Enum type = { newProject, improvement}
     public Set<FunctionalProcess> functionalProcesses;
