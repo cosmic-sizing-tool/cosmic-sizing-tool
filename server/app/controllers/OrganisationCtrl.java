@@ -36,6 +36,7 @@ public class OrganisationCtrl extends Controller {
     	Organisation o1 = new Organisation();
     	o1.id = Long.parseLong(json.findPath("id").toString().replaceAll("\"", ""));
     	o1.name = json.findPath("name").toString().replaceAll("\"", "");
+   
     	//u1.deleted = false;
     	o1.save();
     	// read the JsonNode as a Person
@@ -49,10 +50,10 @@ public class OrganisationCtrl extends Controller {
 					.replaceAll("\"", ""));
 			
 			Organisation o1 = new Organisation();
-			o1.id = id;
-			User user = new User();
-			user =  User.find.byId(idAdmin);
+			o1 = Organisation.find.byId(id);
 		 
+			o1.id_admin=idAdmin;
+ 
 			o1.save();
 			
 			

@@ -16,6 +16,7 @@ public class Organisation extends Model {
     @Constraints.Required
     public String name;
     
+    public long id_admin;
     
     
     
@@ -23,7 +24,7 @@ public class Organisation extends Model {
     public List<User> users = new ArrayList<User>();
     
     
-   
+
     
     
     public static Finder<Long, Organisation> find = new Finder<Long,Organisation>(Organisation.class);
