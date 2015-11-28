@@ -1,5 +1,7 @@
 package models;
 
+import com.avaje.ebean.Model;
+
 import java.util.Date;
 import java.util.Set;
 

@@ -2,6 +2,8 @@ package models;
 
 import java.util.Date;
 
+import com.avaje.ebean.Model;
+
 /**
  * Created by louis on 15-11-28.
  */
