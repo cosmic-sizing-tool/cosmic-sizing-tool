@@ -35,6 +35,20 @@ angular
       		});
       };
 
+      $scope.addLine = function (process, index) {
+        if(process.movements.length = (index + 1)) {
+          process.movements.push({
+            ref: "",
+            name: "",
+            movements: "",
+            comment: "",
+            isTriggeringEntry: false
+          })
+        }
+        console.log(process);
+        console.log(index);
+      };
+
       $scope.$watch('layers', function() { $scope.save(); }, true);
     }
   ])

@@ -6,7 +6,6 @@
 	<script type="text/javascript" src="/assets/javascripts/mesures/add.js"></script>
 
 	<div class="container" ng-controller="MesuresAddController">
-		{{ layers }}
 		<div ng-repeat="layer in layers">
 			<h1>{{ layer.name }}</h1>
 			<div class="panel panel-default" ng-repeat="process in layer.processes">
@@ -22,8 +21,6 @@
 				</div>
 				<div class="panel-body">
 					<div ng-repeat="movement in process.movements">
-						{{ movement }}
-					<br>
 						<div class="row">
 						
 							<div class="col-md-1">
@@ -39,12 +36,10 @@
 							</div>
 							
 							<div class="col-md-3">
-							<input type ="text" ng-model="movement.comment" class ="form-control">
+							<input type ="text" ng-blur="addLine(process, $index)" ng-model="movement.comment" class ="form-control">
 							</div>
 						</div>
-						
-						
-						
+												
 					</div>
 				</div>
 			</div>
