@@ -23,6 +23,28 @@
 				<div class="panel-body">
 					<div ng-repeat="movement in process.movements">
 						{{ movement }}
+					<br>
+						<div class="row">
+						
+							<div class="col-md-1">
+							Name: <input type="text" ng-model="movement.name" class="form-control">
+							</div>
+							
+							<div class="col-md-3">
+							Ref: <input type ="text" ng-model="movement.ref" class ="form-control">
+							</div>
+						
+							<div class="col-md-5">
+							Movement: <input type ="text" ng-model="movement.movements" class ="form-control">
+							</div>
+							
+							<div class="col-md-3">
+							<input type ="text" ng-model="movement.comment" class ="form-control">
+							</div>
+						</div>
+						
+						
+						
 					</div>
 				</div>
 			</div>
