@@ -34,19 +34,5 @@ public class TeamMember extends Model {
     public static Finder<Long, TeamMember> find = new Finder<Long,TeamMember>(TeamMember.class);
 
     
-    public void setEmail(String email){
-    	this.email= email;
-    	
-    }
-    public void setName(String name){
-    	this.name= name;
-    	
-    }
-    public void setAlias(String alias){
-    	this.alias= alias;
-    	
-    }
-    public void setPassword(String password){
-    	this.password= password;
-    }
+
 }
