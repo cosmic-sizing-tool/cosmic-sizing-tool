@@ -71,7 +71,7 @@ public class UserCtrl extends Controller {
 					.ilike("email", userInformation).findList();
 			if (users.size() == 1) {
 				personJson = Json.toJson(users);
-				
+
 			}
 		}
 		return ok(personJson);
@@ -80,6 +80,7 @@ public class UserCtrl extends Controller {
 	// curl -H "Content-Type: application/json" -X POST -d
 	// '{"id":"11","name":"UQAM"}' http://127.0.0.1:9000/organisations
 	public Result addOrganisation(Long id) {
+
 		JsonNode json = Json.parse(request().body().asJson().toString());
 		String OrganisationName = json.findPath("name").toString()
 				.replaceAll("\"", "");
@@ -96,8 +97,7 @@ public class UserCtrl extends Controller {
 		User u1 = new User();
 		String newPassword = json.findPath("newPassword").toString()
 				.replaceAll("\"", "");
-		List<User> user = User.find.where().ilike("email", email)
-				.findList();
+		List<User> user = User.find.where().ilike("email", email).findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
 			u1.password = newPassword;
@@ -105,9 +105,6 @@ public class UserCtrl extends Controller {
 		}
 		return ok(index.render("updated"));
 	}
-	
-
-	
 
 	public Result updateInformation(String email) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
@@ -119,8 +116,7 @@ public class UserCtrl extends Controller {
 				.replaceAll("\"", "");
 		User u1 = new User();
 		boolean change = false;
-		List<User> user = User.find.where().ilike("email", email)
-				.findList();
+		List<User> user = User.find.where().ilike("email", email).findList();
 		if (user.size() == 1) {
 			u1 = user.get(0);
 			if (newEmail.length() != 0) {
@@ -147,16 +143,41 @@ public class UserCtrl extends Controller {
 
 	}
 
-	
-	public boolean userExist(long id){
+	public Result deleteUser(Long id) {
+		UserCtrl userCtrl = new UserCtrl();
+		Organisation organisation = new Organisation();
+		List<Organisation> userAdmin =  Organisation.find
+				.where().ilike("id_admin", id.toString()).findList();
 
-		boolean exist=false;
-		User user = User.find.byId(id);
-		if(user!=null){
-			exist=true;
+		if (userCtrl.userExist(id)) {
+			User user = User.find.byId(id);
+			if (user.organisations.size() == 0) {
+				if (userAdmin.size() == 0) {
+
+					user.delete();
+				} else {
+					return badRequest("Utilisateur est affecter a un ou plusieurs organisations");
+				}
+			} else {
+				return badRequest("Utilisateur est affecter a un ou plusieurs organisations");
+			}
+
+		} else {
+			return notFound(index.render("User dont exist"));
 		}
-		
+
+		return ok(index.render("deleted"));
+	}
+
+	public boolean userExist(long id) {
+
+		boolean exist = false;
+		User user = User.find.byId(id);
+		if (user != null) {
+			exist = true;
+		}
+
 		return exist;
 	}
-	
+
 }

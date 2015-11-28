@@ -2,6 +2,8 @@ package controllers;
 
 
 
+import java.util.List;
+
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Organisation;
@@ -44,7 +46,7 @@ public class OrganisationCtrl extends Controller {
     }
 	public Result addAdminToAnOrganisation(long id) {
 		UserCtrl user = new UserCtrl();
-		if(organisationExist(id)){
+	//	if(organisationExist(id)){
 			JsonNode json = Json.parse(request().body().asJson().toString());
 		
 			Long idAdmin = Long.parseLong(json.findPath("idAdmin").toString()
@@ -64,9 +66,9 @@ public class OrganisationCtrl extends Controller {
 			}
 
 			
-		}else{
-			return notFound(index.render("Organisation not found!"));
-		}
+		//}else{
+		//	return notFound(index.render("Organisation not found!"));
+		//}
 
 		
 		
@@ -75,12 +77,18 @@ public class OrganisationCtrl extends Controller {
 
 	}
 	
-	public boolean organisationExist(long id){
+	public boolean organisationExist(Long id){
 		boolean exist=false;
-		Organisation organisation = Organisation.find.byId(id);
-		if(organisation!=null){
+
+		String idO = new String(id + "");
+		List<Organisation> organisation = Organisation.find.where().ilike("ADMINISTRATOR_ID",id.toString())
+				.findList();
+		
+		
+		if(organisation.size()!=0){ // le utilisateur 
 			exist=true;
 		}
+		
 		
 		return exist;
 	}
