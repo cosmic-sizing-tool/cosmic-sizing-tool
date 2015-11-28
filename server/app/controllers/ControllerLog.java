@@ -26,6 +26,6 @@ public class ControllerLog extends Controller {
 
     // method to show logs from a filter
     public showLogsFromFilter() {
-        
+
     }
 }
