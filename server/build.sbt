@@ -9,7 +9,9 @@ scalaVersion := "2.11.6"
 libraryDependencies ++= Seq(
   javaJdbc,
   cache,
-  javaWs
+  javaWs,
+  "org.xerial" % "sqlite-jdbc" % "3.7.2",
+  "mysql" % "mysql-connector-java" % "5.1.34"
 )
 
 // Play provides two styles of routers, one expects its actions to be injected, the

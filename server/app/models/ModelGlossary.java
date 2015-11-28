@@ -35,26 +35,28 @@ public class ModelGlossary extends Model{
 	return chaine;
 	}
 
-    void setGlossary(String language) {
-
-        this.language = language;
-    }
-
 	
 	
-    public HashMap<String, String> getGlossary(String language) {
+    public HashMap<String, String> getGlossary() {
 		String chaine = ReadFile();
-		while (fichier.hasNextLigne()){
+		String ligne = "" ;
+		String part [] = null ;
+		HashMap<String, String> H = new HashMap();
+		while (chaine.hasNextLigne()){
+			ligne = chaine.readLine();
+			part = ligne.split(":");
+			H[part[1]]=part[2];
 			
 		}
-        return new HashMap();
+        return H;
     }
 
     public String getLang() {
-        return language;
+		HttpRequest langue = new HttpRequest();
+		return langue("content-Language");
     }
 
-    public HashMap<String, String> getGlossaryWithFilters(String language, String filter1, String filter2, String filter3, boolean andSlashOr) {
+    public HashMap<String, String> getGlossaryWithFilters(String filter1, String filter2, String filter3, boolean andSlashOr) {
         return new HashMap();
     }
 }
