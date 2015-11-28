@@ -1,0 +1,10 @@
+@(members: List[TeamMember])
+
+@main("Team") {
+    <p>Membres de l'équipe</p>
+    <ul>
+        @members.map { member =>
+            <li>@member.name</li>
+        }
+    </ul>
+}
