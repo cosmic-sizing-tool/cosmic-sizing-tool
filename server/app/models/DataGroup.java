@@ -21,4 +21,9 @@ public class DataGroup extends Model {
         this.description = description;
     }
 
+    @Override
+    public int hashCode() {
+        return timeStamp.hashCode();
+    }
+
 }
