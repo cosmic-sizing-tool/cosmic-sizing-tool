@@ -16,7 +16,7 @@ import java.util.List;
 import com.avaje.ebean.*;
 
 @Transactional
-public class TeamMemberCtrl extends Controller {
+public class UserCtrl extends Controller {
 
 	public Result index() {
 		User u1 = new User();
