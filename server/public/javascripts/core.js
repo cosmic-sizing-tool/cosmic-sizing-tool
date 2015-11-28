@@ -5,86 +5,44 @@ function renderUser(data, textStatus, jqXHR){
 	$('#user_email').val(data.email);
 	$('#user_password').val(data.password);
 	//$('#user_alias').val(data.alias);
+
+}
+function renderPassword(data, textStatus, jqXHR){
 	
+
+
+
 }
 
 
-function renderAQuerry2(data, textStatus, jqXHR){
-	var pre = JSON.parse(data.resultat);
-	$('#result').empty();	
-	pre.hits.hits.forEach(function(value,index,array){
-		$('#result').append('<div class="colapse">' + '<pre>' + JSON.stringify(value, null, 2) + '</pre>>' + '</div>');
-	});
-}
-
-
-
-function renderDelQuerry(){
-	$('#result').empty();	
-	$('#result').append('<div class="colapse">' + '<pre>' + 'deleted' + '</pre>>' + '</div>');
-}
-
-
-
-function RenderANewQuery(data, textStatus, jqXHR){
-	var temp = $.parseHTML(template1);
-	$(temp).find('.querySring').text(data.criteres);
-	$('#list_query').prepend(temp);
-	var pre = JSON.parse(data.resultat);
-	$(temp).find('.queryId').text('id: ' + JSON.stringify(data.id));
-	$(temp).find('.querySring').text(data.criteres);
-	$(temp).find('.querySring').click(function() {
-		getQuerry(data.id);
-	});
-
-	//registercallback  
-	$(temp).find('input').click(function() {
-		delQuerry(data.id);
-		$(this).parent().parent().remove();
-	});
-}
-
-
-
-
-//http://stackoverflow.com/questions/4810841/how-can-i-pretty-print-json-using-javascript
-function syntaxHighlight(json) {
-	if (typeof json != 'string') {
-		json = JSON.stringify(json, undefined, 2);
-	}
-	json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-	return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-		var cls = 'number';
-		if (/^"/.test(match)) {
-			if (/:$/.test(match)) {
-				cls = 'key';
-			} else {
-				cls = 'string';
-			}
-		} else if (/true|false/.test(match)) {
-			cls = 'boolean';
-		} else if (/null/.test(match)) {
-			cls = 'null';
-		}
-		return '<span class="' + cls + '">' + match + '</span>';
-	});
-}
-
-
-
-function getUser(rechercheid){  
-	$.ajax({			
+function getUser(rechercheid){
+	$.ajax({
 		url: '/user/' + rechercheid,
 		type: 'GET',
 		dataType: 'json',
 
 		success: function(data, textStatus, jqXHR){
-			renderUser(data, textStatus, jqXHR);	
+			renderUser(data, textStatus, jqXHR);
 		},
 		error:function(){
 			alert('ERROR');
-		}	
-	});	
+		}
+	});
+}
+
+function putPassword(rechercheid, passobj){
+	$.ajax({
+		url: '/user/' + rechercheid +  '/password',
+		type: 'PUT',
+		dataType: 'json',
+    data : passobj,
+		success: function(data, textStatus, jqXHR){
+			renderPassword(data, textStatus, jqXHR);
+		},
+		error:function(){
+			alert('ERROR');
+		}
+	});
 }
 
 function delQuerry(rechercheid){
@@ -97,7 +55,7 @@ function delQuerry(rechercheid){
 			renderDelQuerry()
 		},
 		dataType: 'json'
-	});	
+	});
 
 }
 
@@ -116,7 +74,7 @@ function addQuerry(recherche){
 			renderSats(data);
 		},
 		dataType: 'json'
-	});	
+	});
 }
 
 //VIEW
@@ -126,7 +84,7 @@ function renderSats(data){
 	$('#max_score').empty();
 	$('#max_score').text(pre.hits.max_score);
 	$('#total').empty();
-	$('#total').text(pre.hits.total);		
+	$('#total').text(pre.hits.total);
 	if(pre.hits.total == 0){
 		$('#result').empty();
 		$('#result').append('no result');
@@ -162,30 +120,20 @@ $.makeTable = function (mydata) {
 };
 
 
+var myID  =  1234;
+var myEmail = "Jean-paul@hotmail.com";
 var body = $('body')[0];
 getUser(1234);
 
+$('#_save_btn').click(function() {
 
+  var myObject = new Object();
+  
+    
 
+	myObject.current_pass  = $('#_curret_pass').val();
+	myObject.new_password1 = $('#_new_pass1').val();
+	myObject.new_password2 = $('#_new_pass2').val();
+  putPassword(myEmail,myObject);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+});

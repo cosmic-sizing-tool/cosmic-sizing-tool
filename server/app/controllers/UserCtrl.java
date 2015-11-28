@@ -105,6 +105,9 @@ public class UserCtrl extends Controller {
 		}
 		return ok(index.render("updated"));
 	}
+	
+
+	
 
 	public Result updateInformation(String email) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
