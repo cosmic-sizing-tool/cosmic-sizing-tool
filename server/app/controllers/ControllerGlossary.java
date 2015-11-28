@@ -7,9 +7,9 @@ import java.util.*;
 import models.*;
 
 public class ControllerGlossary extends Controller {
-    private ModelGlossary m;
-    private String language;
-    private HashMap<String, String> g;
+    private ModelGlossary m; // Model of the glossary
+    private String language; // Language of the user
+    private HashMap<String, String> g; // The whole glossary
 
     // Default constructor
     public ControllerGlossary () {
@@ -29,18 +29,17 @@ public class ControllerGlossary extends Controller {
         return glo;
     }
 
-    // checks if a word is in the glossary
+    // Checks if a word is in the glossary
     public boolean isWordOfGlossary(String word){
-        //return glossary.containsKey(word);
-        return true;
+        return g.containsKey(word);
     }
 
-    // get the description of a word
+    // Get the description of a word
     public String getDescription(String word){
-        //return glossary.get(word).toString();
-        return "";
+        return g.get(word).toString();
     }
 
+    // Renders the view of the glossary
     public Result glossary(){
         return ok(glossary.render(g));
     }
