@@ -23,5 +23,18 @@ angular
       	}]
       }];
 
+      $scope.save = function () {
+      	$http.post('/mesures/savetemp', $scope.layers)
+      		.success(function (data, status) {
+      			console.log(data);
+      			console.log(status);
+      		})
+      		.error(function (data, status) {
+      			console.log(data);
+      			console.log(status);
+      		});
+      };
+
+      $scope.$watch('layers', function() { $scope.save(); }, true);
     }
   ])
