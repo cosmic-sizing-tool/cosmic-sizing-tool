@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>onShow / onHide</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<style>
+		#calendar {
+			border: 1px solid #909090;
+			font-family: Tahoma;
+			font-size: 12px;
+		}
+		#logsHere {
+			width: 500px;
+			height: 150px;
+			overflow: auto;
+			border: 1px solid #cecece;
+			font-family: Tahoma;
+			font-size: 12px;
+		}
+	</style>
+	<script>
+		var myCalendar;
+		function doOnLoad() {
+			myCalendar = new dhtmlXCalendarObject("calendar");
+			myCalendar.attachEvent("onShow", function(){
+				writeLog("onShow event called");
+			});
+			myCalendar.attachEvent("onHide", function(){
+				writeLog("onHide event called");
+			});
+		}
+		var logObj, logInd=0;
+		function writeLog(t) {
+			if (!logObj) logObj = document.getElementById("logsHere");
+			logObj.innerHTML = (++logInd)+") "+t+"<br>"+logObj.innerHTML;
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div style="position:relative;height:280px;"><input type="text" id="calendar"></div>
+	<div id="logsHere"></div>
+</body>
+</html>

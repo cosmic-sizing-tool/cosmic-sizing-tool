@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Attach to form</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<script>
+		var myForm, formData;
+		function doOnLoad() {
+			formData = [
+				{type: "settings", position: "label-left", labelWidth: 120, inputWidth: 120},
+				{type: "calendar", dateFormat: "%Y-%m-%d %H:%i", value: "2011-06-13 11:35", name: "start_date", label: "Start Date", skin: "dhx_skyblue", readonly: true, enableTime: true, calendarPosition: "right"},
+				{type: "calendar", name: "end_date", label: "End Date", skin: "dhx_skyblue", value: "2011-02-10", dateFormat: "%Y-%m-%d", calendarPosition: "right"},
+				{type: "calendar", name: "empty_date", label: "Empty Date Test", skin: "dhx_skyblue", dateFormat: "%Y-%m-%d", calendarPosition: "right"},
+				{type: "calendar", name: "with_icon", label: "With Icon", skin: "dhx_skyblue", dateFormat: "%Y-%m-%d", value: "2013-06-01", calendarPosition: "right"}
+				
+			];
+			myForm = new dhtmlXForm("myForm", formData);
+			// icon for last,
+			// also input in a form have ".calendar" css postfix
+			myForm.getInput("with_icon").style.backgroundImage = "url(../common/calendar.gif)";
+			myForm.getInput("with_icon").style.backgroundPosition = "center right";
+			myForm.getInput("with_icon").style.backgroundRepeat = "no-repeat";
+			
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div id="myForm" style="height:300px;"></div>
+</body>
+</html>

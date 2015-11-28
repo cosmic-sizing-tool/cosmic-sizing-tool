@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag and Drop between Grids</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<script>
+		var myGrid, treeGrid;
+		function doOnLoad(){
+			myGrid = new dhtmlXGridObject('gridbox3');
+			myGrid.selMultiRows = true;
+			myGrid.setImagePath("../../../codebase/imgs/");
+			myGrid.setHeader("Sales,Book Title,Author,Price,In Store,Shipping,Bestseller,Date of Publication");
+			myGrid.setInitWidths("50,150,120,80,80,80,80,200");
+			myGrid.setColAlign("right,left,left,right,center,left,center,center");
+			myGrid.setColTypes("dyn,ed,ed,price,ch,coro,ra,ro");
+			myGrid.setColSorting("int,str,str,int,str,str,str,date");
+			myGrid.setMultiLine(false);
+			myGrid.enableDragAndDrop(true);
+			myGrid.init();
+			myGrid.load("../common/grid.xml");
+			//
+			treeGrid = new dhtmlXGridObject('gridbox2');
+			treeGrid.selMultiRows = true;
+			treeGrid.setImagePath("../../../codebase/imgs/");
+			treeGrid.setHeader("Alpha,Betta");
+			treeGrid.setInitWidths("100,150");
+			treeGrid.setColAlign("right,left");
+			treeGrid.setColTypes("ed,ed");
+			treeGrid.setColSorting("int,str");
+			treeGrid.setMultiLine(false);
+			treeGrid.enableDragAndDrop(true);
+			treeGrid.init();
+			treeGrid.load("../common/dynscroll.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad()">
+	<h1>Drag and Drop between Grids</h1>
+	<p>
+		dhtmlxGrid supports drag-n-drop not only within one grid, but between grids as well. Check out this functionality in the sample below.
+	</p>
+	<table width="800px">
+		<tr>
+			<td>
+				<div id="gridbox2" style="width:270px;height:270px;background-color:white;"></div>
+			</td>
+			<td>
+				<div id="gridbox3" style="width:500px;height:270px;background-color:white;"></div>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

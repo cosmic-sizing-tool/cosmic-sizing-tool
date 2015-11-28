@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Decrease memory usage</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<script>
+		var myGrid;
+		function doOnLoad(){
+			myGrid = new dhtmlXGridObject('gridbox');
+			myGrid.setImagePath("../../../codebase/imgs/");
+			myGrid.setHeader("Sales,Book Title,Author,Price,In Store,Shipping,Bestseller,Date of Publication");
+			myGrid.setInitWidths("50,150,120,80,80,80,80,200");
+			myGrid.setColAlign("right,left,left,right,center,left,center,center");
+			myGrid.setColTypes("dyn,ed,ed,price,ch,co,ra,ro");
+			myGrid.getCombo(5).put(2,2);
+			myGrid.setColSorting("int,str,str,int,str,str,str,date");
+			myGrid.init();
+			myGrid.load("../common/grid.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad()">
+	<h1>Decrease memory usage</h1>
+	<p>dhtmlxGrid from version 1.1 automatically clears used memory on unload method to prevent memory leaks.<br/>
+		In case of "never-reloading" type of app you can clear memory manually.</p>
+	<div id="gridbox" style="width:600px;height:270px;background-color:white;"></div>
+	<br>
+	<a href="javascript:void(0)" onclick="myGrid.destructor(); this.style.display='none'">Call grid's destructor</a>
+</body>
+</html>

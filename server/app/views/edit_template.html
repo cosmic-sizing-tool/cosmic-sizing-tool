@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Quick start with dhtmlxGrid</title>
+    <link rel="STYLESHEET" type="text/css" href="../../public/lib/dhtmlxGrid/codebase/dhtmlxgrid.css">
+    <script src="../../public/lib/dhtmlxGrid/codebase/dhtmlxgrid.js"></script>
+</head>
+<body>
+    <div id="patron" style="width:800px;height:100px;">
+      Patron: <input type="text">
+      Charger patron: <input type="text">
+    </div>  
+    <div id="grid_patron" style="width:800px;height:400px;"></div>  
+    <script>
+        mygrid = new dhtmlXGridObject('grid_patron');
+        //the path to images required by grid
+        mygrid.setImagePath("../../public/lib/dhtmlxGrid/codebase/imgs/");
+        mygrid.setHeader("Utilisateur,Processus Fonctionnel,Groupe de données,E,X,R,w");
+        //the headers of columns
+        mygrid.setInitWidths("100,200,200,25,25,25,25");
+        //the widths of columns
+        mygrid.setColAlign("left,left,left,center,center,center,center");
+        //the alignment of columns
+        mygrid.setColTypes("ed,ed,ed,ch,ch,ch,ch");
+        //the types of columns
+        mygrid.setColSorting("str,str,str");
+        //the sorting types
+        mygrid.init(); 
+        //finishes initialization and renders the grid on the page 
+
+        data={
+            rows:[
+                { id:1, data: ["joe", "ajout de {cl}", "load {cl}", 1,0,1,0]},
+                { id:2, data: ["joe", "ajout de {cl}", "valider {cl}", 1,1,0,0]},
+                { id:3, data: ["joe", "ajout de {cl}", "enregistrer {cl}", 1,1,1,1]},
+                { id:4, data: ["bob", "audti de {cl}", "enregistrer {cl}", 1,1,1,1]}
+            ]
+        };
+        mygrid.parse(data,"json");
+    </script>
+</body>
+</html>

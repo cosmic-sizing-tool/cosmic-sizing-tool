@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Skins</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../skins/web/dhtmlxgrid.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../skins/terrace/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<script>
+		var myToolbar;
+		var iconsPath = {
+			dhx_skyblue: "imgs",
+			dhx_web: "icons_web",
+			dhx_terrace: "icons_terrace"
+		};
+		function doOnLoad() {
+			myToolbar = new dhtmlXToolbarObject({parent: "toolbarObj"});
+			setSkin("dhx_skyblue");
+		}
+		function setSkin(skin) {
+			myToolbar.clearAll();
+			myToolbar.setSkin(skin);
+			myToolbar.setIconsPath("../common/"+iconsPath[skin]+"/");
+			myToolbar.loadStruct("../common/dhxtoolbar.xml");
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div style="height: 150px;">
+		<div id="toolbarObj"></div>
+	</div>
+	Set skin to <a href="javascript:setSkin('dhx_skyblue')">dhx_skyblue</a> (default),
+	<a href="javascript:setSkin('dhx_web')">dhx_web</a> or
+	<a href="javascript:setSkin('dhx_terrace')">dhx_terrace</a>
+</body>
+</html>

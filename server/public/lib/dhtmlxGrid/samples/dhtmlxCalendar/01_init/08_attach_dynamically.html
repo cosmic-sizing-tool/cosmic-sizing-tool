@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Attach inputs dynamically</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<style>
+		#calendar,
+		#calendar2,
+		#calendar3 {
+			border: 1px solid #909090;
+			font-family: Tahoma;
+			font-size: 12px;
+		}
+		#att_state,
+		#att_state2,
+		#att_state3 {
+			font-family: Tahoma;
+			font-size: 12px;
+		}
+	</style>
+	<script>
+		var myCalendar;
+		function doOnLoad() {
+			myCalendar = new dhtmlXCalendarObject();
+			myCalendar.setPosition("right");
+			var k = {"calendar":"att_state","calendar2":"att_state2","calendar3":"att_state3"};
+			for (var a in k) doAttach(a,k[a]);
+		}
+		var attached = {};
+		function doAttach(id, sp) {
+			if (attached[id] != null) return;
+			attached[id] = myCalendar.attachObj(id);
+			document.getElementById(sp).innerHTML = "attached";
+			document.getElementById(sp).style.color = "green";
+		}
+		function doDetach(id, sp) {
+			if (attached[id] == null) return;
+			myCalendar.detachObj(attached[id]);
+			attached[id] = null;
+			document.getElementById(sp).innerHTML = "not attached";
+			document.getElementById(sp).style.color = "red";
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div style="position:relative;height:280px;">
+		<table>
+			<tr>
+				<td>
+					<input type="button" value="attach" onclick="doAttach('calendar','att_state');">
+					<input type="button" value="detach" onclick="doDetach('calendar','att_state');">
+				</td>
+				<td width="100"><span id="att_state"></span></td>
+				<td><input type="text" id="calendar"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="attach" onclick="doAttach('calendar2','att_state2');">
+					<input type="button" value="detach" onclick="doDetach('calendar2','att_state2');">
+				</td>
+				<td><span id="att_state2"></span></td>
+				<td><input type="text" id="calendar2"></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="attach" onclick="doAttach('calendar3','att_state3');">
+					<input type="button" value="detach" onclick="doDetach('calendar3','att_state3');">
+				</td>
+				<td><span id="att_state3"></span></td>
+				<td><input type="text" id="calendar3"></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

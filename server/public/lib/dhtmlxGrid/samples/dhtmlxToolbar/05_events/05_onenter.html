@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>onEnter (input)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<style>
+		div#logBar {
+			border: #e0e0e0 1px solid;
+			margin-top: 20px;
+			width: 500px;
+			height: 200px;
+			overflow: auto;
+			font-family: Tahoma;
+			font-size: 11px;
+		}
+	</style>
+	<script>
+		var myToolbar;
+		var i = 1;
+		function doOnLoad() {
+			myToolbar = new dhtmlXToolbarObject({
+				parent: "toolbarObj",
+				icons_path: "../common/imgs/",
+				xml: "../common/dhxtoolbar_input.xml"
+			});
+			myToolbar.attachEvent("onEnter", function(id, value) {
+				writeLog("<b>onEnter event</b> was fired for input "+id);
+			});
+		}
+		function writeLog(data) {
+			document.getElementById("logBar").innerHTML = String(i++)+". "+data+"<br>"+document.getElementById("logBar").innerHTML;
+			document.getElementById("logBar").innerHTML+="";
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div style="height: 150px;">
+		<div id="toolbarObj"></div>
+	</div>
+	<div id="logBar"></div>
+</body>
+</html>

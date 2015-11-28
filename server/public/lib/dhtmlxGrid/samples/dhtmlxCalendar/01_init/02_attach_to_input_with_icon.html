@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Attach to input with icon</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" type="text/css" href="../../../codebase/dhtmlxgrid.css"/>
+	<script src="../../../codebase/dhtmlxgrid.js"></script>
+	<style>
+		#calendar_input {
+			border: 1px solid #909090;
+			font-family: Tahoma;
+			font-size: 12px;
+		}
+		#calendar_icon {
+			vertical-align: middle;
+			cursor: pointer;
+		}
+	</style>
+	<script>
+		var myCalendar;
+		function doOnLoad() {
+			myCalendar = new dhtmlXCalendarObject({input: "calendar_input", button: "calendar_icon"});
+		}
+	</script>
+</head>
+<body onload="doOnLoad();">
+	<div style="position:relative;height:280px;">
+		<input type="text" id="calendar_input">
+		<span><img id="calendar_icon" src="../common/calendar.gif" border="0"></span>
+	</div>
+</body>
+</html>
