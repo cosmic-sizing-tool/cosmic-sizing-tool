@@ -5,7 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /team                       controllers.Application.team()
-GET     /pattern                controllers.Application.pattern()
+GET     /pattern                    controllers.Application.pattern()
+POST    /ajax                       controllers.Application.traitementAjax()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

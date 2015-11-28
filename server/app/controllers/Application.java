@@ -26,4 +26,9 @@ public class Application extends Controller {
         
         return ok(pattern.render());
     }
+    
+    public Result traitementAjax() {
+        Map donnees = request().body().asFormUrlEncoded();
+        return ok();
+    }
 }
