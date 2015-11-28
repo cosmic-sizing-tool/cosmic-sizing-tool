@@ -23,7 +23,7 @@ public class TeamMemberCtrl extends Controller {
 		u1.id = 12L;
 		u1.name = "Jhone";
 		u1.password = "secret";
-		u1.email = "fuck@you.com";
+		u1.email = "paper@email.com";
 		u1.alias = "tantan";
 		u1.save();
 		return ok(index.render("Your new application is ready."));
