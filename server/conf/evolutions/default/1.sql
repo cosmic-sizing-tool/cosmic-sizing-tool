@@ -6,6 +6,7 @@
 create table organisation (
   id                        bigint not null,
   name                      varchar(255),
+  id_admin                  bigint,
   constraint pk_organisation primary key (id))
 ;
 

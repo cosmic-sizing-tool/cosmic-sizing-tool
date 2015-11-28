@@ -43,20 +43,29 @@ public class OrganisationCtrl extends Controller {
     	return ok(index.render("created"));
     }
 	public Result addAdminToAnOrganisation(long id) {
+		UserCtrl user = new UserCtrl();
 		if(organisationExist(id)){
 			JsonNode json = Json.parse(request().body().asJson().toString());
 		
 			Long idAdmin = Long.parseLong(json.findPath("idAdmin").toString()
 					.replaceAll("\"", ""));
+		
+			if(user.userExist(idAdmin)){
+				
+				Organisation o1 = new Organisation();
+				o1 = Organisation.find.byId(id);
+			 
+				o1.id_admin=idAdmin;
+	 
+				o1.save();
+				
+			}else{
+				return notFound(index.render("User not found!"));
+			}
+
 			
-			Organisation o1 = new Organisation();
-			o1 = Organisation.find.byId(id);
-		 
-			o1.id_admin=idAdmin;
- 
-			o1.save();
-			
-			
+		}else{
+			return notFound(index.render("Organisation not found!"));
 		}
 
 		
