@@ -4,23 +4,20 @@
 # --- !Ups
 
 create table team_member (
-  id                        bigint not null,
+  id                        integer primary key AUTOINCREMENT,
   name                      varchar(255) not null,
-  constraint pk_team_member primary key (id))
+  email                     varchar(255) not null,
+  password                  varchar(255) not null)
 ;
-
-create sequence team_member_seq;
 
 
 
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+PRAGMA foreign_keys = OFF;
 
-drop table if exists team_member;
+drop table team_member;
 
-SET REFERENTIAL_INTEGRITY TRUE;
-
-drop sequence if exists team_member_seq;
+PRAGMA foreign_keys = ON;
 
