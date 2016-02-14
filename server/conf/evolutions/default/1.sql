@@ -11,24 +11,13 @@ create table team_member (
 ;
 
 
-# --- !Downs
 
-<<<<<<< HEAD
 
 # --- !Downs
 
 PRAGMA foreign_keys = OFF;
-=======
-SET REFERENTIAL_INTEGRITY FALSE;
-
-drop table if exists team_member;
->>>>>>> 44197802c4f0fa9c5f821a0dccaa15346a6652dc
 
 drop table team_member;
 
-<<<<<<< HEAD
 PRAGMA foreign_keys = ON;
 
-=======
-drop sequence if exists team_member_seq;
->>>>>>> 44197802c4f0fa9c5f821a0dccaa15346a6652dc
