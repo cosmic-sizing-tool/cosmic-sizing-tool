@@ -1,0 +1,43 @@
+@main("Counter") {
+	
+	<div id="clockdiv">
+	<div>
+		<span class="hours" id="idHour"> 0 </span>
+		<div class="smalltext">
+			Hours
+		</div>
+	</div>
+	<div>
+		<span class="minutes" id="idMin"> 0 </span>
+		<div class="smalltext">
+			Minutes
+		</div>
+	</div>
+	<br />
+	<button type="button" class="btn btn-success" id="idBtnStart" onclick="startButton('inputTest')">
+		<span class="glyphicon glyphicon-play"></span>
+	</button>
+	<button type="button" class="btn btn-primary hidden" id="idBtnPause" onclick="pauseButton('inputTest')" >
+		<span class="glyphicon glyphicon-pause"></span>
+	</button>
+	<button type="button" class="btn btn-danger" id="idBtnStop" onclick="stopButton('inputTest')">
+		<span class="glyphicon glyphicon-stop"></span>
+	</button>
+</div>
+
+<!-- Test input to be replaced by the project input fields -->
+
+<div id ="inputTest">
+	<input type="text" class="form-control"  id="idUtl" disabled>
+    <input type="text" class="form-control"  id="idUtl" disabled>
+    <input type="text" class="form-control"  id="idUtl" disabled>
+    <input type="text" class="form-control"  id="idUtl" disabled>
+    <input type="text" class="form-control"  id="idUtl" disabled>
+    <input type="text" class="form-control"  id="idUtl" disabled>
+    <input type="text" class="form-control"  id="idUtl" disabled>
+</div>
+    
+
+
+    
+}

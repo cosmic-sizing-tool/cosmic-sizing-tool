@@ -14,6 +14,10 @@ public class Application extends Controller {
     public Result index() {
         return ok(index.render("Your new application is ready."));
     }
+    
+    public Result counter() {
+        return ok(counter.render());
+    }
 
     public Result login() {
         return ok(
