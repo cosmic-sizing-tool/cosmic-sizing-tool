@@ -6,7 +6,5 @@ target
 /.project
 /.settings
 /RUNNING_PID
-
 .sbtserver/
 project/
-
