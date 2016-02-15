@@ -26,15 +26,19 @@ public class Application extends Controller {
     }    
        
     public Result team(){
+
         flash("success", "message de succes");
         flash("error", "message d'erreur");
         TeamMember member = new TeamMember();
+
+        //User member = new User();
+
         member.name = "bob";
         member.password = "bob";
         member.email = "bob@bob.com";
         member.save();
 
-        List<TeamMember> members = TeamMember.find.all();
+        List<User> members = User.find.all();
         return ok(team.render(members));
     }
     
