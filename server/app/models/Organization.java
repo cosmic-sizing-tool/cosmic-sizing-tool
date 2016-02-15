@@ -12,8 +12,8 @@ public class Organization extends Model {
     String name;
     static List<Project> projects;
 
-    public Organization(Date timeStamp, String name) {
-        this.timeStamp = timeStamp;
+    public Organization(String name) {
+        this.timeStamp = new Date();
         this.uniqueId = UUID.randomUUID();
         this.name = name;
     }

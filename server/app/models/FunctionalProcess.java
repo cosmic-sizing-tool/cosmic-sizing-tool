@@ -28,6 +28,7 @@ public class FunctionalProcess extends Model {
         return timeStamp;
     }
 
+
     public String getDocumentId() {
         return documentId;
     }
@@ -48,8 +49,10 @@ public class FunctionalProcess extends Model {
         return qualityRating;
     }
 
-    public void setQualityRating(QualityRating qualityRating) {
-        this.qualityRating = qualityRating;
+
+    public void setQualityRating(int qualityRating) {
+
+       //this.qualityRating = qualityRating;
     }
 
     public String getDescription() {
@@ -59,6 +62,7 @@ public class FunctionalProcess extends Model {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     @Override
     public int hashCode() {
