@@ -1,0 +1,165 @@
+
+form.hoogle {
+	margin-bottom: 20px
+}
+
+form.hoogle .search {
+	width: 25em
+}
+
+form.hoogle input {
+	margin-bottom: 0
+}
+
+.exact-lookup {
+	display: inline-block;
+	margin-left: 1em
+}
+
+ol.search-results {
+	margin: 0;
+	padding: 0;
+	list-style: none
+}
+
+.self {
+	margin-bottom: 0
+}
+
+.self a b {
+	font-weight: normal
+}
+
+.self a i {
+	font-weight: bold;
+	font-style: normal
+}
+
+table.sources {
+	margin: 0;
+	padding: 0;
+	font-size: 0.8em
+}
+
+table.sources th {
+	padding-right: 0.5em
+}
+
+table.sources a, table.sources a:visited {
+	color: #060
+}
+
+.docs {
+	white-space: pre-wrap;
+	background: #e8e8e8
+}
+
+.docs, .nodocs {
+	margin-left: 1em;
+	padding: 0.5em
+}
+
+.nodocs {
+	font-style: italic
+}
+
+.haddocks {
+	font-weight: bold;
+	margin-bottom: 1em
+}
+
+.haddocks ul {
+	display: inline;
+	padding: 0;
+	margin: 0
+}
+
+.haddocks li {
+	display: inline-block;
+	font-weight: normal;
+	margin-left: 1em
+}
+
+html {
+	position: relative;
+	min-height: 100%
+}
+
+body {
+	background: #f0f0f0;
+	font-family: 'Lato', sans-serif;
+	text-shadow: 1px 1px 1px #ffffff;
+	margin-bottom: 4em;
+	padding-bottom: 2em
+}
+
+code, pre {
+	color: #555;
+	font-family: "ubuntu mono", monospace
+}
+
+.brand>img {
+	height: 20px
+}
+
+.navbar-inverse {
+	margin-bottom: 1em
+}
+
+.navbar-inverse .navbar-inner {
+	background: #0981c3
+}
+
+.navbar-inverse .navbar-inner .btn-navbar {
+	background: #0981c3
+}
+
+.navbar-inverse .navbar-inner * {
+	color: #fff !important
+}
+
+.navbar-inverse .nav .active>a, .navbar-inverse .nav .active>a:hover,
+	.navbar-inverse .nav .active>a:focus {
+	background: #0981c3 !important
+}
+
+.navbar-inner {
+	border-color: #06537d !important
+}
+
+.footer {
+	text-shadow: none;
+	background: #0981c3;
+	border-top: 1px solid #ddd;
+	color: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 4em;
+	line-height: 2em;
+	text-align: center
+}
+
+.footer a {
+	color: #fff;
+	font-weight: bold
+}
+
+.footer .span12 {
+	padding: 0px 15px 0 0;
+	line-height: 4em
+}
+
+.alert {
+	margin-top: 1em
+}
+
+h1, h2, h3, h4, h5 {
+	color: #06537d
+}
+
+.content {
+	font-size: 16px;
+	line-height: 30px
+}
