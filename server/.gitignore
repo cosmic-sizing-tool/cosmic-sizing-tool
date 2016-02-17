@@ -6,9 +6,6 @@ target
 /.project
 /.settings
 /RUNNING_PID
-<<<<<<< HEAD
 .sbtserver/
 project/
-=======
 /bin/
->>>>>>> ed0a55fdb007f7791be0033c8e361c0e8d59a934
