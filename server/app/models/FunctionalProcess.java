@@ -11,6 +11,7 @@ public class FunctionalProcess extends Model {
     UUID uniqueId;
     String documentId;
     String sectionId;
+    int order;
     enum QualityRating { NONE, A, B, C, D, E };
     QualityRating qualityRating;
     String description;
