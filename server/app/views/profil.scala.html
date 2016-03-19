@@ -1,0 +1,24 @@
+@(message: String)
+
+@main("Homepage") {
+    <p> Profil</p>
+
+  <form role="form" method="post" action="@routes.UserCtrl.updatePassword()" >
+  <div class="form-group">
+    <label for="oldPassword">Old Password:</label>
+    <input type="text" class="form-control" name="oldPassword" id="oldPassword">
+  </div>
+  <div class="form-group">
+    <label for="newPassword">Password:</label>
+    <input type="password" class="form-control" name="newPassword" id="newPassword">
+  </div>
+  <div class="form-group">
+    <label for="confirmationPassword">Confirm Password:</label>
+    <input type="password" class="form-control" name="confirmationPassword" id="confirmationPassword">
+  </div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+@message
+}

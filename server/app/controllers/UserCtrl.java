@@ -4,13 +4,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Organisation;
 import models.User;
+import models.Organization;
 
 import play.*;
 import play.db.ebean.Transactional;
 import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
-
+import play.mvc.Http.RequestBody;
 import java.util.List;
 
 import com.avaje.ebean.*;
@@ -18,7 +19,14 @@ import com.avaje.ebean.*;
 @Transactional
 public class UserCtrl extends Controller {
 
-	public Result index() {
+	public Result show() {
+		Long id = 12L;
+		User temp = User.find.byId(id);
+
+		return ok(profil.render(temp.name));
+	}
+
+	public Result test() {
 		User u1 = new User();
 		u1.id = 12L;
 		u1.name = "Jhone";
@@ -26,84 +34,63 @@ public class UserCtrl extends Controller {
 		u1.email = "paper@email.com";
 		u1.alias = "tantan";
 		u1.save();
-		return ok(index.render("Your new application is ready."));
+
+		return ok(index.render("User test create"));
 	}
 
-	// curl -H "Content-Type: application/json" -X POST -d
-	// '{"id":"123","name":"Jean-paeeul","alias":"jp21","password":"Jean@paul.com","email":"Jean-paul","inactive":"false"}'
-	// http://127.0.0.1:9000/users
 	public Result createUser() {
-		// User newUser = Json.fromJson(request().body().asJson(), User.class);
-		// newUser.save();
 
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		User u1 = new User();
-		u1.id = Long.parseLong(json.findPath("id").toString()
+		User user = new User();
+		user.id = Long.parseLong(json.findPath("id").toString()
 				.replaceAll("\"", ""));
-		u1.name = json.findPath("name").toString().replaceAll("\"", "");
-		u1.password = json.findPath("password").toString().replaceAll("\"", "");
-		u1.email = json.findPath("email").toString().replaceAll("\"", "");
-		u1.alias = json.findPath("alias").toString().replaceAll("\"", "");
-		// u1.deleted = false;
-		u1.save();
+		user.name = json.findPath("name").toString().replaceAll("\"", "");
+		user.password = json.findPath("password").toString().replaceAll("\"", "");
+		user.email = json.findPath("email").toString().replaceAll("\"", "");
+		user.alias = json.findPath("alias").toString().replaceAll("\"", "");
+		user.deleted = false;
+		user.save();
 		// read the JsonNode as a Person
-		return ok(index.render("createed"));
-	}
-
-	public static boolean isNumeric(String str) {
-		try {
-			Long id = Long.parseLong(str);
-		} catch (NumberFormatException nfe) {
-			return false;
-		}
-		return true;
+		return ok(index.render("created"));
 	}
 
 	public Result getUser(String userInformation) {
-		JsonNode personJson = null;
-		if (isNumeric(userInformation)) {
-			Long id = Long.parseLong(userInformation);
-			User user = User.find.byId(id);
-			personJson = Json.toJson(user);
-		} else {
-			List<User> users = User.find.where()
-					.ilike("email", userInformation).findList();
-			if (users.size() == 1) {
-				personJson = Json.toJson(users);
+		JsonNode personJson = Json.toJson(findUser(userInformation));
 
-			}
-		}
 		return ok(personJson);
 	}
 
-	// curl -H "Content-Type: application/json" -X POST -d
-	// '{"id":"11","name":"UQAM"}' http://127.0.0.1:9000/organisations
 	public Result addOrganisation(Long id) {
 
 		JsonNode json = Json.parse(request().body().asJson().toString());
 		String OrganisationName = json.findPath("name").toString()
 				.replaceAll("\"", "");
-		List<Organisation> oListe = Organisation.find.where()
+		List<Organisation> orgListe = Organisation.find.where()
 				.ilike("name", OrganisationName).findList();
 		User user = User.find.byId(id);
-		user.organisations.add(oListe.get(0));
+		user.organisations.add(orgListe.get(0));
 		user.save();
 		return ok(index.render("added"));
 	}
 
-	public Result updatePassword(String email) {
-		JsonNode json = Json.parse(request().body().asJson().toString());
-		User u1 = new User();
+	public Result updatePassword() {
+		String email = "paper@email.com";
+		RequestBody body = request().body();
+
+		return ok(index.render("Body = " + body.asFormUrlEncoded().get("newPassword")[0]));
+		/*JsonNode json = Json.parse(request().body().asJson().toString());
 		String newPassword = json.findPath("newPassword").toString()
 				.replaceAll("\"", "");
-		List<User> user = User.find.where().ilike("email", email).findList();
-		if (user.size() == 1) {
-			u1 = user.get(0);
-			u1.password = newPassword;
-			u1.save();
-		}
-		return ok(index.render("updated"));
+		String confirmationPassword = json.findPath("confirmationPassword").toString()
+				.replaceAll("\"", "");
+		String oldPassword = json.findPath("oldPassword").toString()
+				.replaceAll("\"", "");
+		User user = findUser(email);
+
+		user.password = newPassword;
+		user.save();
+		return ok(index.render("updated"));*/
 	}
 
 	public Result updateInformation(String email) {
@@ -168,6 +155,24 @@ public class UserCtrl extends Controller {
 
 		return ok(index.render("deleted"));
 	}
+/* Helpers */
+
+	public User findUser(String userInformation) {
+		User user = null;
+		if (isNumeric(userInformation)) {
+			Long id = Long.parseLong(userInformation);
+			user = User.find.byId(id);
+			return user;
+		} else {
+			List<User> users = User.find.where()
+					.ilike("email", userInformation).findList();
+			if (users.size() == 1) {
+				user = users.get(0);
+			  return user;
+			}
+		}
+		return user;
+	}
 
 	public boolean userExist(long id) {
 
@@ -178,6 +183,15 @@ public class UserCtrl extends Controller {
 		}
 
 		return exist;
+	}
+
+	public static boolean isNumeric(String str) {
+		try {
+			Long id = Long.parseLong(str);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
 	}
 
 }

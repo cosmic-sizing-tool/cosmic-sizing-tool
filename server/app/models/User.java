@@ -12,30 +12,29 @@ public class User extends Model {
     @Id
     @Constraints.Min(10)
     public Long id;
-    
+
     @Constraints.Required
     public String alias;
-    
+
     @Constraints.Required
-    
+
     public String name;
-    
+
     @Constraints.Required
     public String password;
-    
+
     @Constraints.Required
-    @Column(unique = true) 
+    @Column(unique = true)
     public String email;
-    
+
     @Constraints.Required
-    boolean deleted;
-    
+    public boolean deleted;
+
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
 
- 
-   public static Finder<Long, User> find = new Finder<Long,User>(User.class);
 
-    
+
+    public static Finder<Long, User> find = new Finder<Long,User>(User.class);
 
 }
