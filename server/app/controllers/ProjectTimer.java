@@ -42,7 +42,10 @@ public class ProjectTimer extends Controller {
         ArrayNode jsonTimers = new ArrayNode(new JsonNodeFactory(false));
 
 
-        timers.addAll(timers);
+        for (Timer t : timers) {
+            jsonTimers.add(Json.toJson(t));
+        }
+
         response.set("timers", jsonTimers);
 
 
