@@ -159,6 +159,62 @@ public class Project extends Model {
     public String assignAboveQuality;
     
     
+    
+    //87.
+    enum BusinessApplication{Catalogue,Customer,Document,Financial,Logistic,Online,Stock,Workflow
+    ,Customerbilling,DataWarehouse,Electronic,Jobcase,Management,Reservation,Trading
+    };
+    public BusinessApplication bsnisApp;
+    
+    enum RealTimeApplication{Automatic,Command,RobotControl,TransportationControl,Embedded,Complex,Telecom};
+    public RealTimeApplication reltmeapp;
+    
+   
+    enum MathematicallyIntensiveApplication{threeDmodelling,Imagevideo,Scientific,Geographic,Mathematical,Statistical};
+    public MathematicallyIntensiveApplication matintessapp;
+    
+    
+    enum InfrastructureSoftware{Dataordatabase,GraphicsPublishing,Personal,Device,Operating,Software};
+    public InfrastructureSoftware infrsoft ;
+    
+    
+    
+    public boolean MinorComponent;
+    
+    
+    
+    //123.
+    public Date dateSoftwareOperation;
+    
+    //124.
+    public int totalProjectElapsedDuration
+    
+    //125.
+    
+    public int timeTotalInactivity,
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
   
    
     
