@@ -1,53 +1,53 @@
-<html>
-<head>
-	<link rel="stylesheet" href="twitter.css" type="text/css" />
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="twitter.js"></script>
-</head>
-<body onload="init()">
-	
-	<div id="mainViewPort" class="container">
-    	<div class="row">
-  			<div class="col-md-4">
-  				<form class="navbar-form navbar-left" role="search">
-  					<div id="menu">
-						<input type="text" name="userId" value="Search user" onfocus="this.value='';" onblur="this.value='Search user'" oninput="getUser(this.value)" />
-					</div>
-					<div id='suggestions' class='suggestionList'></div>
-				</form>
-  			</div>
-		</div>
-		<div class="row" id="user-content">
-			<div id="user-picked"></div>
-  			<div class="col-md-8">
-  				<ul class="nav nav-pills">
-  					<li role="presentation" class="active"><a href="#">Tweets</a></li>
-				</ul>
-				<ul class="list-group" id="tweets">
-				</ul>
-  			</div>
-  			<div class="col-md-4">
-  				<form>
-				  <div class="form-group">
-				    <label for="exampleInputEmail1">Tweet</label>
-				    <textarea class="form-control" id="newTweet" rows="3" placeholder="Message du tweet" required></textarea>
-  					</div>
-				  <button type="submit" class="btn btn-success"  onclick="createTweet()">Envoyer</button>
-				</form>
-			</div>
-			<div class="col-md-8">
-  				<ul class="nav nav-pills">
-  					<li role="presentation" class="active"><a href="#">Abonnements</a></li>
-				</ul>
-				<ul class="list-group" id="abonnements">
-				</ul>
-				<input type="text" name="subscribe" value="Search user" onfocus="this.value='';" onblur="this.value='Search user'" oninput="getFollowee(this.value)" />
-				<div id="followSuggestions"></div>
-  			</div>
-		</div>
+@(project: models.Project)
 
-    </div>	
-</body>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="twitter.css" type="text/css" />
+	    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	<div class="container" style = " background-color:#D1E9F2">
+     <h3>@Messages("project.sectionA")</h3>
+     <form role="form" action="NotePcJuris" method="get" accept-charset="utf-8">
+		<div class="form-group">
+		1. Contact information for the questionnaire submitter.<br>
+       <label for="note">@Messages("project.sectionA1_con")</label>
+       <input type="text" name="contact" id="contact"/><br>
+       <label for="note">@Messages("project.sectionA1_org")</label>
+       <input type="text" name="organisation" id="organisation"/><br>
+       <label for="note">@Messages("project.sectionA1_cou") </label>
+       <input type="text" name="country" id="country"/><br>
+       <label for="note">@Messages("project.sectionA1_ema")</label>
+       <input type="text" name="email" id="email"/><br><br>
+	   </div>
+	   <div class="form-group">
+	   2. Your identifying name or ID for this submitted project.<br>
+	   <label for="note">@Messages("project.sectionA2_pro")</label>
+       <input type="text" name="projectId" id="projectId"/><br>
+       <label for="note">@Messages("project.sectionA2_dat")</label>
+       <input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br>
+	   </div>
+	   
+	   3. What was the role in this submitted project of the person who completed this questionnaire?<br>
+	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_ana")<br>
+	   <input type="checkbox" name="role" value="female"> @Messages("project.sectionA3_cus")<br>
+	   <input type="checkbox" name="role" value="other"> @Messages("project.sectionA3_dev")<br>
+	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_ind")<br>
+	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_itm")<br>
+	   <input type="checkbox" name="role" value="female"> @Messages("project.sectionA3_met")<br>
+	   <input type="checkbox" name="role" value="other"> @Messages("project.sectionA3_pro")<br>
+	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_pro1")<br>
+	   <label for="other">@Messages("project.sectionA3_oth")</label>
+       <input type="text" name="other" id="other"/><br><br>
+	   
+	   <p><input type="submit" value="Soumettre" class="btn btn-primary"/></p>
+	   
+     </form>
+	 </div>
+	</body>
 </html>
