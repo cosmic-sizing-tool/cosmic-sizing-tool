@@ -84,18 +84,11 @@ public class UserCtrl extends Controller {
 		return ok(profil.render(""));
 	}
 
-	public Result addOrganisation(Long id) {
-
-		JsonNode json = Json.parse(request().body().asJson().toString());
-		String OrganisationName = json.findPath("name").toString()
-				.replaceAll("\"", "");
-		List<Organisation> orgListe = Organisation.find.where()
-				.ilike("name", OrganisationName).findList();
-		User user = User.find.byId(id);
-		user.organisations.add(orgListe.get(0));
-		user.save();
-		return ok(index.render("added"));
-	}
+    public Result addCertification() {
+        RequestBody body = request().body();
+        
+        return ok();
+    }	
 
 	public Result updatePassword() {
 		RequestBody body = request().body();
@@ -272,18 +265,6 @@ public class UserCtrl extends Controller {
 	    
 	    if(name.length() == 0){
 	        result.add("Le nom est invalide");   
-	    }
-	    
-	    if(url.length() == 0){
-	        result.add("L'url ne correspond pas au format valide");
-	    }
-	    
-	    if(company.length() == 0){
-	        result.add("Le nom de la compagnie est invalide");   
-	    }
-	    
-	    if(location.length() == 0){
-	       result.add("La location est invalide"); 
 	    }
 	    
 	    return result;    

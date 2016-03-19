@@ -24,7 +24,6 @@ POST    /user/password              controllers.UserCtrl.updatePassword()
 GET 	/user/settings     		    controllers.UserCtrl.settings()
 GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
 POST	/user						controllers.UserCtrl.createUser()
-POST    /user/:id/orgs			    controllers.UserCtrl.addOrganisation(id: Long)
 DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long)
 
 # Organisations page

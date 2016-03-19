@@ -36,13 +36,10 @@ public class User extends Model {
     
     public static List<Project> projects;
     
-    @Constraints.Required
     public String url;
     
-    @Constraints.Required
     public String company;
     
-    @Constraints.Required
     public String location; 
     
     public User(){
