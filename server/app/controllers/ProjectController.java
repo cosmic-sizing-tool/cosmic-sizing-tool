@@ -8,6 +8,8 @@ import java.util.*;
 import models.*;
 import play.data.Form;
 import static play.data.Form.*;
+import play.api.mvc.BodyParsers.*;
+import play.libs.Json;
 
 public class ProjectController extends Controller {
 
@@ -27,8 +29,13 @@ public class ProjectController extends Controller {
             
         }
         
-        return ok(project.render());
+        return ok(project.render(null));
     }
+    
+    public Result fetch(Long projectId) {
+        Project projectModel = Project.find.byId(projectId);
+        return ok(Json.toJson(projectModel));
+    } 
     
     
 }
