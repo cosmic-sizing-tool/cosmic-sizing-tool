@@ -15,13 +15,14 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Gestion des patrons
 # Appel par le menu de navigation du site ##################################
-GET     /pattern                                controllers.Pattern.index()
+GET     /pattern                                    controllers.Pattern.index()
+GET     /pattern/:id_pattern                        controllers.Pattern.modification(id_pattern: Long) # if id_pattern == 0 then create else modif
 ############################################################################
-GET     /pattern/new                            controllers.Pattern.description(id_pattern: Long = 0)
-POST    /pattern/modification/new               controllers.Pattern.create()
-GET     /pattern/modification/:id_pattern       controllers.Pattern.description(id_pattern: Long)
-DELETE  /pattern/modification/:id_pattern       controllers.Pattern.delete(id_pattern: Long)
-PUT     /pattern/modification/:id_pattern       controllers.Pattern.update(id_pattern: Long)
+# API de l'interface REST (appels AJAX)
+POST    /api/pattern/new               controllers.Pattern.create()
+GET     /api/pattern/:id_pattern       controllers.Pattern.description(id_pattern: Long)
+DELETE  /api/pattern/:id_pattern       controllers.Pattern.delete(id_pattern: Long)
+PUT     /api/pattern/:id_pattern       controllers.Pattern.update(id_pattern: Long)
 ############################################################################
 
 # Counter page
