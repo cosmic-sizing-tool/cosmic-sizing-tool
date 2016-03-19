@@ -52,7 +52,7 @@ public class Timer extends Model {
     }
 
     @JsonProperty("runningTimeInSeconds")
-    public Long timerRunningTime() {
+    public Long runningTime() {
         Date referenceEndDate;
         if (this.endTime == null) {
             referenceEndDate = new Date();
@@ -107,7 +107,7 @@ public class Timer extends Model {
 
         long timeSpent = 0;
         for (Timer t : timers) {
-            timeSpent += Math.abs(t.endTime.compareTo(t.startTime));
+            timeSpent += t.runningTime();
         }
         return timeSpent;
     }

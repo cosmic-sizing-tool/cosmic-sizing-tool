@@ -49,6 +49,17 @@ public class ProjectTimer extends Controller {
         return ok(response.toString());
     }
 
+    public Result getCurrentlyRunningTimer(Long organizationId, Long projectId) {
+        Timer timer = Timer.getRunningTimer(organizationId, projectId);
+
+        if (timer == null) {
+            return noContent();
+        }
+        else {
+            return ok(Json.toJson(timer));
+        }
+    }
+
     public Result timerCtrl(Long organizationId, Long projectId) {
 
         Map<String, String[]> queryParams = Controller.request().queryString();
