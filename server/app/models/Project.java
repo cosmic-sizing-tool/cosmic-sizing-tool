@@ -4,11 +4,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import javax.persistence.*;
 
 import com.avaje.ebean.Model;
 
+@Entity
 public class Project extends Model {
+    
     public static Finder<Long,Project> find = new Finder<Long,Project>(Project.class);
+    @Id
+    public Long id;
+    
+    
     //1.
     public String contact_person;
     public String organisation;
@@ -20,7 +27,7 @@ public class Project extends Model {
     public Date dateSubmitted;
     
     //3.
-    enum RolePerson{analyst_Programmer,customerUser,developmentManager,independentReviewer,iTManager
+    enum RolePerson{analystProgrammer,customerUser,developmentManager,independentReviewer,iTManager
     ,metricsManager,projectManager,projectOfficeSupport };
     public RolePerson rolePersonSubmittedProject;
     
@@ -31,6 +38,22 @@ public class Project extends Model {
     //6.
     enum ProjectDescribes {businessApplication,realTimeApplication,mathematicallyIntensiveApplication,infrastructureSoftware};
     public ProjectDescribes projectDescribesDomain;
+    
+    
+    //7.souhaitable
+    enum PrjtReusable {custom,reusable};
+    public PrjtReusable projectReusable ;
+    
+    //9.important
+    public int numberOfSprints;
+    public int lengthSprint;
+    public String storyPoints;
+    
+    //12.souhaitable
+    public boolean teamProcessImprovement;
+    enum PrcsStndrs {softwareCMM,sPICE,tICKIT,cmmi,iso9002};
+    public PrcsStndrs processStandards;
+    
     
     //58.
     public boolean programmingLanguage;
@@ -45,7 +68,7 @@ public class Project extends Model {
     
     //60.
     enum EnvironmentSoftwareDeveloped {pc,mainFrame,midRange,multiPlatform};
-    public String environmentSoftwareDevelopedOther;
+    public EnvironmentSoftwareDeveloped environmentSoftwareDevelopedOther;
     
     //63.
     public boolean sameImplementationPlatform ;
@@ -58,20 +81,85 @@ public class Project extends Model {
     enum MblDvcEmbd{Automotive,Aviation,DomesticAppliance,MachineTool,MobilePhone,PDA,GamesDevice};
     public MblDvcEmbd mobileDeviceEmbedded;
     
-    /*
-    enum projectReusable {custom,reusable};
-    public int numberOfSprints;
-    public int lengthSprint;
-    public String storyPoints;
-    public boolean teamProcessImprovement;
-    enum processStandards {SoftwareCMM,SPICE,TICKIT,CMMI,ISO9002};
- 
-    Date timeStamp;
-    String name;
-    List<String> functionalUsers;
-    enum ProjectType { NEWPROJECT, IMPROVEMENT };
-    public Set<FunctionalProcess> functionalProcesses;
-    */
+    
+    
+    
+    
+    //64.
+    public String developmentCountry;
+    public String implementedCountry;
+    
+    //70.
+    public int peoplePlan;
+    public int peopleSpecify;
+    public int peopleDesign;
+    public int peopleBuild;
+    public int peopleTest;
+    public int peopleImpl;
+    
+    public int effortPlan;
+    public int effortSpecify;
+    public int effortDesign;
+    public int effortBuild;
+    public int effortTest;
+    public int effortImpl;
+    
+    public int  peopleSummary;
+    public int  effortSummary;
+    
+    //71.
+    enum IndstrySftwre{aerospace,chemicals,computers,defence,electronics,government,media,oil,realEstate,wholesale,
+    agriculture,communications,construction,education,food,insurance,medical,professional,telecommunications,banking,
+    community,consumer,electricity,finance,manufacturing,mining,recreation,transport};
+
+    public IndstrySftwre industrySoftware;
+    
+    
+    //75.important
+    
+    public int CustomerPlan;
+    public int CustomerSpecify;
+    public int CustomerDesign;
+    public int CustomerBuild;
+    public int CustomerTest;
+    public int CustomerImpl;
+    
+    public int UserPlan;
+    public int UserSpecify;
+    public int UserDesign;
+    public int UserBuild;
+    public int UserTest;
+    public int UserImpl;
+    
+    public int  CustomerSummary;
+    public int  UserSummary;
+    
+    
+    
+    //78.
+    enum PrcdrDvlpmntTem{NoTimesheets,RecordedOnly,RecordedHours,RecordedThe};
+    public PrcdrDvlpmntTem procedureDevelopmentTeam ;
+    
+    
+    //81.
+    public Boolean HasAllTheWorkDone;
+    
+    //82.
+    enum PrevQuestion{lessThan5,fRecordedEffort,unable}
+    public PrevQuestion prvqst;
+
+    
+    //85.
+    enum RatetheQualityWork{poor,adequate,good,excellent}
+    public RatetheQualityWork rtqltwork;
+    
+    
+    
+    //86.
+    public String assignAboveQuality;
+    
+    
+  
    
     
 }
