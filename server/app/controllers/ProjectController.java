@@ -13,7 +13,7 @@ public class ProjectController extends Controller {
 
     public Result index(Long projectId) {
         
-        return ok(project.render(null));
+        return ok(project.render());
     }
     
     
