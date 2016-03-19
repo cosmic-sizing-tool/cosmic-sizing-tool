@@ -44,6 +44,10 @@ DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long)
 DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long) 
 #GET 	/users/:id/orgs  					controllers.OrganisationCtrl.getUserAdmin(id: Long)
 
+GET /organisations/:id/projects/:projectId/timers/current    controllers.ProjectTimer.getCurrentlyRunningTimer(id: Long, projectId: Long)
+GET /organisations/:id/projects/:projectId/timers   controllers.ProjectTimer.getTimers(id: Long, projectId: Long)
+POST /organisations/:id/projects/:projectId/timers    controllers.ProjectTimer.timerCtrl(id: Long, projectId: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
