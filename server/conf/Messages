@@ -22,3 +22,84 @@ project.sectionA3_met=Metrics Manager/Consultant
 project.sectionA3_pro=Project Manager/Leader
 project.sectionA3_pro1=Project Office/Tech.Support 
 project.sectionA3_oth=Other (specify):  
+
+#SectionB
+
+project.sectionB=B. Process
+project.sectionB5=5. What type of software project was your project?
+project.sectionB5_new=New Development
+project.sectionB5_re-=Re-development
+project.sectionB5_enh=Enhancement
+project.sectionB5_oth=Other (specify):                      	 
+project.sectionB6=6. Choose the description (i.e. Domain) below that best describes your project.
+project.sectionB6_bus=Business application
+project.sectionB6_rea=Real-Time application
+project.sectionB6_mat=Mathematically intensive application
+project.sectionB6_inf=Infrastructure software
+project.sectionB7=7. Indicate whether the project delivered software that is
+project.sectionB7_cus=Custom (non-reusable)
+project.sectionB7_reu=Reusable
+project.sectionB9=9. If the project used Agile development, please indicate:
+project.sectionB9_num=Number of sprints/iterations:    	     
+project.sectionB9_len=Length of (each) sprint/iteration:
+project.sectionB9_day= (days)
+project.sectionB9_del=Deliverable ‘size’ per sprint/iter.:
+project.sectionB9_sto= (Story Points)
+project.sectionB12=12. Is the development team involved in a process improvement program?
+project.sectionB12_yes=Yes
+project.sectionB12_no=No
+project.sectionB12_whi=Which if any, software process or quality standards was the project performed under? (Where applicable, pls provide details such as version, level, year of certification.)
+project.sectionB12_sof=Software-CMM
+project.sectionB12_cmm=CMMI
+project.sectionB12_spi= SPICE
+project.sectionB12_iso=ISO 9002
+project.sectionB12_tic= TICKIT
+project.sectionB12_oth=Other
+project.sectionB12_det=Details
+project.sectionB12_oth=Other
+
+#SectionC
+
+
+project.sectionC=C. Technology
+project.sectionC58=58. What was the primary technology used to build or enhance the software? i.e. that used for most of the build effort.
+project.sectionC58_pro=Programming Language 	         	           
+project.sectionC58_ope=Operating System 	                        
+project.sectionC58_int=Integrated Dev. Environment 	            	        
+project.sectionC58_deb=Debugging 	           	         
+project.sectionC58_dat=Database 	           	         
+project.sectionC58_obj=Object/Component Server 	           	         
+project.sectionC58_htm=HTML/Web Server 	                        
+project.sectionC58_e-m=E-Mail or Message Server 	          	          
+project.sectionC58_oth=Other (specify):                                         	 
+project.sectionC58_yes=Yes No Primary Tool  (version)
+project.sectionC60=60. What is the environment in which software was developed?
+project.sectionC60_pc= PC or microcomputer   Mid range
+project.sectionC60_mai=Main Frame   Multi platform
+project.sectionC60_oth=Other (specify):            	                                 	 
+project.sectionC63=63. What was the implementation platform of the software product? i.e. that
+project.sectionC63_whi=which the software was implemented into.
+project.sectionC63_ist=Is the implementation platform the same as development?
+project.sectionC63_yes= Yes (skip rest of question)   No (pls provide details)
+project.sectionC63_pri=Primary Implementation Platform
+project.sectionC63_mob= Mobile or Device Embedded  	PC
+project.sectionC63_mid=Mid range
+project.sectionC63_mai=Mainframe
+project.sectionC63_mul=Multi Platform
+project.sectionC63_oth=Other (specify):                   	                          	 
+project.sectionC63_if=If ‘mobile or device embedded’, please specify the target:
+project.sectionC63_aut=Automotive
+project.sectionC63_avi=Aviation	
+project.sectionC63_dom=Domestic appliance
+project.sectionC63_gam=Games device
+project.sectionC63_mac=Machine tool
+project.sectionC63_mob=Mobile phone 
+project.sectionC63_pda=PDA
+project.sectionC63_gam=Games device  
+project.sectionC63_mus= Music device
+project.sectionC63_oth=Other (specify):                    	                          	 
+
+
+
+#SectionD
+#SectionE

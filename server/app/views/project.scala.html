@@ -13,12 +13,11 @@
 	 
 	<div class="container"  style = " background-color:#D1E9F2" >
 	 <form role="form" action="/project" method="post" accept-charset="utf-8">
-	  <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
 	  
-	   <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionB">@Messages("project.sectionB")</button>
 
-    
-     
+     <div>
+          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
+
      <div id="sectionA" class="collapse"  >
 	 <div class = "table-responsive" >
 		@Messages("project.sectionA1")<br>
@@ -42,7 +41,7 @@
 </table> 
      
 	   </div>
-
+ 
 	   
 	  
 	  <div class = "table-responsive" >
@@ -99,12 +98,14 @@
 </tr>
 </table>
 </div>
-
+</div>
 	  </div>
 	  
-	  
-	  
+	  <div>
+	  	  	   <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionB">@Messages("project.sectionB")</button>
+
 	  <div id="sectionB" class="collapse"  >
+
 	 <div class = "table-responsive" >
 		@Messages("project.sectionA1")<br>
 	 <table class = "table" style="width:40%" >
@@ -184,7 +185,7 @@
 </tr>
 </table>
 </div>
-
+</div>
 	  </div>
 	  
 	   <p><input type="submit" value="Enregistrer" class="btn btn-success"/></p>
