@@ -1,0 +1,12 @@
+/*
+    13-03-2016
+    Team Cowabunga :    Dany Deroy
+                        Francis Bilodeau
+                        Simon Zeni
+                        John Béjot
+                        Julien Girard
+
+    Les views - index et modification - doivent être ajouté à la construction de la page par le framework.
+    Pour question de test, nous utilisons la page @main. Il devra être changé pour la page de style fait par
+    une autre équipe.
+ */
