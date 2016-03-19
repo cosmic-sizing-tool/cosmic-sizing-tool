@@ -21,7 +21,7 @@ public class UserCtrl extends Controller {
     User userGlobal;
     
 	public Result show() {
-		Long id = 13L;
+		Long id = 15L;
 		User temp = User.find.byId(id);
         
 		return ok(profil.render(temp));
@@ -44,12 +44,12 @@ public class UserCtrl extends Controller {
 	}
 	public Result test2() {
 		User u1 = new User();
-		u1.id = 13L;
+		u1.id = 15L;
 		u1.name = "bob";
 		u1.password = "admin";
-		u1.email = "bobby@email.com";
-		u1.alias = "tarzan";
-		u1.addEmail("bobby2@gmail.com");
+		u1.email = "bobb23y@email.com";
+		u1.alias = "tarzan12";
+		u1.addEmail("bobby23@gmail.com");
 		u1.save();
         
         userGlobal = u1;
@@ -92,16 +92,16 @@ public class UserCtrl extends Controller {
         //int annee = Integer.parseInt(body.asFormUrlEncoded().get("annee")[0]);
         //int mois = Integer.parseInt(body.asFormUrlEncoded().get("mois")[0]);
         String date = body.asFormUrlEncoded().get("date")[0];
+
         Certification temp = new Certification();
         temp.method = method;
         temp.version = version;
-        //temp.year = annee;
-        //temp.month = mois;
+        temp.date = date;
         temp.user = user;
         boolean valide = true;
         if(user.certifications.size() !=0) {
             for(Certification c : user.certifications) {
-                if(c.method == temp.method && temp.version == c.version){
+                if(c.method.equals(temp.method) && temp.version.equals(c.version)){
                     valide = false;
                 }
             }
@@ -114,7 +114,6 @@ public class UserCtrl extends Controller {
         }else{
             flash("error", "Vous avez déjà une certification identique !");
         }
-        user.name = date;
         return ok(profil.render(user));
     }
     public Result resetPassword() {
@@ -201,7 +200,7 @@ public class UserCtrl extends Controller {
 		String companySended = body.asFormUrlEncoded().get("company")[0];
 		String locationSended = body.asFormUrlEncoded().get("location")[0];
 		
-		User user = findUser("bobby@email.com");
+		User user = findUser(userGlobal.email);
 		
 		ArrayList validations = areValideInformations(nameSended,urlSended,companySended,locationSended);
 		

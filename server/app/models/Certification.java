@@ -24,10 +24,7 @@ public class Certification extends Model {
     public String version;
 
     @Constraints.Required
-    public int month;
-
-    @Constraints.Required
-    public int year;
+    public String date;
 
     @ManyToOne(cascade = CascadeType.ALL)
     public User user; 

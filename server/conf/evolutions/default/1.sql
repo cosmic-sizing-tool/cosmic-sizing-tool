@@ -7,8 +7,7 @@ create table certification (
   id_certification          integer primary key AUTOINCREMENT,
   method                    varchar(255) not null,
   version                   varchar(255) not null,
-  month                     integer,
-  year                      integer,
+  date                      varchar(255),
   user_id                   integer)
 ;
 

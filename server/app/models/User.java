@@ -46,6 +46,8 @@ public class User extends Model {
         this.created_at = new Date();
         this.deleted = false;
         this.disponible = false;
+        this.organisations = new ArrayList<Organisation>();
+        this.certifications = new ArrayList<Certification>();
     }
     public User(Long id, String name, String pwd, String email) {
         this.id = id;
@@ -55,16 +57,18 @@ public class User extends Model {
         this.email = email;
         this.deleted = false;
         this.disponible = false;
+        this.organisations = new ArrayList<Organisation>();
+        this.certifications = new ArrayList<Certification>();
     }
     // Emails secondaires
     public List<String> emails;
     
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
-    public List<Organisation> organisations = new ArrayList<Organisation>();
+    public List<Organisation> organisations; 
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    public List<Certification> certifications = new ArrayList<Certification>();
+    public List<Certification> certifications;
     
     public void addEmail(String email) {
         if(emails == null){

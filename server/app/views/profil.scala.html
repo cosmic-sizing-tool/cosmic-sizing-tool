@@ -71,9 +71,6 @@
          <div class="panel panel-default">
             <div class="panel-heading"><strong>Profil du mesureur</strong> </div>
             <div class="panel-body">
-            <span>
-                <p>User: @user.name</p>
-            </span>
             
             <form method="post" role="form" action="@routes.UserCtrl.addCertification()">
                <div class="col-xs-8">
@@ -100,8 +97,8 @@
                     <label for="date">Date</label><br>
                     <input class="form-control" id="date" name="date" type="month">
                 </div>
-               <div class="col-xs-8">
-               <!--<label for="annee">Année d'obtention</label><br>
+               <!--<div class="col-xs-8">
+               <label for="annee">Année d'obtention</label><br>
                   <input id="annee" name="annee" type="text"><br>
                </div>
                <div class="col-xs-8">
