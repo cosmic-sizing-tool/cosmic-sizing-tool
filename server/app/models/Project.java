@@ -15,7 +15,11 @@ public class Project extends Model {
     @Id
     public Long id;
     
+    static private Long nextId = 0L;
     
+    static Long nextId(){
+        return ++nextId;
+    }
     //1.
     public String contact_person;
     public String organisation;
