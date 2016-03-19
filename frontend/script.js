@@ -10,48 +10,57 @@ function DataTypeSize( string ) {
 }
 
 function Line( data ) {
-    var line = {
-        data_group: data[ "x" ] || "",
-        data_type: data[ "x" ] || ""
+    if ( data === undefined )
+        data = {};
+     var line = {
+        data_group: ko.observable( data[ "x" ] || "123group" ),
+        data_type: ko.observable( data[ "x" ] || "123EXR" )
     }
     return line;
 }
 
 function Process( data ) {
+    if ( data === undefined )
+        data = {};
     var process = {
-        name: data[ "x" ] || "",
+        name: ko.observable( data[ "x" ] || "123name" ),
         lines: ko.observableArray( data[ "x" ] || [ new Line() ] )
     }
     return process;
 }
 
 function Pattern( data ) {
+    if ( data === undefined )
+        data = {};
     var pattern = {
-        id: data[ "id" ] || "",
-        desc_short: data[ "x" ] || "",
-        desc_long: data[ "x" ] || "",
-        process: ko.observableArray( data[ "x" ] || [ new Process() ] )
+        id: ko.observable( data[ "x" ] || "123id" ),
+        desc_short: ko.observable( data[ "x" ] || "123desc_short" ),
+        desc_long: ko.observable( data[ "x" ] || "123desc_long" ),
+        processes: ko.observableArray( data[ "x" ] || [ new Process() ] )
     }
     return pattern;
 }   
 
-function PatterVM() {
+function PatternVM() {
     var self = this;
     
     /*
      *  Members
      */
-    self.pattern = ko.observable( new Pattern() );
+    self.pattern = ko.observable();
 
     /*
      *  AJAX
      */
 
     self.getPattern = function( id ) {
-        if ( id > 0 ) {
+        if ( id > 0 && false ) {
+            console.log( "getPattern " + id );
             $.getJSON( "/api/pattern/" + id, function( pattern ) {
-                self.pattern = new Pattern( pattern );
-            });
+                self.pattern( new Pattern( pattern ) );
+            }); 
+        } else {
+            self.pattern( new Pattern() );
         }
     };
 
@@ -68,9 +77,8 @@ function PatterVM() {
 var pattern_id = window.location.pathname.match(/\d+/)[0];
 var pattern_vm = new PatternVM();
 
-pattern_vm.getPattern( pattern_i );
+pattern_vm.getPattern( pattern_id );
 ko.applyBindings( pattern_vm );
-
 
 /*
  * Shortcuts

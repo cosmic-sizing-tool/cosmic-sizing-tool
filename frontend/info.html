@@ -12,336 +12,104 @@
       < header >
     </header>
 
-  <b>Information d'identification sur le patron :</b>
-   <br><br>
+    <!-- PATTERN -->
+    <h2>Information d'identification sur le patron :</h2>
+    <br><br>
     <div class="row">
         <div class="col-xs-6">
           Identification/nom :
-          <input type="text" class="form-control" id="nompat" maxlength="20">
+          <input type="text" class="form-control" id="nompat" data-bind="value: pattern().id" maxlength="20">
           <br> <br>
           Description courte :
-          <input type="text" class="form-control" id="descriptcourt" maxlength="30">
+          <input type="text" class="form-control" id="descriptcourt" data-bind="value: pattern().desc_short" maxlength="30">
         </div>
         <div class="col-xs-6">
             Description longue : 
-            <textarea class="form-control" id="descriptlongue" rows="5" cols="40"></textarea>
+            <textarea class="form-control" id="descriptlongue" data-bind="value: pattern().desc_long" rows="5" cols="40"></textarea>
           </div>
       </div>
-<!-- Premier Processus fonctionnelle -->
-    <div id="processpatron">
-      <b>Information sur le processus du patron :</b> 
-      <br><br>
-      <div class="table-responsive">
-        <table class="table">
-         <thead>
-         <tr>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th> 
-          <th></th>
-          <th></th>
-          <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr> 
-            <th scope="row">
-            <button type="button" class="btn btn-sm btn-default">^</button>
-          </th>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td>Processus fonctionnel</td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50">
-</td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td><button type="button" class="btn btn-sm btn-default"><</button></td>
-          <td>Taille</td>
-          <td>
-            <table class="table table-bordered"> 
-              <thead> <tr> 
-              <th>E</th> 
-              <th>X</th> 
-              <th>R</th> 
-              <th>W</th>
-              <th>Total</th> 
-              </tr> 
-              </thead> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table>
-          </td>
-          </tr>
-          <tr> <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td>Groupe de données</td>
-          <td>Type de donées</td>
-          <td></td>
-          <td></td>
-          <td></td>
-           </tr>
 
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
+    <hr />
 
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <!-- Deuxieme Processus fonctionnelle -->
-
-            <tr> 
-            <th scope="row">
-            <button type="button" class="btn btn-sm btn-default">^</button>
-          </th>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td>Processus fonctionnel</td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50">
-</td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td><button type="button" class="btn btn-sm btn-default"><</button></td>
-          <td>Taille</td>
-          <td>
-            <table class="table table-bordered"> 
-              <thead> <tr> 
-              <th>E</th> 
-              <th>X</th> 
-              <th>R</th> 
-              <th>W</th>
-              <th>Total</th> 
-              </tr> 
-              </thead> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table>
-          </td>
-          </tr>
-          <tr> <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td>Groupe de données</td>
-          <td>Type de donées</td>
-          <td></td>
-          <td></td>
-          <td></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <!-- 3eme processus fonctionnelle -->
-            <tr> 
-            <th scope="row">
-            <button type="button" class="btn btn-sm btn-default">^</button>
-          </th>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td>Processus fonctionnel</td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50">
-</td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td><button type="button" class="btn btn-sm btn-default"><</button></td>
-          <td>Taille</td>
-          <td>
-            <table class="table table-bordered"> 
-              <thead> <tr> 
-              <th>E</th> 
-              <th>X</th> 
-              <th>R</th> 
-              <th>W</th>
-              <th>Total</th> 
-              </tr> 
-              </thead> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table>
-          </td>
-          </tr>
-          <tr> <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td>Groupe de données</td>
-          <td>Type de donées</td>
-          <td></td>
-          <td></td>
-          <td></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-
-           <tr> <th scope="row"></th>
-          <td><button type="button" class="btn btn-sm btn-default">^</button></td>
-          <td><button type="button" class="btn btn-sm btn-default">v</button></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="50"></td>
-          <td><input type="text" class="form-control" id="descriptcourt" maxlength="4"></td>
-          <td><button type="button" class="btn btn-sm btn-default">x</button></td>
-          <td>Taille</td>
-          <td><table class="table table-bordered"> 
-              <tbody> <tr> 
-            <th>1</th> 
-              <td>1</td> 
-              <td>1</td> 
-              <td>1</td>
-              <td>4</td> 
-            </tr> 
-            </tbody> </table></td>
-           </tr>
-        </tbody>
-
-        </table>
-</div>
+    <h2>Information sur les processus du patron :</h2> 
+    <br />
+    <div id="processes"> 
+        <ul data-bind="foreach: pattern().processes()">
+            <li class="row" style="list-style-type: none">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-sm btn-default">^</button>
+                    <button type="button" class="btn btn-sm btn-default">v</button>
+                </div>
+                <div class="col-md-2">Processus fonctionnel</div>
+                <div class="col-md-2">
+                    <input type="text" data-bind="value: name()" maxlength="50" />
+                </div>
+                <div class="col-md-2">
+                    <table class="table table-bordered"> 
+                        <thead> 
+                            <tr> 
+                                <th>E</th> 
+                                <th>X</th> 
+                                <th>R</th> 
+                                <th>W</th>
+                                <th>Total</th> 
+                            </tr> 
+                        </thead> 
+                        <tbody> 
+                            <tr> 
+                                <td>1</td> 
+                                <td>1</td> 
+                                <td>1</td> 
+                                <td>1</td>
+                                <td>4</td> 
+                            </tr> 
+                        </tbody> 
+                    </table>
+                </div>
+            </li>
+            <br />
+            <ul>
+                <li class="row" style="list-style-type: none">
+                    <div class="col-md-2 col-md-offset-2">Groupe de données</div>
+                    <div class="col-md-2">Mouvements de données</div>
+                </li>
+            </ul>
+            <br />
+            <li class="row" style="list-style-type: none">
+                <ul data-bind="foreach: lines()">
+                    <li class="row" style="list-style-type: none">
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-sm btn-default">^</button>
+                            <button type="button" class="btn btn-sm btn-default">v</button>
+                         </div>
+                        <div class="col-md-2"><input type="text" data-bind="value: data_group()" /></div>
+                        <div class="col-md-2"><input type="text" data-bind="value: data_type()" /></div>
+                        <div class="col-md-2">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
 
- <footer>
-      < footer >
+    <hr />
+    <footer>
+        < footer >
     </footer>
-   
+    <script src="http://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js"></script>
+    <script type="text/javascript" src="./script.js"></script>
+ 
 </body>
 </html>
