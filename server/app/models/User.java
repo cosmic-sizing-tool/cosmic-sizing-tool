@@ -14,21 +14,25 @@ public class User extends Model {
     public Long id;
 
     @Constraints.Required
+    @Column(unique = true)
     public String alias;
 
     @Constraints.Required
-
     public String name;
 
     @Constraints.Required
     public String password;
 
+    // Email principal
     @Constraints.Required
     @Column(unique = true)
     public String email;
 
     @Constraints.Required
     public boolean deleted;
+    
+    // Emails secondaires
+    public List<String> emails;
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
