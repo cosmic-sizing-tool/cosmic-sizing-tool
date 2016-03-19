@@ -103,6 +103,7 @@ public class UserCtrl extends Controller {
 	}
 	
 	public Result changeUsername(){
+	    String regex = "^.*@[a-z]+\\.[a-z]{2,3}$";
 	    String email = "paper@email.com";
 	    RequestBody body = request().body();
 	    JsonNode json = Json.parse(body.asJson().toString());
@@ -111,11 +112,16 @@ public class UserCtrl extends Controller {
 		User user = findUser(email);
 		
 		if(!newUsername.equals("")) {
-		    user.alias = newUsername;
-		    user.save();
-		    flash("success", "Nom d'utilisateur modifié avec succès!");
+		    if(newUsername.matches(regex)) {
+		        user.email = newUsername;
+		        user.save();
+		    }else{
+		        user.alias = newUsername;
+		        user.save();
+		    }
+		    flash("success", "Nom d'utilisateur/email modifié avec succès!");
 		}else{
-		    flash("error", "Un nom d'utilisateur ne peut être vide !");
+		    flash("error", "Un nom d'utilisateur/email ne peut être vide !");
 		}
 		return ok(account_settings.render());
 	}
