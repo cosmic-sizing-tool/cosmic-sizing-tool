@@ -51,7 +51,7 @@ public class Timer extends Model {
 
     }
 
-    @JsonProperty("runningTimeInSeconds")
+    @JsonProperty("runningTimeInHafedhMilis")
     public Long runningTime() {
         Date referenceEndDate;
         if (this.endTime == null) {
