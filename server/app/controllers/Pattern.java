@@ -9,6 +9,8 @@ package controllers;
                         Julien Girard
  */
 
+import com.avaje.ebean.Model;
+import com.avaje.ebean.Query;
 import com.fasterxml.jackson.databind.JsonNode;
 import play.*;
 import play.api.libs.json.Json;
@@ -36,12 +38,13 @@ public class Pattern extends Controller {
         return ok("affichage delete");
     }
 
+
     public Result create() {
         /* Pattern du json
            {
-                "id": "124",
-                "desc_short": "ma graine",
-                "desc_long": "c'est une description plus grande de ma graine",
+                "id": "85",
+                "desc_short": "",
+                "desc_long": "",
                 "processes": [{
                     "name": "",
                     "lines": [{
@@ -52,8 +55,7 @@ public class Pattern extends Controller {
             }
          */
 
-
-        // Recupere la data avec GET et affiche la data reçue
+        // Recupere la data avec GET et stock dans la base de donnees
         JsonNode json = request().body().asJson();
         int taille = 0;
 
@@ -76,64 +78,21 @@ public class Pattern extends Controller {
 
         }
 
-        // Affiche le json reçu
-        return ok(Integer.toString(taille));
+        return ok();//TODO mettre dans la database
     }
 
-    public Result update(long id_pattern) {
-        return ok("affichage update");
+    public Result update(long id_pattern) {return ok("affichage update");
     }
 
+    //Va chercher le json dans la db
     public Result description(long id_pattern){
-        return ok("description");
+
+        Query query = JPA.em().createQuery("select * from pattern where id = " + id_pattern);
+        List<models.Pattern> pattern = query.getResultList();
+        return  render(pattern);
     }
 
-    public class InfoPatron {
 
-        //JsonNode json = Json.parse
-        //Patron p = Json.fromJson(JSONICI, Patron.class);
-
-    }
-
-    public class Patron{
-        public int id;
-        public String desc_short;
-        public String desc_long;
-        public Process lignes[];
-
-        public Patron(int id, String desc_short, String desc_long, Process[] lignes) {
-            this.id = id;
-            this.desc_short = desc_short;
-            this.desc_long = desc_long;
-            this.lignes = lignes;
-        }
-    }
-
-    private class Process{
-        private String name;
-        private String lines[];
-
-        public Process(String name, String[] lines) {
-            this.name = name;
-            this.lines = lines;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String[] getLines() {
-            return lines;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setLines(String[] lines) {
-            this.lines = lines;
-        }
-    }
 }
 
 
