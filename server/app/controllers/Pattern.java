@@ -7,6 +7,9 @@ package controllers;
                         Simon Zeni
                         John Béjot
                         Julien Girard
+
+    Controller principal des pages de la Gestion des patrons
+    Les views sont dans /views/pattern/
  */
 
 import com.avaje.ebean.Model;
