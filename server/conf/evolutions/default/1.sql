@@ -76,6 +76,14 @@ create table project (
   prvqst                    integer,
   rtqltwork                 integer,
   assign_above_quality      varchar(255),
+  bsnis_app                 integer,
+  reltmeapp                 integer,
+  matintessapp              integer,
+  infrsoft                  integer,
+  minor_component           boolean,
+  date_software_operation   timestamp,
+  total_project_elapsed_duration integer,
+  time_total_inactivity     integer,
   constraint ck_project_role_person_submitted_project check (role_person_submitted_project in (0,1,2,3,4,5,6,7)),
   constraint ck_project_type_software_project check (type_software_project in (0,1,2)),
   constraint ck_project_project_describes_domain check (project_describes_domain in (0,1,2,3)),
@@ -88,6 +96,10 @@ create table project (
   constraint ck_project_procedure_development_team check (procedure_development_team in (0,1,2,3)),
   constraint ck_project_prvqst check (prvqst in (0,1,2)),
   constraint ck_project_rtqltwork check (rtqltwork in (0,1,2,3)),
+  constraint ck_project_bsnis_app check (bsnis_app in (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)),
+  constraint ck_project_reltmeapp check (reltmeapp in (0,1,2,3,4,5,6)),
+  constraint ck_project_matintessapp check (matintessapp in (0,1,2,3,4,5)),
+  constraint ck_project_infrsoft check (infrsoft in (0,1,2,3,4,5)),
   constraint pk_project primary key (id))
 ;
 
