@@ -15,9 +15,9 @@ public class Project extends Model {
     @Id
     public Long id;
     
-    static private Long nextId = 0L;
+    private static Long nextId = 0L;
     
-    static Long nextId(){
+    public static Long nextId(){
         return ++nextId;
     }
     //1.
