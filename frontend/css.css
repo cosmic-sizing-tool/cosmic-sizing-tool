@@ -30,6 +30,19 @@ header {
 	margin-left: 220px;
 	height: 550px;
 	}
+#infopatron {
+	border-bottom: solid;
+	padding: 10px;
+}
+#deslongue {
+	float: right;
+	position: relative;
+	left: 50%;
+}
+#processpatron {
+	border-bottom: solid;
+	padding: 10px;
+}
 footer {
 	text-align: center;
 	border-bottom: solid;
