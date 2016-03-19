@@ -2,6 +2,10 @@
              text-decoration: none;
              cursor: auto;color: #4078c0;
           }
+          
+    #link-menu .link{
+        color: #4078c0;
+    }
    .btn-file {
             position: relative;
             overflow: hidden;

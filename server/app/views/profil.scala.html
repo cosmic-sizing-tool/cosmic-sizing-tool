@@ -1,42 +1,15 @@
 @(user: User)
 
 @main("Homepage") {
-<!-- <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
-   <div class="form-group">
-     <label for="name">Name</label>
-     <input type="text" class="form-control" name="name" id="name">
-   </div>
-   
-   <div class="form-group">
-     <label for="email">Public email</label>
-     <input type="text" class="form-control" name="email" id="email">
-   </div>    
-   
-   <div class="form-group">
-     <label for="url">Url</label>
-     <input type="text" class="form-control" name="url" id="url">
-   </div>       
-   <div class="form-group">
-     <label for="comapany">Company</label>
-     <input type="text" class="form-control" name="company" id="company">
-   </div>      
-   <div class="form-group">
-     <label for="Location">Location</label>
-     <input type="text" class="form-control" name="location" id="location">
-   </div>      
-   <input type="hidden" name="userId" value="12">
-   <button type="submit" class="btn btn-default">Update Profil</button>
-   </form>
-   -->
 <!-- Debut container -->
 <div class="container">
    <div class="row">
       <div class="col-md-3">
          <div class="panel panel-default">
             <div class="panel-heading"><strong> Paramètres personnels</strong></div>
-            <div class="panel-body">
-               <a href="#">Profil</a> <br>
-               <a href="#">Paramètres du compte</a>
+            <div id="link-menu" class="panel-body">
+               <a class="link" href="@routes.UserCtrl.show()">Profil</a> <br>
+               <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a>
             </div>
          </div>
       </div>
@@ -56,7 +29,7 @@
                <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
                   <div class="col-xs-8">
                      <label for="name">Nom</label>
-                     <input type="text" class="form-control" name="name" id="name">
+                     <input type="text" class="form-control" name="name" id="name" value="@user.name">
                   </div>
                   <div class="col-xs-8">
                      <label for="email">Courriel public</label> <br>
@@ -101,6 +74,7 @@
             <span>
                 <p>User: @user.name</p>
             </span>
+            
             <form method="post" role="form" action="@routes.UserCtrl.addCertification()">
                <div class="col-xs-8">
                   <label for="certification">Certification de méthode</label> <br>
@@ -122,14 +96,18 @@
                         <option>4.0</option>
                     </select>
                 </div>
+                <div class="col-md-3" style="padding-right: 25px;">
+                    <label for="date">Date</label><br>
+                    <input class="form-control" id="date" name="date" type="month">
+                </div>
                <div class="col-xs-8">
-               <label for="annee">Année d'obtention</label><br>
+               <!--<label for="annee">Année d'obtention</label><br>
                   <input id="annee" name="annee" type="text"><br>
                </div>
                <div class="col-xs-8">
                 <label for="mois">Mois d'obtention</label><br>
                   <input id="mois" name="mois" type="text"><br>
-               </div>
+               </div>-->
                <div class="col-xs-8" style="padding-top: 15px;">
                   <button type="submit" class="btn btn-success">Mettre à jour</button>
                </div>

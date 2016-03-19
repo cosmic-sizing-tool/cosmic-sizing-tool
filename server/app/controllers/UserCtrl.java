@@ -83,25 +83,27 @@ public class UserCtrl extends Controller {
 
     public Result addCertification() {
         
-        user = userGlobal; //test
+        User user = userGlobal; //test
         
         RequestBody body = request().body();
         
         String method = body.asFormUrlEncoded().get("certification")[0];
         String version = body.asFormUrlEncoded().get("version")[0];
-        int annee = Integer.parseInt(body.asFormUrlEncoded().get("annee")[0]);
-        int mois = Integer.parseInt(body.asFormUrlEncoded().get("mois")[0]);
-        
+        //int annee = Integer.parseInt(body.asFormUrlEncoded().get("annee")[0]);
+        //int mois = Integer.parseInt(body.asFormUrlEncoded().get("mois")[0]);
+        String date = body.asFormUrlEncoded().get("date")[0];
         Certification temp = new Certification();
         temp.method = method;
         temp.version = version;
-        temp.year = annee;
-        temp.month = mois;
+        //temp.year = annee;
+        //temp.month = mois;
         temp.user = user;
         boolean valide = true;
-        for(Certification c : user.certifications) {
-            if(c.method == temp.method && temp.version == c.version){
-                valide = false;
+        if(user.certifications.size() !=0) {
+            for(Certification c : user.certifications) {
+                if(c.method == temp.method && temp.version == c.version){
+                    valide = false;
+                }
             }
         }
         if(valide) {
@@ -112,15 +114,15 @@ public class UserCtrl extends Controller {
         }else{
             flash("error", "Vous avez déjà une certification identique !");
         }
-    
+        user.name = date;
         return ok(profil.render(user));
     }
     public Result resetPassword() {
-        return ok(rest_pwd.render());
+        return ok(reset_pwd.render());
     }
     public Result disponibleMesure() {
         
-        user = userGlobal; //test
+        User user = userGlobal; //test
         
         RequestBody body = request().body();
         String res = body.asFormUrlEncoded().get("dispo")[0];
@@ -134,7 +136,7 @@ public class UserCtrl extends Controller {
     }
     
 	public Result updatePassword() {
-	    user = userGlobal; //test
+	    User user = userGlobal; //test
 	    
 		RequestBody body = request().body();
 
@@ -165,7 +167,7 @@ public class UserCtrl extends Controller {
 	}
 	
 	public Result changeUsername(){
-	    user = userGlobal; //test
+	    User user = userGlobal; //test
 	    
 	    RequestBody body = request().body();
 	    String newUsername = body.asFormUrlEncoded().get("newUsername")[0];
@@ -231,11 +233,11 @@ public class UserCtrl extends Controller {
     }
 
 	public Result deleteUser() {
-	    user = userGlobal; //test
+	    User user = userGlobal; //test
 	    Long id = user.id; //test
 	    
 		if (userExist(id)){
-		    User user = User.find.byId(id);
+		    //User user = User.find.byId(id);
 		    List<Organisation> userAdmin = Organisation.find
 				.where().ilike("id_admin", id.toString()).findList();
 			if (user.organisations.size() == 0) {
