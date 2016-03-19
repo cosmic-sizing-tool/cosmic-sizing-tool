@@ -29,25 +29,15 @@ create table pattern (
 
 create table pattern_data_group (
   id                        integer primary key AUTOINCREMENT,
-  name                      varchar(255) not null,
-  comment                   varchar(255) not null,
-  pattern_process           integer not null,
-  entry                     integer not null,
-  exit                      integer not null,
-  read                      integer not null,
-  write                     integer not null)
+  name                      varchar(50) not null,
+  mouvement                 varchar(4) not null,
+  process                   integer not null)
 ;
 
 create table pattern_process (
   id                        integer primary key AUTOINCREMENT,
-  name                      varchar(255) not null,
-  quality_rating            varchar(1) not null,
-  process                   integer not null,
-  f_add                     integer not null,
-  f_modify                  integer not null,
-  f_delete                  integer not null,
-  f_unknown                 integer not null,
-  f_template                integer not null)
+  name                      varchar(50) not null,
+  pattern                   integer not null)
 ;
 
 create table process (
