@@ -26,6 +26,10 @@ public class UserCtrl extends Controller {
 		//return ok(profil.render(temp.name));
 		return ok(profil.render("Profil"));
 	}
+	
+	public Result settings() {
+	    return ok(account_settings.render());
+	}
 
 	public Result test() {
 		User u1 = new User();
@@ -164,7 +168,7 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result deleteUser(Long id) {
-		UserCtrl userCtrl = new UserCtrl();
+		/*UserCtrl userCtrl = new UserCtrl();
 		Organisation organisation = new Organisation();
 		List<Organisation> userAdmin =  Organisation.find
 				.where().ilike("id_admin", id.toString()).findList();
@@ -184,10 +188,26 @@ public class UserCtrl extends Controller {
 
 		} else {
 			return notFound(index.render("User dont exist"));
+		}*/
+		if (userExist(id)){
+		    User user = User.find.byId(id);
+		    List<Organisation> userAdmin = Organisation.find
+				.where().ilike("id_admin", id.toString()).findList();
+			if (user.organisations.size() == 0) {
+				if (userAdmin.size() == 0) {
+					user.delete();
+			    } else {
+					return badRequest("Utilisateur est administrateur d'une ou plusieurs organisations");
+				}
+			} else {
+				return badRequest("Utilisateur est affecté a une ou plusieurs organisations");
+			}
 		}
 
 		return ok(account_settings.render());
 	}
+	
+	
 /* Helpers */
 
 	public User findUser(String userInformation) {

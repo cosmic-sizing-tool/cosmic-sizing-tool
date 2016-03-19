@@ -16,12 +16,12 @@ GET     /measures/add		        controllers.Measures.add()
 POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 # Users
-GET     /profil                     controllers.UserCtrl.show()
-GET		/user_test                  controllers.UserCtrl.test()
-POST    /users/password             controllers.UserCtrl.updatePassword()
-#GET 	/user/settings     		    controllers.UserCtrl.settings()
+GET     /user/profil                controllers.UserCtrl.show()
+GET		/users/test                 controllers.UserCtrl.test()
+POST    /user/password              controllers.UserCtrl.updatePassword()
+GET 	/user/settings     		    controllers.UserCtrl.settings()
 GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
-POST	/users						controllers.UserCtrl.createUser()
+POST	/user						controllers.UserCtrl.createUser()
 POST    /user/:id/orgs			    controllers.UserCtrl.addOrganisation(id: Long)
 
 # Organisations page
