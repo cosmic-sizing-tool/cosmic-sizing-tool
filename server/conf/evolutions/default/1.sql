@@ -3,6 +3,14 @@
 
 # --- !Ups
 
+create table certification (
+  id_certification          integer primary key AUTOINCREMENT,
+  method                    varchar(255) not null,
+  version                   varchar(255) not null,
+  month                     integer,
+  year                      integer)
+;
+
 create table organisation (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255),
@@ -42,6 +50,8 @@ alter table organisation_user add constraint fk_organisation_user_user_02 foreig
 # --- !Downs
 
 PRAGMA foreign_keys = OFF;
+
+drop table certification;
 
 drop table organisation;
 

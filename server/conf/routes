@@ -12,25 +12,25 @@ GET     /glossary                   controllers.Glossary.glossary()
 GET     /counter                    controllers.Application.counter()
 
 # Mesures page
-GET     /measures/add		            controllers.Measures.add()
+GET     /measures/add		        controllers.Measures.add()
 POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 # Users
-GET   /profil                       controllers.UserCtrl.show()
-GET		/user_test                    controllers.UserCtrl.test()
-POST   /users/password              controllers.UserCtrl.updatePassword()
-#GET 	/user/settings     		        controllers.UserCtrl.settings()
-GET		/user/:userInfo     		      controllers.UserCtrl.getUser(userInfo: String)
-POST	/users						            controllers.UserCtrl.createUser()
-POST  /user/:id/orgs				        controllers.UserCtrl.addOrganisation(id: Long)
+GET     /profil                     controllers.UserCtrl.show()
+GET		/user_test                  controllers.UserCtrl.test()
+POST    /users/password             controllers.UserCtrl.updatePassword()
+#GET 	/user/settings     		    controllers.UserCtrl.settings()
+GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
+POST	/users						controllers.UserCtrl.createUser()
+POST    /user/:id/orgs			    controllers.UserCtrl.addOrganisation(id: Long)
 
 # Organisations page
-POST	/organisations		  		      controllers.OrganisationCtrl.createOrganisation()
-PUT 	/organisations/:id		        controllers.OrganisationCtrl.addAdminToAnOrganisation(id: Long)
-PUT     /users/:email				        controllers.UserCtrl.updateInformation(email: String)
+POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
+PUT 	/organisations/:id		    controllers.OrganisationCtrl.addAdminToAnOrganisation(id: Long)
+PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
 DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long)
 DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long)
-#GET 	/users/:id/orgs  					    controllers.OrganisationCtrl.getUserAdmin(id: Long)
+#GET 	/users/:id/orgs  		    controllers.OrganisationCtrl.getUserAdmin(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

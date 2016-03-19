@@ -20,10 +20,11 @@ import com.avaje.ebean.*;
 public class UserCtrl extends Controller {
 
 	public Result show() {
-		Long id = 12L;
-		User temp = User.find.byId(id);
+		//Long id = 12L;
+		//User temp = User.find.byId(id);
 
-		return ok(profil.render(temp.name));
+		//return ok(profil.render(temp.name));
+		return ok(profil.render("Profil"));
 	}
 
 	public Result test() {
@@ -75,11 +76,10 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result updatePassword() {
-		String email = "paper@email.com";
 		RequestBody body = request().body();
-
-		return ok(index.render("Body = " + body.asFormUrlEncoded().get("newPassword")[0]));
-		/*JsonNode json = Json.parse(request().body().asJson().toString());
+        String email = "paper@email.com";
+		//return ok(index.render("Body = " + body.asFormUrlEncoded().get("newPassword")[0]));
+		JsonNode json = Json.parse(body.asJson().toString());
 		String newPassword = json.findPath("newPassword").toString()
 				.replaceAll("\"", "");
 		String confirmationPassword = json.findPath("confirmationPassword").toString()
@@ -87,10 +87,19 @@ public class UserCtrl extends Controller {
 		String oldPassword = json.findPath("oldPassword").toString()
 				.replaceAll("\"", "");
 		User user = findUser(email);
-
-		user.password = newPassword;
-		user.save();
-		return ok(index.render("updated"));*/
+        
+        if(user.password.equals(oldPassword)) {
+            if(newPassword.equals(confirmationPassword)) {
+                user.password = newPassword;
+		        user.save();
+		        flash("success", "Utilisateur sauvegardé");
+            }else{
+                flash("error", "Les deux nouveaux mot de passe ne sont pas identiques");
+            }
+        }else{
+            flash("success", "Ancien mot de passe ne correspond pas");
+        }
+		return ok(account_settings.render());
 	}
 
 	public Result updateInformation(String email) {
