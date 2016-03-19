@@ -13,6 +13,16 @@ GET     /glossary                   controllers.Glossary.glossary()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
+# Gestion des patrons
+# Appel par le menu de navigation du site ##################################
+GET     /pattern                                controllers.Pattern.index()
+############################################################################
+GET     /pattern/new                            controllers.Pattern.description(id_pattern: Long = 0)
+POST    /pattern/modification/new               controllers.Pattern.create()
+GET     /pattern/modification/:id_pattern       controllers.Pattern.description(id_pattern: Long)
+DELETE  /pattern/modification/:id_pattern       controllers.Pattern.delete(id_pattern: Long)
+PUT     /pattern/modification/:id_pattern       controllers.Pattern.update(id_pattern: Long)
+############################################################################
 
 # Counter page
 GET     /counter                    controllers.Application.counter()
