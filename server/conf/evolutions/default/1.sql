@@ -27,6 +27,17 @@ create table pattern (
   description_longue        varchar(250) not null)
 ;
 
+create table pattern_data_group (
+  id                        integer primary key AUTOINCREMENT,
+  name                      varchar(255) not null,
+  comment                   varchar(255) not null,
+  pattern_process           integer not null,
+  entry                     integer not null,
+  exit                      integer not null,
+  read                      integer not null,
+  write                     integer not null)
+;
+
 create table pattern_process (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255) not null,
@@ -92,6 +103,8 @@ drop table organisation;
 drop table organisation_user;
 
 drop table pattern;
+
+drop table pattern_data_group;
 
 drop table pattern_process;
 
