@@ -101,6 +101,24 @@ public class UserCtrl extends Controller {
         }
 		return ok(account_settings.render());
 	}
+	
+	public Result changeUsername(){
+	    String email = "paper@email.com";
+	    RequestBody body = request().body();
+	    JsonNode json = Json.parse(body.asJson().toString());
+	    String newUsername = json.findPath("newUsername").toString()
+				.replaceAll("\"", "");
+		User user = findUser(email);
+		
+		if(!newUsername.equals("")) {
+		    user.alias = newUsername;
+		    user.save();
+		    flash("success", "Nom d'utilisateur modifié avec succès!");
+		}else{
+		    flash("error", "Un nom d'utilisateur ne peut être vide !");
+		}
+		return ok(account_settings.render());
+	}
 
 	public Result updateInformation(String email) {
 		JsonNode json = Json.parse(request().body().asJson().toString());
@@ -162,7 +180,7 @@ public class UserCtrl extends Controller {
 			return notFound(index.render("User dont exist"));
 		}
 
-		return ok(index.render("deleted"));
+		return ok(account_settings.render());
 	}
 /* Helpers */
 
