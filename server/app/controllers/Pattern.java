@@ -10,6 +10,7 @@ package controllers;
  */
 
 import play.*;
+import play.api.libs.json.Json;
 import play.data.*;
 import  play.data.validation.Constraints;
 import play.mvc.*;
@@ -36,12 +37,7 @@ public class Pattern extends Controller {
     public Result create() {
 
         // Recupere la data avec GET et affiche la data reçue
-        Form<InfoIDPatron> infoIDPatronForm = form(InfoIDPatron.class);
-        InfoIDPatron infoIDPatron = infoIDPatronForm.bindFromRequest().get();
-        System.out.println("form Patron");
-        System.out.println(infoIDPatron.nom);
-        System.out.println(infoIDPatron.descCourte);
-        System.out.println(infoIDPatron.descLongue);
+        //JsonNode json = request().body().asJson();
 
         return ok("affichage create");
     }
@@ -54,37 +50,52 @@ public class Pattern extends Controller {
         return ok("description");
     }
 
+    public class InfoPatron {
 
-    // Premier form pour le patron
-    public class InfoIDPatron {
+        //JsonNode json = Json.parse
+        //Patron p = Json.fromJson(JSONICI, Patron.class);
 
-        public String nom;
-        public String descCourte;
-        public String descLongue;
+    }
 
-        public String validate() {
-            if(nom == "" || descCourte == "") {
-                return "Nom et description courte requis";
-            }
+    public class Patron{
+        public int id;
+        public String desc_short;
+        public String desc_long;
+        public Process lignes[];
 
-            if(nom.length() > 20) {
-                return "Nom trop long, seulement 20 caractères sont permis";
-            }
-
-            if(descCourte.length() > 30) {
-                return "Description trop longue, seulement 30 caractères sont permis";
-            }
-            return null;
+        public Patron(int id, String desc_short, String desc_long, Process[] lignes) {
+            this.id = id;
+            this.desc_short = desc_short;
+            this.desc_long = desc_long;
+            this.lignes = lignes;
         }
     }
 
-    public class InfoProcessusPatron {
+    private class Process{
+        private String name;
+        private String lines[];
 
+        public Process(String name, String[] lines) {
+            this.name = name;
+            this.lines = lines;
+        }
 
-        //faire Json
+        public String getName() {
+            return name;
+        }
 
+        public String[] getLines() {
+            return lines;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public void setLines(String[] lines) {
+            this.lines = lines;
+        }
     }
-
 }
 
 
