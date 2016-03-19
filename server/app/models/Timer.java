@@ -51,7 +51,7 @@ public class Timer extends Model {
 
     }
 
-    @JsonProperty("runningTimeInHafedhMilis")
+    @JsonIgnore
     public Long runningTime() {
         Date referenceEndDate;
         if (this.endTime == null) {
@@ -102,7 +102,7 @@ public class Timer extends Model {
 
     }
 
-    @JsonIgnore
+    @JsonProperty("runningTimeInHafedhMilis")
     public static Long sumTimers(List<Timer> timers) {
 
         long timeSpent = 0;
