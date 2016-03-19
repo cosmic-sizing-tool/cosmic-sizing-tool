@@ -9,8 +9,10 @@ package controllers;
                         Julien Girard
  */
 
+import com.fasterxml.jackson.databind.JsonNode;
 import play.*;
 import play.api.libs.json.Json;
+import play.api.libs.ws.ssl.SystemConfiguration;
 import play.data.*;
 import  play.data.validation.Constraints;
 import play.mvc.*;
@@ -35,11 +37,47 @@ public class Pattern extends Controller {
     }
 
     public Result create() {
+        /* Pattern du json
+           {
+                "id": "124",
+                "desc_short": "ma graine",
+                "desc_long": "c'est une description plus grande de ma graine",
+                "processes": [{
+                    "name": "",
+                    "lines": [{
+                        "data_group": " ",
+                        "data_type": ""
+                    }]
+                }]
+            }
+         */
+
 
         // Recupere la data avec GET et affiche la data reçue
-        //JsonNode json = request().body().asJson();
+        JsonNode json = request().body().asJson();
+        int taille = 0;
 
-        return ok("affichage create");
+        if(json == null) {
+            return badRequest("Expecting Json data");
+        } else {
+            String id = json.findPath("id").textValue();
+            if(id == null)
+                return badRequest("Missing parameter [id]");
+
+            String desc_short = json.findPath("desc_short").textValue();
+            if(desc_short == null)
+                return badRequest("Missing parameter [desc_short]");
+
+            if(desc_short.length() > 20)
+                return badRequest("[desc_short] is over 20 char");
+
+            // Valider le contenu de processes
+            List<JsonNode> processes = json.findValues("processes");
+
+        }
+
+        // Affiche le json reçu
+        return ok(Integer.toString(taille));
     }
 
     public Result update(long id_pattern) {
