@@ -2,9 +2,8 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import models.Organisation;
-import models.User;
-import models.Organization;
+import models.*;
+
 
 import play.*;
 import play.db.ebean.Transactional;
@@ -18,18 +17,14 @@ import com.avaje.ebean.*;
 
 @Transactional
 public class UserCtrl extends Controller {
-
+    
+    User userGlobal;
+    
 	public Result show() {
 		Long id = 13L;
 		User temp = User.find.byId(id);
-        /*User essai = new User();
-        essai.save();
-		Organization org = new Organization("COSMIC");
-		org.save();
-		List<Organization> orgListe = Organization.find.where()
-				.ilike("name", "COSMIC").findList();
-		return ok(profil.render("id"+ essai.id+" "+orgListe.size() + " "+" "+temp.name));*/
-		return ok(profil.render("Profil"));
+        
+		return ok(profil.render(temp));
 	}
 	
 	public Result settings() {
@@ -56,7 +51,8 @@ public class UserCtrl extends Controller {
 		u1.alias = "tarzan";
 		u1.addEmail("bobby2@gmail.com");
 		u1.save();
-
+        
+        userGlobal = u1;
 		return ok(index.render("User test2 create"));
 	}
 	
@@ -79,32 +75,80 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result getUser(String userInformation) {
-		JsonNode personJson = Json.toJson(findUser(userInformation));
+	    User temp = findUser(userInformation);
+		JsonNode personJson = Json.toJson(temp);
 		
-		return ok(profil.render(""));
+		return ok(profil.render(temp));
 	}
 
     public Result addCertification() {
+        
+        user = userGlobal; //test
+        
         RequestBody body = request().body();
         
-        String nom = body.asFormUrlEncoded().get("")[0];
-        String version = body.asFormUrlEncoded().get("")[0];
+        String method = body.asFormUrlEncoded().get("certification")[0];
+        String version = body.asFormUrlEncoded().get("version")[0];
+        int annee = Integer.parseInt(body.asFormUrlEncoded().get("annee")[0]);
+        int mois = Integer.parseInt(body.asFormUrlEncoded().get("mois")[0]);
         
-        return ok(profil.render(""));
-    }	
-
+        Certification temp = new Certification();
+        temp.method = method;
+        temp.version = version;
+        temp.year = annee;
+        temp.month = mois;
+        temp.user = user;
+        boolean valide = true;
+        for(Certification c : user.certifications) {
+            if(c.method == temp.method && temp.version == c.version){
+                valide = false;
+            }
+        }
+        if(valide) {
+            temp.save();
+            user.certifications.add(temp);
+            user.save();
+            flash("success", "Certification ajouté");
+        }else{
+            flash("error", "Vous avez déjà une certification identique !");
+        }
+    
+        return ok(profil.render(user));
+    }
+    public Result resetPassword() {
+        return ok(rest_pwd.render());
+    }
+    public Result disponibleMesure() {
+        
+        user = userGlobal; //test
+        
+        RequestBody body = request().body();
+        String res = body.asFormUrlEncoded().get("dispo")[0];
+        if(!res.equals("")) {
+            boolean dispo = Boolean.parseBoolean(res);
+            user.disponible = dispo;
+            user.save();
+        }
+        
+        return ok(profil.render(user));
+    }
+    
 	public Result updatePassword() {
+	    user = userGlobal; //test
+	    
 		RequestBody body = request().body();
-        String email = "paper@email.com";
-		//return ok(index.render("Body = " + body.asFormUrlEncoded().get("newPassword")[0]));
-		JsonNode json = Json.parse(body.asJson().toString());
+
+		/*JsonNode json = Json.parse(body.asJson().toString());
 		String newPassword = json.findPath("newPassword").toString()
 				.replaceAll("\"", "");
 		String confirmationPassword = json.findPath("confirmationPassword").toString()
 				.replaceAll("\"", "");
 		String oldPassword = json.findPath("oldPassword").toString()
-				.replaceAll("\"", "");
-		User user = findUser(email);
+				.replaceAll("\"", "");*/
+		String newPassword = body.asFormUrlEncoded().get("newPassword")[0];
+		String confirmationPassword = body.asFormUrlEncoded().get("confirmationPassword")[0];
+		String oldPassword = body.asFormUrlEncoded().get("oldPassword")[0];
+		//User user = User.find.byId();
         
         if(user.password.equals(oldPassword)) {
             if(newPassword.equals(confirmationPassword)) {
@@ -120,12 +164,12 @@ public class UserCtrl extends Controller {
 		return ok(account_settings.render());
 	}
 	
-	public Result changeUsername(long id){
+	public Result changeUsername(){
+	    user = userGlobal; //test
+	    
 	    RequestBody body = request().body();
-	    JsonNode json = Json.parse(body.asJson().toString());
-	    String newUsername = json.findPath("newUsername").toString()
-				.replaceAll("\"", "");
-		User user = User.find.byId(id);
+	    String newUsername = body.asFormUrlEncoded().get("newUsername")[0];
+		//User user = User.find.byId(id);
 		
 		if(!newUsername.equals("")) {
 		    if(email_valid(newUsername) && !email_exist(newUsername)) {
@@ -183,10 +227,13 @@ public class UserCtrl extends Controller {
     		}		    
 		}
 
-		return ok(profil.render("Body : " + String.join(", ", justePourTest(user))));            
+		return ok(profil.render(user));            
     }
 
-	public Result deleteUser(Long id) {
+	public Result deleteUser() {
+	    user = userGlobal; //test
+	    Long id = user.id; //test
+	    
 		if (userExist(id)){
 		    User user = User.find.byId(id);
 		    List<Organisation> userAdmin = Organisation.find

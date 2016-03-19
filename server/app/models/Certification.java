@@ -32,7 +32,6 @@ public class Certification extends Model {
     @ManyToOne(cascade = CascadeType.ALL)
     public User user; 
 
-
     public static Finder<Long,Certification> find = new Finder<Long,Certification>(Long.class, Certification.class);
 
 }

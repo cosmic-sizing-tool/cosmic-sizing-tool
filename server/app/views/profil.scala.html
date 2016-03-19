@@ -1,4 +1,4 @@
-@(message: String)
+@(user: User)
 
 @main("Homepage") {
 <!-- <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
@@ -98,9 +98,13 @@
          <div class="panel panel-default">
             <div class="panel-heading"><strong>Profil du mesureur</strong> </div>
             <div class="panel-body">
+            <span>
+                <p>User: @user.name</p>
+            </span>
+            <form method="post" role="form" action="@routes.UserCtrl.addCertification()">
                <div class="col-xs-8">
-                  <label for="ex1">Certification de méthode</label> <br>
-                  <select style="border-radius: 5px;width: 27%;">
+                  <label for="certification">Certification de méthode</label> <br>
+                  <select id="certification" name="certification" style="border-radius: 5px;width: 27%;">
                      <option>COSMIC</option>
                      <option>IFPUG</option>
                      <option>FISMA</option>
@@ -108,21 +112,40 @@
                      <option>MARK II</option>
                   </select>
                </div>
-               <div class="col-xs-2" style="padding-right: 35px;">
-                  <label for="ex1">Version</label> <br>
-                  <input class="form-control" id="ex2" type="text"><br>
+               <div class="col-md-3" style="padding-right: 25px;">
+                    <label for="version">Version</label> <br>
+                    <select id="version" name="version" style="border-radius: 5px; width: 30%;">
+                        <option>2.0</option>
+                        <option>2.1</option>
+                        <option>2.2</option>
+                        <option>3.0</option>
+                        <option>4.0</option>
+                    </select>
+                </div>
+               <div class="col-xs-8">
+               <label for="annee">Année d'obtention</label><br>
+                  <input id="annee" name="annee" type="text"><br>
                </div>
                <div class="col-xs-8">
-                  <input type="checkbox">Disponible pour mesurer
+                <label for="mois">Mois d'obtention</label><br>
+                  <input id="mois" name="mois" type="text"><br>
                </div>
                <div class="col-xs-8" style="padding-top: 15px;">
-                  <button type="button" class="btn btn-success">Mettre à jour</button>
+                  <button type="submit" class="btn btn-success">Mettre à jour</button>
                </div>
+            </form>
+            <form role="form" method="post" action="@routes.UserCtrl.disponibleMesure()">
+               <div class="col-xs-8">
+                  <input id="dispo" name="dispo" type="checkbox" value="true">Disponible pour mesurer
+               </div>
+               <div class="col-xs-8" style="padding-top: 15px;">
+                  <button type="submit" class="btn btn-success">Mettre à jour</button>
+               </div>
+            </form>   
             </div>
          </div>
       </div>
    </div>
 </div>
 <!-- fin container-->
-@message
 }
