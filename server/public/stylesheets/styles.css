@@ -133,3 +133,22 @@
     margin-left: 5%;
 }
 
+.pull-right {
+    float: right!important;
+    margin-right: 10%;
+    margin-bottom: 5%;
+
+}
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+.pull-left {
+    float: left!important;
+    margin-left: 10%;
+    margin-bottom: 5%;
+
+}
+

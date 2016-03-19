@@ -72,7 +72,7 @@
                         <option value=fr>français</option>
                     </select>
                     <button type="button" class="btn btn-success navbar-btn">Register</button>
-                    <button type="button" class="btn btn-default navbar-btn">Log in</button>
+                    <a href="@routes.Application.login()"><button type="button" class="btn btn-default navbar-btn">Log in</button></a>
                 </div>
 
             </div>
@@ -113,7 +113,17 @@
 </div>
 
 <footer>
-    <p>this text and a mostly barebones HTML document.</p>
+    <div class="pull-left">
+        <p>© 2016 COSMIC</p>
+    </div>
+
+    <div class="pull-right">
+        <ul class="list-inline">
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
 </footer>
 </div>
 <!-- /.container -->

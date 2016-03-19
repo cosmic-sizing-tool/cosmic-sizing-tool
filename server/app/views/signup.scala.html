@@ -1,46 +1,67 @@
-@(title: String)(content: Html)
-
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <!-- Boostrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <!-- Jquery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        
-        <title>Cosmic sizing tool - @title</title>
-    </head>
-    <body>
-        <h1>Cosmic sizing tool - Sign up</h1>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="@routes.Application.index()">Home</a></li>
-                        <li><a href="@routes.Application.team()">Team</a></li>
-                    </ul>
-                </div>
-                
-            </div>
-        </nav>
-        <div class ="col-lg-4 col-lg-offset-4">            
-            <form class="form-signin">
-                <h2 class="form-signin-heading">Please sign up</h2>
-                <label for="inputEmail" class="sr-only">Username</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus></br></br>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></br></br>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required></br></br>
-                
-                <div class ="col-lg-4 col-lg-offset-3">
-                    </br></br><button id="#debug"  style="background-color: #60b044;" class="btn btn-lg btn-primary btn-lg" type="submit">Create an account</button>
-                </div>
-            </form>
+<head>
+    <!-- Boostrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <title>Cosmic sizing tool</title>
+    <style>
+        form.form-signin {
+        background-color: #ffffff;
+        position: relative;
+        left: 300px;
+        width: 300px;
+        }
+
+        h2{
+        position: relative;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        left: 250px;
+        }
+
+        p{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 9px;
+        line-height: 1.42857;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="col-lg-4 col-lg-offset-4">
+    <h2 class="form-signin-heading">Create your personnal account</h2><br>
+    <form class="form-signin">
+        <label for="inputEmail">Username</label>
+        <input type="text" id="inputUsername" class="form-control" required autofocus>
+        <p>This will be your username - you can enter your organisation's username next.</p>
+        <label for="inputEmail">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" required autofocus>
+        <p>You will occasionally receive account related emails. We promise not to share your email with anyone.</p>
+        <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" class="form-control" required>
+        <p>Use at least one lowercase lette, one numeral, and seven characters.</p>
+        <label id="inputLanguage">Language preference</label>
+
+        <div class="dropdown">
+            dropwdwon language
         </div>
-    </body>
+        <p>This will be your default language.</p>
+
+        <div class="col-lg-4 col-lg-offset-3">
+            </br></br>
+            <button id="#debug" style="background-color: #60b044;" class="btn btn-lg btn-primary btn-lg" type="submit">
+                Create an account
+            </button>
+        </div>
+    </form>
+</div>
+</body>
 </html>
 
 
