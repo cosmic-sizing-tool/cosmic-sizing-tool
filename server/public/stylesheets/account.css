@@ -1,0 +1,67 @@
+   .btn-file {
+            position: relative;
+            overflow: hidden;
+         }
+         .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+            right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+         }
+         .avatar {
+            display: inline-block;
+            overflow: hidden;
+            line-height: 1;
+            vertical-align: middle;
+            border-radius: 3px;
+         }
+         img {
+            border: 0;
+         }
+         .avatar-upload .upload-state p {
+            margin: 0;
+            font-size: 12px;
+            color: #767676;
+         }
+         .is-default .avatar-upload .default {
+            display: block;
+         }
+         .avatar-upload .upload-state {
+            display: none;
+            padding: 10px 0;
+         }
+         select:not([multiple]) {
+            height: 34px;
+            vertical-align: middle;
+         }
+         .select {
+            display: inline-block;
+            max-width: 100%;
+            padding: 7px 24px 7px 8px;
+            background-color: #fafafa;
+         } 
+         option {
+            font-weight: normal;
+            display: block;
+            white-space: pre;
+            min-height: 1.2em;
+            padding: 0px 2px 1px;
+         } 
+         a:hover{
+         cursor: auto;
+         color: #4078c0;
+      }
+
+      .supp{
+         background-color: #900;
+         color: #fff;
+      }

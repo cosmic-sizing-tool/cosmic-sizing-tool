@@ -87,7 +87,10 @@ public class UserCtrl extends Controller {
     public Result addCertification() {
         RequestBody body = request().body();
         
-        return ok();
+        String nom = body.asFormUrlEncoded().get("")[0];
+        String version = body.asFormUrlEncoded().get("")[0];
+        
+        return ok(profil.render(""));
     }	
 
 	public Result updatePassword() {
@@ -146,7 +149,6 @@ public class UserCtrl extends Controller {
 		
 		RequestBody body = request().body();
 		
-		//String userInfo = body.asFormUrlEncoded().get("userId")[0];
 		String emailSended = body.asFormUrlEncoded().get("email")[0];
 		String nameSended = body.asFormUrlEncoded().get("name")[0];
 		String urlSended = body.asFormUrlEncoded().get("url")[0];
