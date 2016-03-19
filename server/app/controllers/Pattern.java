@@ -11,6 +11,7 @@ package controllers;
 
 import play.*;
 import play.data.*;
+import  play.data.validation.Constraints;
 import play.mvc.*;
 import views.html.pattern.*;
 import java.util.*;
@@ -49,15 +50,20 @@ public class Pattern extends Controller {
         return ok("affichage update");
     }
 
+    public Results modification(long idPattern){
+        return null;
+    }
+
 
     // Premier form pour le patron
     public class InfoIDPatron {
+
         public String nom;
         public String descCourte;
         public String descLongue;
 
         public String validate() {
-            if(nom == null || descCourte == null) {
+            if(nom == "" || descCourte == "") {
                 return "Nom et description courte requis";
             }
 
@@ -71,7 +77,17 @@ public class Pattern extends Controller {
             return null;
         }
     }
+
+    public class InfoProcessusPatron {
+
+
+        //faire Json
+
+    }
+
 }
+
+
 
 
 
