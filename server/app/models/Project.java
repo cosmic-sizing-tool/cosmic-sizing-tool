@@ -8,6 +8,8 @@ import java.util.UUID;
 import com.avaje.ebean.Model;
 
 public class Project extends Model {
+    public static Finder<Long,Project> find = new Finder<Long,Project>(Project.class);
+    
     public String contact_person;
     public String organisation;
     public String country;
@@ -30,9 +32,9 @@ public class Project extends Model {
     public String primaryTechnologyOther;
     enum environmentSoftwareDeveloped {pc,mainFrame,midRange,multiPlatform};
     public String environmentSoftwareDevelopedOther;
-    
-    
-    
+    public boolean sameImplementationPlatform ;
+    enum Platform{mobile,pc,midRange,mainframe,multiPlatform};
+    public Platform primaryImplementationPlatform;
     
     
     
