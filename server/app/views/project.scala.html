@@ -4,16 +4,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
-		<link rel="stylesheet" href="twitter.css" type="text/css" />
+		<title>COSMIC FORM</title>
 	    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<div class="container" style = " background-color:#D1E9F2" >
-     <h3>@Messages("project.sectionA")</h3>
-     <form role="form" action="NotePcJuris" method="get" accept-charset="utf-8">
+	 
+	<div class="container"  style = " background-color:#D1E9F2" >
+	 <form role="form" action="NotePcJuris" method="post" accept-charset="utf-8">
+	  <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
+	  
+	   <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionB">@Messages("project.sectionB")</button>
+
+    
+     
+     <div id="sectionA" class="collapse"  >
 	 <div class = "table-responsive" >
 		@Messages("project.sectionA1")<br>
 	 <table class = "table" style="width:40%" >
@@ -94,12 +100,98 @@
 </table>
 </div>
 
+	  </div>
 	  
+	  
+	  
+	  <div id="sectionB" class="collapse"  >
+	 <div class = "table-responsive" >
+		@Messages("project.sectionA1")<br>
+	 <table class = "table" style="width:40%" >
+  <tr>
+    <td><label for="note">@Messages("project.sectionA1_con")</label></td>
+    <td><input type="text" name="contact" id="contact"/><br></td>
+  </tr>
+  <tr>
+    <td><label for="note">@Messages("project.sectionA1_org")</label></td>
+    <td><input type="text" name="organisation" id="organisation"/><br></td>
+  </tr>
+  <tr>
+    <td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
+    <td> <input type="text" name="country" id="country"/><br></td>
+  </tr>
+  <tr>
+    <td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
+    <td><input type="text" name="email" id="email"/><br><br></td>
+  </tr>
+</table> 
+     
+	   </div>
+
+	   
+	  
+	  <div class = "table-responsive" >
+	  @Messages("project.sectionA2")<br>
+	    <table class = "table" style="width:40%">
+  <tr>
+    <td><label for="note">@Messages("project.sectionA2_pro")</label></td>
+    <td> <input type="text" name="projectId" id="projectId"/><br></td>
+  </tr>
+  <tr>
+    <td><label for="note">@Messages("project.sectionA2_dat")</label></td>
+    <td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
+  </tr>
+</table> 
+	   
+    
+	   </div>
+	  
+	  @Messages("project.sectionA3")<br>
+
+ <div class="table-responsive">          
+  <table class="table" style="width:45%">
+      <tr>
+<td> <input type="checkbox" name="role" value="value"> 
+@Messages("project.sectionA3_ana")
+</td>
+<td>
+	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_cus")
+</td>
+<td>
+	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_dev")
+</td>
+</tr>
+<tr>
+<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_ind") </td>
+
+<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_itm")
+</td>
+<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_met")
+</td>
+<tr>
+<td>
+	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_pro")
+</td>
+<td>	   
+
+<input type="checkbox" name="role" value="value">
+ @Messages("project.sectionA3_pro1")
+</td>
+<td>
+	   <label for="other">@Messages("project.sectionA3_oth")</label>
+       <input type="text" name="other" id="other"/>
+</td>
+</tr>
+</table>
+</div>
+
+	  </div>
 	  
 	   <p><input type="submit" value="Enregistrer" class="btn btn-success"/></p>
 	   	   
 
      </form>
-	 </div>
+	 
+	  </div>
 	</body>
 </html>
