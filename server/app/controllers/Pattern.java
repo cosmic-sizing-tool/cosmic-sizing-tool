@@ -25,7 +25,7 @@ public class Pattern extends Controller {
         return ok(index.render());
     }
 
-    public Result description(long id_pattern) {
+    public Result modification(long id_pattern) {
         return ok(modification.render());
     }
 
@@ -50,8 +50,8 @@ public class Pattern extends Controller {
         return ok("affichage update");
     }
 
-    public Results modification(long idPattern){
-        return null;
+    public Result description(long id_pattern){
+        return ok("description");
     }
 
 
