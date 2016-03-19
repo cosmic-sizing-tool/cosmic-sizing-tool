@@ -71,7 +71,12 @@ public class ProjectTimer extends Controller {
 
             case "stop":
 
-                return ok("stop");
+                Timer stoppedTimer = Timer.stopTimer(organizationId, projectId);
+
+                if (stoppedTimer == null) {
+                    return badRequest("{\"error\": \"no chrono was started\"}");
+                }
+                return ok(Json.toJson(stoppedTimer));
 
             default:
                 return internalServerError("Action not understood. Must either be start or stop.");

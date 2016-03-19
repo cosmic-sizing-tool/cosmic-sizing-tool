@@ -91,30 +91,15 @@ public class Timer extends Model {
     public static Timer stopTimer(Long organizationId, Long projectId) {
 
         Timer currentTimer = getRunningTimer(organizationId, projectId);
-                Ebean
-                        .find(Timer.class)
-                        .where()
-                        .eq("endTime", null)
-                        .eq("organizationId", organizationId)
-                        .eq("projectId", projectId)
-                        .findUnique();
 
-        if (currentTimer == null) {
-            // We create a new timer because there is no running timer
+        if (currentTimer == null)
+            return null;
 
-            currentTimer = new Timer();
 
-            currentTimer.organizationId = organizationId;
-            currentTimer.projectId = projectId;
-            currentTimer.startTime = new Date();
-            currentTimer.endTime = null;
-
-            currentTimer.save();
-
-        }
-
-        System.err.println(currentTimer);
+        currentTimer.endTime = new Date();
+        currentTimer.save();
         return currentTimer;
+
     }
 
     @JsonIgnore
