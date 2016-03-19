@@ -17,6 +17,12 @@ create table organisation (
   id_admin                  integer)
 ;
 
+create table organization (
+  time_stamp                timestamp,
+  unique_id                 varchar(40),
+  name                      varchar(255))
+;
+
 create table team_member (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255) not null,
@@ -26,12 +32,12 @@ create table team_member (
 
 create table user (
   id                        integer primary key AUTOINCREMENT,
-  alias                     varchar(255),
   name                      varchar(255),
   password                  varchar(255),
-  email                     varchar(255),
+  alias                     varchar(255),
   deleted                   integer(1),
-  constraint uq_user_email unique (email))
+  email                     varchar(255),
+  created_at                timestamp)
 ;
 
 
@@ -56,6 +62,8 @@ drop table certification;
 drop table organisation;
 
 drop table organisation_user;
+
+drop table organization;
 
 drop table team_member;
 

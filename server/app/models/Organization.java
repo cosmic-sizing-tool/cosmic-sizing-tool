@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.UUID;
 
 import com.avaje.ebean.Model;
+import javax.persistence.*;
 
+@Entity
 public class Organization extends Model {
     Date timeStamp;
     UUID uniqueId;
@@ -27,5 +29,5 @@ public class Organization extends Model {
     public int hashCode() {
         return uniqueId.hashCode();
     }
-
+    public static Finder<Long, Organization> find = new Finder<Long,Organization>(Organization.class);
 }

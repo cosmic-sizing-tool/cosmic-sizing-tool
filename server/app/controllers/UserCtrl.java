@@ -20,18 +20,23 @@ import com.avaje.ebean.*;
 public class UserCtrl extends Controller {
 
 	public Result show() {
-		//Long id = 12L;
-		//User temp = User.find.byId(id);
-
-		//return ok(profil.render(temp.name));
-		return ok(profil.render("Profil"));
+		Long id = 13L;
+		User temp = User.find.byId(id);
+        User essai = new User();
+        essai.save();
+		Organization org = new Organization("COSMIC");
+		org.save();
+		List<Organization> orgListe = Organization.find.where()
+				.ilike("name", "COSMIC").findList();
+		return ok(profil.render("id"+ essai.id+" "+orgListe.size() + " "+" "+temp.name));
+		//return ok(profil.render("Profil"));
 	}
 	
 	public Result settings() {
 	    return ok(account_settings.render());
 	}
 
-	public Result test() {
+	public Result test1() {
 		User u1 = new User();
 		u1.id = 12L;
 		u1.name = "Jhone";
@@ -40,16 +45,29 @@ public class UserCtrl extends Controller {
 		u1.alias = "tantan";
 		u1.save();
 
-		return ok(index.render("User test create"));
+		return ok(index.render("User test1 create"));
 	}
+	public Result test2() {
+		User u1 = new User();
+		u1.id = 13L;
+		u1.name = "bob";
+		u1.password = "admin";
+		u1.email = "bobby@email.com";
+		u1.alias = "tarzan";
+		u1.addEmail("bobby2@gmail.com");
+		u1.save();
+
+		return ok(index.render("User test2 create"));
+	}
+	
 
 	public Result createUser() {
 
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
 		User user = new User();
-		user.id = Long.parseLong(json.findPath("id").toString()
-				.replaceAll("\"", ""));
+		//user.id = Long.parseLong(json.findPath("id").toString()
+	//			.replaceAll("\"", ""));
 		user.name = json.findPath("name").toString().replaceAll("\"", "");
 		user.password = json.findPath("password").toString().replaceAll("\"", "");
 		user.email = json.findPath("email").toString().replaceAll("\"", "");
@@ -62,8 +80,8 @@ public class UserCtrl extends Controller {
 
 	public Result getUser(String userInformation) {
 		JsonNode personJson = Json.toJson(findUser(userInformation));
-
-		return ok(personJson);
+		
+		return ok(profil.render(""));
 	}
 
 	public Result addOrganisation(Long id) {

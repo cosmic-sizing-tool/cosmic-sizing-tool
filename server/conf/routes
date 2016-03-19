@@ -17,7 +17,8 @@ POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 # Users
 GET     /user/profil                controllers.UserCtrl.show()
-GET		/users/test                 controllers.UserCtrl.test()
+GET		/users/test1                controllers.UserCtrl.test1()
+GET		/users/test2                controllers.UserCtrl.test2()
 POST    /user/password              controllers.UserCtrl.updatePassword()
 GET 	/user/settings     		    controllers.UserCtrl.settings()
 GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
