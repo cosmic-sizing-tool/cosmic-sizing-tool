@@ -1,0 +1,37 @@
+body {
+
+}
+header {
+	text-align: center;
+	border-bottom: solid;
+	height: 70px;
+}
+#message {
+	text-align: center;
+	border-bottom: solid;
+	height: 70px;
+}
+#menuop {
+	text-align: center;
+	border: solid;
+	width: 220px;
+	height: 600px;
+	float: left;
+}
+#patron {
+	text-align: center;
+	border-bottom: solid;
+	height: 50px;
+	margin-left: 220px;
+	}
+#table {
+	text-align: center;
+	border-bottom: solid;
+	margin-left: 220px;
+	height: 550px;
+	}
+footer {
+	text-align: center;
+	border-bottom: solid;
+	height: 70px;
+}
