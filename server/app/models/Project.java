@@ -30,10 +30,13 @@ public class Project extends Model {
     enum RolePerson{analystProgrammer,customerUser,developmentManager,independentReviewer,iTManager
     ,metricsManager,projectManager,projectOfficeSupport };
     public RolePerson rolePersonSubmittedProject;
+    public String rolePersonOther;
     
     //5.
     enum SoftwareType{newDevelopment,redevelopment,enhancement};
     public SoftwareType typeSoftwareProject;
+    public String softwareTypeOther;
+    
     
     //6.
     enum ProjectDescribes {businessApplication,realTimeApplication,mathematicallyIntensiveApplication,infrastructureSoftware};
@@ -53,6 +56,7 @@ public class Project extends Model {
     public boolean teamProcessImprovement;
     enum PrcsStndrs {softwareCMM,sPICE,tICKIT,cmmi,iso9002};
     public PrcsStndrs processStandards;
+    public String prcsStndrsOther;
     
     
     //58.
@@ -66,9 +70,12 @@ public class Project extends Model {
     public boolean EMailMessageServer;
     public String primaryTechnologyOther;
     
+    
+    
     //60.
     enum EnvironmentSoftwareDeveloped {pc,mainFrame,midRange,multiPlatform};
     public EnvironmentSoftwareDeveloped environmentSoftwareDevelopedOther;
+    public String envrnmntSftreDvlopedOther;
     
     //63.
     public boolean sameImplementationPlatform ;
@@ -76,10 +83,12 @@ public class Project extends Model {
     //63.
     enum Platform{mobile,pc,midRange,mainframe,multiPlatform};
     public Platform primaryImplementationPlatform;
+    public String primImplPlatformOther;
     
     //63.
     enum MblDvcEmbd{Automotive,Aviation,DomesticAppliance,MachineTool,MobilePhone,PDA,GamesDevice};
     public MblDvcEmbd mobileDeviceEmbedded;
+    public String mblDvcEmbdOther;
     
     
     
@@ -113,6 +122,7 @@ public class Project extends Model {
     community,consumer,electricity,finance,manufacturing,mining,recreation,transport};
 
     public IndstrySftwre industrySoftware;
+    public String industrySoftwareOther;
     
     
     //75.important
@@ -139,6 +149,7 @@ public class Project extends Model {
     //78.
     enum PrcdrDvlpmntTem{NoTimesheets,RecordedOnly,RecordedHours,RecordedThe};
     public PrcdrDvlpmntTem procedureDevelopmentTeam ;
+    public String prcdrDvlpmntTemOther;
     
     
     //81.
@@ -147,7 +158,8 @@ public class Project extends Model {
     //82.
     enum PrevQuestion{lessThan5,fRecordedEffort,unable}
     public PrevQuestion prvqst;
-
+    public String prevQuestionOther;
+    
     
     //85.
     enum RatetheQualityWork{poor,adequate,good,excellent}
