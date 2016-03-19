@@ -20,6 +20,25 @@ create table organisation (
   id_admin                  integer)
 ;
 
+create table pattern (
+  id                        integer primary key AUTOINCREMENT,
+  name                      varchar(20) not null,
+  description_courte        varchar(30) not null,
+  description_longue        varchar(250) not null)
+;
+
+create table pattern_process (
+  id                        integer primary key AUTOINCREMENT,
+  name                      varchar(255) not null,
+  quality_rating            varchar(1) not null,
+  process                   integer not null,
+  f_add                     integer not null,
+  f_modify                  integer not null,
+  f_delete                  integer not null,
+  f_unknown                 integer not null,
+  f_template                integer not null)
+;
+
 create table process (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255) not null,
@@ -71,6 +90,10 @@ drop table data_group;
 drop table organisation;
 
 drop table organisation_user;
+
+drop table pattern;
+
+drop table pattern_process;
 
 drop table process;
 
