@@ -1,0 +1,24 @@
+#SectionA
+
+project.sectionA=A. Submitter Information
+project.sectionA1=1. Contact information for the questionnaire submitter.
+project.sectionA1_con=Contact person: 
+project.sectionA1_org=Organisation: 
+project.sectionA1_cou=Country:      
+project.sectionA1_ema=E-mail:
+
+project.sectionA2=2. Your identifying name or ID for this submitted project.
+project.sectionA2_pro=Project ID:
+project.sectionA2_dat=Date Submitted:
+project.sectionA2_ddm=(dd-mmm-yy, e.g. 05-Jul-11)
+
+project.sectionA3=3. What was the role in this submitted project of the person who completed this questionnaire? 
+project.sectionA3_ana=Analyst/Programmer
+project.sectionA3_cus=Customer/End User
+project.sectionA3_dev=Development manager
+project.sectionA3_ind=Independent Reviewer
+project.sectionA3_itm=IT/MIS Manager
+project.sectionA3_met=Metrics Manager/Consultant
+project.sectionA3_pro=Project Manager/Leader
+project.sectionA3_pro1=Project Office/Tech.Support 
+project.sectionA3_oth=Other (specify):  
