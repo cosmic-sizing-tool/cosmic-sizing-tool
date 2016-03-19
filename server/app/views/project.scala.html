@@ -15,15 +15,26 @@
      <h3>@Messages("project.sectionA")</h3>
      <form role="form" action="NotePcJuris" method="get" accept-charset="utf-8">
 		<div class="form-group">
-		1. Contact information for the questionnaire submitter.<br>
-       <label for="note">@Messages("project.sectionA1_con")</label>
-       <input type="text" name="contact" id="contact"/><br>
-       <label for="note">@Messages("project.sectionA1_org")</label>
-       <input type="text" name="organisation" id="organisation"/><br>
-       <label for="note">@Messages("project.sectionA1_cou") </label>
-       <input type="text" name="country" id="country"/><br>
-       <label for="note">@Messages("project.sectionA1_ema")</label>
-       <input type="text" name="email" id="email"/><br><br>
+		@Messages("project.sectionA1")<br>
+	 <table style="width:40%" >
+  <tr>
+    <td><label for="note">@Messages("project.sectionA1_con")</label></td>
+    <td><input type="text" name="contact" id="contact"/><br></td>
+  </tr>
+  <tr>
+    <td><label for="note">@Messages("project.sectionA1_org")</label></td>
+    <td><input type="text" name="organisation" id="organisation"/><br></td>
+  </tr>
+  <tr>
+    <td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
+    <td> <input type="text" name="country" id="country"/><br></td>
+  </tr>
+  <tr>
+    <td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
+    <td><input type="text" name="email" id="email"/><br><br></td>
+  </tr>
+</table> 
+     
 	   </div>
 	   <div class="form-group">
 	   2. Your identifying name or ID for this submitted project.<br>
@@ -46,7 +57,8 @@
        <input type="text" name="other" id="other"/><br><br>
 	   
 	   <p><input type="submit" value="Soumettre" class="btn btn-primary"/></p>
-	   
+	   	   
+
      </form>
 	 </div>
 	</body>
