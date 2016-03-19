@@ -4,11 +4,12 @@
  * Data structures
  */
 
+// Counter for data mouvement (types) letters - 5th value is sum of first 4
 function DataTypeSize( string ) {
-    //var count_e = string.
     return [ 0,0,0,0,0 ];
 }
 
+// Lines contain 2 strings
 function Line( data ) {
     if ( data === undefined )
         data = {};
@@ -19,6 +20,7 @@ function Line( data ) {
     return line;
 }
 
+// Processes have a name and an array of lines
 function Process( data ) {
     if ( data === undefined )
         data = {};
@@ -29,6 +31,7 @@ function Process( data ) {
     return process;
 }
 
+// Patterns have an id, a short and long description and an array of processes
 function Pattern( data ) {
     if ( data === undefined )
         data = {};
@@ -41,6 +44,7 @@ function Pattern( data ) {
     return pattern;
 }   
 
+// View Model used by Knockout JS
 function PatternVM() {
     var self = this;
     
@@ -53,8 +57,9 @@ function PatternVM() {
      *  AJAX
      */
 
+    // Fetch pattern from DB (if id == 0 then insert else update)
     self.getPattern = function( id ) {
-        if ( id > 0 && false ) {
+        if ( id > 0 ) {
             console.log( "getPattern " + id );
             $.getJSON( "/api/pattern/" + id, function( pattern ) {
                 self.pattern( new Pattern( pattern ) );
@@ -64,9 +69,13 @@ function PatternVM() {
         }
     };
 
-    self.save = function() {
+    // TODO implement functions
+    self.save = function() {}
+    self.delete = function() {}
+    self.tabNext = function() {}
+    self.insertTabUnder = function() {}
+    self.insertTabOver = function() {}
 
-    }
 }
 
 
@@ -74,11 +83,14 @@ function PatternVM() {
  * Entry point
  */
 
+// Get pattern ID from URL
 var pattern_id = window.location.pathname.match(/\d+/)[0];
 var pattern_vm = new PatternVM();
 
+// Apply bindings from ViewModel with KnockoutJS
 pattern_vm.getPattern( pattern_id );
 ko.applyBindings( pattern_vm );
+
 
 /*
  * Shortcuts
@@ -86,22 +98,29 @@ ko.applyBindings( pattern_vm );
 
 var is_ctrl = false;
 
+// Remember when <ctrl> is pressed
 document.onkeyup = function( e ) {
     if ( e.ctrlKey ) 
         is_ctrl = false;
 }
 
 document.onkeydown = function( e ) {
+    // <tab> gives focus to next input field (+ subtilities)
     if ( e.key === 'Tab' )
-        pattern.tabNext();
+        pattern_vm.tabNext();
+    // <ctrl> needed for shortcuts
     else if ( e.key === 'Control' )
         is_ctrl = true;
+    // <ctrl> + <s> saves pattern
     else if ( is_ctrl && e.key === 's' )
         pattern_vm.save();
+    // <ctrl> + <d> deletes pattern
     else if ( is_ctrl && e.key === 'd' )
         pattern_vm.delete();
+    // <ctrl> + <u> inserts line under focus
     else if ( is_ctrl && e.key === 'u' )
         pattern_vm.insertLineUnder();
+    // <ctrl> + <o> inserts line over focus
     else if ( is_ctrl && e.key === 'o' )
         pattern_vm.insertLineOver();
     else
