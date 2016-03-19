@@ -43,11 +43,23 @@ public class ProjectController extends Controller {
         
         Form<Project> formData = Form.form(Project.class).bindFromRequest();
         
+        String id = formData.data().get("id");
+        
         Project projectModel= formData.get();
         
-        projectModel.save();
-        
+        if(formData.data().get("id") != null) {
+            projectModel.update();
+            projectModel = Project.find.byId(Long.parseLong(id));
+        } else {
+            Long newId = Project.nextId();
+            projectModel.id = newId;
+             projectModel.save();
+             projectModel = Project.find.byId(newId);
+        }
+
         flash("Saved");
+        
+        
         
         return ok(project.render(projectModel));
     }
