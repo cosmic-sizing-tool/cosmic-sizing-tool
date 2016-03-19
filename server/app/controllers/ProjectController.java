@@ -15,6 +15,7 @@ public class ProjectController extends Controller {
 
     public Result index(Long projectId) {
         
+<<<<<<< HEAD
         Project projectModel;
         
         Form<Project> projectForm = form(Project.class);
@@ -30,6 +31,9 @@ public class ProjectController extends Controller {
         }
         
         return ok(project.render(null));
+=======
+        return ok(project.render());
+>>>>>>> a99e16a85b0e9e9528ab7e6116eb8d5b9c0e2cbd
     }
     
     public Result fetch(Long projectId) {
