@@ -16,7 +16,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 # Gestion des patrons
 # Appel par le menu de navigation du site ##################################
 GET     /pattern                                    controllers.Pattern.index()
-#GET    /pattern/:id_pattern                        controllers.Pattern.modification(id_pattern: Long)
+GET    /pattern/:id_pattern                        controllers.Pattern.modification(id_pattern: Long)
 ############################################################################
 # API de l'interface REST (appels AJAX)
 POST    /api/pattern/new               controllers.Pattern.create()

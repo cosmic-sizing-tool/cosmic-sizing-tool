@@ -89,9 +89,6 @@ public class Pattern extends Controller {
 
     //Va chercher le json dans la db
     public Result description(long id_pattern){
-
-        //Query query = JPA.em().createQuery("select * from pattern where id = " + id_pattern);
-        List<models.Pattern> pattern = query.getResultList();
         return  null;
     }
 
