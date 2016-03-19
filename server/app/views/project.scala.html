@@ -11,12 +11,12 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-	<div class="container" style = " background-color:#D1E9F2">
+	<div class="container" style = " background-color:#D1E9F2" style="width:40%">
      <h3>@Messages("project.sectionA")</h3>
      <form role="form" action="NotePcJuris" method="get" accept-charset="utf-8">
-		<div class="form-group">
+	 <div class = "table-responsive" >
 		@Messages("project.sectionA1")<br>
-	 <table style="width:40%" >
+	 <table class = "table" style="width:40%" >
   <tr>
     <td><label for="note">@Messages("project.sectionA1_con")</label></td>
     <td><input type="text" name="contact" id="contact"/><br></td>
@@ -36,26 +36,66 @@
 </table> 
      
 	   </div>
-	   <div class="form-group">
-	   2. Your identifying name or ID for this submitted project.<br>
-	   <label for="note">@Messages("project.sectionA2_pro")</label>
-       <input type="text" name="projectId" id="projectId"/><br>
-       <label for="note">@Messages("project.sectionA2_dat")</label>
-       <input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br>
+
+	   
+	  
+	  <div class = "table-responsive" >
+	  @Messages("project.sectionA2")<br>
+	    <table class = "table" style="width:40%">
+  <tr>
+    <td><label for="note">@Messages("project.sectionA2_pro")</label></td>
+    <td> <input type="text" name="projectId" id="projectId"/><br></td>
+  </tr>
+  <tr>
+    <td><label for="note">@Messages("project.sectionA2_dat")</label></td>
+    <td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
+  </tr>
+</table> 
+	   
+    
 	   </div>
-	   
-	   3. What was the role in this submitted project of the person who completed this questionnaire?<br>
-	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_ana")<br>
-	   <input type="checkbox" name="role" value="female"> @Messages("project.sectionA3_cus")<br>
-	   <input type="checkbox" name="role" value="other"> @Messages("project.sectionA3_dev")<br>
-	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_ind")<br>
-	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_itm")<br>
-	   <input type="checkbox" name="role" value="female"> @Messages("project.sectionA3_met")<br>
-	   <input type="checkbox" name="role" value="other"> @Messages("project.sectionA3_pro")<br>
-	   <input type="checkbox" name="role" value="male"> @Messages("project.sectionA3_pro1")<br>
+	  
+	  @Messages("project.sectionA3")<br>
+
+ <div class="table-responsive">          
+  <table class="table" style="width:45%">
+      <tr>
+<td> <input type="checkbox" name="role" value="value"> 
+@Messages("project.sectionA3_ana")
+</td>
+<td>
+	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_cus")
+</td>
+<td>
+	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_dev")
+</td>
+</tr>
+<tr>
+<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_ind") </td>
+
+<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_itm")
+</td>
+<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_met")
+</td>
+<tr>
+<td>
+	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_pro")
+</td>
+<td>	   
+
+<input type="checkbox" name="role" value="value">
+ @Messages("project.sectionA3_pro1")
+</td>
+<td>
 	   <label for="other">@Messages("project.sectionA3_oth")</label>
-       <input type="text" name="other" id="other"/><br><br>
-	   
+       <input type="text" name="other" id="other"/>
+</td>
+</tr>
+</table>
+</div>
+
+	  
+	  
 	   <p><input type="submit" value="Soumettre" class="btn btn-primary"/></p>
 	   	   
 
