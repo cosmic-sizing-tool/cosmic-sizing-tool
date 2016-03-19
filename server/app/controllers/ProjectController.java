@@ -36,7 +36,19 @@ public class ProjectController extends Controller {
     public Result fetch(Long projectId) {
         Project projectModel = Project.find.byId(projectId);
         return ok(Json.toJson(projectModel));
-    } 
+    }
+    
+    
+    public Result submit() {
+        
+        Form<Project> formData = Form.form(Project.class).bindFromRequest();
+        
+        Project projectModel= formData.get();
+        
+        projectModel.save();
+        
+        return ok("Saved");
+    }
     
     
 }
