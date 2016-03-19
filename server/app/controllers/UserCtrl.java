@@ -12,7 +12,7 @@ import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
 import play.mvc.Http.RequestBody;
-import java.util.List;
+import java.util.*;
 
 import com.avaje.ebean.*;
 
@@ -22,14 +22,14 @@ public class UserCtrl extends Controller {
 	public Result show() {
 		Long id = 13L;
 		User temp = User.find.byId(id);
-        User essai = new User();
+        /*User essai = new User();
         essai.save();
 		Organization org = new Organization("COSMIC");
 		org.save();
 		List<Organization> orgListe = Organization.find.where()
 				.ilike("name", "COSMIC").findList();
-		return ok(profil.render("id"+ essai.id+" "+orgListe.size() + " "+" "+temp.name));
-		//return ok(profil.render("Profil"));
+		return ok(profil.render("id"+ essai.id+" "+orgListe.size() + " "+" "+temp.name));*/
+		return ok(profil.render("Profil"));
 	}
 	
 	public Result settings() {
@@ -66,15 +66,15 @@ public class UserCtrl extends Controller {
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
 		User user = new User();
-		//user.id = Long.parseLong(json.findPath("id").toString()
-	//			.replaceAll("\"", ""));
+		user.id = Long.parseLong(json.findPath("id").toString()
+				.replaceAll("\"", ""));
 		user.name = json.findPath("name").toString().replaceAll("\"", "");
 		user.password = json.findPath("password").toString().replaceAll("\"", "");
 		user.email = json.findPath("email").toString().replaceAll("\"", "");
 		user.alias = json.findPath("alias").toString().replaceAll("\"", "");
 		user.deleted = false;
 		user.save();
-		// read the JsonNode as a Person
+		
 		return ok(index.render("created"));
 	}
 
@@ -149,42 +149,47 @@ public class UserCtrl extends Controller {
 		return ok(account_settings.render());
 	}
 
-	public Result updateInformation(String email) {
-		JsonNode json = Json.parse(request().body().asJson().toString());
-		String newEmail = json.findPath("newemail").toString()
-				.replaceAll("\"", "");
-		String newAlias = json.findPath("newalias").toString()
-				.replaceAll("\"", "");
-		String newPassword = json.findPath("newpassword").toString()
-				.replaceAll("\"", "");
-		User u1 = new User();
-		boolean change = false;
-		List<User> user = User.find.where().ilike("email", email).findList();
-		if (user.size() == 1) {
-			u1 = user.get(0);
-			if (newEmail.length() != 0) {
-				u1.email = newEmail;
-				change = true;
-			} else if (newAlias.length() != 0) {
-				u1.alias = newAlias;
-				change = true;
-			} else if (newPassword.length() != 0) {
-				u1.password = newPassword;
-				change = true;
-			}
+	public Result updateProfil(){
+		
+		RequestBody body = request().body();
+		
+		//String userInfo = body.asFormUrlEncoded().get("userId")[0];
+		String emailSended = body.asFormUrlEncoded().get("email")[0];
+		String nameSended = body.asFormUrlEncoded().get("name")[0];
+		String urlSended = body.asFormUrlEncoded().get("url")[0];
+		String companySended = body.asFormUrlEncoded().get("company")[0];
+		String locationSended = body.asFormUrlEncoded().get("location")[0];
+		
+		User user = findUser("bobby@email.com");
+		
+		ArrayList validations = areValideInformations(nameSended,urlSended,companySended,locationSended);
+		
+		if(validations.size() != 0){
 
-		} else {
-			return notFound(index.render("Not updated!"));
+		    flash("error", String.join(", ", validations));
+		    
+		}else{
+		    
+    		if(user != null){
+    		    
+    		    user.email = emailSended;
+    		    user.name = nameSended;
+    		    user.url = urlSended;
+    		    user.company = companySended;
+    		    user.location = locationSended;
+    		    
+    		    user.save();
+    		    
+    		    flash("success", "Modifications effectuées avec succes");
+    		    
+    		}else{
+    
+    		    flash("error", "Serveur indisponible. Réessayer plus tard");
+    		}		    
 		}
-		if (change) {
-			u1.save();
-		} else {
-			return badRequest(index.render("Invalid json syntax!"));
-		}
 
-		return ok(index.render("updated"));
-
-	}
+		return ok(profil.render("Body : " + String.join(", ", justePourTest(user))));            
+    }
 
 	public Result deleteUser(Long id) {
 		if (userExist(id)){
@@ -260,5 +265,42 @@ public class UserCtrl extends Controller {
 		}
 		return true;
 	}
+	
+	public ArrayList areValideInformations(String name,String url, String company,String location){
 
+	    ArrayList result = new ArrayList();
+	    
+	    if(name.length() == 0){
+	        result.add("Le nom est invalide");   
+	    }
+	    
+	    if(url.length() == 0){
+	        result.add("L'url ne correspond pas au format valide");
+	    }
+	    
+	    if(company.length() == 0){
+	        result.add("Le nom de la compagnie est invalide");   
+	    }
+	    
+	    if(location.length() == 0){
+	       result.add("La location est invalide"); 
+	    }
+	    
+	    return result;    
+	}
+	
+	public ArrayList justePourTest(User globalUser) {
+	    
+	    ArrayList userInfoList = new ArrayList<>();
+        
+        userInfoList.add(globalUser.name);
+        userInfoList.add(globalUser.password);
+        userInfoList.add(globalUser.email);
+        userInfoList.add(globalUser.alias);
+        userInfoList.add(globalUser.url);
+        userInfoList.add(globalUser.company);
+        userInfoList.add(globalUser.location);	
+        
+        return userInfoList;
+	}
 }

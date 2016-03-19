@@ -29,6 +29,8 @@ public class Certification extends Model {
     @Constraints.Required
     public int year;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    public User user; 
 
 
     public static Finder<Long,Certification> find = new Finder<Long,Certification>(Long.class, Certification.class);

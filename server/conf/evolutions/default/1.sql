@@ -8,7 +8,8 @@ create table certification (
   method                    varchar(255) not null,
   version                   varchar(255) not null,
   month                     integer,
-  year                      integer)
+  year                      integer,
+  user_id                   integer)
 ;
 
 create table organisation (
@@ -36,8 +37,14 @@ create table user (
   password                  varchar(255),
   alias                     varchar(255),
   deleted                   integer(1),
+  disponible                integer(1),
   email                     varchar(255),
-  created_at                timestamp)
+  created_at                timestamp,
+  url                       varchar(255),
+  company                   varchar(255),
+  location                  varchar(255),
+  constraint uq_user_alias unique (alias),
+  constraint uq_user_email unique (email))
 ;
 
 
@@ -46,6 +53,8 @@ create table organisation_user (
   user_id                        integer not null,
   constraint pk_organisation_user primary key (organisation_id, user_id))
 ;
+alter table certification add constraint fk_certification_user_1 foreign key (user_id) references user (id);
+create index ix_certification_user_1 on certification (user_id);
 
 
 

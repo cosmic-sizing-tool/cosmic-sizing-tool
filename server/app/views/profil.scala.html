@@ -1,24 +1,128 @@
 @(message: String)
 
 @main("Homepage") {
-    <p> Profil</p>
-
-  <form role="form" method="post" action="@routes.UserCtrl.updatePassword()" >
-  <div class="form-group">
-    <label for="oldPassword">Old Password:</label>
-    <input type="text" class="form-control" name="oldPassword" id="oldPassword">
-  </div>
-  <div class="form-group">
-    <label for="newPassword">Password:</label>
-    <input type="password" class="form-control" name="newPassword" id="newPassword">
-  </div>
-  <div class="form-group">
-    <label for="confirmationPassword">Confirm Password:</label>
-    <input type="password" class="form-control" name="confirmationPassword" id="confirmationPassword">
-  </div>
-
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
+<!-- <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
+   <div class="form-group">
+     <label for="name">Name</label>
+     <input type="text" class="form-control" name="name" id="name">
+   </div>
+   
+   <div class="form-group">
+     <label for="email">Public email</label>
+     <input type="text" class="form-control" name="email" id="email">
+   </div>    
+   
+   <div class="form-group">
+     <label for="url">Url</label>
+     <input type="text" class="form-control" name="url" id="url">
+   </div>       
+   <div class="form-group">
+     <label for="comapany">Company</label>
+     <input type="text" class="form-control" name="company" id="company">
+   </div>      
+   <div class="form-group">
+     <label for="Location">Location</label>
+     <input type="text" class="form-control" name="location" id="location">
+   </div>      
+   <input type="hidden" name="userId" value="12">
+   <button type="submit" class="btn btn-default">Update Profil</button>
+   </form>
+   -->
+<!-- Debut container -->
+<div class="container">
+   <div class="row">
+      <div class="col-md-3">
+         <div class="panel panel-default">
+            <div class="panel-heading"><strong> Paramètres personnels</strong></div>
+            <div class="panel-body">
+               <a href="#">Profil</a> <br>
+               <a href="#">Paramètres du compte</a>
+            </div>
+         </div>
+      </div>
+      <!-- fin du col-md-4 -->
+      <div class="col-md-9">
+         <div class="panel panel-default" style="">
+            <div class="panel-heading"><strong>Profil public</strong></div>
+            <div class="panel-body">
+               <label for="upload-profile-picture">Photo de profil</label>
+               <div class="avatar-upload-container clearfix">
+                  <img src="image.jpg" style="height: 70px; width: 70px;">
+                  <span class="btn btn-default btn-file">Télécharger votre photo <input type="file">
+                  </span>
+                  <p style="color: grey;font-size: 11px; padding-left: 80px;">Vous pouvez aussi glisser votre photo depuis votre ordinateur
+                  </p>
+               </div>
+               <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
+                  <div class="col-xs-8">
+                     <label for="name">Nom</label>
+                     <input type="text" class="form-control" name="name" id="name">
+                  </div>
+                  <div class="col-xs-8">
+                     <label for="email">Courriel public</label> <br>
+                     <select style="border-radius: 5px;" class="form-control" name="email" id="email">
+                        <option>afaicalsgmail.com</option>
+                        <option>Ne pas afficher mon courriel</option>
+                     </select>
+                     <p style= 'color: grey;font-size: 11px; padding-top: 2px;'>Vous pouvez aussi ajouter ou supprimer des courriels dans vos paramètres
+                     </p>
+                  </div>
+                  <div class="col-xs-8">
+                     <label for="url">URL</label>
+                     <input type="text" class="form-control" name="url" id="url">
+                  </div>
+                  <div class="col-xs-8">
+                     <label for="company">Compagnie</label>
+                     <input type="text" class="form-control" name="company" id="company">
+                  </div>
+                  <div class="col-xs-8">
+                     <label for="ex3">Emplacement</label>
+                     <input type="text" class="form-control" name="location" id="location">
+                  </div>
+                  <br>
+                  <div class="col-xs-8" style="padding-top: 10px;">
+                     <button type="submit" class="btn btn-success">Mettre à jour</button>
+                  </div>
+               </form>
+            </div>
+            <!-- Fin du panel body -->
+         </div>
+         <!-- Fin du panel -->
+      </div>
+      <!-- Fin du col-md-8 -->
+   </div>
+   <!-- fin du row -->
+   <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+         <div class="panel panel-default">
+            <div class="panel-heading"><strong>Profil du mesureur</strong> </div>
+            <div class="panel-body">
+               <div class="col-xs-8">
+                  <label for="ex1">Certification de méthode</label> <br>
+                  <select style="border-radius: 5px;width: 27%;">
+                     <option>COSMIC</option>
+                     <option>IFPUG</option>
+                     <option>FISMA</option>
+                     <option>NESMA</option>
+                     <option>MARK II</option>
+                  </select>
+               </div>
+               <div class="col-xs-2" style="padding-right: 35px;">
+                  <label for="ex1">Version</label> <br>
+                  <input class="form-control" id="ex2" type="text"><br>
+               </div>
+               <div class="col-xs-8">
+                  <input type="checkbox">Disponible pour mesurer
+               </div>
+               <div class="col-xs-8" style="padding-top: 15px;">
+                  <button type="button" class="btn btn-success">Mettre à jour</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- fin container-->
 @message
 }
