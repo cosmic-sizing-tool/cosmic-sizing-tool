@@ -47,9 +47,10 @@ public class ProjectController extends Controller {
         
         projectModel.save();
         
-        return ok("Saved");
+        flash("Saved");
+        
+        return ok(project.render(projectModel));
     }
-    
     
 }
 
