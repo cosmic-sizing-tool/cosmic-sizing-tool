@@ -13,16 +13,16 @@ public class ProjectController extends Controller {
 
     public Result index(Long projectId) {
         
-        Project project;
+        Project projectModel;
         
         Form<Project> projectForm = form(Project.class);
         
         if(projectId != 0) {
-            project = Project.find.byId(projectId);
-            if(project == null) {
-                return ok(project.render());
+            projectModel = Project.find.byId(projectId);
+            if(projectModel == null) {
+                return ok(project.render(projectModel));
             } else {
-                return ok(project.render());
+                return ok(project.render(projectModel));
             }
             
         }
