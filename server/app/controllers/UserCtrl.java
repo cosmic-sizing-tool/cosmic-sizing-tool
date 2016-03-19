@@ -106,24 +106,25 @@ public class UserCtrl extends Controller {
 		return ok(account_settings.render());
 	}
 	
-	public Result changeUsername(){
-	    String regex = "^.*@[a-z]+\\.[a-z]{2,3}$";
-	    String email = "paper@email.com";
+	public Result changeUsername(long id){
 	    RequestBody body = request().body();
 	    JsonNode json = Json.parse(body.asJson().toString());
 	    String newUsername = json.findPath("newUsername").toString()
 				.replaceAll("\"", "");
-		User user = findUser(email);
+		User user = User.find.byId(id);
 		
 		if(!newUsername.equals("")) {
-		    if(newUsername.matches(regex)) {
+		    if(email_valid(newUsername) && !email_exist(newUsername)) {
 		        user.email = newUsername;
 		        user.save();
 		    }else{
-		        user.alias = newUsername;
-		        user.save();
+		        if(!username_exist(newUsername)) {
+		            user.alias = newUsername;
+		            user.save();
+		        }else{
+		            flash("success", "Nom d'utilisateur/email modifié avec succès!");
+		        }
 		    }
-		    flash("success", "Nom d'utilisateur/email modifié avec succès!");
 		}else{
 		    flash("error", "Un nom d'utilisateur/email ne peut être vide !");
 		}
@@ -168,27 +169,6 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result deleteUser(Long id) {
-		/*UserCtrl userCtrl = new UserCtrl();
-		Organisation organisation = new Organisation();
-		List<Organisation> userAdmin =  Organisation.find
-				.where().ilike("id_admin", id.toString()).findList();
-
-		if (userCtrl.userExist(id)) {
-			User user = User.find.byId(id);
-			if (user.organisations.size() == 0) {
-				if (userAdmin.size() == 0) {
-
-					user.delete();
-				} else {
-					return badRequest("Utilisateur est affecter a un ou plusieurs organisations");
-				}
-			} else {
-				return badRequest("Utilisateur est affecter a un ou plusieurs organisations");
-			}
-
-		} else {
-			return notFound(index.render("User dont exist"));
-		}*/
 		if (userExist(id)){
 		    User user = User.find.byId(id);
 		    List<Organisation> userAdmin = Organisation.find
@@ -228,7 +208,6 @@ public class UserCtrl extends Controller {
 	}
 
 	public boolean userExist(long id) {
-
 		boolean exist = false;
 		User user = User.find.byId(id);
 		if (user != null) {
@@ -237,7 +216,24 @@ public class UserCtrl extends Controller {
 
 		return exist;
 	}
+	
+	public boolean email_exist(String mail) {
+	   List<User> users = User.find.where()
+					.ilike("email", mail).findList();
+		return (users.size() == 1 ? true : false);
+	}
 
+    public boolean username_exist(String username) {
+        List<User> users = User.find.where()
+					.ilike("alias", username).findList(); 
+	     return (users.size() == 1 ? true : false);
+    }
+    
+    public boolean email_valid(String mail){
+        String regex = "^.*@[a-z]+\\.[a-z]{2,3}$";
+        return mail.matches(regex);
+    }
+    
 	public static boolean isNumeric(String str) {
 		try {
 			Long id = Long.parseLong(str);
