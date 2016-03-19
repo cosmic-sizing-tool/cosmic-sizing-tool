@@ -13,7 +13,7 @@ public class Project extends Model {
     
     public static Finder<Long,Project> find = new Finder<Long,Project>(Project.class);
     @Id
-    private Long id;
+    public Long id;
     
     private static Long nextId = 0L;
     
