@@ -187,11 +187,11 @@ public class Project extends Model {
     public Date dateSoftwareOperation;
     
     //124.
-    public int totalProjectElapsedDuration
+    public int totalProjectElapsedDuration;
     
     //125.
     
-    public int timeTotalInactivity,
+    public int timeTotalInactivity;
     
     
     
