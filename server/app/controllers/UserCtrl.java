@@ -22,9 +22,8 @@ public class UserCtrl extends Controller {
     
 	public Result show() {
 		Long id = 15L;
-		User temp = User.find.byId(id);
         
-		return ok(profil.render(temp));
+		return ok(profil.render(User.find.byId(id)));
 	}
 	
 	public Result settings() {
@@ -43,16 +42,19 @@ public class UserCtrl extends Controller {
         temp.primary = true;
         temp.user = u1;
 
-        try {
+        //try {
+            u1.save();
             temp.save();
             u1.emails.add(temp);
             u1.save();
-        }catch(Exception ie){
+            
+       // }catch(Exception ie){
 
-        }finally {
-            u1 = User.find.where()
-                    .ilike("email", "paper@email.com").findList().get(0);
-        }
+       /* }finally {
+            List<User> users = User.find.where()
+                    .ilike("email", "paper@email.com").findList();
+            u1 = users.get(0);
+        }*/
         userGlobal = u1;
 		return ok(index.render("User test1 create"));
 	}
@@ -68,16 +70,18 @@ public class UserCtrl extends Controller {
         temp.primary = true;
         temp.user = u1;
 
-        try {
+        //try {
+            u1.save();
             temp.save();
             u1.emails.add(temp);
             u1.save();
-        }catch(Exception ie){
+        //}catch(Exception ie){
 
-        }finally {
-            u1 = User.find.where()
-                    .ilike("email", "bobb23y@email.com").findList().get(0);
-        }
+        /*}finally {
+            List<User> users = User.find.where()
+                    .ilike("email", "bobb23y@email.com").findList();
+            u1 = users.get(0);
+        }*/
         userGlobal = u1;
 		return ok(index.render("User test2 create"));
 	}

@@ -1,127 +1,117 @@
 @(user: User)
 
 @main("Homepage") {
-<!-- Debut container -->
-<div class="container">
-   <div class="row">
-      <div class="col-md-3">
-         <div class="panel panel-default">
-            <div class="panel-heading"><strong> Paramètres personnels</strong></div>
-            <div id="link-menu" class="panel-body">
-               <a class="link" href="@routes.UserCtrl.show()">Profil</a><br>
-               <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a><br>
-                <a class="link" href="@routes.EmailCtrl.emails()">Gestion des courriels/a>
-            </div>
-         </div>
-      </div>
-      <!-- fin du col-md-4 -->
-      <div class="col-md-9">
-         <div class="panel panel-default" style="">
-            <div class="panel-heading"><strong>Profil public</strong></div>
-            <div class="panel-body">
-               <label for="upload-profile-picture">Photo de profil</label>
-               <div class="avatar-upload-container clearfix">
-                  <img src="image.jpg" style="height: 70px; width: 70px;">
-                  <span class="btn btn-default btn-file">Télécharger votre photo <input type="file">
-                  </span>
-                  <p style="color: grey;font-size: 11px; padding-left: 80px;">Vous pouvez aussi glisser votre photo depuis votre ordinateur
-                  </p>
-               </div>
-               <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
-                  <div class="col-xs-8">
-                     <label for="name">Nom</label>
-                     <input type="text" class="form-control" name="name" id="name" value="@user.name">
-                  </div>
-                  <div class="col-xs-8">
-                     <label for="email">Courriel public</label> <br>
-                     <select style="border-radius: 5px;" class="form-control" name="email" id="email">
-                        <option>afaicalsgmail.com</option>
-                        <option>Ne pas afficher mon courriel</option>
-                     </select>
-                     <p style= 'color: grey;font-size: 11px; padding-top: 2px;'>Vous pouvez aussi ajouter ou supprimer des courriels dans vos paramètres
-                     </p>
-                  </div>
-                  <div class="col-xs-8">
-                     <label for="url">URL</label>
-                     <input type="text" class="form-control" name="url" id="url">
-                  </div>
-                  <div class="col-xs-8">
-                     <label for="company">Compagnie</label>
-                     <input type="text" class="form-control" name="company" id="company">
-                  </div>
-                  <div class="col-xs-8">
-                     <label for="ex3">Emplacement</label>
-                     <input type="text" class="form-control" name="location" id="location">
-                  </div>
-                  <br>
-                  <div class="col-xs-8" style="padding-top: 10px;">
-                     <button type="submit" class="btn btn-success">Mettre à jour</button>
-                  </div>
-               </form>
-            </div>
-            <!-- Fin du panel body -->
-         </div>
-         <!-- Fin du panel -->
-      </div>
-      <!-- Fin du col-md-8 -->
-   </div>
-   <!-- fin du row -->
-   <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-9">
-         <div class="panel panel-default">
-            <div class="panel-heading"><strong>Profil du mesureur</strong> </div>
-            <div class="panel-body">
-            
-            <form method="post" role="form" action="@routes.UserCtrl.addCertification()">
-               <div class="col-xs-8">
-                  <label for="certification">Certification de méthode</label> <br>
-                  <select id="certification" name="certification" style="border-radius: 5px;width: 27%;">
-                     <option>COSMIC</option>
-                     <option>IFPUG</option>
-                     <option>FISMA</option>
-                     <option>NESMA</option>
-                     <option>MARK II</option>
-                  </select>
-               </div>
-               <div class="col-md-3" style="padding-right: 25px;">
-                    <label for="version">Version</label> <br>
-                    <select id="version" name="version" style="border-radius: 5px; width: 30%;">
-                        <option>2.0</option>
-                        <option>2.1</option>
-                        <option>2.2</option>
-                        <option>3.0</option>
-                        <option>4.0</option>
-                    </select>
+    <!-- Debut container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong> Paramètres personnels</strong></div>
+                    <div class="panel-body">
+                        <a href="#">Profil</a> <br>
+                        <a href="#">Paramètres du compte</a>
+                    </div>
                 </div>
-                <div class="col-md-3" style="padding-right: 25px;">
-                    <label for="date">Date</label><br>
-                    <input class="form-control" id="date" name="date" type="month">
+            </div>   <!-- fin du col-md-4 -->
+
+            <div class="col-md-9">
+                <div class="panel panel-default" style="">
+                    <div class="panel-heading"><strong>Profil public</strong></div>
+                    <div class="panel-body">
+                        <label for="upload-profile-picture">Photo de profil</label>
+                        <div class="avatar-upload-container clearfix">
+                            <img src="image.jpg" style="height : 70px ; width : 70px ;">
+                            <span class="btn btn-default btn-file">Télécharger votre photo <input type="file">
+                            </span>
+                            <p style="color : grey ; font-size : 11px ; padding-left : 80px ;">
+                                Vous pouvez aussi glisser votre photo depuis votre ordinateur
+                            </p>
+                        </div>
+                        <form role="form">
+                            <div class="col-xs-8">
+                                <label for="ex3">Nom</label>
+                                <input class="form-control" id="" type="text">
+                            </div>
+                            <div class="col-xs-8">
+                                <label>Courriel public</label> <br>
+                                <select style="border-radius : 5px ;">
+                                    <option>Ne pas afficher mon courriel</option>
+                                    <option>@user.email</option>
+                                </select>
+                                <p style="color : grey ; font-size : 11px ; padding-top : 2px ;">
+                                    Vous pouvez aussi ajouter ou supprimer des courriels dans vos paramètres
+                                </p>
+                            </div>
+                            <div class="col-xs-8">
+                                <label for="ex3">URL</label>
+                                <input class="form-control" id="" type="text">
+                            </div>
+                            <div class="col-xs-8">
+                                <label for="ex3">Compagnie</label>
+                                <input class="form-control" id="" type="text">
+                            </div>
+                            <div class="col-xs-8">
+                                <label for="ex3">Emplacement</label>
+                                <input class="form-control" id="" type="text">
+                            </div>
+                            <br>
+                            <div class="col-xs-8" style="padding-top : 10px ;">
+                                <button type="button" class="btn btn-success">Mettre à jour</button>
+                            </div>
+                        </form>
+                    </div> <!-- Fin du panel body -->
+                </div> <!-- Fin du panel -->
+            </div> <!-- Fin du col-md-8 -->
+        </div> <!-- fin du row -->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong>Profil du mesureur</strong> </div>
+                    <div class="panel-body">
+                        <script async type="text/javascript" src="@routes.Assets.versioned("javascripts/users/certifications.js")"></script>
+                        <ul id="certifications">
+                            <li>COSMIC 2.0</li>
+                        </ul>
+                        <form role="form">
+                            <div class="col-md-3">
+                                <input type="checkbox"><span style="font-size : 14px ;">Disponible pour mesurer</span>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-3">
+                                    <label>Certification </label> <br>
+                                    <select style="border-radius : 5px ;" id="methode">
+                                        <option>COSMIC</option>
+                                        <option>IFPUG</option>
+                                        <option>FISMA</option>
+                                        <option>NESMA</option>
+                                        <option>MARK II</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label style="padding-left : 5px ;">Version</label> <br>
+                                    <select style="border-radius : 5px ; padding-left : 10px ;" id="version">
+                                        <option>2.0</option>
+                                        <option>2.1</option>
+                                        <option>2.2</option>
+                                        <option>3.0</option>
+                                        <option>4.0</option>
+                                    </select>
+                                </div>
+                                <div class="date">
+                                    <label>Date de certification</label><br>
+                                    <input type="month" style="height : 35px ;" class="col-sm-6">
+                                </div>
+                            </div> <br><br><br><br>
+                            <div style="padding-left : 10px ;">
+                                <button type="button" class="btn btn-success">Mettre à jour mon profil de msesureur</button>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
-               <!--<div class="col-xs-8">
-               <label for="annee">Année d'obtention</label><br>
-                  <input id="annee" name="annee" type="text"><br>
-               </div>
-               <div class="col-xs-8">
-                <label for="mois">Mois d'obtention</label><br>
-                  <input id="mois" name="mois" type="text"><br>
-               </div>-->
-               <div class="col-xs-8" style="padding-top: 15px;">
-                  <button type="submit" class="btn btn-success">Mettre à jour</button>
-               </div>
-            </form>
-            <form role="form" method="post" action="@routes.UserCtrl.disponibleMesure()">
-               <div class="col-xs-8">
-                  <input id="dispo" name="dispo" type="checkbox" value="true">Disponible pour mesurer
-               </div>
-               <div class="col-xs-8" style="padding-top: 15px;">
-                  <button type="submit" class="btn btn-success">Mettre à jour</button>
-               </div>
-            </form>   
             </div>
-         </div>
-      </div>
-   </div>
-</div>
-<!-- fin container-->
+        </div>
+    </div> <!-- fin container-->
+
 }

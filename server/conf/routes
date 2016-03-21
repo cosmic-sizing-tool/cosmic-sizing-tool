@@ -35,6 +35,7 @@ GET     /user/certifications        controllers.UserCtrl.get_user_certifications
 GET     /emails                     controllers.EmailCtrl.emails()
 POST    /email                      controllers.EmailCtrl.addEmail()
 GET     /emails/user                controllers.EmailCtrl.get_user_emails()
+GET     /emails/test                controllers.EmailCtrl.test()
 
 # Organisations page
 POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()

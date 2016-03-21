@@ -17,7 +17,7 @@ import com.avaje.ebean.*;
 
 @Transactional
 public class EmailCtrl extends Controller {
-    User globalUser = test();
+    User globalUser;
 
     public Result emails() {
         return ok(emails_settings.render());
@@ -49,7 +49,7 @@ public class EmailCtrl extends Controller {
         return ok(Json.toJson(user.emails));
     }
 
-    public User test(){
+    public Result test(){
         User user_test = new User();
         user_test.name = "test";
         user_test.password = "1234";
@@ -60,11 +60,12 @@ public class EmailCtrl extends Controller {
         }catch(Exception ie){
 
         }finally {
-            user_test = User.find.where()
-                    .ilike("email", "admin12345@email.com").findList().get(0);
+            List<User> users = User.find.where()
+                    .ilike("email", "admin12345@email.com").findList();
+            user_test = users.get(0);
         }
-
-        return user_test;
+        globalUser = user_test;
+        return ok(emails_settings.render());
     }
 
 }
