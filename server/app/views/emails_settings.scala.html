@@ -12,10 +12,13 @@
                     </div>
                 </div>
             </div>   <!-- fin du col-md-4 -->
-
+            <script async type="text/javascript" src="@routes.Assets.versioned("javascripts/emails/emails.js")"></script>
             <div class="col-md-9">
                 <div class="panel panel-default" style="width: 80%">
                     <div class="panel-heading"><strong>Email</strong></div>
+                    <span>
+                        <ul id="emails" style="list-style: none"></ul>
+                    </span>
                     <div class="panel-body">
                         <p>Votre addresse email principale sera utilisée uniquement pour des notifications.</p>
                         <form role="form" action="@routes.EmailCtrl.addEmail()" method="post">

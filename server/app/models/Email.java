@@ -17,7 +17,7 @@ public class Email extends Model {
     public String addresse;
 
     @Constraints.Required
-    public boolean main;
+    public boolean primary;
 
     @Constraints.Required
     public boolean hidden;

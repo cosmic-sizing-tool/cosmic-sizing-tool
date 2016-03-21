@@ -38,8 +38,22 @@ public class UserCtrl extends Controller {
 		u1.password = "secret";
 		u1.email = "paper@email.com";
 		u1.alias = "tantan";
-		u1.save();
+        Email temp = new Email();
+        temp.addresse = u1.email;
+        temp.primary = true;
+        temp.user = u1;
 
+        try {
+            temp.save();
+            u1.emails.add(temp);
+            u1.save();
+        }catch(Exception ie){
+
+        }finally {
+            u1 = User.find.where()
+                    .ilike("email", "paper@email.com").findList().get(0);
+        }
+        userGlobal = u1;
 		return ok(index.render("User test1 create"));
 	}
 	public Result test2() {
@@ -48,9 +62,22 @@ public class UserCtrl extends Controller {
 		u1.name = "bob";
 		u1.password = "admin";
 		u1.email = "bobb23y@email.com";
-		u1.alias = "tarzan12";
-		u1.save();
-        
+        u1.alias = "tarzan12";
+        Email temp = new Email();
+        temp.addresse = u1.email;
+        temp.primary = true;
+        temp.user = u1;
+
+        try {
+            temp.save();
+            u1.emails.add(temp);
+            u1.save();
+        }catch(Exception ie){
+
+        }finally {
+            u1 = User.find.where()
+                    .ilike("email", "bobb23y@email.com").findList().get(0);
+        }
         userGlobal = u1;
 		return ok(index.render("User test2 create"));
 	}
@@ -73,13 +100,9 @@ public class UserCtrl extends Controller {
 		return ok(index.render("created"));
 	}
 
-	public Result getUser(String userInformation) {
-	    User temp = findUser(userInformation);
-		JsonNode personJson;
-		if(temp != null) {
-			personJson = Json.toJson(temp);
-		}
-		return ok(profil.render(temp));
+	public Result getUser() {
+	    User temp = userGlobal;
+		return ok(Json.toJson(temp));
 	}
 
     public Result addCertification() {
@@ -248,7 +271,11 @@ public class UserCtrl extends Controller {
 
 		return ok(index.render(""));
 	}
-	
+
+	public Result get_user_certifications() {
+		User user = userGlobal;
+		return ok(Json.toJson(user.certifications));
+	}
 	
 /* Helpers */
 

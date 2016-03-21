@@ -23,16 +23,18 @@ GET		/users/test2                controllers.UserCtrl.test2()
 POST    /user/password              controllers.UserCtrl.updatePassword()
 POST    /user/username              controllers.UserCtrl.changeUsername()
 GET 	/user/settings     		    controllers.UserCtrl.settings()
-GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
+GET		/user     		            controllers.UserCtrl.getUser()
 POST	/user						controllers.UserCtrl.createUser()
 GET     /user/reset_pwd             controllers.UserCtrl.resetPassword()
 POST	/user/delete                controllers.UserCtrl.deleteUser()
 POST    /user/certification         controllers.UserCtrl.addCertification()
 POST    /user/disponible            controllers.UserCtrl.disponibleMesure()
+GET     /user/certifications        controllers.UserCtrl.get_user_certifications()
 
 # Emails
 GET     /emails                     controllers.EmailCtrl.emails()
 POST    /email                      controllers.EmailCtrl.addEmail()
+GET     /emails/user                controllers.EmailCtrl.get_user_emails()
 
 # Organisations page
 POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()

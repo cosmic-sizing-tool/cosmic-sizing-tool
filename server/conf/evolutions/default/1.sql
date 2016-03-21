@@ -14,7 +14,7 @@ create table certification (
 create table email (
   id                        integer primary key AUTOINCREMENT,
   addresse                  varchar(255),
-  main                      integer(1),
+  primary                   integer(1),
   hidden                    integer(1),
   user_id                   integer)
 ;
