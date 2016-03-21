@@ -22,8 +22,9 @@ public class UserCtrl extends Controller {
     
 	public Result show() {
 		Long id = 15L;
+		User temp = User.find.byId(id);
         
-		return ok(profil.render(User.find.byId(id)));
+		return ok(profil.render(temp));
 	}
 	
 	public Result settings() {
@@ -37,25 +38,8 @@ public class UserCtrl extends Controller {
 		u1.password = "secret";
 		u1.email = "paper@email.com";
 		u1.alias = "tantan";
-        Email temp = new Email();
-        temp.addresse = u1.email;
-        temp.primary = true;
-        temp.user = u1;
+		u1.save();
 
-        //try {
-            u1.save();
-            temp.save();
-            u1.emails.add(temp);
-            u1.save();
-            
-       // }catch(Exception ie){
-
-       /* }finally {
-            List<User> users = User.find.where()
-                    .ilike("email", "paper@email.com").findList();
-            u1 = users.get(0);
-        }*/
-        userGlobal = u1;
 		return ok(index.render("User test1 create"));
 	}
 	public Result test2() {
@@ -64,24 +48,9 @@ public class UserCtrl extends Controller {
 		u1.name = "bob";
 		u1.password = "admin";
 		u1.email = "bobb23y@email.com";
-        u1.alias = "tarzan12";
-        Email temp = new Email();
-        temp.addresse = u1.email;
-        temp.primary = true;
-        temp.user = u1;
-
-        //try {
-            u1.save();
-            temp.save();
-            u1.emails.add(temp);
-            u1.save();
-        //}catch(Exception ie){
-
-        /*}finally {
-            List<User> users = User.find.where()
-                    .ilike("email", "bobb23y@email.com").findList();
-            u1 = users.get(0);
-        }*/
+		u1.alias = "tarzan12";
+		u1.save();
+        
         userGlobal = u1;
 		return ok(index.render("User test2 create"));
 	}
@@ -104,9 +73,13 @@ public class UserCtrl extends Controller {
 		return ok(index.render("created"));
 	}
 
-	public Result getUser() {
-	    User temp = userGlobal;
-		return ok(Json.toJson(temp));
+	public Result getUser(String userInformation) {
+	    User temp = findUser(userInformation);
+		JsonNode personJson;
+		if(temp != null) {
+			personJson = Json.toJson(temp);
+		}
+		return ok(profil.render(temp));
 	}
 
     public Result addCertification() {
@@ -275,11 +248,7 @@ public class UserCtrl extends Controller {
 
 		return ok(index.render(""));
 	}
-
-	public Result get_user_certifications() {
-		User user = userGlobal;
-		return ok(Json.toJson(user.certifications));
-	}
+	
 	
 /* Helpers */
 

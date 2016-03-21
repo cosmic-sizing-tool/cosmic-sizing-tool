@@ -20,6 +20,7 @@ public class EmailCtrl extends Controller {
     User globalUser;
 
     public Result emails() {
+        //User user = globalUser;
         return ok(emails_settings.render());
     }
     public Result addEmail() {
@@ -44,28 +45,14 @@ public class EmailCtrl extends Controller {
         flash("success", "Courriel ajouté");
         return ok(emails_settings.render());
     }
-    public Result get_user_emails() {
-        User user = globalUser;
-        return ok(Json.toJson(user.emails));
-    }
-
-    public Result test(){
+    public void test(){
         User user_test = new User();
         user_test.name = "test";
         user_test.password = "1234";
         user_test.email = "admin12345@email.com";
         user_test.alias = "testadmin";
-        try {
-            user_test.save();
-        }catch(Exception ie){
-
-        }finally {
-            List<User> users = User.find.where()
-                    .ilike("email", "admin12345@email.com").findList();
-            user_test = users.get(0);
-        }
+        user_test.save();
         globalUser = user_test;
-        return ok(emails_settings.render());
     }
 
 }

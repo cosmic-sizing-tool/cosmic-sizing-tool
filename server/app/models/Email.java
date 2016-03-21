@@ -16,8 +16,10 @@ public class Email extends Model {
     @Constraints.Required
     public String addresse;
 
-    public boolean primary;
+    @Constraints.Required
+    public boolean main;
 
+    @Constraints.Required
     public boolean hidden;
 
     @ManyToOne(cascade = CascadeType.ALL)
