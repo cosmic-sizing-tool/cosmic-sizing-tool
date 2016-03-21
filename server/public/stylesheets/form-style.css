@@ -7,7 +7,7 @@ html {
 }
 /* Reset Styles */
 
-html, body, div, span, applet, object, iframe,
+html, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -101,7 +101,6 @@ body  {
   position: relative;
   opacity: .95;
   border-radius: 4px;
-
   float: right;
 /*  border: 1px solid #e8e8e8;*/
  /* box-shadow: 0 1px 0 rgba(0,0,0,.25);*/
@@ -257,7 +256,6 @@ input[type=radio] {
 
 .btn .btn-left { float: center; }
 .btn .btn-right { float: right; }
-.btn:hover { background-color: #DC322F; }
 
 .btn-list { background-image: url(../images/icons/icon_list.png); }
 .btn-checkin { background-color: #859835; background-image: url(../images/icons/icon_checkmark.png); }
@@ -470,11 +468,6 @@ ul.awardslist li .award {
   padding-right: 15px;
 }
 
-nav {
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 1px 1px rgba(0,0,0,.1);
-}
 
 .branding {
   float: left;
@@ -496,7 +489,6 @@ nav {
 
 
 nav ul {
-  width: 60%;
   float: right;
 }
 
@@ -506,6 +498,7 @@ nav ul li {
   font-family: Lato, 'Helvetica Nueue', Helvetica, Arial, sans-serif;
   margin: 10px 0;
   font-size: 1.1em;
+  margin-right:15px;
 }
 
 nav ul li.user {
@@ -667,21 +660,21 @@ input.ng-valid.ng-touched {
     color: red;
     padding-bottom: 10px;
 }
-
-.container{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 5% 0;
-    padding: 0;
+.middle{
     background-color: #330033;
-    padding: 5% 0;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-top: 2%;
+        padding: 0;
+        padding: 5% 0;
 }
+
+
 .register{
     position: relative;
 
     margin-left: 70%;
-   background-color: #330033;
 
 }
 
@@ -701,9 +694,7 @@ input.ng-valid.ng-touched {
 .text-center{
     position: relative;
     margin: 5% auto;
-
-
-    color: #FFFFFF;
+    color: #fff;
 
 
 
@@ -714,7 +705,7 @@ input.ng-valid.ng-touched {
 }
 
 .small-text {
-    color: #999999;
+      color: #fff;
     font-size: 12px;
     margin-top: 3px;
     text-line: 3px;
