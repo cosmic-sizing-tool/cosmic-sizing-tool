@@ -73,7 +73,7 @@ color:#F5F5F5;
 .pull-right {
     float: right!important;
     margin-right: 10%;
-    margin-bottom: 5%;
+    margin-top: 5%;
 
 }
 .list-inline {
@@ -85,7 +85,7 @@ color:#F5F5F5;
 .pull-left {
     float: left!important;
     margin-left: 10%;
-    margin-bottom: 5%;
+    margin-top: 5%;
 
 }
 
