@@ -11,6 +11,14 @@ create table certification (
   user_id                   integer)
 ;
 
+create table email (
+  id                        integer primary key AUTOINCREMENT,
+  addresse                  varchar(255),
+  main                      integer(1),
+  hidden                    integer(1),
+  user_id                   integer)
+;
+
 create table organisation (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255),
@@ -54,6 +62,8 @@ create table organisation_user (
 ;
 alter table certification add constraint fk_certification_user_1 foreign key (user_id) references user (id);
 create index ix_certification_user_1 on certification (user_id);
+alter table email add constraint fk_email_user_2 foreign key (user_id) references user (id);
+create index ix_email_user_2 on email (user_id);
 
 
 
@@ -66,6 +76,8 @@ alter table organisation_user add constraint fk_organisation_user_user_02 foreig
 PRAGMA foreign_keys = OFF;
 
 drop table certification;
+
+drop table email;
 
 drop table organisation;
 

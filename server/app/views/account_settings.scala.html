@@ -6,8 +6,9 @@
                <div class="panel panel-default">
                   <div class="panel-heading"><strong> Paramètres personnels</strong></div>
                   <div id="link-menu" class="panel-body">
-                     <a class="link" href="@routes.UserCtrl.show()">Profil</a> <br>
-                     <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a>
+                     <a class="link" href="@routes.UserCtrl.show()">Profil</a><br>
+                     <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a><br>
+                      <a class="link" href="@routes.EmailCtrl.emails()">Gestion des courriels</a>
                   </div>
                </div>
             </div>   <!-- fin du col-md-4 -->
@@ -23,11 +24,11 @@
                            </div>
                            <div class="col-xs-8" style="padding-bottom: 5px;">
                               <label for="newPassword">Nouveau mot de passe</label>
-                              <input class="form-control" id="newPassword" name="newPassword" type="text">
+                              <input class="form-control" id="newPassword" name="newPassword" type="password">
                            </div>
                            <div class="col-xs-8">
                               <label for="confirmationPassword">Confirmez nouveau mot de passe</label>
-                              <input class="form-control" id="confirmationPassword" name="confirmationPassword" type="text"> <br>
+                              <input class="form-control" id="confirmationPassword" name="confirmationPassword" type="password"> <br>
                            </div>
                            <div class="col-xs-8" style="padding-bottom: 5px;">
                               <button type="submit" class="btn btn-success"><strong> Mettre à jour le mot de passe</strong></button> 
@@ -66,7 +67,7 @@
                   <div class="panel-heading" style="color: #fff; background-color: #df3e3e;"><strong>Supprimer compte</strong></div>
                   <div class="panel-body">
                      <p style="color: grey;font-size: 11px; padding-top: 2px;">La suppression du compte est irréversible, voulez-vous vraiment supprimer votre compte?</p>
-                    <form method="delete" action="@routes.UserCtrl.deleteUser()">
+                    <form role="form" method="post" action="@routes.UserCtrl.deleteUser()">
                         <button type="submit" class="btn btn-default" style="color:#900;">
                         <strong>Supprimer le compte</strong>
                         </button>

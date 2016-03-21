@@ -49,7 +49,6 @@ public class UserCtrl extends Controller {
 		u1.password = "admin";
 		u1.email = "bobb23y@email.com";
 		u1.alias = "tarzan12";
-		u1.addEmail("bobby23@gmail.com");
 		u1.save();
         
         userGlobal = u1;
@@ -76,8 +75,10 @@ public class UserCtrl extends Controller {
 
 	public Result getUser(String userInformation) {
 	    User temp = findUser(userInformation);
-		JsonNode personJson = Json.toJson(temp);
-		
+		JsonNode personJson;
+		if(temp != null) {
+			personJson = Json.toJson(temp);
+		}
 		return ok(profil.render(temp));
 	}
 
@@ -89,8 +90,6 @@ public class UserCtrl extends Controller {
         
         String method = body.asFormUrlEncoded().get("certification")[0];
         String version = body.asFormUrlEncoded().get("version")[0];
-        //int annee = Integer.parseInt(body.asFormUrlEncoded().get("annee")[0]);
-        //int mois = Integer.parseInt(body.asFormUrlEncoded().get("mois")[0]);
         String date = body.asFormUrlEncoded().get("date")[0];
 
         Certification temp = new Certification();
@@ -99,7 +98,7 @@ public class UserCtrl extends Controller {
         temp.date = date;
         temp.user = user;
         boolean valide = true;
-        if(user.certifications.size() !=0) {
+        if(user.certifications != null && user.certifications.size() !=0) {
             for(Certification c : user.certifications) {
                 if(c.method.equals(temp.method) && temp.version.equals(c.version)){
                     valide = false;
@@ -124,12 +123,14 @@ public class UserCtrl extends Controller {
         User user = userGlobal; //test
         
         RequestBody body = request().body();
-        String res = body.asFormUrlEncoded().get("dispo")[0];
-        if(!res.equals("")) {
-            boolean dispo = Boolean.parseBoolean(res);
-            user.disponible = dispo;
+
+        if(body.asFormUrlEncoded().get("dispo") == null) {
+            user.disponible = false;
             user.save();
-        }
+        }else{
+			user.disponible = true;
+			user.save();
+		}
         
         return ok(profil.render(user));
     }
@@ -139,13 +140,6 @@ public class UserCtrl extends Controller {
 	    
 		RequestBody body = request().body();
 
-		/*JsonNode json = Json.parse(body.asJson().toString());
-		String newPassword = json.findPath("newPassword").toString()
-				.replaceAll("\"", "");
-		String confirmationPassword = json.findPath("confirmationPassword").toString()
-				.replaceAll("\"", "");
-		String oldPassword = json.findPath("oldPassword").toString()
-				.replaceAll("\"", "");*/
 		String newPassword = body.asFormUrlEncoded().get("newPassword")[0];
 		String confirmationPassword = body.asFormUrlEncoded().get("confirmationPassword")[0];
 		String oldPassword = body.asFormUrlEncoded().get("oldPassword")[0];
@@ -241,7 +235,9 @@ public class UserCtrl extends Controller {
 				.where().ilike("id_admin", id.toString()).findList();
 			if (user.organisations.size() == 0) {
 				if (userAdmin.size() == 0) {
-					user.delete();
+					user.deleted = true;
+                    //user.delete();
+                    flash("success", "Compte supprimé");
 			    } else {
 					return badRequest("Utilisateur est administrateur d'une ou plusieurs organisations");
 				}
@@ -250,7 +246,7 @@ public class UserCtrl extends Controller {
 			}
 		}
 
-		return ok(account_settings.render());
+		return ok(index.render(""));
 	}
 	
 	

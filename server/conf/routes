@@ -26,15 +26,18 @@ GET 	/user/settings     		    controllers.UserCtrl.settings()
 GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
 POST	/user						controllers.UserCtrl.createUser()
 GET     /user/reset_pwd             controllers.UserCtrl.resetPassword()
-DELETE 	/users/delete               controllers.UserCtrl.deleteUser()
+POST	/user/delete                controllers.UserCtrl.deleteUser()
 POST    /user/certification         controllers.UserCtrl.addCertification()
 POST    /user/disponible            controllers.UserCtrl.disponibleMesure()
+
+# Emails
+GET     /emails                     controllers.EmailCtrl.emails()
+POST    /email                      controllers.EmailCtrl.addEmail()
 
 # Organisations page
 POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
 PUT 	/organisations/:id		    controllers.OrganisationCtrl.addAdminToAnOrganisation(id: Long)
 DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long)
-#GET 	/users/:id/orgs  		    controllers.OrganisationCtrl.getUserAdmin(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path
