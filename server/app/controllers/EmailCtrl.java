@@ -45,7 +45,7 @@ public class EmailCtrl extends Controller {
         flash("success", "Courriel ajouté");
         return ok(emails_settings.render());
     }
-    public void test(){
+    public Result test(){
         User user_test = new User();
         user_test.name = "test";
         user_test.password = "1234";
@@ -53,6 +53,7 @@ public class EmailCtrl extends Controller {
         user_test.alias = "testadmin";
         user_test.save();
         globalUser = user_test;
+        return ok(emails_settings.render());
     }
 
 }
