@@ -29,7 +29,9 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result settings() {
-	    return ok(account_settings.render());
+    Long id = 12L;
+		userGlobal = User.find.byId(id);
+	  return ok(account_settings.render());
 	}
 
 	public Result test1() {
@@ -70,7 +72,7 @@ public class UserCtrl extends Controller {
 		user.deleted = false;
 		user.save();
 
-		return ok(index.render("created"));
+		return redirect(routes.UserCtrl.show());
 	}
 
 	public Result getUser() {
@@ -112,39 +114,43 @@ public class UserCtrl extends Controller {
         if(valide) {
             temp.save();
             user.certifications.add(temp);
-            user.save();
+            //user.save();
+            user.update();
             if(body.asFormUrlEncoded().get("dispo") == null) {
                 user.disponible = false;
                 user.save();
+                //user.update();
             }else{
     			      user.disponible = true;
     			      user.save();
+                //user.update();
     		    }
             flash("success", "Certification ajouté");
         }else{
             flash("error", "Vous avez déjà une certification identique !");
         }
-        return ok(profil.render(user));
+        return redirect(routes.UserCtrl.show());
     }
     public Result resetPassword() {
         return ok(reset_pwd.render());
     }
 
 	public Result updatePassword() {
-	    User user = userGlobal; //test
+	  User user = userGlobal; //test
 
 		RequestBody body = request().body();
 
-		String newPassword = body.asFormUrlEncoded().get("newPassword")[0];
-		String confirmationPassword = body.asFormUrlEncoded().get("confirmationPassword")[0];
-		String oldPassword = body.asFormUrlEncoded().get("oldPassword")[0];
+		String newPassword = body.asFormUrlEncoded().get("newPassword") == null ? "" : body.asFormUrlEncoded().get("newPassword")[0];
+		String confirmationPassword = body.asFormUrlEncoded().get("confirmationPassword") == null ? "" : body.asFormUrlEncoded().get("confirmationPassword")[0];
+		String oldPassword = body.asFormUrlEncoded().get("oldPassword") == null ? "" : body.asFormUrlEncoded().get("oldPassword")[0];
 		//User user = User.find.byId();
 
         if(user.password.equals(oldPassword)) {
             if(newPassword.equals(confirmationPassword)) {
                 user.password = newPassword;
 		            user.save();
-		            flash("success", "Utilisateur sauvegardé");
+                //user.update();
+		            flash("success", "Nouveau mot de passe sauvegardé");
             }else{
                 flash("error", "Les deux nouveaux mot de passe ne sont pas identiques");
             }
@@ -158,19 +164,21 @@ public class UserCtrl extends Controller {
 	    User user = userGlobal; //test
 
 	    RequestBody body = request().body();
-	    String newUsername = body.asFormUrlEncoded().get("newUsername")[0];
+	    String newUsername = body.asFormUrlEncoded().get("newUsername") == null ? "" : body.asFormUrlEncoded().get("newUsername")[0];
 		//User user = User.find.byId(id);
 
 		if(!newUsername.equals("")) {
 		    if(email_valid(newUsername) && !email_exist(newUsername)) {
 		        user.email = newUsername;
 		        user.save();
+            flash("success", "Email modifié avec succès!");
 		    }else{
 		        if(!username_exist(newUsername)) {
 		            user.alias = newUsername;
 		            user.save();
+                flash("success", "Nom d'utilisateur modifié avec succès!");
 		        }else{
-		            flash("success", "Nom d'utilisateur/email modifié avec succès!");
+		            flash("error", "Erreur serveur");
 		        }
 		    }
 		}else{
@@ -221,7 +229,7 @@ public class UserCtrl extends Controller {
     		}
 		}
 
-		return ok(profil.render(user));
+		return redirect(routes.UserCtrl.show());
     }
 
 	public Result deleteUser() {
@@ -233,24 +241,24 @@ public class UserCtrl extends Controller {
 		    List<Organisation> userAdmin = Organisation.find
 				.where().ilike("id_admin", id.toString()).findList();
 			if (user.organisations.size() == 0) {
-				if (userAdmin.size() == 0) {
-					user.deleted = true;
-                    //user.delete();
-                    flash("success", "Compte supprimé");
-			    } else {
+        if (userAdmin.size() == 0) {
+          user.deleted = true;
+          user.save();
+          //user.update();
+          flash("success", "Compte supprimé");
+			  } else {
 					return badRequest("Utilisateur est administrateur d'une ou plusieurs organisations");
 				}
 			} else {
 				return badRequest("Utilisateur est affecté a une ou plusieurs organisations");
 			}
-		}
+	  }
 
 		return redirect(routes.Application.index());
-	}
+  }
 
 
 /* Helpers */
-
 	public User findUser(String userInformation) {
 		User user = null;
 		if (isNumeric(userInformation)) {
@@ -287,7 +295,7 @@ public class UserCtrl extends Controller {
     public boolean username_exist(String username) {
         List<User> users = User.find.where()
 					.ilike("alias", username).findList();
-	     return (users.size() == 1 ? true : false);
+	     return (users.size() >= 1 ? true : false);
     }
 
     public boolean email_valid(String mail){
