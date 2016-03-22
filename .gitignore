@@ -4,3 +4,4 @@ server/conf/evolutions
 
 /.idea
 RUNNING_PID
+/.DS_Store

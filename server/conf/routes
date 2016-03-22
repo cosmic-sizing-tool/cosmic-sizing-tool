@@ -18,27 +18,28 @@ POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 # Users
 GET     /user/profil                controllers.UserCtrl.show()
 POST    /user/profil                controllers.UserCtrl.updateProfil()
-GET		/users/test1                controllers.UserCtrl.test1()
-GET		/users/test2                controllers.UserCtrl.test2()
+GET		  /users/test1                controllers.UserCtrl.test1()
+GET		  /users/test2                controllers.UserCtrl.test2()
 POST    /user/password              controllers.UserCtrl.updatePassword()
 POST    /user/username              controllers.UserCtrl.changeUsername()
-GET 	/user/settings     		    controllers.UserCtrl.settings()
-GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
-POST	/user						controllers.UserCtrl.createUser()
+GET 	  /user/settings     		      controllers.UserCtrl.settings()
+GET		  /user/current     		      controllers.UserCtrl.getUser()
+GET     /user/current/certifications  controllers.UserCtrl.getUserCertifications()
+POST	  /user						            controllers.UserCtrl.createUser()
 GET     /user/reset_pwd             controllers.UserCtrl.resetPassword()
-POST	/user/delete                controllers.UserCtrl.deleteUser()
+POST	  /user/delete                controllers.UserCtrl.deleteUser()
 POST    /user/certification         controllers.UserCtrl.addCertification()
-POST    /user/disponible            controllers.UserCtrl.disponibleMesure()
 
 # Emails
 GET     /emails                     controllers.EmailCtrl.emails()
 POST    /email                      controllers.EmailCtrl.addEmail()
 GET     /emails/test                controllers.EmailCtrl.test()
+GET     /email/current/emails       controllers.EmailCtrl.getUserEmails()
 
 # Organisations page
-POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
-PUT 	/organisations/:id		    controllers.OrganisationCtrl.addAdminToAnOrganisation(id: Long)
-DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long)
+POST	   /organisations		  		    controllers.OrganisationCtrl.createOrganisation()
+PUT 	   /organisations/:id		      controllers.OrganisationCtrl.addAdminToAnOrganisation(id: Long)
+DELETE   /organisations/:id         controllers.OrganisationCtrl.deleteOrganisation(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

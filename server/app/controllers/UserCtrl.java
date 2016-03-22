@@ -11,22 +11,23 @@ import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
 import play.mvc.Http.RequestBody;
+import play.mvc.Http.MultipartFormData.FilePart;
 import java.util.*;
-
+import java.io.*;
 import com.avaje.ebean.*;
 
 @Transactional
 public class UserCtrl extends Controller {
-    
+
     User userGlobal;
-    
+
 	public Result show() {
 		Long id = 15L;
-		User temp = User.find.byId(id);
-        
-		return ok(profil.render(temp));
+		userGlobal = User.find.byId(id);
+
+		return ok(profil.render(userGlobal));
 	}
-	
+
 	public Result settings() {
 	    return ok(account_settings.render());
 	}
@@ -50,11 +51,10 @@ public class UserCtrl extends Controller {
 		u1.email = "bobb23y@email.com";
 		u1.alias = "tarzan12";
 		u1.save();
-        
-        userGlobal = u1;
+
 		return ok(index.render("User test2 create"));
 	}
-	
+
 
 	public Result createUser() {
 
@@ -69,26 +69,30 @@ public class UserCtrl extends Controller {
 		user.alias = json.findPath("alias").toString().replaceAll("\"", "");
 		user.deleted = false;
 		user.save();
-		
+
 		return ok(index.render("created"));
 	}
 
-	public Result getUser(String userInformation) {
-	    User temp = findUser(userInformation);
-		JsonNode personJson;
-		if(temp != null) {
-			personJson = Json.toJson(temp);
-		}
-		return ok(profil.render(temp));
+	public Result getUser() {
+    Long id = 15L;
+    userGlobal = User.find.byId(id);
+		return ok(Json.toJson(userGlobal));
 	}
 
+  public Result getUserCertifications() {
+    Long id = 15L;
+    userGlobal = User.find.byId(id);
+    List<Certification> certifications= userGlobal.certifications;
+    return ok(Json.toJson(certifications));
+  }
+
     public Result addCertification() {
-        
+
         User user = userGlobal; //test
-        
+
         RequestBody body = request().body();
-        
-        String method = body.asFormUrlEncoded().get("certification")[0];
+
+        String method = body.asFormUrlEncoded().get("method")[0];
         String version = body.asFormUrlEncoded().get("version")[0];
         String date = body.asFormUrlEncoded().get("date")[0];
 
@@ -109,6 +113,13 @@ public class UserCtrl extends Controller {
             temp.save();
             user.certifications.add(temp);
             user.save();
+            if(body.asFormUrlEncoded().get("dispo") == null) {
+                user.disponible = false;
+                user.save();
+            }else{
+    			      user.disponible = true;
+    			      user.save();
+    		    }
             flash("success", "Certification ajouté");
         }else{
             flash("error", "Vous avez déjà une certification identique !");
@@ -118,33 +129,17 @@ public class UserCtrl extends Controller {
     public Result resetPassword() {
         return ok(reset_pwd.render());
     }
-    public Result disponibleMesure() {
-        
-        User user = userGlobal; //test
-        
-        RequestBody body = request().body();
 
-        if(body.asFormUrlEncoded().get("dispo") == null) {
-            user.disponible = false;
-            user.save();
-        }else{
-			user.disponible = true;
-			user.save();
-		}
-        
-        return ok(profil.render(user));
-    }
-    
 	public Result updatePassword() {
 	    User user = userGlobal; //test
-	    
+
 		RequestBody body = request().body();
 
 		String newPassword = body.asFormUrlEncoded().get("newPassword")[0];
 		String confirmationPassword = body.asFormUrlEncoded().get("confirmationPassword")[0];
 		String oldPassword = body.asFormUrlEncoded().get("oldPassword")[0];
 		//User user = User.find.byId();
-        
+
         if(user.password.equals(oldPassword)) {
             if(newPassword.equals(confirmationPassword)) {
                 user.password = newPassword;
@@ -156,16 +151,16 @@ public class UserCtrl extends Controller {
         }else{
             flash("success", "Ancien mot de passe ne correspond pas");
         }
-		return ok(account_settings.render());
+		return redirect(routes.UserCtrl.settings());
 	}
-	
+
 	public Result changeUsername(){
 	    User user = userGlobal; //test
-	    
+
 	    RequestBody body = request().body();
 	    String newUsername = body.asFormUrlEncoded().get("newUsername")[0];
 		//User user = User.find.byId(id);
-		
+
 		if(!newUsername.equals("")) {
 		    if(email_valid(newUsername) && !email_exist(newUsername)) {
 		        user.email = newUsername;
@@ -181,54 +176,60 @@ public class UserCtrl extends Controller {
 		}else{
 		    flash("error", "Un nom d'utilisateur/email ne peut être vide !");
 		}
-		return ok(account_settings.render());
+		return redirect(routes.UserCtrl.settings());
 	}
 
 	public Result updateProfil(){
-		
+
 		RequestBody body = request().body();
-		
+
 		String emailSended = body.asFormUrlEncoded().get("email")[0];
 		String nameSended = body.asFormUrlEncoded().get("name")[0];
 		String urlSended = body.asFormUrlEncoded().get("url")[0];
 		String companySended = body.asFormUrlEncoded().get("company")[0];
 		String locationSended = body.asFormUrlEncoded().get("location")[0];
-		
-		User user = findUser(userGlobal.email);
-		
+
+		User user = userGlobal;
+
 		ArrayList validations = areValideInformations(nameSended,urlSended,companySended,locationSended);
-		
+
 		if(validations.size() != 0){
 
 		    flash("error", String.join(", ", validations));
-		    
+
 		}else{
-		    
+
     		if(user != null){
-    		    
+            Http.MultipartFormData data = body.asMultipartFormData();
+            FilePart picture = data.getFile("picture");
+            if (picture != null) {
+                String fileName = picture.getFilename();
+                String contentType = picture.getContentType();
+                File file = picture.getFile();
+            }
     		    user.email = emailSended;
     		    user.name = nameSended;
     		    user.url = urlSended;
     		    user.company = companySended;
     		    user.location = locationSended;
-    		    
+
     		    user.save();
-    		    
+
     		    flash("success", "Modifications effectuées avec succes");
-    		    
+
     		}else{
-    
+
     		    flash("error", "Serveur indisponible. Réessayer plus tard");
-    		}		    
+    		}
 		}
 
-		return ok(profil.render(user));            
+		return ok(profil.render(user));
     }
 
 	public Result deleteUser() {
 	    User user = userGlobal; //test
 	    Long id = user.id; //test
-	    
+
 		if (userExist(id)){
 		    //User user = User.find.byId(id);
 		    List<Organisation> userAdmin = Organisation.find
@@ -246,10 +247,10 @@ public class UserCtrl extends Controller {
 			}
 		}
 
-		return ok(index.render(""));
+		return redirect(routes.Application.index());
 	}
-	
-	
+
+
 /* Helpers */
 
 	public User findUser(String userInformation) {
@@ -278,7 +279,7 @@ public class UserCtrl extends Controller {
 
 		return exist;
 	}
-	
+
 	public boolean email_exist(String mail) {
 	   List<User> users = User.find.where()
 					.ilike("email", mail).findList();
@@ -287,15 +288,15 @@ public class UserCtrl extends Controller {
 
     public boolean username_exist(String username) {
         List<User> users = User.find.where()
-					.ilike("alias", username).findList(); 
+					.ilike("alias", username).findList();
 	     return (users.size() == 1 ? true : false);
     }
-    
+
     public boolean email_valid(String mail){
         String regex = "^.*@[a-z]+\\.[a-z]{2,3}$";
         return mail.matches(regex);
     }
-    
+
 	public static boolean isNumeric(String str) {
 		try {
 			Long id = Long.parseLong(str);
@@ -304,30 +305,30 @@ public class UserCtrl extends Controller {
 		}
 		return true;
 	}
-	
+
 	public ArrayList areValideInformations(String name,String url, String company,String location){
 
 	    ArrayList result = new ArrayList();
-	    
+
 	    if(name.length() == 0){
-	        result.add("Le nom est invalide");   
+	        result.add("Le nom est invalide");
 	    }
-	    
-	    return result;    
+
+	    return result;
 	}
-	
+
 	public ArrayList justePourTest(User globalUser) {
-	    
+
 	    ArrayList userInfoList = new ArrayList<>();
-        
+
         userInfoList.add(globalUser.name);
         userInfoList.add(globalUser.password);
         userInfoList.add(globalUser.email);
         userInfoList.add(globalUser.alias);
         userInfoList.add(globalUser.url);
         userInfoList.add(globalUser.company);
-        userInfoList.add(globalUser.location);	
-        
+        userInfoList.add(globalUser.location);
+
         return userInfoList;
 	}
 }

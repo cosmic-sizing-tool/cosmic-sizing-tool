@@ -17,10 +17,8 @@ import com.avaje.ebean.*;
 
 @Transactional
 public class EmailCtrl extends Controller {
-    User globalUser;
 
     public Result emails() {
-        //User user = globalUser;
         return ok(emails_settings.render());
     }
     public Result addEmail() {
@@ -35,15 +33,23 @@ public class EmailCtrl extends Controller {
         }else {
             temp.hidden = true;
         }
-
-        User user = globalUser;
+        //List<User> users = User.find.where().ilike("email", "admin12345@email.com").findList();
+        //User user = users.get(0);
+        Long id = 15L;
+        User user = User.find.byId(id);
         temp.user = user;
         temp.save();
         user.emails.add(temp);
         user.save();
 
         flash("success", "Courriel ajouté");
-        return ok(emails_settings.render());
+        return redirect(routes.EmailCtrl.emails());
+    }
+    public Result getUserEmails() {
+      Long id = 15L;
+      User user = User.find.byId(id);
+      List<Email> emails = user.emails;
+      return ok(Json.toJson(emails));
     }
     public Result test(){
         User user_test = new User();
@@ -52,7 +58,6 @@ public class EmailCtrl extends Controller {
         user_test.email = "admin12345@email.com";
         user_test.alias = "testadmin";
         user_test.save();
-        globalUser = user_test;
         return ok(emails_settings.render());
     }
 

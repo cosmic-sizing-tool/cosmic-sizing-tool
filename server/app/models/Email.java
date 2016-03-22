@@ -13,7 +13,9 @@ public class Email extends Model {
     @Id
     public Long id;
 
+    @Constraints.Email
     @Constraints.Required
+    @Column(unique = true)
     public String addresse;
 
     @Constraints.Required
