@@ -2,203 +2,356 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>COSMIC FORM</title>
-	    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	</head>
-	
-	
-	
-	
-	
-	
-	<body>
-	 
-	<div class="container"  style = " background-color:#D1E9F2" >
-	 <form role="form" action="/project" method="post" accept-charset="utf-8">
-	  
+<head>
+	<meta charset="UTF-8">
+	<title>COSMIC FORM</title>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
 
-     <div>
-          <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
 
-     <div id="sectionA" class="collapse"  >
-	 <div class = "table-responsive" >
-		@Messages("project.sectionA1")<br>
+
+
+
+
+<body>
+	
+	<div class="container" >
+		<form role="form" action="/project" method="post" accept-charset="utf-8">
+			
+
+
+
+
+
+			<div>
+				<button type="button"  style="border-color:#000000; color:black ;font-weight: bold" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
+
+				<div id="sectionA" class="collapse" style = " background-color:#D1E9F2" >
+					<div class = "table-responsive" >
+						@Messages("project.sectionA1")<br>
+						<table class = "table" style="width:40%" >
+							<tr>
+								<td><label for="note">@Messages("project.sectionA1_con")</label></td>
+								<td><input type="text" name="contact_person" id="contact_person"/><br></td>
+							</tr>
+							<tr>
+								<td><label for="note">@Messages("project.sectionA1_org")</label></td>
+								<td><input type="text" name="organisation" id="organisation"/><br></td>
+							</tr>
+							<tr>
+								<td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
+								<td> <input type="text" name="country" id="country"/><br></td>
+							</tr>
+							<tr>
+								<td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
+								<td><input type="text" name="email" id="email"/><br><br></td>
+							</tr>
+						</table> 
+						
+					</div>
+					
+					
+					
+					<div class = "table-responsive" >
+						@Messages("project.sectionA2")<br>
+						<table class = "table" style="width:40%">
+							<tr>
+								<td><label for="note">@Messages("project.sectionA2_pro")</label></td>
+								<td> <input type="text" name="projectID" id="projectID"/><br></td>
+							</tr>
+							<tr>
+								<td><label for="note">@Messages("project.sectionA2_dat")</label></td>
+								<td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
+							</tr>
+						</table> 
+						
+						
+					</div>
+					
+					@Messages("project.sectionA3")<br>
+
+					<div class="table-responsive">          
+						<table class="table" style="width:45%">
+							<tr>
+								<td> <input type="checkbox" name="rolePerson" value="analystProgrammer"> 
+									@Messages("project.sectionA3_ana")
+								</td>
+								<td>
+									<input type="checkbox" name="role" value="customerUser"> @Messages("project.sectionA3_cus")
+								</td>
+								<td>
+									<input type="checkbox" name="role" value="developmentManager"> @Messages("project.sectionA3_dev")
+								</td>
+							</tr>
+							<tr>
+								<td>	   <input type="checkbox" name="role" value="independentReviewer"> @Messages("project.sectionA3_ind") </td>
+
+								<td>	   <input type="checkbox" name="role" value="iTManager"> @Messages("project.sectionA3_itm")
+								</td>
+								<td>	   <input type="checkbox" name="role" value="metricsManager"> @Messages("project.sectionA3_met")
+								</td>
+								<tr>
+									<td>
+										<input type="checkbox" name="role" value="projectManager"> @Messages("project.sectionA3_pro")
+									</td>
+									<td>	   
+
+										<input type="checkbox" name="role" value="projectOfficeSupport">
+										@Messages("project.sectionA3_pro1")
+									</td>
+									<td>
+										<label for="other">@Messages("project.sectionA3_oth")</label>
+										<input type="text" name="other" id="other"/>
+									</td>
+								</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+				
+
+
+
+
+
+
+
+
+				<div>
+					<button type="button" style = " background-color:#ec8013 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionB">@Messages("project.sectionB")</button>
+
+					<div id="sectionB" class="collapse" style = "background-color:#ffd1b3" >
+					
+						@Messages("project.sectionB5")<br>
+						
+						<input type="checkbox" name="softwareType" value="newDevelopment"> @Messages("project.sectionB5_new")
+						<input type="checkbox" name="softwareType" value="reDevelopment"> @Messages("project.sectionB5_re-")
+						<input type="checkbox" name="softwareType" value="enhancement"> @Messages("project.sectionB5_enh")<br>
+						<label for="other">@Messages("project.sectionB5_oth")</label>
+						<input type="text" name="other" id="other"/><br><br>
+
+						@Messages("project.sectionB6")<br>
+
+						<input type="checkbox" name="description" value="businessApplication"> @Messages("project.sectionB6_bus")
+						<input type="checkbox" name="description" value="realTimeApplication"> @Messages("project.sectionB6_rea")
+						<input type="checkbox" name="description" value="mathIntensiveApplication"> @Messages("project.sectionB6_mat")	
+						<input type="checkbox" name="description" value="infrastructureSoftware"> @Messages("project.sectionB6_inf")<br><br>	
+						
+						@Messages("project.sectionB7")<br>
+						<input type="checkbox" name="reusability" value="custom"> @Messages("project.sectionB7_cus")
+						<input type="checkbox" name="reusability" value="reusable"> @Messages("project.sectionB7_reu")<br><br>	
+					
+					
+					
+					<div class = "table-responsive" >
+						@Messages("project.sectionB9")<br>
+						<table class = "table" style="width:40%">
+							<tr>
+								<td><label for="note">@Messages("project.sectionB9_num")</label></td>
+								<td> <input type="text" name="nbSprint" id="nbSprint"/><br></td>
+							</tr>
+							<tr>
+								<td><label for="note">@Messages("project.sectionB9_len")</label></td>
+								<td><input type="text" name="lengthSprint" id="lengthSprint"/>@Messages("project.sectionB9_day")<br><br></td>
+							</tr>
+							<tr>
+								<td><label for="note">@Messages("project.sectionB9_del")</label></td>
+								<td><input type="text" name="delSize" id="delSize"/>@Messages("project.sectionB9_sto")<br><br></td>
+							</tr>
+						</table> 	
+					</div>
+
+					@Messages("project.sectionB12")<br>
+						<input type="checkbox" name="improvementProgram" value="yes"> @Messages("project.sectionB12_yes")
+						<input type="checkbox" name="improvementProgram" value="no"> @Messages("project.sectionB12_no")<br>
+					@Messages("project.sectionB12_whi")<br>
+						<input type="checkbox" name="softwareProcess" value="cmm"> @Messages("project.sectionB12_sof")
+						<input type="checkbox" name="softwareProcess" value="cmmi"> @Messages("project.sectionB12_cmm")<br>
+						<input type="checkbox" name="softwareProcess" value="spice"> @Messages("project.sectionB12_spi")
+						<input type="checkbox" name="softwareProcess" value="iso"> @Messages("project.sectionB12_iso")<br>
+						<input type="checkbox" name="softwareProcess" value="tickit"> @Messages("project.sectionB12_tic")
+						<input type="checkbox" name="softwareProcess" value="other"> @Messages("project.sectionB12_oth")<br>
+					
+
+					
+					</div>
+				</div>
+
+				
+
+
+
+
+
+
+
+
+
+				<div>
+					<button type="button" style = " background-color:#4de619 ; border-color:#000000 ; color:black ;font-weight: bold" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionC">@Messages("project.sectionC")</button>
+
+					<div id="sectionC" class="collapse" style = " background-color:#ccffcc"  >
+					
+						
+					
+					<div class = "table-responsive" >
+		@Messages("project.sectionC58")<br>
 	 <table class = "table" style="width:40%" >
-  <tr>
-    <td><label for="note">@Messages("project.sectionA1_con")</label></td>
-    <td><input type="text" name="contact_person" id="contact_person"/><br></td>
-  </tr>
-  <tr>
-    <td><label for="note">@Messages("project.sectionA1_org")</label></td>
-    <td><input type="text" name="organisation" id="organisation"/><br></td>
-  </tr>
-  <tr>
-    <td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
-    <td> <input type="text" name="country" id="country"/><br></td>
-  </tr>
-  <tr>
-    <td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
-    <td><input type="text" name="email" id="email"/><br><br></td>
-  </tr>
-</table> 
-     
-	   </div>
- 
-	   
-	  
-	  <div class = "table-responsive" >
-	  @Messages("project.sectionA2")<br>
-	    <table class = "table" style="width:40%">
-  <tr>
-    <td><label for="note">@Messages("project.sectionA2_pro")</label></td>
-    <td> <input type="text" name="projectID" id="projectID"/><br></td>
-  </tr>
-  <tr>
-    <td><label for="note">@Messages("project.sectionA2_dat")</label></td>
-    <td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
-  </tr>
-</table> 
-	   
-    
-	   </div>
-	  
-	  @Messages("project.sectionA3")<br>
-
- <div class="table-responsive">          
-  <table class="table" style="width:45%">
+	 <thead>
       <tr>
-<td> <input type="checkbox" name="rolePerson" value="analystProgrammer"> 
-@Messages("project.sectionA3_ana")
-</td>
-<td>
-	   <input type="checkbox" name="role" value="customerUser"> @Messages("project.sectionA3_cus")
-</td>
-<td>
-	   <input type="checkbox" name="role" value="developmentManager"> @Messages("project.sectionA3_dev")
-</td>
-</tr>
-<tr>
-<td>	   <input type="checkbox" name="role" value="independentReviewer"> @Messages("project.sectionA3_ind") </td>
-
-<td>	   <input type="checkbox" name="role" value="iTManager"> @Messages("project.sectionA3_itm")
-</td>
-<td>	   <input type="checkbox" name="role" value="metricsManager"> @Messages("project.sectionA3_met")
-</td>
-<tr>
-<td>
-	   <input type="checkbox" name="role" value="projectManager"> @Messages("project.sectionA3_pro")
-</td>
-<td>	   
-
-<input type="checkbox" name="role" value="projectOfficeSupport">
- @Messages("project.sectionA3_pro1")
-</td>
-<td>
-	   <label for="other">@Messages("project.sectionA3_oth")</label>
-       <input type="text" name="other" id="other"/>
-</td>
-</tr>
-</table>
-</div>
-</div>
-	  </div>
-	  
-	  <div>
-	  	  	   <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionB">@Messages("project.sectionB")</button>
-
-	  <div id="sectionB" class="collapse"  >
-
-	 <div class = "table-responsive" >
-		@Messages("project.sectionA1")<br>
-	 <table class = "table" style="width:40%" >
+        <th></th>
+        <th>@Messages("project.sectionC58_yes")</th>
+        <th>@Messages("project.sectionC58_no")</th>
+        <th>@Messages("project.sectionC58_pri")</th>
+        <th>@Messages("project.sectionC58_ver")</th>
+      </tr>
+    </thead>
   <tr>
-    <td><label for="note">@Messages("project.sectionA1_con")</label></td>
-    <td><input type="text" name="contact" id="contact"/><br></td>
+    <td><label for="note">@Messages("project.sectionC58_pro")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
   </tr>
+  
   <tr>
-    <td><label for="note">@Messages("project.sectionA1_org")</label></td>
-    <td><input type="text" name="organisation" id="organisation"/><br></td>
+    <td><label for="note">@Messages("project.sectionC58_ope")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
   </tr>
+  
+  
   <tr>
-    <td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
-    <td> <input type="text" name="country" id="country"/><br></td>
+    <td><label for="note">@Messages("project.sectionC58_int")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
   </tr>
+  
   <tr>
-    <td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
-    <td><input type="text" name="email" id="email"/><br><br></td>
+    <td><label for="note">@Messages("project.sectionC58_deb")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
   </tr>
+  
+  <tr>
+    <td><label for="note">@Messages("project.sectionC58_dat")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
+  </tr>
+  
+  <tr>
+    <td><label for="note">@Messages("project.sectionC58_obj")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
+  </tr>
+  
+    <tr>
+    <td><label for="note">@Messages("project.sectionC58_htm")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
+  </tr>
+  
+    <tr>
+    <td><label for="note">@Messages("project.sectionC58_ema")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
+  </tr>
+  
+     <tr>
+    <td><label for="note">@Messages("project.sectionC58_oth")</label></td>
+    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
+    <td><input type="checkbox" name="YESNO" id="No"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+    <td><input type="text" name="version" id="version"/></td>
+  </tr>
+  
 </table> 
-     
-	   </div>
-
+     </div>
 	   
-	  
 	  <div class = "table-responsive" >
-	  @Messages("project.sectionA2")<br>
+	  @Messages("project.sectionB60")<br>
 	    <table class = "table" style="width:40%">
-  <tr>
-    <td><label for="note">@Messages("project.sectionA2_pro")</label></td>
-    <td> <input type="text" name="projectId" id="projectId"/><br></td>
-  </tr>
-  <tr>
-    <td><label for="note">@Messages("project.sectionA2_dat")</label></td>
-    <td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
-  </tr>
-</table> 
-	   
+	   <tr>
+	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_pco") </td>
+	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mid") </td>
+        </tr>
+        
+       <tr>
+	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mai") </td>
+	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mul") </td>
+        </tr>
+        </table>
     
-	   </div>
-	  
-	  @Messages("project.sectionA3")<br>
 
- <div class="table-responsive">          
-  <table class="table" style="width:45%">
-      <tr>
-<td> <input type="checkbox" name="role" value="value"> 
-@Messages("project.sectionA3_ana")
-</td>
-<td>
-	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_cus")
-</td>
-<td>
-	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_dev")
-</td>
-</tr>
-<tr>
-<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_ind") </td>
-
-<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_itm")
-</td>
-<td>	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_met")
-</td>
-<tr>
-<td>
-	   <input type="checkbox" name="role" value="value"> @Messages("project.sectionA3_pro")
-</td>
-<td>	   
-
-<input type="checkbox" name="role" value="value">
- @Messages("project.sectionA3_pro1")
-</td>
-<td>
-	   <label for="other">@Messages("project.sectionA3_oth")</label>
-       <input type="text" name="other" id="other"/>
-</td>
-</tr>
-</table>
-</div>
-</div>
 	  </div>
-	  
-	   <p><input type="submit" value="Enregistrer" class="btn btn-success"/></p>
-	   	   
+					
 
-     </form>
-	 
-	  </div>
-	</body>
+
+					
+					</div>
+				</div>	
+
+				<div>
+					<button type="button" style = " background-color:#cc3333 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionD">Section D</button>
+
+					<div id="sectionD" class="collapse" style = "background-color:#ff9999" >					
+						<p>À COMPLETER SECTION D</p>				
+					</div>
+				</div>		
+				
+				<div>
+					<button type="button" style = " background-color:#e6e619 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionE">Section E</button>
+
+					<div id="sectionE" class="collapse" style = "background-color:#ffff99" >					
+						<p>À COMPLETER SECTION E</p>				
+					</div>
+				</div>		
+
+				<div>
+					<button type="button" style = " background-color:#19e6b3 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionF">Section F</button>
+
+					<div id="sectionF" class="collapse" style = "background-color:#99ffff" >					
+						<p>À COMPLETER SECTION F</p>				
+					</div>
+				</div>	
+
+				<div>
+					<button type="button" style = " background-color:#c639c6 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionG">Section G</button>
+
+					<div id="sectionG" class="collapse" style = "background-color:#ff99e6" >					
+						<p>À COMPLETER SECTION G</p>				
+					</div>
+				</div>				
+						
+
+
+
+
+						
+						
+			
+					
+					<p><input type="submit" value="Enregistrer" class="btn btn-success"/></p>
+					
+
+		</form>
+				
+	</div>
+</body>
 </html>
