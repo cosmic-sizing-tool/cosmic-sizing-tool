@@ -5,132 +5,157 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
+    <link rel="icon" type="image/png" href='@routes.Assets.versioned("images/icon-cosmic.png")'>
     <title>Where software functional size is Measured!</title>
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" type="image/png" href='@routes.Assets.versioned("images/logo_cosmic.png")'>
+
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <!-- Angular -->
     <script src='@routes.Assets.versioned("javascripts/lib/angular/angular.min.js")'></script>
-    <script src='@routes.Assets.versioned("javascripts/lib/admission.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/registration.js")'></script>
 
-    <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/bootstrap.min.css")>
-     
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href='@routes.Assets.versioned("bootstrap/dist/css/bootstrap.min.css")'>
+    <!-- Costom syle -->
     <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/styles.css")>
-     
-    <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/form-style.css")>
+
 
 
 </head>
 
 <body>
-<header class="cosmic-header">
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
+<header class="row">
+    <nav style="box-shadow: 5px 4px 5px #000" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left">
+                <span class="sr-only">Toggle-navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand">
-                <h1 id="cosmic-text">COSMIC-Sizing-Tool</h1>
-            </div>
-        </div>
+            <!-- Dropdown menu -->
+            <div class="navbar-collapse collapse">
+                <div class="col-md-2">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <div class="dropdown-troggle" data-toggle="dropdown">
+                                <img style="float:left; margin: 10px; cursor: pointer" src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
+                            </div>
+                            <ul class="dropdown-menu" style="float: right; opacity:0.8">
+                                <li class><a href="#"><h5>About the COSMIC-sizing-tool</h5></a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><h5>COSMIC site</h5></a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><h5>COSMIC Glossary</h5></a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><h5>Find a measurer</h5></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
 
-        <div class="collapse navbar-collapse">
-            <div class="nav navbar-nav">
-                <div class="dropdown">
-                    <div></div>
-                    <img class="logo" src=@routes.Assets.versioned("images/icon-cosmic.png") alt="Cosmic-logo">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <b class="caret"></b> </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">About the COSMIC-sizing-tool</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">COSMIC site</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">COSMIC Glossary</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Find a measurer</a></li>
+                <!-- COSMIC-Sizing-Tool Brand -->
+                <div class="col-md-4" style="margin: 20px 0">
+                    <h1>COSMIC-Sizing-Tool</h1>
+                </div>
+
+                <!-- select language Btn-Register Btn-Log in -->
+                <div class="col-md navbar-right" style="margin: 40px 0">
+                    <ul class="list-inline" style="margin-right: 10px">
+                        <li>
+                            <select name="languages" class="languages icon-menu">
+                                <option value="en" selected>English</option>
+                                <option value="fr">Français</option>
+                            </select>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-success">Register</button>
+                        </li>
+                        <li>
+                            <a href="@routes.Application.login()">
+                                <button type="button" class="btn btn-default">Log in</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md navbar-right" style="margin: 40px 0">
+                    <ul class="list-inline" style="margin-right: 10px">
                     </ul>
                 </div>
             </div>
-
-
-            <!--		<button type="button" class="btn btn-default navbar-btn">Button</button>-->
-            <div class="col-sm-3 col-md-3 pull-right">
-                <div id="navbar-brand-right">
-                    <select>
-                        <option value=en>english</option>
-                        <option value=fr>français</option>
-                    </select>
-                    <button type="button" class="btn btn-success navbar-btn">Register</button>
-                    <a href="@routes.Application.login()"><button type="button" class="btn btn-default navbar-btn">Log in</button></a>
-                </div>
-
-            </div>
-
         </div>
-    </div>
-
+    </nav>
 </header>
 
-<div class="container">
-    <!-- /.container -->
-    <div class="left text-center">
-        <h1>Where software functional<br>size is Measured! </h1>
+<div class="container-fluid">
+    <div class="jumbotron">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-7 text-center vertical-center" style="color: white">
+            <div class="row">
+                <h2>Where software functional<br>size is Measured! </h2>
 
-        <p class="text-center small-text">Open-source COSMIC software functional size measurement support too<br><span id="blue-text">Free to use</span></p>
-    </div>
-        <section class="card" ng-app="admissionForm">
-            <form name="profil" method="post" ng-submit="register()" novalidate>
-                <fieldset class="group">
-                    <input type="text" class="text" id="username" name="username" placeholder="Pick a username"
-                           value="" ng-model="user.username" ng-required="true">
+                <h6 class="small-text">Open-source COSMIC software functional size measurement support too
+                    <br><span id="blue-text" style="color: #3366FF;">Free to use</span></h6>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="col-md-2 vertical-center">
+            <section class="card" ng-app="registrationForm" ng-controller="RegistrationCtrl">
+
+                <form name="profil" method="post" ng-submit="register()" novalidate>
+                    <input type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
 
                     <input type="email" name="email" placeholder="Your email" ng-model="user.email" ng-required="true">
 
-                    <input type="password" name="password" placeholder="Create a password"
-                           ng-model="user.password" ng-minlength="6" ng-pattern="/^[A-z][A-z0-9]*$/" ng-required="true">
-                    <p class="small-text">Use at least one lowercase letter, one numeral, and seven characters.</p>
-                    <select class="singleSelect" name="singleSelect" ng-model="user.singleSelect" ng-required="true">
-                    <option value=en>english</option>
-                    <option value=fr>français</option>
+                    <input type="password" name="password" placeholder="Create a password" ng-model="user.password" ng-minlength="7" ng-pattern="/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,20}$/" ng-required="true">
+                    <h6 class="small-text" style="color: #999999">Use at least one lowercase or upercase letter at first and seven characters.</h6>
+
+                    <select style="width: 250px" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
                     </select>
-
                     <button type="submit" class="btn btn-success navbar-btn btn-submit">Register to the COSMIC-sizing-tool</button>
-                </fieldset>
-            </form>
-        </section>
-
-</div>
-
-<footer>
-    <div class="pull-left">
-        <p>© 2016 COSMIC</p>
+                </form>
+            </section>
+        </div>
     </div>
-
-    <div class="pull-right">
-        <ul class="list-inline">
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
+</div>
+<footer class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-text pull-left">
+            <p>© 2016 COSMIC.</p>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#" style="margin-left: 2em">Terms & Conditions</a>
+            <a href="#" style="margin-left: 2em">Contact</a>
+            <a href="#" style="margin-left: 2em">Help</a>
+        </div>
     </div>
 </footer>
-</div>
-<!-- /.container -->
-<!-- script references -->
-<script async src=@routes.Assets.versioned("javascripts/bootstrap.min.js") type="text/javascript"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script async src=@routes.Assets.versioned("bootstrap/dist/js/bootstrap.min.js") type="text/javascript"></script>
+
+
+<script>
+    $('ul.nav li.dropdown').hover(function () {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500)
+    }, function () {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+    });
+  </script>
 </body>
 
 </html>
