@@ -40,7 +40,13 @@ public class UserCtrl extends Controller {
 		u1.name = "Jhone";
 		u1.password = "secret";
 		u1.email = "paper@email.com";
-		u1.alias = "tantan";
+    u1.alias = "tantan";
+    Email temp = new Email();
+    temp.addresse = u1.email;
+    temp.main = true;
+    temp.user = u1;
+    temp.save();
+    u1.emails.add(temp);
 		u1.save();
 
 		return ok(index.render("User test1 create"));
