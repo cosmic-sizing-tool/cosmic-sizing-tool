@@ -244,7 +244,6 @@ public class UserCtrl extends Controller {
         if (userAdmin.size() == 0) {
           user.deleted = true;
           user.save();
-          //user.update();
           flash("success", "Compte supprimé");
 			  } else {
 					return badRequest("Utilisateur est administrateur d'une ou plusieurs organisations");
