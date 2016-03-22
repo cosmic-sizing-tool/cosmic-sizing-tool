@@ -143,8 +143,8 @@ public class UserCtrl extends Controller {
         if(user.password.equals(oldPassword)) {
             if(newPassword.equals(confirmationPassword)) {
                 user.password = newPassword;
-		        user.save();
-		        flash("success", "Utilisateur sauvegardé");
+		            user.save();
+		            flash("success", "Utilisateur sauvegardé");
             }else{
                 flash("error", "Les deux nouveaux mot de passe ne sont pas identiques");
             }
@@ -183,30 +183,28 @@ public class UserCtrl extends Controller {
 
 		RequestBody body = request().body();
 
-		String emailSended = body.asFormUrlEncoded().get("email")[0];
-		String nameSended = body.asFormUrlEncoded().get("name")[0];
-		String urlSended = body.asFormUrlEncoded().get("url")[0];
-		String companySended = body.asFormUrlEncoded().get("company")[0];
-		String locationSended = body.asFormUrlEncoded().get("location")[0];
+		String emailSended = body.asFormUrlEncoded().get("email") == null ? "" : body.asFormUrlEncoded().get("email")[0];
+		String nameSended =  body.asFormUrlEncoded().get("name") == null ? "" : body.asFormUrlEncoded().get("name")[0];
+		String urlSended = body.asFormUrlEncoded().get("url") == null ? "" : body.asFormUrlEncoded().get("url")[0];
+		String companySended = body.asFormUrlEncoded().get("company") == null ? "" : body.asFormUrlEncoded().get("company")[0];
+		String locationSended = body.asFormUrlEncoded().get("location") == null ?  "" :body.asFormUrlEncoded().get("location")[0];
 
 		User user = userGlobal;
 
-		ArrayList validations = areValideInformations(nameSended,urlSended,companySended,locationSended);
+		if(nameSended.length() == 0){
 
-		if(validations.size() != 0){
-
-		    flash("error", String.join(", ", validations));
+		    flash("error", "Nom invalide!");
 
 		}else{
 
     		if(user != null){
-            Http.MultipartFormData data = body.asMultipartFormData();
+            /*Http.MultipartFormData data = body.asMultipartFormData();
             FilePart picture = data.getFile("picture");
             if (picture != null) {
                 String fileName = picture.getFilename();
                 String contentType = picture.getContentType();
                 File file = picture.getFile();
-            }
+            }*/
     		    user.email = emailSended;
     		    user.name = nameSended;
     		    user.url = urlSended;
@@ -306,16 +304,6 @@ public class UserCtrl extends Controller {
 		return true;
 	}
 
-	public ArrayList areValideInformations(String name,String url, String company,String location){
-
-	    ArrayList result = new ArrayList();
-
-	    if(name.length() == 0){
-	        result.add("Le nom est invalide");
-	    }
-
-	    return result;
-	}
 
 	public ArrayList justePourTest(User globalUser) {
 

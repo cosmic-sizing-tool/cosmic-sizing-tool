@@ -22,7 +22,7 @@
                       <label for="upload-profile-picture">Photo de profil</label>
                       <div class="avatar-upload-container clearfix">
                           <img src="image.jpg" style="height : 70px ; width : 70px ;">
-                          <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" enctype="multipart/form-data">
+                          <form role="form" method="post" action="@routes.UserCtrl.updateProfil()" >
                           <span class="btn btn-default btn-file">Télécharger votre photo <input type="file" name="file" id="file">
                           </span>
                           <p style="color : grey ; font-size : 11px ; padding-left : 80px ;">
