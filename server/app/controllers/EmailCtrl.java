@@ -19,7 +19,9 @@ import com.avaje.ebean.*;
 public class EmailCtrl extends Controller {
 
     public Result emails() {
-        return ok(emails_settings.render());
+      Long id = 15L;
+      User user = User.find.byId(id);
+      return ok(emails_settings.render(user.emails));
     }
     public Result addEmail() {
         RequestBody body = request().body();
@@ -51,6 +53,11 @@ public class EmailCtrl extends Controller {
       List<Email> emails = user.emails;
       return ok(Json.toJson(emails));
     }
+    public Result deleteEmail(Long id){
+      Email temp = Email.find.byId(id);
+      temp.delete();
+      return redirect(routes.EmailCtrl.emails());
+    }
     public Result test(){
         User user_test = new User();
         user_test.name = "test";
@@ -58,7 +65,7 @@ public class EmailCtrl extends Controller {
         user_test.email = "admin12345@email.com";
         user_test.alias = "testadmin";
         user_test.save();
-        return ok(emails_settings.render());
+        return redirect(routes.EmailCtrl.emails());
     }
 
 }

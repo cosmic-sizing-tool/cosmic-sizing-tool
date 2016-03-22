@@ -1,3 +1,4 @@
+@(emails: List[Email])
 @main("Homepage") {
     <!-- Debut container -->
     <div class="container">
@@ -18,10 +19,12 @@
                     <div class="panel-heading"><strong>Email</strong></div>
                     <div class="panel-body">
                       <div class="col-md-8">
+                        <ul id="emails" style="list-style-type: none">
+                          @for(email <- emails){
+                              <li>@email.addresse <a href="@routes.EmailCtrl.deleteEmail(email.id)"><strong>Delete</strong></a></li>
+                          }
+                        </ul><br>
                           <p>Votre addresse email principale sera utilisée uniquement pour des notifications.</p>
-                          <!--<script async type="text/javascript" src="@routes.Assets.versioned("javascripts/emails/emails.js")"></script>-->
-                          <ul id="emails">
-                          </ul>
                       </div>
                         <form role="form" action="@routes.EmailCtrl.addEmail()" method="post">
                             <div class="col-md-8" style="padding-bottom: 5px;">

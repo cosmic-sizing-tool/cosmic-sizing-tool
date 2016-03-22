@@ -1,5 +1,4 @@
-@(user: User)
-
+@(certifications: List[Certification])
 @main("Homepage") {
 <!-- Debut container -->
 <div class="container">
@@ -71,10 +70,20 @@
               <div class="panel panel-default">
                   <div class="panel-heading"><strong>Profil du mesureur</strong> </div>
                   <div class="panel-body">
-                      <!--<script async type="text/javascript" src="@routes.Assets.versioned("javascripts/users/certifications.js")"></script>-->
+                    <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
                       <ul id="certifications">
-                          <li>COSMIC 2.0</li>
+                      @if(certifications.size != 0){
+                        @for(certification <- certifications){
+                          <li>@certification.method @certification.version @certification.date</li>
+                        }
+                      }
                       </ul>
+                    </div>
+                  </div>
+                  <br><br>
+                  <div class="row">
                       <script type="text/javascript" >
                           function populate(s1,s2){
                       	     var s1 = document.getElementById(s1);
@@ -134,6 +143,7 @@
                               <button type="sbmit" class="btn btn-success">Mettre à jour mon profil de mesureur</button>
                           </div>
                       </form>
+                    </div>
                   </div>
               </div>
           </div>

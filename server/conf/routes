@@ -35,6 +35,7 @@ GET     /emails                     controllers.EmailCtrl.emails()
 POST    /email                      controllers.EmailCtrl.addEmail()
 GET     /emails/test                controllers.EmailCtrl.test()
 GET     /email/current/emails       controllers.EmailCtrl.getUserEmails()
+GET     /email/delete/:id           controllers.EmailCtrl.deleteEmail(id: Long)
 
 # Organisations page
 POST	   /organisations		  		    controllers.OrganisationCtrl.createOrganisation()

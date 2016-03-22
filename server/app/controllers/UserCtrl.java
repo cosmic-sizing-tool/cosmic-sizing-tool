@@ -25,7 +25,7 @@ public class UserCtrl extends Controller {
 		Long id = 15L;
 		userGlobal = User.find.byId(id);
 
-		return ok(profil.render(userGlobal));
+		return ok(profil.render(userGlobal.certifications));
 	}
 
 	public Result settings() {
