@@ -1,154 +1,108 @@
+/* bootstrap dropdown hover menu*/
 
-.btn-success {
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.15);
-    background-color: #60b044;
-    background-image: -webkit-linear-gradient(#8add6d, #60b044);
-    background-image: linear-gradient(#8add6d, #60b044);
-    border-color: #5ca941;
-    
+        body {
+        background: #330033;
+        }
+
+        .jumbotron {
+        background: #330033;
+        }
+
+        .btn-success {
+        color: #fff;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+        background-color: #60b044;
+        background-image: -webkit-linear-gradient(#8add6d, #60b044);
+        background-image: linear-gradient(#8add6d, #60b044);
+        border: 1px solid #5ca941;
+        }
+
+        .btn-default {
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #333;
+        background-color: #eee;
+        background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+        background-image: linear-gradient(#fcfcfc, #eee);
+        border: 1px solid #d5d5d5;
+        border-radius: 3px;
+        }
+
+        .btn {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: middle;
+        }
+
+        input {
+        width: 250px;
+        display: inline-block;
+        font-weight: 70%;
+        padding: 8px;
+        margin: 5px 0;
+        font-size: 1em;
+        font-weight: 100%;
+        color: #475B62;
+        border: 1px solid #C5C5C5;
+        border-radius: 4px;
+        outline: 0;
+        }
+
+        select.icon-menu option {
+        background-repeat: no-repeat;
+        background-position: left;
+        padding-left: 20px;
+        height: 30px;
+        font-size: 1em;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        }
+
+        select.languages option[value="en"] {
+        background-image: url(/assets/images/en.png);
+        }
+
+        select.languages option[value="fr"] {
+        background-image: url(/assets/images/fr.png);
+        }
+
+        img:hover {
+        cursor: pointer;
+        }
+
+        .vertical-center {
+        min-height: 100%;
+        /* Fallback for browsers do NOT support vh unit */
+        min-height: 100vh;
+        /* These two lines are counted as one :-)       */
+        display: flex;
+        align-items: center;
+        cursor: po
+        }
+
+/* Form */
+
+
+
+input.ng-invalid.ng-touched {
+    border: 2px solid #DA3637;
 }
 
-.btn-default {
-    position: relative;
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 13px;
-    font-weight: bold;
-    line-height: 20px;
-    color: #333;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    background-color: #eee;
-    background-image: -webkit-linear-gradient(#fcfcfc, #eee);
-    background-image: linear-gradient(#fcfcfc, #eee);
-    border: 1px solid #d5d5d5;
-    border-radius: 3px;
+input.ng-valid.ng-touched {
+    border: 2px solid #509D12;
 }
 
-.btn {
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    vertical-align: middle;
-    margin: 10px;
+.ng-invalid .btn-submit{
+    background-color: gray;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-.navbar-inverse, .nav , .navbar-nav {
-    position: fixed;
-    float: right;
-    background-color: #fafafa;
-    border-color: #fafafa;
-    color: #000;
-}
-
-.text {
-    float:left;
-    
-}
-
-.logo {
-    position: relative;
-/*    transform-origin: 50% 50% 0px;*/
-    column-fill: auto;
-    float: left;
-    width: 100%;
-    height: 50%;
-    margin: 15%;
-}
-
-
-
-#navbar-brand-right{
-    margin: 10px;
-}
-
-
-.dropdown{
-    position: relative;
-    display: inline-block;
-    height: 100px:
-}
-
-.dropdown:hover{
-    position: relative;
-    display: inline-block;
-    height: 100px;
-
-}
-
-.dropdown:active{
-    position: relative;
-    display: inline-block;
-    height: 100px;
-   background-color: black;
-}
-
-
-.dropdown-content {
-/*    position: relatve;*/
-/*    margin: 0 0 0 -5%;*/
-/*    display: none;*/
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-}
-
-.nav, .navbar-nav {
-  width: 100px;
-   height: 80px;
-  color: #000;
-}
-
-.navbar-brand{
-    margin-left: 25%;
-}
-
-.navbar-toggle{
-    background-color: black;
-}
-
-.container {
-    position: relative;
-    margin-top: 20%;
-}
-
-.dropdown-toggle {
-    width: 100px;
-}
-
-
-.text-center {
-    margin-top: 100px:
-}
-
-#cosmic-text {
-    width: 100%;
-    height: 100%;
-    color: black;
-    margin-left: 10%;
-}
-
-.pull-right {
-    float: right!important;
-    margin-right: 10%;
-    margin-bottom: 5%;
-
-}
-.list-inline {
-    padding-left: 0;
-    margin-left: -5px;
-    list-style: none;
-}
-
-.pull-left {
-    float: left!important;
-    margin-left: 10%;
-    margin-bottom: 5%;
-
+.error {
+    color: red;
+    padding-bottom: 10px;
 }
 
