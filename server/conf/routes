@@ -42,4 +42,4 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 #Project page
 GET     /project                controllers.ProjectController.index(projectId: Long ?= 0)
-POST    /project                controllers.ProjectController.submit()
+POST    /project/                controllers.ProjectController.submit()

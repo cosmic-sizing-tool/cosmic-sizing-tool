@@ -21,6 +21,7 @@ public class ProjectController extends Controller {
         
         if(projectId != 0) {
             projectModel = Project.find.byId(projectId);
+            System.out.println(projectModel.contact_person);
             if(projectModel == null) {
                 return ok(project.render(projectModel));
             } else {
@@ -29,7 +30,7 @@ public class ProjectController extends Controller {
             
         }
         
-        return ok(project.render(null));
+        return ok(project.render(new Project()));
 
     }
     
@@ -47,6 +48,8 @@ public class ProjectController extends Controller {
         
         Project projectModel= formData.get();
         
+        System.out.println(projectModel.id);
+        
         if(formData.data().get("id") != null) {
             projectModel.update();
             projectModel = Project.find.byId(Long.parseLong(id));
@@ -59,6 +62,7 @@ public class ProjectController extends Controller {
 
         flash("Saved");
         
+        System.out.println(projectModel.contact_person);
         
         
         return ok(project.render(projectModel));
