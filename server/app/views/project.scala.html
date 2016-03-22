@@ -18,13 +18,13 @@
 <body>
 	
 	<div class="container" >
-		<form role="form" action="/project" method="post" accept-charset="utf-8">
+		<form role="form" action="/project/" method="post" accept-charset="utf-8">
 			
 
 
 
 
-
+            <input type="hidden" name="id" value="@project.id" />
 			<div>
 				<button type="button"  style="border-color:#000000; color:black ;font-weight: bold" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
 
@@ -34,19 +34,19 @@
 						<table class = "table" style="width:40%" >
 							<tr>
 								<td><label for="note">@Messages("project.sectionA1_con")</label></td>
-								<td><input type="text" name="contact_person" id="contact_person"/><br></td>
+								<td><input type="text" name="contact_person" id="contact_person" value="@project.contact_person" /><br></td>
 							</tr>
 							<tr>
 								<td><label for="note">@Messages("project.sectionA1_org")</label></td>
-								<td><input type="text" name="organisation" id="organisation"/><br></td>
+								<td><input type="text" name="organisation" id="organisation" value="@project.organisation" /><br></td>
 							</tr>
 							<tr>
 								<td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
-								<td> <input type="text" name="country" id="country"/><br></td>
+								<td> <input type="text" name="country" id="country" value="@project.country" /><br></td>
 							</tr>
 							<tr>
 								<td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
-								<td><input type="text" name="email" id="email"/><br><br></td>
+								<td><input type="text" name="email" id="email" value="@project.email"/><br><br></td>
 							</tr>
 						</table> 
 						
@@ -59,12 +59,14 @@
 						<table class = "table" style="width:40%">
 							<tr>
 								<td><label for="note">@Messages("project.sectionA2_pro")</label></td>
-								<td> <input type="text" name="projectID" id="projectID"/><br></td>
+								<td> <input type="text" name="projectID" id="projectID" value="@project.projectID"/><br></td>
 							</tr>
+							<!-- should be shown only if not new project
 							<tr>
 								<td><label for="note">@Messages("project.sectionA2_dat")</label></td>
 								<td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
 							</tr>
+							-->
 						</table> 
 						
 						
@@ -75,11 +77,11 @@
 					<div class="table-responsive">          
 						<table class="table" style="width:45%">
 							<tr>
-								<td> <input type="checkbox" name="rolePerson" value="analystProgrammer"> 
+								<td> <input type="checkbox" name="role" value="analystProgrammer"> 
 									@Messages("project.sectionA3_ana")
 								</td>
 								<td>
-									<input type="checkbox" name="role" value="customerUser"> @Messages("project.sectionA3_cus")
+									<input type="checkbox" name="role" value="customerUser"  > @Messages("project.sectionA3_cus")
 								</td>
 								<td>
 									<input type="checkbox" name="role" value="developmentManager"> @Messages("project.sectionA3_dev")
@@ -150,15 +152,15 @@
 						<table class = "table" style="width:40%">
 							<tr>
 								<td><label for="note">@Messages("project.sectionB9_num")</label></td>
-								<td> <input type="text" name="nbSprint" id="nbSprint"/><br></td>
+								<td> <input type="text" name="nbSprint" id="nbSprint"value="@project.nbSprint"/><br></td>
 							</tr>
 							<tr>
 								<td><label for="note">@Messages("project.sectionB9_len")</label></td>
-								<td><input type="text" name="lengthSprint" id="lengthSprint"/>@Messages("project.sectionB9_day")<br><br></td>
+								<td><input type="text" name="lengthSprint" id="lengthSprint" value="@project.lengthSprint" />@Messages("project.sectionB9_day")<br><br></td>
 							</tr>
 							<tr>
 								<td><label for="note">@Messages("project.sectionB9_del")</label></td>
-								<td><input type="text" name="delSize" id="delSize"/>@Messages("project.sectionB9_sto")<br><br></td>
+								<td><input type="text" name="storyPoints" id="storyPoints" value="@project.storyPoints" />@Messages("project.sectionB9_sto")<br><br></td>
 							</tr>
 						</table> 	
 					</div>
@@ -212,8 +214,8 @@
     <td><label for="note">@Messages("project.sectionC58_pro")</label></td>
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+    <td><input type="text" name="version" id="version" /></td>
   </tr>
   
   <tr>
@@ -221,7 +223,7 @@
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
     <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="version" id="version" /></td>
   </tr>
   
   
@@ -230,23 +232,23 @@
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
     <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="version" id="version"  /></td>
   </tr>
   
   <tr>
     <td><label for="note">@Messages("project.sectionC58_deb")</label></td>
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+    <td><input type="text" name="version" id="version" /></td>
   </tr>
   
   <tr>
     <td><label for="note">@Messages("project.sectionC58_dat")</label></td>
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+    <td><input type="text" name="version" id="version" /></td>
   </tr>
   
   <tr>
@@ -270,15 +272,15 @@
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
     <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="version" id="version" /></td>
   </tr>
   
      <tr>
     <td><label for="note">@Messages("project.sectionC58_oth")</label></td>
     <td><input type="checkbox" name="YESNO" id="Yes"/></td>
     <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
+    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+    <td><input type="text" name="version" id="version" /></td>
   </tr>
   
 </table> 

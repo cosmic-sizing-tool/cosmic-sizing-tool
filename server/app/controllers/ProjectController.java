@@ -13,15 +13,14 @@ import play.libs.Json;
 
 public class ProjectController extends Controller {
 
-    public Result index(Long projectId) {
+    public Result index(String projectId) {
         
         Project projectModel;
         
         Form<Project> projectForm = form(Project.class);
         
-        if(projectId != 0) {
+        if(projectId != null) {
             projectModel = Project.find.byId(projectId);
-            System.out.println(projectModel.contact_person);
             if(projectModel == null) {
                 return ok(project.render(projectModel));
             } else {
@@ -34,7 +33,7 @@ public class ProjectController extends Controller {
 
     }
     
-    public Result fetch(Long projectId) {
+    public Result fetch(String projectId) {
         Project projectModel = Project.find.byId(projectId);
         return ok(Json.toJson(projectModel));
     }
@@ -50,22 +49,14 @@ public class ProjectController extends Controller {
         
         System.out.println(projectModel.id);
         
-        if(formData.data().get("id") != null) {
-            projectModel.update();
-            projectModel = Project.find.byId(Long.parseLong(id));
-        } else {
-            Long newId = Project.nextId();
-            projectModel.id = newId;
-             projectModel.save();
-             projectModel = Project.find.byId(newId);
-        }
+         projectModel.save();
 
         flash("Saved");
         
         System.out.println(projectModel.contact_person);
         
         
-        return ok(project.render(projectModel));
+        return redirect("/project?projectId=" + projectModel.projectID);
     }
     
 }

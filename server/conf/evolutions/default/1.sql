@@ -11,12 +11,12 @@ create table organisation (
 ;
 
 create table project (
-  id                        bigint not null,
+  project_id                varchar(255) not null,
+  id                        bigint,
   contact_person            varchar(255),
   organisation              varchar(255),
   country                   varchar(255),
   email                     varchar(255),
-  project_id                varchar(255),
   date_submitted            timestamp,
   role_person_submitted_project integer,
   role_person_other         varchar(255),
@@ -24,7 +24,7 @@ create table project (
   software_type_other       varchar(255),
   project_describes_domain  integer,
   project_reusable          integer,
-  number_of_sprints         integer,
+  nb_sprint                 integer,
   length_sprint             integer,
   story_points              varchar(255),
   team_process_improvement  boolean,
@@ -109,7 +109,7 @@ create table project (
   constraint ck_project_reltmeapp check (reltmeapp in (0,1,2,3,4,5,6)),
   constraint ck_project_matintessapp check (matintessapp in (0,1,2,3,4,5)),
   constraint ck_project_infrsoft check (infrsoft in (0,1,2,3,4,5)),
-  constraint pk_project primary key (id))
+  constraint pk_project primary key (project_id))
 ;
 
 create table team_member (

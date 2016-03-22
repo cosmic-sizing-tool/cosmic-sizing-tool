@@ -41,5 +41,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 
 #Project page
-GET     /project                controllers.ProjectController.index(projectId: Long ?= 0)
+GET     /project                controllers.ProjectController.index(projectId: String ?= null)
 POST    /project/                controllers.ProjectController.submit()
+
+GET     /api/project/:projectId  controllers.ProjectController.fetch(projectId: String)

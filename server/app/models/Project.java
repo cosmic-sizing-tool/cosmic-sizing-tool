@@ -11,8 +11,8 @@ import com.avaje.ebean.Model;
 @Entity
 public class Project extends Model {
     
-    public static Finder<Long,Project> find = new Finder<Long,Project>(Project.class);
-    @Id
+    public static Finder<String,Project> find = new Finder<String,Project>(Project.class);
+
     public Long id;
     
     private static Long nextId = 0L;
@@ -32,6 +32,7 @@ public class Project extends Model {
     public String email;
     
     //2.
+    @Id
     public String projectID;
     public Date dateSubmitted;
     
@@ -57,8 +58,8 @@ public class Project extends Model {
     public PrjtReusable projectReusable ;
     
     //9.important
-    public int numberOfSprints;
-    public int lengthSprint;
+    public int nbSprint;
+    public int lengthSprint; //invalid value error needs fix
     public String storyPoints;
     
     //12.souhaitable
