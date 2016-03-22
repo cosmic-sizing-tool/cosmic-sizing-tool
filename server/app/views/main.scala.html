@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-    <<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
 
     <link rel="icon" type="image/png" href='@routes.Assets.versioned("images/icon-cosmic.png")'>
@@ -116,8 +116,8 @@
 
                     <input type="email" name="email" placeholder="Your email" ng-model="user.email" ng-required="true">
 
-                    <input type="password" name="password" placeholder="Create a password" ng-model="user.password" ng-minlength="8" ng-pattern="/^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,20}$/" ng-required="true">
-                    <h6 class="small-text" style="color: #999999">Use at least one letter upper case, one letter lower case, one digit, one special character. Minimum 8 and Maximum 10 characters .</h6>
+                    <input type="password" name="password" placeholder="Create a password" ng-model="user.password" ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
+                    <h6 class="small-text" style="color: #999999">Use at least one letter, one numeral.<br> Minimum 8 characters and maximum.</h6>
 
                     <select style="width: 250px" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
                         <option value="en" selected>English</option>
