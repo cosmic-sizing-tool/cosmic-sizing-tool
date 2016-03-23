@@ -2,8 +2,6 @@
 
 <!DOCTYPE html>
 
-    <link rel="icon" type="image/png" href='@routes.Assets.versioned("images/icon-cosmic.png")'>
-
     <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -11,11 +9,6 @@
     <!-- Angular -->
     <script src='@routes.Assets.versioned("javascripts/lib/angular/angular.min.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/lib/registration.js")'></script>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href='@routes.Assets.versioned("bootstrap/dist/css/bootstrap.min.css")'>
-    <!-- Costom syle -->
-    <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/styles.css")>
 
 <!-- Cosmic header -->
         <!-- Form -->
@@ -26,28 +19,28 @@
             <section class="card" ng-app="registrationForm" ng-controller="RegistrationCtrl">
 
                 <form name="profil" method="post" ng-submit="register()" novalidate>
-                    <h3 class="" style="margin-top: 100px; padding-left:2em ">Join COSMIC Sizing Tool</h3>
-                    <h4 class="">Create your personnal account</h4>
-                    <label style="margin: 0" for="username">Username</label>
+                    <h3 class="" style="margin-top: 100px; padding-left:2em; color:#FFFFFF ">Join COSMIC Sizing Tool</h3>
+                    <!--h4 class=""style=" color:#3366FF">Create your personnal account</h4-->
+                    <label style="margin: 0; color:#3366FF " for="username">Username</label>
                     <input style="margin: 0" type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
-                    <p class="small-text" style="color: #999999">This will be your username - you can enter your organisation's username next.</p>
+                    <h6 class="small-text" style="color: #f7efef">This will be your username - you can enter your organisation's username next.</h6>
 
-                    <label style="margin: 0" for="email">Email address</label>
+                    <label style="margin: 0; color:#3366FF " for="email">Email address</label>
                     <input style="margin: 0" type="email" id="email" placeholder="Your email" ng-model="user.email" ng-required="true">
-                    <p class="small-text" style="color: #999999">You will occasionally receive account related emails. We promise not to share your email with anyone.</p>
+                    <h6 class="small-text" style="color: #f7efef">You will occasionally receive account related emails. We promise not to share your email with anyone.</h6>
 
-                    <label style="margin: 0" for="password">Password</label>
+                    <label style="margin: 0; color:#3366FF " for="password">Password</label>
                     <input style="margin: 0" type="password" id="password" placeholder="Create a password" ng-model="user.password"
                            ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
-                    <h6 class="small-text" style="color: #999999">Use at least one letter, one numeral. Minimum 8 characters and maximum 20.</h6>
+                    <h6 class="small-text" style="color: #f7efef">Use at least one letter, one numeral. Minimum 8 characters and maximum 20.</h6>
 
                     <select style="width: 100%; margin: 0" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
                         <option value="en" selected>English</option>
                         <option value="fr">Français</option>
                     </select>
-                    <p class="small-text" style="color: #999999">This will be your default language.</p>
+                    <p class="small-text" style="color: #f7efef"This will be your default language.</p>
                     <hr>
-                    <h6 class="small-text" style="color: #999999;margin: 0">By clicking on "Register to the COSMIC-sizing-tool", you are agreeing to the
+                    <h6 class="small-text" style="color: #f7efef;margin: 0">By clicking on "Register to the COSMIC-sizing-tool", you are agreeing to the
                         <br><a href="#" style="color: #3366FF">Terms and Conditions</a> and the <a href="#" style="color: #3366FF">Privacy Policy</a>.
                     </h6>
                     <hr>
