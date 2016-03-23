@@ -50,17 +50,21 @@ input {
   border-radius: 4px;
   outline: 0;
 }
-
+select.icon-menu{
+  height: 30px;
+}
 select.icon-menu option {
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 20px;
-  height: 30px;
   font-size: 1em;
   -moz-appearance: none;
   -webkit-appearance: none;
 }
 
+.small-text {
+    text-align:center
+}
 select.languages option[value="en"] {
   background-image: url(/assets/images/en.png);
 }
