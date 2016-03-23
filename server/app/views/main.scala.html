@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String)(body: Html)
 
 <!DOCTYPE html>
 
@@ -9,7 +9,7 @@
     <meta charset="utf-8">
 
     <link rel="icon" type="image/png" href='@routes.Assets.versioned("images/icon-cosmic.png")'>
-    <title>Where software functional size is Measured!</title>
+    <title>@title</title>
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -31,8 +31,10 @@
 </head>
 
 <body>
+
+<!-- Cosmic header -->
 <header class="row">
-    <nav style="box-shadow: 5px 4px 5px #000" class="navbar navbar-default navbar-fixed-top">
+    <nav style="box-shadow: 5px 4px 5px #000; background-color: #F5F5F5" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left">
                 <span class="sr-only">Toggle-navigation</span>
@@ -42,16 +44,16 @@
             </button>
             <!-- Dropdown menu -->
             <div class="navbar-collapse collapse">
-                <div class="col-md-2">
+                <div style="width: 50x; height:70px" class="col-md-2">
                     <ul class="nav navbar-nav navbar-left">
                         <li class="dropdown">
                             <div class="dropdown-troggle" data-toggle="dropdown">
-                                <img style="float:left; margin: 10px; cursor: pointer" src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
+                                <img style="float:left; margin-top: 30px; cursor: pointer; width: 50x; height:70px " src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
                             </div>
-                            <ul class="dropdown-menu" style="float: right; opacity:0.8">
+                            <ul class="dropdown-menu" style="float: right; opacity:0.8; margin-top: 30px ">
                                 <li class><a href="#"><h5>About the COSMIC-sizing-tool</h5></a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><h5>COSMIC site</h5></a></li>
+                                <li><a href="http://cosmic-sizing.org"><h5>COSMIC site</h5></a></li>
                                 <li class="divider"></li>
                                 <li><a href="#"><h5>COSMIC Glossary</h5></a></li>
                                 <li class="divider"></li>
@@ -67,7 +69,7 @@
                 </div>
 
                 <!-- select language Btn-Register Btn-Log in -->
-                <div class="col-md navbar-right" style="margin: 40px 0">
+                <div class="col-md navbar-right" style="margin: 40px 80px 40px 0">
                     <ul class="list-inline" style="margin-right: 10px">
                         <li>
                             <select name="languages" class="languages icon-menu">
@@ -76,7 +78,10 @@
                             </select>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-success">Register</button>
+                            <a href="@routes.Application.signup()">
+                                <button type="button" class="btn btn-success">Register</button>
+                            </a>
+
                         </li>
                         <li>
                             <a href="@routes.Application.login()">
@@ -94,13 +99,12 @@
     </nav>
 </header>
 
-<div class="container-fluid">
+<div class="container">
     <div class="jumbotron">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-7 text-center vertical-center" style="color: white">
+
+        <div class="col-md-10 text-center vertical-center" style="color: white">
             <div class="row">
-                <h2>Where software functional<br>size is Measured! </h2>
+                <h1>Where software functional<br>size is Measured! </h1>
 
                 <h6 class="small-text">Open-source COSMIC software functional size measurement support too
                     <br><span id="blue-text" style="color: #3366FF;">Free to use</span></h6>
@@ -116,23 +120,29 @@
 
                     <input type="email" name="email" placeholder="Your email" ng-model="user.email" ng-required="true">
 
-                    <input type="password" name="password" placeholder="Create a password" ng-model="user.password" ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
-                    <h6 class="small-text" style="color: #999999">Use at least one letter, one numeral.<br> Minimum 8 characters and maximum.</h6>
+                    <input type="password" name="password" placeholder="Create a password" ng-model="user.password"
+                           ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
+                    <h6 class="small-text" style="color: #f7efef">Use at least one letter, one numeral.<br> Minimum 8 characters and maximum 20.</h6>
 
                     <select style="width: 250px" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
                         <option value="en" selected>English</option>
                         <option value="fr">Français</option>
                     </select>
                     <button type="submit" class="btn btn-success navbar-btn btn-submit">Register to the COSMIC-sizing-tool</button>
+                    <h6 class="small-text" style="color: #f7efef">By clicking on "Register to the COSMIC-sizing-tool", you are agreeing to the
+                        <br><a href="#" style="color: #3366FF">Terms and Conditions</a> and the <a href="#" style="color: #3366FF">Privacy Policy</a>.
+                    </h6>
+
                 </form>
             </section>
         </div>
     </div>
 </div>
-<footer class="navbar navbar-default navbar-fixed-bottom">
+<!-- Cosmic footer -->
+<footer style="background-color: #F5F5F5" class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-text pull-left">
-            <p>© 2016 COSMIC.</p>
+            <p>© 2016 COSMIC</p>
         </div>
         <div class="navbar-text pull-right">
             <a href="#" style="margin-left: 2em">Terms & Conditions</a>

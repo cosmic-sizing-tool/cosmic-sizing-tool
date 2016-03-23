@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index()
 GET     /team                       controllers.Application.team()
 
+GET     /signup                      controllers.Application.signup()
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 

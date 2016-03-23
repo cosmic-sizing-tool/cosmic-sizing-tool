@@ -38,7 +38,7 @@ body {
 }
 
 input {
-  width: 250px;
+  width: 100%;
   display: inline-block;
   font-weight: 70%;
   padding: 8px;

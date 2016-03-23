@@ -14,6 +14,10 @@ public class Application extends Controller {
     public Result index() {
         return ok(index.render("Merci Gabriel :)"));
     }
+
+    public Result signup() {
+        return ok(signup.render());
+    }
     
     public Result counter() {
         return ok(counter.render());

@@ -1,67 +1,171 @@
+@()
+
 <!DOCTYPE html>
 
-<html lang="en">
 <head>
-    <!-- Boostrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
 
-    <title>Cosmic sizing tool</title>
-    <style>
-        form.form-signin {
-        background-color: #ffffff;
-        position: relative;
-        left: 300px;
-        width: 300px;
-        }
+    <link rel="icon" type="image/png" href='@routes.Assets.versioned("images/icon-cosmic.png")'>
+    <title>Sign up</title>
+    <meta name="generator" content="Bootply"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-        h2{
-        position: relative;
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-        left: 250px;
-        }
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-        p{
-        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-size: 9px;
-        line-height: 1.42857;
-        }
+    <!-- Angular -->
+    <script src='@routes.Assets.versioned("javascripts/lib/angular/angular.min.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/registration.js")'></script>
 
-    </style>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href='@routes.Assets.versioned("bootstrap/dist/css/bootstrap.min.css")'>
+    <!-- Costom syle -->
+    <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/styles.css")>
 </head>
-<body>
 
+<body style="background-color: #FFFFFF">
 
-<div class="col-lg-4 col-lg-offset-4">
-    <h2 class="form-signin-heading">Create your personnal account</h2><br>
-    <form class="form-signin">
-        <label for="inputEmail">Username</label>
-        <input type="text" id="inputUsername" class="form-control" required autofocus>
-        <p>This will be your username - you can enter your organisation's username next.</p>
-        <label for="inputEmail">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" required autofocus>
-        <p>You will occasionally receive account related emails. We promise not to share your email with anyone.</p>
-        <label for="inputPassword">Password</label>
-        <input type="password" id="inputPassword" class="form-control" required>
-        <p>Use at least one lowercase lette, one numeral, and seven characters.</p>
-        <label id="inputLanguage">Language preference</label>
-
-        <div class="dropdown">
-            dropwdwon language
-        </div>
-        <p>This will be your default language.</p>
-
-        <div class="col-lg-4 col-lg-offset-3">
-            </br></br>
-            <button id="#debug" style="background-color: #60b044;" class="btn btn-lg btn-primary btn-lg" type="submit">
-                Create an account
+<!-- Cosmic header -->
+<header class="row">
+    <nav style="box-shadow: 5px 4px 5px #000; background-color: #F5F5F5" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="float: left">
+                <span class="sr-only">Toggle-navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
+            <!-- Dropdown menu -->
+            <div class="navbar-collapse collapse">
+                <div style="width: 50x; height:70px" class="col-md-2">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <div class="dropdown-troggle" data-toggle="dropdown">
+                                <img style="float:left; margin-top: 30px; cursor: pointer; width: 50x; height:70px " src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
+                            </div>
+                            <ul class="dropdown-menu" style="float: right; opacity:0.8; margin-top: 30px ">
+                                <li class><a href="#"><h5>About the COSMIC-sizing-tool</h5></a></li>
+                                <li class="divider"></li>
+                                <li><a href="http://cosmic-sizing.org"><h5>COSMIC site</h5></a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><h5>COSMIC Glossary</h5></a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><h5>Find a measurer</h5></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- COSMIC-Sizing-Tool Brand -->
+                <div class="col-md-4" style="margin: 20px 0">
+                    <h1>COSMIC-Sizing-Tool</h1>
+                </div>
+
+                <!-- select language Btn-Register Btn-Log in -->
+                <div class="col-md navbar-right" style="margin: 40px 80px 40px 0">
+                    <ul class="list-inline" style="margin-right: 10px">
+                        <li>
+                            <select name="languages" class="languages icon-menu">
+                                <option value="en" selected>English</option>
+                                <option value="fr">Français</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a href="@routes.Application.signup()">
+                                <button type="button" class="btn btn-success">Register</button>
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="@routes.Application.login()">
+                                <button type="button" class="btn btn-default">Log in</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md navbar-right" style="margin: 40px 0">
+                    <ul class="list-inline" style="margin-right: 10px">
+                    </ul>
+                </div>
+            </div>
         </div>
-    </form>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="jumbotron">
+        <!-- Form -->
+        <div class="col-md-3 vertical-center">
+        </div>
+        <div class="col-md-6 vertical-center">
+
+            <section class="card" ng-app="registrationForm" ng-controller="RegistrationCtrl">
+
+                <form name="profil" method="post" ng-submit="register()" novalidate>
+                    <h2 class="">Create your personnal account</h2>
+                    <label for="username">Username</label>
+                    <input type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
+                    <p class="small-text">This will be your username - you can enter your organisation's username next.</p>
+
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" placeholder="Your email" ng-model="user.email" ng-required="true">
+                    <p class="small-text">You will occasionally receive account related emails. We promise not to share your email with anyone.</p>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" ng-model="user.password"
+                           ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
+                    <h6 class="small-text" style="color: #f7efef">Use at least one letter, one numeral.<br> Minimum 8 characters and maximum 20.</h6>
+
+                    <select style="width: 250px" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
+                        <option value="en" selected>English</option>
+                        <option value="fr">Français</option>
+                    </select class="small-text">
+                    <p>This will be your default language.</p>
+                    <button type="submit" class="btn btn-success navbar-btn btn-submit">Register to the COSMIC-sizing-tool</button>
+                    <h6 class="small-text " style="color: #f7efef">By clicking on "Register to the COSMIC-sizing-tool", you are agreeing to the
+                        <br><a href="#" style="color: #3366FF">Terms and Conditions</a> and the <a href="#" style="color: #3366FF">Privacy Policy</a>.
+                    </h6>
+
+                </form>
+            </section>
+        </div>
+        <div class="col-md-3 vertical-center">
+        </div>
+    </div>
 </div>
+<!-- Cosmic footer -->
+<footer style="background-color: #F5F5F5" class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <div class="navbar-text pull-left">
+            <p>© 2016 COSMIC</p>
+        </div>
+        <div class="navbar-text pull-right">
+            <a href="#" style="margin-left: 2em">Terms & Conditions</a>
+            <a href="#" style="margin-left: 2em">Contact</a>
+            <a href="#" style="margin-left: 2em">Help</a>
+        </div>
+    </div>
+</footer>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script async src=@routes.Assets.versioned("bootstrap/dist/js/bootstrap.min.js") type="text/javascript"></script>
+
+<script>
+    $('ul.nav li.dropdown').hover(function () {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500)
+    }, function () {
+      $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+    });
+
+
+</script>
 </body>
 </html>
+
 
 
