@@ -54,6 +54,7 @@ select.icon-menu{
   height: 30px;
 }
 select.icon-menu option {
+  width: 100%;
   background-repeat: no-repeat;
   background-position: left;
   padding-left: 20px;
@@ -107,4 +108,8 @@ input.ng-valid.ng-touched {
 .error {
   color: red;
   padding-bottom: 10px;
+}
+
+.small-text{
+    font-size: 10px;
 }
