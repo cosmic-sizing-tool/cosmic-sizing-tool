@@ -16,6 +16,7 @@ create table email (
   addresse                  varchar(255),
   main                      integer(1),
   hidden                    integer(1),
+  deleted                   integer(1),
   user_id                   integer,
   constraint uq_email_addresse unique (addresse))
 ;

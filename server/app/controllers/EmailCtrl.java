@@ -27,24 +27,27 @@ public class EmailCtrl extends Controller {
         RequestBody body = request().body();
 
         String adresse = body.asFormUrlEncoded().get("adresse")[0];
-        Email temp = new Email();
-        temp.addresse = adresse;
+        if(!exists(adresse)) {
+          Email temp = new Email();
+          temp.addresse = adresse;
 
-        if(body.asFormUrlEncoded().get("hide") == null){
+          if(body.asFormUrlEncoded().get("hide") == null){
             temp.hidden = false;
-        }else {
+          }else {
             temp.hidden = true;
+          }
+          //List<User> users = User.find.where().ilike("email", "admin12345@email.com").findList();
+          //User user = users.get(0);
+          Long id = 15L;
+          User user = User.find.byId(id);
+          temp.user = user;
+          temp.save();
+          user.emails.add(temp);
+          user.save();
+          flash("success", "Courriel ajouté");
+        }else{
+          flash("error", "Cette adresse courriel est déjà utilisée ...");
         }
-        //List<User> users = User.find.where().ilike("email", "admin12345@email.com").findList();
-        //User user = users.get(0);
-        Long id = 15L;
-        User user = User.find.byId(id);
-        temp.user = user;
-        temp.save();
-        user.emails.add(temp);
-        user.save();
-
-        flash("success", "Courriel ajouté");
         return redirect(routes.EmailCtrl.emails());
     }
     public Result getUserEmails() {
@@ -55,7 +58,8 @@ public class EmailCtrl extends Controller {
     }
     public Result deleteEmail(Long id){
       Email temp = Email.find.byId(id);
-      temp.delete();
+      temp.setDeleted(true);
+      Ebean.update(temp);
       return redirect(routes.EmailCtrl.emails());
     }
     public Result test(){
@@ -66,6 +70,18 @@ public class EmailCtrl extends Controller {
         user_test.alias = "testadmin";
         user_test.save();
         return redirect(routes.EmailCtrl.emails());
+    }
+
+    public boolean exists(String e) {
+      List<Email> emails = Email.find.all();
+      boolean exist = false;
+      for(Email email : emails) {
+        if(email.addresse.equals(e)){
+          exist = true;
+        }
+      }
+
+      return exist;
     }
 
 }

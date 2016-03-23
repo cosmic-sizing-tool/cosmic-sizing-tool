@@ -24,9 +24,14 @@ public class Email extends Model {
     @Constraints.Required
     public boolean hidden;
 
+    public boolean deleted;
+
     @ManyToOne(cascade = CascadeType.ALL)
     public User user;
 
     public static Finder<Long,Email> find = new Finder<Long,Email>(Long.class, Email.class);
 
+    public void setDeleted(boolean b) { this.deleted = b;}
+    public void setHidden(boolean b) { this.deleted = b;}
+    public void setMain(boolean b) { this.deleted = b;}
 }

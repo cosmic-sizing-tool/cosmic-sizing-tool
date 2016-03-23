@@ -58,6 +58,12 @@ public class UserCtrl extends Controller {
 		u1.password = "admin";
 		u1.email = "bobb23y@email.com";
 		u1.alias = "tarzan12";
+    Email temp = new Email();
+    temp.addresse = u1.email;
+    temp.main = true;
+    temp.user = u1;
+    temp.save();
+    u1.emails.add(temp);
 		u1.save();
 
 		return ok(index.render("User test2 create"));
@@ -120,17 +126,12 @@ public class UserCtrl extends Controller {
         if(valide) {
             temp.save();
             user.certifications.add(temp);
-            //user.save();
-            user.update();
             if(body.asFormUrlEncoded().get("dispo") == null) {
-                user.disponible = false;
-                user.save();
-                //user.update();
+                user.setDisponible(false);
             }else{
-    			      user.disponible = true;
-    			      user.save();
-                //user.update();
+                user.setDisponible(true);
     		    }
+            Ebean.update(user);
             flash("success", "Certification ajouté");
         }else{
             flash("error", "Vous avez déjà une certification identique !");
@@ -153,9 +154,8 @@ public class UserCtrl extends Controller {
 
         if(user.password.equals(oldPassword)) {
             if(newPassword.equals(confirmationPassword)) {
-                user.password = newPassword;
-		            user.save();
-                //user.update();
+		            user.setPassword(newPassword);
+                Ebean.update(user);
 		            flash("success", "Nouveau mot de passe sauvegardé");
             }else{
                 flash("error", "Les deux nouveaux mot de passe ne sont pas identiques");
@@ -175,13 +175,13 @@ public class UserCtrl extends Controller {
 
 		if(!newUsername.equals("")) {
 		    if(email_valid(newUsername) && !email_exist(newUsername)) {
-		        user.email = newUsername;
-		        user.save();
+		        user.setEmail(newUsername);
+            Ebean.update(user);
             flash("success", "Email modifié avec succès!");
 		    }else{
 		        if(!username_exist(newUsername)) {
-		            user.alias = newUsername;
-		            user.save();
+		            user.setAlias(newUsername);
+                Ebean.update(user);
                 flash("success", "Nom d'utilisateur modifié avec succès!");
 		        }else{
 		            flash("error", "Erreur serveur");
@@ -219,14 +219,11 @@ public class UserCtrl extends Controller {
                 String contentType = picture.getContentType();
                 File file = picture.getFile();
             }*/
-    		    user.email = emailSended;
-    		    user.name = nameSended;
-    		    user.url = urlSended;
-    		    user.company = companySended;
-    		    user.location = locationSended;
-
-    		    user.save();
-
+            user.setEmail(emailSended);
+            user.setName(nameSended);
+            user.setCompany(companySended);
+            user.setLocation(locationSended);
+            Ebean.update(user);
     		    flash("success", "Modifications effectuées avec succes");
 
     		}else{
@@ -248,8 +245,8 @@ public class UserCtrl extends Controller {
 				.where().ilike("id_admin", id.toString()).findList();
 			if (user.organisations.size() == 0) {
         if (userAdmin.size() == 0) {
-          user.deleted = true;
-          user.save();
+          user.setDeleted(true);
+          Ebean.update(user);
           flash("success", "Compte supprimé");
 			  } else {
 					return badRequest("Utilisateur est administrateur d'une ou plusieurs organisations");

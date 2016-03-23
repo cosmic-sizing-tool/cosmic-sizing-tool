@@ -21,7 +21,9 @@
                       <div class="col-md-8">
                         <ul id="emails" style="list-style-type: none">
                           @for(email <- emails){
-                              <li>@email.addresse <a href="@routes.EmailCtrl.deleteEmail(email.id)"><strong>Delete</strong></a></li>
+                            @if(!email.deleted) {
+                              <li>@email.addresse <a href="@routes.EmailCtrl.deleteEmail(email.id)"><strong>Supprimer</strong></a></li>
+                            }
                           }
                         </ul><br>
                           <p>Votre addresse email principale sera utilisée uniquement pour des notifications.</p>

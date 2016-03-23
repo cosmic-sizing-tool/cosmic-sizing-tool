@@ -52,5 +52,15 @@ public class User extends Model {
 
 
     public static Finder<Long, User> find = new Finder<Long,User>(User.class);
-
+    /*Setters*/
+    public void setDeleted(boolean d) { this.deleted = d; }
+    public void setDisponible(boolean b) { this.disponible = b;}
+    public void setAlias(String a) { this.alias = a;}
+    public void setPassword(String p) { this.password = p;}
+    public void setName(String n) { this.name = n;}
+    public void setUrl(String u) { this.url = u;}
+    public void setCompany(String c){ this.company = c;}
+    public void setLocation(String l){ this.location = l;}
+    public void setId(Long i) { this.id = i;}
+    public void setEmail(String e) { this.email = e;}
 }
