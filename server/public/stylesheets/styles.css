@@ -111,5 +111,6 @@ input.ng-valid.ng-touched {
 }
 
 .small-text{
-    font-size: 10px;
+    font-size: 11px;
+    text-align: left
 }
