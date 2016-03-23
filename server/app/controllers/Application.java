@@ -12,7 +12,7 @@ import static play.data.Form.*;
 public class Application extends Controller {
 
     public Result index() {
-        return ok(index.render("Merci Gabriel :)"));
+        return ok(mainPage.render());
     }
 
     public Result signup() {

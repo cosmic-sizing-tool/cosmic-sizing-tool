@@ -26,8 +26,6 @@
     <!-- Costom syle -->
     <link rel="stylesheet" href=@routes.Assets.versioned("stylesheets/styles.css")>
 
-
-
 </head>
 
 <body>
@@ -55,9 +53,9 @@
                                 <li class="divider"></li>
                                 <li><a href="http://cosmic-sizing.org"><h5>COSMIC site</h5></a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><h5>COSMIC Glossary</h5></a></li>
+                                <li><a href="@routes.Glossary.glossary()"><h5>COSMIC Glossary</h5></a></li>
                                 <li class="divider"></li>
-                                <li><a href="#"><h5>Find a measurer</h5></a></li>
+                                <li><a href="@routes.Measures.add()"><h5>Find a measurer</h5></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -98,44 +96,10 @@
         </div>
     </nav>
 </header>
-
 <div class="container">
     <div class="jumbotron">
-
-        <div class="col-md-9 text-center vertical-center" style="color: white">
-            <div class="row" style="margin-bottom:100px">
-                <h1>Where software functional<br>size is Measured! </h1>
-
-                <h6 class="small-text">Open-source COSMIC software functional size measurement support tool
-                    <br><span id="blue-text" style="color: #3366FF;">Free to use</span></h6>
-            </div>
-        </div>
-
-        <!-- Form -->
-        <div class="col-md-2 vertical-center" style="margin-left:30px">
-            <section class="card" ng-app="registrationForm" ng-controller="RegistrationCtrl">
-
-                <form name="profil" method="post" ng-submit="register()" novalidate>
-                    <input type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
-
-                    <input type="email" name="email" placeholder="Your email" ng-model="user.email" ng-required="true">
-
-                    <input type="password" name="password" placeholder="Create a password" ng-model="user.password"
-                           ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
-                    <h6 class="small-text" style="color: #f7efef">Use at least one letter and one numeral.<br> Minimum 8 characters and maximum 20.</h6>
-
-                    <select style="width: 250px" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
-                        <option value="en" selected>English</option>
-                        <option value="fr">Français</option>
-                    </select>
-                    <button type="submit" class="btn btn-success navbar-btn btn-submit">Register to the COSMIC-sizing-tool</button>
-                    <h6 class="small-text"  style="color: #f7efef">By clicking on "Register to the COSMIC-sizing-tool", you are agree to our
-                        <a href="#" style="color: #3366FF">Terms <br> and Conditions</a> and the <a href="#" style="color: #3366FF">Privacy Policy</a>.
-                    </h6>
-
-                </form>
-            </section>
-        </div>
+        <!-- Differents Html pages are call here -->
+    <div>@body</div>
     </div>
 </div>
 <!-- Cosmic footer -->
