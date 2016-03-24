@@ -1,0 +1,52 @@
+@(organisations: List[Organisation])
+
+@main("Organisation") {
+<link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/frameworks-c9ebe75b707357dc366c2f7d27d201cf79f46c84e7c019ebdfdf6330f7e236df.css" integrity="sha256-yevnW3BzV9w2bC99J9IBz3n0bITnwBnr399jMPfiNt8=" media="all" rel="stylesheet" />
+<link crossorigin="anonymous" href="https://assets-cdn.github.com/assets/github-a6e222a9687ffdc5147c3f6bfc0e145a42e3d02c8c5f29690dd19b7542391d57.css" integrity="sha256-puIiqWh//cUUfD9r/A4UWkLj0CyMXylpDdGbdUI5HVc=" media="all" rel="stylesheet" />
+<link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/organisation.css")">
+<div class="boxed-group">
+    <a href="organisations/add" class="btn btn-sm boxed-group-action">Nouvelle organization</a>
+    <h3>Organizations</h3>
+    <div class="boxed-group-inner">
+        <ul class="boxed-group-list boxed-group-standalone">
+        @organisations.map { organisation =>
+            <li class="clearfix" id="li-@organisation.id">
+                <img alt="@organisation.name" height="20" src="https://avatars3.githubusercontent.com/u/15174849?v=3&amp;s=40" width="20" />
+                <strong><a href="@organisation.name">@organisation.name</a></strong>
+                <div class="inline-form right"><input class="btn btn-sm supp-btn delete-btn" data="@organisation.id" id="button-delete" type="button" value="Supprimer" /><input class="btn btn-sm"  type="button" value="Modifier" /></div>
+            </li>
+        }
+        </ul>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        bindDeleteController();
+    });
+
+function bindDeleteController() {
+    var button = document.querySelectorAll('.delete-btn');
+    for(var i =0; i<button.length; i++) {
+        button[i].addEventListener('click', function(e) {
+           e.preventDefault();
+           var id = this.getAttribute('data');
+           deleteOrganisation(id);
+    });
+    }
+    
+}
+
+function deleteOrganisation(id) {
+     var xhr = new XMLHttpRequest();
+      xhr.open('delete', ('./organisations/'+id), true);
+      xhr.send();
+      xhr.onreadystatechange = (function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var li = document.getElementById('li-'+id);
+            li.parentNode.removeChild(li);
+        }
+    });
+}
+</script>
+}
