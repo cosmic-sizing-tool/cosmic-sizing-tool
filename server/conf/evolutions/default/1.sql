@@ -17,6 +17,17 @@ create table data_group (
 create table organisation (
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(255),
+  description               varchar(255),
+  url_orgnisation           varchar(255),
+  url_image                 varchar(255),
+  nom_contact               varchar(255),
+  tel_contact               varchar(255),
+  courriel_contact          varchar(255),
+  adresse1                  varchar(255),
+  adresse2                  varchar(255),
+  pays                      varchar(255),
+  etat                      varchar(255),
+  ville                     varchar(255),
   id_admin                  integer)
 ;
 
@@ -115,4 +126,3 @@ drop table team_member;
 drop table user;
 
 PRAGMA foreign_keys = ON;
-
