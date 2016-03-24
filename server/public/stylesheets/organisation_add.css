@@ -1,0 +1,16 @@
+
+dl.form>dd input[type="text"], dl.form>dd input[type="password"], dl.form>dd input[type="email"], dl.form>dd input[type="url"] {
+    width: 230px;
+}
+
+#table-confirm-add{
+    margin-bottom: 50px;
+}
+
+body {
+    margin: 0 auto;
+}
+
+#message {
+    display : none;
+}

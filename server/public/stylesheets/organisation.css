@@ -1,0 +1,14 @@
+.supp-btn {
+	background-color: red;
+	background-image : none;
+}
+
+.supp-btn:hover {
+	background-color: pink;
+	background-image : none;
+}
+
+body {
+    margin: 0 auto;
+    height: 100%;
+}
