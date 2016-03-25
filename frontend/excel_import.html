@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+    <title>JS-XLSX Live</title>
+
+    <style>
+        #drop {
+            border: 2px dashed #bbb;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            padding: 25px;
+            text-align: center;
+            font: 20pt bold, "Vollkorn";
+            color: #bbb
+        }
+        
+        #b64data {
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+    crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+    crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+    crossorigin="anonymous"></script>
+
+    <!-- uncomment the next line here and in xlsxworker.js for encoding support -->
+    <!--<script src="dist/cpexcel.js"></script>-->
+    <script src="js/shim.js" type="text/javascript"></script>
+    <script src="js/xlsxprocess.js" type="text/javascript"></script>
+    <script src="js/excel_import.js" type="text/javascript"></script>
+    <script src="js/ui_controls.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.full.min.js" type="text/javascript"></script>
+
+    <!-- uncomment the next line here and in xlsxworker.js for ODS support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/ods.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        // called when the document is ready
+	$(document).ready(function() {
+		xlf = document.getElementById('xlf');
+		drop = document.getElementById('drop');
+		selectedSheetIndex = 0;
+        selectedLineIndex =  0;
+		
+		if(drop.addEventListener) {
+			drop.addEventListener('dragenter', handleDragover, false);
+			drop.addEventListener('dragover', handleDragover, false);
+			drop.addEventListener('drop', handleDrop, false);
+		}
+		
+		if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
+        sheetDropdownEnabled(false);
+        lineDropdownEnabled(false);
+        hideOutputs();
+		selectSheet(-1);
+	});
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-9 col-sm-offset-1">
+                <div class="page-header" style="font-weight: bold;">
+                    <h2>Importation Excel</h2>
+                </div>
+                <br/>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="nom">Nom du projet</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="nom" placeholder="Entrez le nom du projet">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="strat">Stratégie de mesure</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="strat" placeholder="Entrez la stratégie de mesure">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="utilisateur">Utilisateurs fonctionnels</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="utilisateur" placeholder="Entrez les utilisateurs fonctionnels séparés par une virgule">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="granu">Niveau de granularité</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="granu" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" for="decom">Niveau de décomposition</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="decom" placeholder="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-xs-10 col-sm-offset-1">
+                <div id="drop">
+                    Drop an XLSX / XLSM / XLSB / ODS / XLS / XML file here to see sheet data
+                </div>
+                <br/>
+
+                <input type="file" name="xlfile" id="xlf" />
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="false" onclick="displayOutput(this)" name="chk_file_output">Display file output</label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="false" onclick="displayOutput(this)" name="chk_sheet_output">Display sheet output</label>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="false" onclick="displayOutput(this)" name="chk_line_output">Display line output</label>
+                </div>
+
+                <div class="col-xs-9 col-sm-offset-0">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label">Feuille</label>
+                            <br/>
+                            <div class="dropdown" style="display:inline">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_sheet" style="width: 200px;">Sheet selection
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu" id="opt_sheet" style="width: 200px;"></ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Sélection de la ligne</label>
+                            <br/>
+                            <div class="dropdown" style="display:inline">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_line" style="width: 200px;">Line selection
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu" id="opt_line" style="width: 200px;"></ul>
+                            </div>
+                        </div>
+                        <div id="sheet_output">
+                            <b>Sheet output</b>
+                            <!--Sheet output is printed here-->
+                            <pre id="out_sheet"></pre>
+                        </div>
+                        <div id="line_output">
+                            <b>Line output</b>
+                            <!--Sheet output is printed here-->
+                            <pre id="out_line"></pre>
+                        </div>
+                        <div id="file_output">
+                            <b>JSON output</b>
+                            <!--Output is printed here-->
+                            <pre id="out"></pre>
+                        </div>
+                        <div id="measure_output">
+                            <b>JSON measures output</b>
+                            <!--Output is printed here-->
+                            <pre id="out_measures"></pre>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <form class="form-horizontal" role="form" id="frm_details">
+                <div class="col-xs-3 col-sm-offset-3">
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Changement</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_changement" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_changement" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Système</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_systeme" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_systeme" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Référence</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_reference" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_reference" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Processus Fonctionnel</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_processus_fonctionnel" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_processus_fonctionnel" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Groupe de donnée</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_groupe_donnee" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" id="opt_groupe_donnee" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-offset-0">
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Entrée</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_entree" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_entree" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Sortie</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_sortie" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_sortie" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Écriture</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_ecriture" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_ecriture" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Lecture</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_lecture" style="width: 200px;">
+                            Sélectionner une colonne<span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_lecture" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="dropdown" style="display:inline">
+                            <label class="control-label" for="nom">Commentaire</label>
+                            <br/>
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dd_commentaire" style="width: 200px;">Commentaire <span class="caret"></span></button>
+                            <ul class="dropdown-menu" id="opt_commentaire" style="width: 200px;">
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="row">
+            <div class="col-xs-3 col-sm-offset-4">
+                <button class="btn btn-primary dropdown-toggle" type="button" style="width: 250px;" onclick="createMeasures()">Envoyer</span>
+                </button>
+            </div>
+        </div>
+        <br/>
+
+    </div>
+</body>
+
+</html>
