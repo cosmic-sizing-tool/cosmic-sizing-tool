@@ -1,18 +1,35 @@
+<<<<<<< HEAD
 # --- Created by Ebean DDL
 # To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 # --- !Ups
 
 create table data_group (
-  id                        integer primary key AUTOINCREMENT,
-  name                      varchar(255) not null,
-  comment                   varchar(255) not null,
-  process                   integer not null,
-  entry                     integer not null,
-  exit                      integer not null,
-  read                      integer not null,
-  write                     integer not null)
+=======
+# --- Created by Ebean DDL
+# To stop Ebean DDL generation, remove this comment and start using Evolutions
+
+# --- !Ups
+
+create table certification (
+  id_certification          integer primary key AUTOINCREMENT,
+  method                    varchar(255) not null,
+  version                   varchar(255) not null,
+  date                      varchar(255),
+  user_id                   integer)
 ;
+
+create table email (
+  id                        integer primary key AUTOINCREMENT,
+  addresse                  varchar(255),
+  main                      integer(1),
+  hidden                    integer(1),
+  deleted                   integer(1),
+  user_id                   integer,
+  constraint uq_email_addresse unique (addresse))
+;
+
+
 
 create table organisation (
   id                        bigint not null,
@@ -28,9 +45,16 @@ create table organisation (
   pays                      varchar(255),
   etat                      varchar(255),
   ville                     varchar(255),
+  comment                   varchar(255) not null,
+  process                   integer not null,
+  entry                     integer not null,
+  exit                      integer not null,
+  read                      integer not null,
+  write                     integer not null)
   id_admin                  bigint,
   constraint pk_organisation primary key (id))
 ;
+
 
 create table project (
   project_id                varchar(255) not null,
@@ -135,6 +159,13 @@ create table project (
 ;
 
 create table pattern (
+  time_stamp                timestamp,
+  unique_id                 varchar(40),
+  name                      varchar(255))
+;
+
+create table team_member (
+>>>>>>> 08fd9d2a96297d111229b6c363d9ad4ff5245e55
   id                        integer primary key AUTOINCREMENT,
   name                      varchar(20) not null,
   description_courte        varchar(30) not null,
@@ -175,14 +206,20 @@ create table team_member (
 ;
 
 create table user (
-  id                        bigint not null,
-  alias                     varchar(255),
+
+  id                        integer primary key AUTOINCREMENT,
   name                      varchar(255),
   password                  varchar(255),
+  alias                     varchar(255),
+  deleted                   integer(1),
+  disponible                integer(1),
   email                     varchar(255),
-  deleted                   boolean,
-  constraint uq_user_email unique (email),
-  constraint pk_user primary key (id))
+  created_at                timestamp,
+  url                       varchar(255),
+  company                   varchar(255),
+  location                  varchar(255),
+  constraint uq_user_alias unique (alias),
+  constraint uq_user_email unique (email))
 ;
 
 
@@ -191,6 +228,7 @@ create table organisation_user (
   user_id                        bigint not null,
   constraint pk_organisation_user primary key (organisation_id, user_id))
 ;
+
 create sequence organisation_seq;
 
 create sequence project_seq;
@@ -210,6 +248,12 @@ alter table organisation_user add constraint fk_organisation_user_user_02 foreig
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
+alter table certification add constraint fk_certification_user_1 foreign key (user_id) references user (id);
+create index ix_certification_user_1 on certification (user_id);
+alter table email add constraint fk_email_user_2 foreign key (user_id) references user (id);
+create index ix_email_user_2 on email (user_id);
+
+
 drop table if exists organisation;
 
 drop table if exists organisation_user;
@@ -222,6 +266,10 @@ drop table if exists user;
 
 
 drop table data_group;
+
+drop table certification;
+
+drop table email;
 
 drop table organisation;
 
@@ -236,6 +284,8 @@ drop table pattern_data_group;
 drop table pattern_process;
 
 drop table process;
+
+drop table organization;
 
 drop table team_member;
 

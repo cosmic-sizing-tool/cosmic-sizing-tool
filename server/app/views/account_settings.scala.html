@@ -1,0 +1,83 @@
+@main("Homepage") {
+      <!-- Debut container -->
+      <div class="container">
+         <div class="row">
+            <div class="col-md-3">
+               <div class="panel panel-default">
+                  <div class="panel-heading"><strong> Paramètres personnels</strong></div>
+                  <div id="link-menu" class="panel-body">
+                     <a class="link" href="@routes.UserCtrl.show()">Profil</a><br>
+                     <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a><br>
+                      <a class="link" href="@routes.EmailCtrl.emails()">Gestion des courriels</a>
+                  </div>
+               </div>
+            </div>   <!-- fin du col-md-4 -->
+
+            <div class="col-md-9">
+                  <div class="panel panel-default" style="width: 80%">
+                     <div class="panel-heading"><strong>Changez le mot de passe</strong></div>
+                     <div class="panel-body">
+                        <form role="form" method="post" action="@routes.UserCtrl.updatePassword()">
+                           <div class="col-xs-8" style="padding-bottom: 5px;">
+                              <label for="oldPassword">Ancien mot de passe</label>
+                              <input class="form-control" id="oldPassword" name="oldPassword" type="text">
+                           </div>
+                           <div class="col-xs-8" style="padding-bottom: 5px;">
+                              <label for="newPassword">Nouveau mot de passe</label>
+                              <input class="form-control" id="newPassword" name="newPassword" type="password">
+                           </div>
+                           <div class="col-xs-8">
+                              <label for="confirmationPassword">Confirmez nouveau mot de passe</label>
+                              <input class="form-control" id="confirmationPassword" name="confirmationPassword" type="password"> <br>
+                           </div>
+                           <div class="col-xs-8" style="padding-bottom: 5px;">
+                              <button type="submit" class="btn btn-success"><strong> Mettre à jour le mot de passe</strong></button>
+                              <a href="@routes.UserCtrl.resetPassword()" style="font-size: 12px;"> j'ai oublié mon mot de passe</a>
+                           </div>
+                           <br>
+                        </form>
+                  </div> <!-- Fin du panel body -->
+            </div> <!-- Fin du panel -->
+         </div> <!-- Fin du col-md-8 -->
+         <div class="col-md-3"></div>
+         <div class="col-md-9">
+               <div class="panel panel-default" style="width: 80%;">
+                  <div class="panel-heading"><strong>Changer le nom d'utilisateur</strong></div>
+                  <div class="panel-body">
+
+                    <form role="form" method="post" action="@routes.UserCtrl.changeUsername()">
+
+                     <div class="col-xs-8" style="padding-bottom: 5px;">
+                              <input class="form-control" id="newUsername" name="newUsername" type="text" style="width: 50%;">
+                           </div>
+                           <br>
+                           <div class="col-xs-8" style="padding-top: 10px;">
+                              <button type="submit" class="btn btn-success">Mettre à jour</button>
+                           </div>
+                    </form>
+
+                  </div>
+
+               </div>
+         </div>
+
+           <div class="col-md-3"></div>
+         <div class="col-md-9">
+               <div class="panel panel-default" style="width: 80%;">
+                  <div class="panel-heading" style="color: #fff; background-color: #df3e3e;"><strong>Supprimer compte</strong></div>
+                  <div class="panel-body">
+                     <p style="color: grey;font-size: 11px; padding-top: 2px;">La suppression du compte est irréversible, voulez-vous vraiment supprimer votre compte?</p>
+                    <form role="form" method="post" action="@routes.UserCtrl.deleteUser()">
+                        <button type="submit" class="btn btn-default" style="color:#900;">
+                        <strong>Supprimer le compte</strong>
+                        </button>
+                    </form>
+                  </div>
+
+               </div>
+         </div>
+
+      </div> <!-- fin du row -->
+
+      </div><!-- fin container-->
+}
