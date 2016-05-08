@@ -1,5 +1,7 @@
 package controllers;
 
+import com.lambdaworks.crypto.SCrypt;
+import com.lambdaworks.crypto.SCryptUtil;
 import play.*;
 import play.data.*;
 import play.mvc.*;
@@ -34,7 +36,7 @@ public class Application extends Controller {
         //User member = new User();
 
         member.name = "bob";
-        member.password = "bob";
+        member.setPassword("bob");
         member.email = "bob@bob.com";
         member.save();
 
@@ -48,23 +50,30 @@ public class Application extends Controller {
             return badRequest(login.render(loginForm));
         } else {
             session().clear();
-            session("email", loginForm.get().email);
-            List<TeamMember> members = TeamMember.find.all();
-            
-            for(int i=0;i<members.size();i++){
-                if(members.get(i).email.equals(loginForm.get().email)){
-                    if(members.get(i).password.equals(loginForm.get().password)){
-                        return ok(index.render("bienvenue: "+loginForm.get().email));
-                    }else
-                    {
-                        return ok(index.render("Le mot de passe n'est pas le bon pour cet uttilisateur."));
-                    }
-                    
-                }
-                    
+
+            TeamMember teamMember = TeamMember
+                    .find
+                    .where()
+                        .eq("email", loginForm.get().email)
+                        .findUnique();
+
+
+
+
+
+
+            if (teamMember == null) {
+                return unauthorized(index.render("L'utilisateur n'existe pas."));
             }
-            return ok(index.render("L'uttilisateur n'existe pas."));
-            //return redirect(routes.Application.index());
+
+            if (SCryptUtil.check(loginForm.get().password, teamMember.getPasswordHash())) {
+                session("uid", teamMember.id.toString());
+                return redirect(routes.Application.index());
+            }
+            else {
+                return unauthorized(index.render("Mauvais mot de passe. Please ask Hafedh <3"));
+            }
+
         }
            
         
@@ -87,7 +96,6 @@ public class Application extends Controller {
         }        
         
     }
-    
 }
 
 

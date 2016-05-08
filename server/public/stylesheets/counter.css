@@ -1,0 +1,104 @@
+#clockdiv {
+	display: inline-block;
+	background-color: #60b044;
+	background-image: linear-gradient(#8add6d, #60b044);
+	background: -webkit-linear-gradient(#8add6d, #60b044);
+	background: -o-linear-gradient(#8add6d, #60b044);
+	background: -moz-linear-gradient(#8add6d, #60b044);
+	color: white;
+	border: solid;
+	border-color: #60b044;
+	border-width: 2px;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	font-size: 20px;
+	font-family: sans-serif;
+	text-align: center;
+	z-index: 3;
+}
+
+.mini {
+	padding-left: 0px;
+	padding-right: 0px;
+	display: inline-block;
+}
+
+.timeDiv {
+	padding: 2px;
+	display: inline-block;
+}
+
+.leftDiv {
+	padding-left: 15px;
+	padding-right: 0px;
+}
+
+.rightDiv {
+	padding-left: 0px;
+	padding-right: 15px;
+}
+
+.playStop {
+	width: 100%;
+	background-color: #60b044;
+	background-image: linear-gradient(#8add6d, #60b044);
+	background: -webkit-linear-gradient(#8add6d, #60b044);
+	background: -o-linear-gradient(#8add6d, #60b044);
+	background: -moz-linear-gradient(#8add6d, #60b044);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: white;
+}
+
+.smalltext {
+	font-size: 16px;
+}
+
+#idBtnStart {
+	display: none;
+}
+
+#clockCover {
+	display: none;
+	background-color: #8add6d;
+	opacity: .5;
+	border: solid;
+	border-width: 2px;
+	border-color: #60b044;
+	z-index: 2;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	right: 15px;
+	bottom: 15px;
+}
+
+.secondes {
+	display: none;
+}
+
+#secondsSelector {
+	display: inline-block;
+	position:relative;
+	bottom: 15px;
+}
+
+.secondesButton {
+	font-size: 10px;
+	padding: 3px;
+	background-color: #60b044;
+	background-image: linear-gradient(#8add6d, #60b044);
+	background: -webkit-linear-gradient(#8add6d, #60b044);
+	background: -o-linear-gradient(#8add6d, #60b044);
+	background: -moz-linear-gradient(#8add6d, #60b044);
+	color: white;
+	border: solid;
+	border-color: #60b044;
+	border-width: 2px;
+}
+
+.secondesButton:hover, .secondesButton:enabled {
+	color: white;
+}
+
