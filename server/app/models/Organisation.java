@@ -15,21 +15,30 @@ public class Organisation extends Model {
 
     @Constraints.Required
     public String name;
-    
+
+    public String description;
+    public String urlOrgnisation;
+    public String urlImage;
+    public String nomContact;
+    public String telContact;
+    public String courrielContact;
+    public String adresse1;
+    public String adresse2;
+    public String pays;
+    public String etat;
+    public String ville;
+
     public long id_admin;
-    
-    
-    
+
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     public List<User> users = new ArrayList<User>();
-    
-    
 
-    
-    
+
+
+
+
     public static Finder<Long, Organisation> find = new Finder<Long,Organisation>(Organisation.class);
 
 }
-
-
-
