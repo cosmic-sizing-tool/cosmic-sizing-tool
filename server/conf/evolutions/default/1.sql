@@ -1,35 +1,39 @@
-<<<<<<< HEAD
-# --- Created by Ebean DDL
-# To stop Ebean DDL generation, remove this comment and start using Evolutions
-
-# --- !Ups
-
-create table data_group (
-=======
 # --- Created by Ebean DDL
 # To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 # --- !Ups
 
 create table certification (
-  id_certification          integer primary key AUTOINCREMENT,
+  id_certification          bigint not null,
   method                    varchar(255) not null,
   version                   varchar(255) not null,
   date                      varchar(255),
-  user_id                   integer)
+  user_id                   bigint,
+  constraint pk_certification primary key (id_certification))
+;
+
+create table data_group (
+  id                        bigint not null,
+  name                      varchar(255) not null,
+  comment                   varchar(255) not null,
+  process                   bigint not null,
+  entry                     integer not null,
+  exit                      integer not null,
+  read                      integer not null,
+  write                     integer not null,
+  constraint pk_data_group primary key (id))
 ;
 
 create table email (
-  id                        integer primary key AUTOINCREMENT,
+  id                        bigint not null,
   addresse                  varchar(255),
-  main                      integer(1),
-  hidden                    integer(1),
-  deleted                   integer(1),
-  user_id                   integer,
-  constraint uq_email_addresse unique (addresse))
+  main                      boolean,
+  hidden                    boolean,
+  deleted                   boolean,
+  user_id                   bigint,
+  constraint uq_email_addresse unique (addresse),
+  constraint pk_email primary key (id))
 ;
-
-
 
 create table organisation (
   id                        bigint not null,
@@ -45,16 +49,51 @@ create table organisation (
   pays                      varchar(255),
   etat                      varchar(255),
   ville                     varchar(255),
-  comment                   varchar(255) not null,
-  process                   integer not null,
-  entry                     integer not null,
-  exit                      integer not null,
-  read                      integer not null,
-  write                     integer not null)
   id_admin                  bigint,
   constraint pk_organisation primary key (id))
 ;
 
+create table organization (
+  time_stamp                timestamp,
+  unique_id                 varchar(40),
+  name                      varchar(255))
+;
+
+create table pattern (
+  id                        bigint not null,
+  name                      varchar(20) not null,
+  description_courte        varchar(30) not null,
+  description_longue        varchar(250) not null,
+  constraint pk_pattern primary key (id))
+;
+
+create table pattern_data_group (
+  id                        bigint not null,
+  name                      varchar(50) not null,
+  mouvement                 varchar(4) not null,
+  process                   bigint not null,
+  constraint pk_pattern_data_group primary key (id))
+;
+
+create table pattern_process (
+  id                        bigint not null,
+  name                      varchar(50) not null,
+  pattern                   bigint not null,
+  constraint pk_pattern_process primary key (id))
+;
+
+create table process (
+  id                        bigint not null,
+  name                      varchar(255) not null,
+  quality_rating            varchar(1) not null,
+  layer                     bigint not null,
+  f_add                     integer not null,
+  f_modify                  integer not null,
+  f_delete                  integer not null,
+  f_unknown                 integer not null,
+  f_template                integer not null,
+  constraint pk_process primary key (id))
+;
 
 create table project (
   project_id                varchar(255) not null,
@@ -158,45 +197,6 @@ create table project (
   constraint pk_project primary key (project_id))
 ;
 
-create table pattern (
-  time_stamp                timestamp,
-  unique_id                 varchar(40),
-  name                      varchar(255))
-;
-
-create table team_member (
->>>>>>> 08fd9d2a96297d111229b6c363d9ad4ff5245e55
-  id                        integer primary key AUTOINCREMENT,
-  name                      varchar(20) not null,
-  description_courte        varchar(30) not null,
-  description_longue        varchar(250) not null)
-;
-
-create table pattern_data_group (
-  id                        integer primary key AUTOINCREMENT,
-  name                      varchar(50) not null,
-  mouvement                 varchar(4) not null,
-  process                   integer not null)
-;
-
-create table pattern_process (
-  id                        integer primary key AUTOINCREMENT,
-  name                      varchar(50) not null,
-  pattern                   integer not null)
-;
-
-create table process (
-  id                        integer primary key AUTOINCREMENT,
-  name                      varchar(255) not null,
-  quality_rating            varchar(1) not null,
-  layer                     integer not null,
-  f_add                     integer not null,
-  f_modify                  integer not null,
-  f_delete                  integer not null,
-  f_unknown                 integer not null,
-  f_template                integer not null)
-;
-
 create table team_member (
   id                        bigint not null,
   name                      varchar(255) not null,
@@ -205,21 +205,30 @@ create table team_member (
   constraint pk_team_member primary key (id))
 ;
 
-create table user (
+create table timer (
+  timer_id                  bigint not null,
+  organization_id           bigint,
+  project_id                bigint,
+  start_time                timestamp not null,
+  end_time                  timestamp,
+  constraint pk_timer primary key (timer_id))
+;
 
-  id                        integer primary key AUTOINCREMENT,
+create table user (
+  id                        bigint not null,
   name                      varchar(255),
   password                  varchar(255),
   alias                     varchar(255),
-  deleted                   integer(1),
-  disponible                integer(1),
+  deleted                   boolean,
+  disponible                boolean,
   email                     varchar(255),
   created_at                timestamp,
   url                       varchar(255),
   company                   varchar(255),
   location                  varchar(255),
   constraint uq_user_alias unique (alias),
-  constraint uq_user_email unique (email))
+  constraint uq_user_email unique (email),
+  constraint pk_user primary key (id))
 ;
 
 
@@ -228,15 +237,34 @@ create table organisation_user (
   user_id                        bigint not null,
   constraint pk_organisation_user primary key (organisation_id, user_id))
 ;
+create sequence certification_seq;
+
+create sequence data_group_seq;
+
+create sequence email_seq;
 
 create sequence organisation_seq;
+
+create sequence pattern_seq;
+
+create sequence pattern_data_group_seq;
+
+create sequence pattern_process_seq;
+
+create sequence process_seq;
 
 create sequence project_seq;
 
 create sequence team_member_seq;
 
+create sequence timer_seq;
+
 create sequence user_seq;
 
+alter table certification add constraint fk_certification_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_certification_user_1 on certification (user_id);
+alter table email add constraint fk_email_user_2 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_email_user_2 on email (user_id);
 
 
 
@@ -248,53 +276,57 @@ alter table organisation_user add constraint fk_organisation_user_user_02 foreig
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-alter table certification add constraint fk_certification_user_1 foreign key (user_id) references user (id);
-create index ix_certification_user_1 on certification (user_id);
-alter table email add constraint fk_email_user_2 foreign key (user_id) references user (id);
-create index ix_email_user_2 on email (user_id);
+drop table if exists certification;
 
+drop table if exists data_group;
+
+drop table if exists email;
 
 drop table if exists organisation;
 
 drop table if exists organisation_user;
 
+drop table if exists organization;
+
+drop table if exists pattern;
+
+drop table if exists pattern_data_group;
+
+drop table if exists pattern_process;
+
+drop table if exists process;
+
 drop table if exists project;
 
 drop table if exists team_member;
 
+drop table if exists timer;
+
 drop table if exists user;
-
-
-drop table data_group;
-
-drop table certification;
-
-drop table email;
-
-drop table organisation;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
+drop sequence if exists certification_seq;
+
+drop sequence if exists data_group_seq;
+
+drop sequence if exists email_seq;
+
 drop sequence if exists organisation_seq;
 
-drop table pattern;
+drop sequence if exists pattern_seq;
 
-drop table pattern_data_group;
+drop sequence if exists pattern_data_group_seq;
 
-drop table pattern_process;
+drop sequence if exists pattern_process_seq;
 
-drop table process;
-
-drop table organization;
-
-drop table team_member;
+drop sequence if exists process_seq;
 
 drop sequence if exists project_seq;
 
-
 drop sequence if exists team_member_seq;
 
-PRAGMA foreign_keys = ON;
+drop sequence if exists timer_seq;
 
 drop sequence if exists user_seq;
 
