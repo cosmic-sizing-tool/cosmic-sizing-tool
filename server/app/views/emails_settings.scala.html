@@ -1,0 +1,49 @@
+@(emails: List[Email])
+@main("Homepage") {
+    <!-- Debut container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><strong> Paramètres personnels</strong></div>
+                    <div id="link-menu" class="panel-body">
+                        <a class="link" href="@routes.UserCtrl.show()">Profil</a><br>
+                        <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a><br>
+                        <a class="link" href="@routes.EmailCtrl.emails()">Gestion des courriels</a>
+                    </div>
+                </div>
+            </div>   <!-- fin du col-md-3 -->
+
+            <div class="col-md-9">
+                <div class="panel panel-default" style="width: 80%">
+                    <div class="panel-heading"><strong>Email</strong></div>
+                    <div class="panel-body">
+                      <div class="col-md-8">
+                        <ul id="emails" style="list-style-type: none">
+                          @for(email <- emails){
+                            @if(!email.deleted) {
+                              <li>@email.addresse <a href="@routes.EmailCtrl.deleteEmail(email.id)"><strong>Supprimer</strong></a></li>
+                            }
+                          }
+                        </ul><br>
+                          <p>Votre addresse email principale sera utilisée uniquement pour des notifications.</p>
+                      </div>
+                        <form role="form" action="@routes.EmailCtrl.addEmail()" method="post">
+                            <div class="col-md-8" style="padding-bottom: 5px;">
+                                <label for="adresse">Ajouter une adresse courriel</label>
+                                <input class="form-control" id="adresse" name="adresse" type="text">
+                                <span><button type="submit" class="btn-default" value="Ajouter"><strong>Ajouter</strong></button></span>
+                            </div>
+                            <div class="col-md-8">
+                                <input id="dispo" name="hide" type="checkbox" value="true"><span style="font-weight: bold">Garder mon adresse
+                                privée</span>
+                            </div>
+                        </form>
+                    </div> <!-- Fin du panel body -->
+                </div> <!-- Fin du panel -->
+            </div> <!-- Fin du col-md-9 -->
+
+        </div> <!-- fin du row -->
+
+    </div><!-- fin container-->
+}

@@ -2,54 +2,308 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import models.Organisation;
-import models.User;
+import models.*;
+
 
 import play.*;
 import play.db.ebean.Transactional;
 import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
-
-import java.util.List;
-
+import play.mvc.Http.RequestBody;
+import play.mvc.Http.MultipartFormData.FilePart;
+import java.util.*;
+import java.io.*;
 import com.avaje.ebean.*;
 
 @Transactional
 public class UserCtrl extends Controller {
 
-	public Result index() {
+    User userGlobal;
+
+	public Result show() {
+		Long id = 15L;
+		userGlobal = User.find.byId(id);
+
+		return ok(profil.render(userGlobal.certifications));
+	}
+
+	public Result settings() {
+    Long id = 12L;
+		userGlobal = User.find.byId(id);
+	  return ok(account_settings.render());
+	}
+
+	public Result test1() {
 		User u1 = new User();
 		u1.id = 12L;
 		u1.name = "Jhone";
 		u1.password = "secret";
 		u1.email = "paper@email.com";
-		u1.alias = "tantan";
+    u1.alias = "tantan";
+    Email temp = new Email();
+    temp.addresse = u1.email;
+    temp.main = true;
+    temp.user = u1;
+    temp.save();
+    u1.emails.add(temp);
 		u1.save();
-		return ok(index.render("Your new application is ready."));
+
+		return ok(index.render("User test1 create"));
+	}
+	public Result test2() {
+		User u1 = new User();
+		u1.id = 15L;
+		u1.name = "bob";
+		u1.password = "admin";
+		u1.email = "bobb23y@email.com";
+		u1.alias = "tarzan12";
+    Email temp = new Email();
+    temp.addresse = u1.email;
+    temp.main = true;
+    temp.user = u1;
+    temp.save();
+    u1.emails.add(temp);
+		u1.save();
+
+		return ok(index.render("User test2 create"));
 	}
 
-	// curl -H "Content-Type: application/json" -X POST -d
-	// '{"id":"123","name":"Jean-paeeul","alias":"jp21","password":"Jean@paul.com","email":"Jean-paul","inactive":"false"}'
-	// http://127.0.0.1:9000/users
+
 	public Result createUser() {
-		// User newUser = Json.fromJson(request().body().asJson(), User.class);
-		// newUser.save();
 
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		User u1 = new User();
-		u1.id = Long.parseLong(json.findPath("id").toString()
+		User user = new User();
+		user.id = Long.parseLong(json.findPath("id").toString()
 				.replaceAll("\"", ""));
-		u1.name = json.findPath("name").toString().replaceAll("\"", "");
-		u1.password = json.findPath("password").toString().replaceAll("\"", "");
-		u1.email = json.findPath("email").toString().replaceAll("\"", "");
-		u1.alias = json.findPath("alias").toString().replaceAll("\"", "");
-		// u1.deleted = false;
-		u1.save();
-		// read the JsonNode as a Person
-		return ok(index.render("createed"));
+		user.name = json.findPath("name").toString().replaceAll("\"", "");
+		user.password = json.findPath("password").toString().replaceAll("\"", "");
+		user.email = json.findPath("email").toString().replaceAll("\"", "");
+		user.alias = json.findPath("alias").toString().replaceAll("\"", "");
+		user.deleted = false;
+		user.save();
+
+		return redirect(routes.UserCtrl.show());
 	}
+
+	public Result getUser() {
+    Long id = 15L;
+    userGlobal = User.find.byId(id);
+		return ok(Json.toJson(userGlobal));
+	}
+
+  public Result getUserCertifications() {
+    Long id = 15L;
+    userGlobal = User.find.byId(id);
+    List<Certification> certifications= userGlobal.certifications;
+    return ok(Json.toJson(certifications));
+  }
+
+    public Result addCertification() {
+
+        User user = userGlobal; //test
+
+        RequestBody body = request().body();
+
+        String method = body.asFormUrlEncoded().get("method")[0];
+        String version = body.asFormUrlEncoded().get("version")[0];
+        String date = body.asFormUrlEncoded().get("date")[0];
+
+        Certification temp = new Certification();
+        temp.method = method;
+        temp.version = version;
+        temp.date = date;
+        temp.user = user;
+        boolean valide = true;
+        if(user.certifications != null && user.certifications.size() !=0) {
+            for(Certification c : user.certifications) {
+                if(c.method.equals(temp.method) && temp.version.equals(c.version)){
+                    valide = false;
+                }
+            }
+        }
+        if(valide) {
+            temp.save();
+            user.certifications.add(temp);
+            if(body.asFormUrlEncoded().get("dispo") == null) {
+                user.setDisponible(false);
+            }else{
+                user.setDisponible(true);
+    		    }
+            Ebean.update(user);
+            flash("success", "Certification ajouté");
+        }else{
+            flash("error", "Vous avez déjà une certification identique !");
+        }
+        return redirect(routes.UserCtrl.show());
+    }
+    public Result resetPassword() {
+        return ok(reset_pwd.render());
+    }
+
+	public Result updatePassword() {
+	  User user = userGlobal; //test
+
+		RequestBody body = request().body();
+
+		String newPassword = body.asFormUrlEncoded().get("newPassword") == null ? "" : body.asFormUrlEncoded().get("newPassword")[0];
+		String confirmationPassword = body.asFormUrlEncoded().get("confirmationPassword") == null ? "" : body.asFormUrlEncoded().get("confirmationPassword")[0];
+		String oldPassword = body.asFormUrlEncoded().get("oldPassword") == null ? "" : body.asFormUrlEncoded().get("oldPassword")[0];
+		//User user = User.find.byId();
+
+        if(user.password.equals(oldPassword)) {
+            if(newPassword.equals(confirmationPassword)) {
+		            user.setPassword(newPassword);
+                Ebean.update(user);
+		            flash("success", "Nouveau mot de passe sauvegardé");
+            }else{
+                flash("error", "Les deux nouveaux mot de passe ne sont pas identiques");
+            }
+        }else{
+            flash("success", "Ancien mot de passe ne correspond pas");
+        }
+		return redirect(routes.UserCtrl.settings());
+	}
+
+	public Result changeUsername(){
+	    User user = userGlobal; //test
+
+	    RequestBody body = request().body();
+	    String newUsername = body.asFormUrlEncoded().get("newUsername") == null ? "" : body.asFormUrlEncoded().get("newUsername")[0];
+		//User user = User.find.byId(id);
+
+		if(!newUsername.equals("")) {
+		    if(email_valid(newUsername) && !email_exist(newUsername)) {
+		        user.setEmail(newUsername);
+            Ebean.update(user);
+            flash("success", "Email modifié avec succès!");
+		    }else{
+		        if(!username_exist(newUsername)) {
+		            user.setAlias(newUsername);
+                Ebean.update(user);
+                flash("success", "Nom d'utilisateur modifié avec succès!");
+		        }else{
+		            flash("error", "Erreur serveur");
+		        }
+		    }
+		}else{
+		    flash("error", "Un nom d'utilisateur/email ne peut être vide !");
+		}
+		return redirect(routes.UserCtrl.settings());
+	}
+
+	public Result updateProfil(){
+
+		RequestBody body = request().body();
+
+		String emailSended = body.asFormUrlEncoded().get("email") == null ? "" : body.asFormUrlEncoded().get("email")[0];
+		String nameSended =  body.asFormUrlEncoded().get("name") == null ? "" : body.asFormUrlEncoded().get("name")[0];
+		String urlSended = body.asFormUrlEncoded().get("url") == null ? "" : body.asFormUrlEncoded().get("url")[0];
+		String companySended = body.asFormUrlEncoded().get("company") == null ? "" : body.asFormUrlEncoded().get("company")[0];
+		String locationSended = body.asFormUrlEncoded().get("location") == null ?  "" :body.asFormUrlEncoded().get("location")[0];
+
+		User user = userGlobal;
+
+		if(nameSended.length() == 0){
+
+		    flash("error", "Nom invalide!");
+
+		}else{
+
+    		if(user != null){
+            /*Http.MultipartFormData data = body.asMultipartFormData();
+            FilePart picture = data.getFile("picture");
+            if (picture != null) {
+                String fileName = picture.getFilename();
+                String contentType = picture.getContentType();
+                File file = picture.getFile();
+            }*/
+            user.setEmail(emailSended);
+            user.setName(nameSended);
+            user.setCompany(companySended);
+            user.setLocation(locationSended);
+            Ebean.update(user);
+    		    flash("success", "Modifications effectuées avec succes");
+
+    		}else{
+
+    		    flash("error", "Serveur indisponible. Réessayer plus tard");
+    		}
+		}
+
+		return redirect(routes.UserCtrl.show());
+    }
+
+	public Result deleteUser() {
+	    User user = userGlobal; //test
+	    Long id = user.id; //test
+
+		if (userExist(id)){
+		    //User user = User.find.byId(id);
+		    List<Organisation> userAdmin = Organisation.find
+				.where().ilike("id_admin", id.toString()).findList();
+			if (user.organisations.size() == 0) {
+        if (userAdmin.size() == 0) {
+          user.setDeleted(true);
+          Ebean.update(user);
+          flash("success", "Compte supprimé");
+			  } else {
+					return badRequest("Utilisateur est administrateur d'une ou plusieurs organisations");
+				}
+			} else {
+				return badRequest("Utilisateur est affecté a une ou plusieurs organisations");
+			}
+	  }
+
+		return redirect(routes.Application.index());
+  }
+
+
+/* Helpers */
+	public User findUser(String userInformation) {
+		User user = null;
+		if (isNumeric(userInformation)) {
+			Long id = Long.parseLong(userInformation);
+			user = User.find.byId(id);
+			return user;
+		} else {
+			List<User> users = User.find.where()
+					.ilike("email", userInformation).findList();
+			if (users.size() == 1) {
+				user = users.get(0);
+			  return user;
+			}
+		}
+		return user;
+	}
+
+	public boolean userExist(long id) {
+		boolean exist = false;
+		User user = User.find.byId(id);
+		if (user != null) {
+			exist = true;
+		}
+
+		return exist;
+	}
+
+	public boolean email_exist(String mail) {
+	   List<User> users = User.find.where()
+					.ilike("email", mail).findList();
+		return (users.size() == 1 ? true : false);
+	}
+
+    public boolean username_exist(String username) {
+        List<User> users = User.find.where()
+					.ilike("alias", username).findList();
+	     return (users.size() >= 1 ? true : false);
+    }
+
+    public boolean email_valid(String mail){
+        String regex = "^.*@[a-z]+\\.[a-z]{2,3}$";
+        return mail.matches(regex);
+    }
 
 	public static boolean isNumeric(String str) {
 		try {
@@ -60,124 +314,19 @@ public class UserCtrl extends Controller {
 		return true;
 	}
 
-	public Result getUser(String userInformation) {
-		JsonNode personJson = null;
-		if (isNumeric(userInformation)) {
-			Long id = Long.parseLong(userInformation);
-			User user = User.find.byId(id);
-			personJson = Json.toJson(user);
-		} else {
-			List<User> users = User.find.where()
-					.ilike("email", userInformation).findList();
-			if (users.size() == 1) {
-				personJson = Json.toJson(users);
 
-			}
-		}
-		return ok(personJson);
+	public ArrayList justePourTest(User globalUser) {
+
+	    ArrayList userInfoList = new ArrayList<>();
+
+        userInfoList.add(globalUser.name);
+        userInfoList.add(globalUser.password);
+        userInfoList.add(globalUser.email);
+        userInfoList.add(globalUser.alias);
+        userInfoList.add(globalUser.url);
+        userInfoList.add(globalUser.company);
+        userInfoList.add(globalUser.location);
+
+        return userInfoList;
 	}
-
-	// curl -H "Content-Type: application/json" -X POST -d
-	// '{"id":"11","name":"UQAM"}' http://127.0.0.1:9000/organisations
-	public Result addOrganisation(Long id) {
-
-		JsonNode json = Json.parse(request().body().asJson().toString());
-		String OrganisationName = json.findPath("name").toString()
-				.replaceAll("\"", "");
-		List<Organisation> oListe = Organisation.find.where()
-				.ilike("name", OrganisationName).findList();
-		User user = User.find.byId(id);
-		user.organisations.add(oListe.get(0));
-		user.save();
-		return ok(index.render("added"));
-	}
-
-	public Result updatePassword(String email) {
-		JsonNode json = Json.parse(request().body().asJson().toString());
-		User u1 = new User();
-		String newPassword = json.findPath("newPassword").toString()
-				.replaceAll("\"", "");
-		List<User> user = User.find.where().ilike("email", email).findList();
-		if (user.size() == 1) {
-			u1 = user.get(0);
-			u1.password = newPassword;
-			u1.save();
-		}
-		return ok(index.render("updated"));
-	}
-
-	public Result updateInformation(String email) {
-		JsonNode json = Json.parse(request().body().asJson().toString());
-		String newEmail = json.findPath("newemail").toString()
-				.replaceAll("\"", "");
-		String newAlias = json.findPath("newalias").toString()
-				.replaceAll("\"", "");
-		String newPassword = json.findPath("newpassword").toString()
-				.replaceAll("\"", "");
-		User u1 = new User();
-		boolean change = false;
-		List<User> user = User.find.where().ilike("email", email).findList();
-		if (user.size() == 1) {
-			u1 = user.get(0);
-			if (newEmail.length() != 0) {
-				u1.email = newEmail;
-				change = true;
-			} else if (newAlias.length() != 0) {
-				u1.alias = newAlias;
-				change = true;
-			} else if (newPassword.length() != 0) {
-				u1.password = newPassword;
-				change = true;
-			}
-
-		} else {
-			return notFound(index.render("Not updated!"));
-		}
-		if (change) {
-			u1.save();
-		} else {
-			return badRequest(index.render("Invalid json syntax!"));
-		}
-
-		return ok(index.render("updated"));
-
-	}
-
-	public Result deleteUser(Long id) {
-		UserCtrl userCtrl = new UserCtrl();
-		Organisation organisation = new Organisation();
-		List<Organisation> userAdmin =  Organisation.find
-				.where().ilike("id_admin", id.toString()).findList();
-
-		if (userCtrl.userExist(id)) {
-			User user = User.find.byId(id);
-			if (user.organisations.size() == 0) {
-				if (userAdmin.size() == 0) {
-
-					user.delete();
-				} else {
-					return badRequest("Utilisateur est affecter a un ou plusieurs organisations");
-				}
-			} else {
-				return badRequest("Utilisateur est affecter a un ou plusieurs organisations");
-			}
-
-		} else {
-			return notFound(index.render("User dont exist"));
-		}
-
-		return ok(index.render("deleted"));
-	}
-
-	public boolean userExist(long id) {
-
-		boolean exist = false;
-		User user = User.find.byId(id);
-		if (user != null) {
-			exist = true;
-		}
-
-		return exist;
-	}
-
 }
