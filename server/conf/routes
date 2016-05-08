@@ -5,16 +5,41 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET     /team                       controllers.Application.team()
+
+#Login
+GET     /signup                      controllers.Application.signup()
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
+
+#User
+GET		/usertest    				controllers.UserCtrl.index()
+#GET 	/user/settings     		    controllers.UserCtrl.settings()
+GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
+POST	/users	
+PUT     /users/:email/password      controllers.UserCtrl.updatePassword(email: String)
+PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
+DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long) 
+GET 	/users/:id/orgs  					controllers.OrganisationCtrl.getUserAdmin(id: Long)
+
 
 # User organization
 GET     /user/:idUser/organisations     controllers.Application.organisations(idUser: String)
 GET     /user/:idUser/organisations/add     controllers.Application.addOrganisations(idUser: String)
 POST    /user/:idUser/organisations/add     controllers.OrganisationCtrl.createOrganisation(idUser: String)
+POST    /user/:id/orgs				controllers.UserCtrl.addOrganisation(id: Long)
 DELETE 	/user/:idUser/organisations/:idOrganisation controllers.OrganisationCtrl.deleteOrganisation(idUser: String, idOrganisation: String)
 #PUT 	/user/:idUser/organisations/:idOrganisation controllers.OrganisationCtrl.modifyOrganisation(idUser: String, idOrganisation: String)
 
+
+#Organisation
+POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
+PUT 	/organisations/:idOrganisation		controllers.OrganisationCtrl.addAdminToAnOrganisation(idOrganisation: Long)
+DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long) 
+GET /organisations/:id/projects/:projectId/timers/current    controllers.ProjectTimer.getCurrentlyRunningTimer(id: Long, projectId: Long)
+GET /organisations/:id/projects/:projectId/timers   controllers.ProjectTimer.getTimers(id: Long, projectId: Long)
+POST /organisations/:id/projects/:projectId/timers    controllers.ProjectTimer.timerCtrl(id: Long, projectId: Long)
+
+#Gloassy
 GET     /glossary                   controllers.Glossary.glossary()
 
 # Map static resources from the /public folder to the /assets URL path
@@ -39,33 +64,6 @@ GET     /counter                    controllers.Application.counter()
 GET     /measures/add		      controllers.Measures.add()
 POST    /measures/savetemp	      controllers.Measures.postSaveTemp()
 
-GET		/usertest    				controllers.UserCtrl.index()
-#GET 	/user/settings     		    controllers.UserCtrl.settings()
-GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
-POST	/users						controllers.UserCtrl.createUser()
-
-
-
-
-
-# Map static resources from the /public folder to the /assets URL path
-
-POST    /user/:id/orgs				controllers.UserCtrl.addOrganisation(id: Long)
-POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
-PUT 	/organisations/:idOrganisation		controllers.OrganisationCtrl.addAdminToAnOrganisation(idOrganisation: Long)
-PUT     /users/:email/password      controllers.UserCtrl.updatePassword(email: String)
-PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
-DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long) 
-DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long) 
-GET 	/users/:id/orgs  					controllers.OrganisationCtrl.getUserAdmin(id: Long)
-GET /organisations/:id/projects/:projectId/timers/current    controllers.ProjectTimer.getCurrentlyRunningTimer(id: Long, projectId: Long)
-GET /organisations/:id/projects/:projectId/timers   controllers.ProjectTimer.getTimers(id: Long, projectId: Long)
-POST /organisations/:id/projects/:projectId/timers    controllers.ProjectTimer.timerCtrl(id: Long, projectId: Long)
-
-
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-
 
 
 #Project page
@@ -73,4 +71,5 @@ GET     /project                controllers.ProjectController.index(projectId: S
 POST    /project/                controllers.ProjectController.submit()
 
 GET     /api/project/:projectId  controllers.ProjectController.fetch(projectId: String)
+
 

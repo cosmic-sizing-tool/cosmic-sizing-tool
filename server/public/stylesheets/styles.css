@@ -1,0 +1,115 @@
+/* bootstrap dropdown hover menu*/
+
+body {
+  background: #330033;
+}
+
+.jumbotron {
+  background: #330033;
+}
+
+.btn-success {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+  background-color: #60b044;
+  background-image: -webkit-linear-gradient(#8add6d, #60b044);
+  background-image: linear-gradient(#8add6d, #60b044);
+  border: 1px solid #5ca941;
+}
+
+.btn-default {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #333;
+  background-color: #eee;
+  background-image: -webkit-linear-gradient(#fcfcfc, #eee);
+  background-image: linear-gradient(#fcfcfc, #eee);
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+input {
+  width: 100%;
+  display: inline-block;
+  font-weight: 70%;
+  padding: 8px;
+  margin: 5px 0;
+  font-size: 1em;
+  font-weight: 100%;
+  color: #475B62;
+  border: 1px solid #C5C5C5;
+  border-radius: 4px;
+  outline: 0;
+}
+select.icon-menu{
+  height: 30px;
+}
+select.icon-menu option {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: left;
+  padding-left: 20px;
+  font-size: 1em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.small-text {
+    text-align:center
+}
+select.languages option[value="en"] {
+  background-image: url(/assets/images/en.png);
+}
+
+select.languages option[value="fr"] {
+  background-image: url(/assets/images/fr.png);
+}
+
+img:hover {
+  cursor: pointer;
+}
+
+.vertical-center {
+  min-height: 100%;
+  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh;
+  /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+  cursor: po
+}
+
+
+/* Form */
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #DA3637;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid #509D12;
+}
+
+.ng-invalid .btn-submit {
+  background-color: gray;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  padding-bottom: 10px;
+}
+
+.small-text{
+    font-size: 11px;
+}
