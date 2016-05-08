@@ -7,6 +7,8 @@ package models;
                         Simon Zeni
                         John Béjot
                         Julien Girard
+
+    Table Pattern (master) pour la sauvegarde des patrons (pattern)
 */
 
 import java.util.*;
@@ -17,8 +19,6 @@ import play.data.format.*;
 import play.data.validation.*;
 
 import util.*;
-
-// TODO: 18/03/16 table primaire d'un patron 
 
 @Entity
 public class Pattern extends Model implements JsonSerializable{
@@ -36,8 +36,10 @@ public class Pattern extends Model implements JsonSerializable{
     private String descriptionLongue;
 
 
-    public Pattern() {
-
+    public Pattern(String name, String descriptionCourte, String descriptionLongue) {
+        id = null;
+        this.descriptionCourte = descriptionCourte;
+        this.descriptionLongue = descriptionLongue;
     }
 
     @Override
@@ -48,11 +50,10 @@ public class Pattern extends Model implements JsonSerializable{
         json.add("name", name);
         json.add("process", getProcess());
 
-
         return json.toString();
     }
 
-    public List<Process> getProcess() {
-        return Process.find.where().eq("process", id).findList();
+    public List<PatternProcess> getProcess() {
+        return PatternProcess.find.where().eq("pattern", id).findList();
     }
 }
