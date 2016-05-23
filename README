@@ -10,3 +10,4 @@ Documentation for Heroku and DB setup
 - Git remote repo is: git@heroku.com:cosmic-sizing-tool.git
 
 - Run config for Heroku is in ./Procfile
+** Actual play application must be in root directory for it to run on Heroku from a git repo
