@@ -2,3 +2,11 @@ This is your new Play application
 =================================
 
 This file will be packaged with your application, when using `activator dist`.
+
+---------------------------------
+Documentation for Heroku and DB setup
+
+- App hosted @ https://cosmic-sizing-tool.herokuapp.com/
+- Git remote repo is: git@heroku.com:cosmic-sizing-tool.git
+
+- Run config for Heroku is in ./Procfile
