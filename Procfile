@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/cosmic-sizing-tool -Dhttp.port=$PORT
+web: Activator run -Dhttp.port=$PORT

@@ -1,4 +1,4 @@
-name := """server"""
+name := "cosmic-sizing-tool"
 
 version := "1.0-SNAPSHOT"
 
