@@ -1,1 +1,0 @@
-web: Activator run -Dhttp.port=$PORT
