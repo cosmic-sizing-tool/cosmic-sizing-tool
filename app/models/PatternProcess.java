@@ -53,6 +53,8 @@ public class PatternProcess extends Model implements JsonSerializable{
         return json.toString();
     }
 
+/* Remove code de truie,
+  You can't override a DB access method
     @Override
     public void delete()
     {
@@ -61,7 +63,7 @@ public class PatternProcess extends Model implements JsonSerializable{
 
         super.delete();
     }
-
+*/
     public long getId(){return id;}
     public String getName(){return name;}
     public void setName(String name){this.name = name;}
