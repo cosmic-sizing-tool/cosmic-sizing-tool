@@ -5,6 +5,11 @@ target
 /.classpath
 /.project
 /.settings
+
+# Running pid is not a directory...
 /RUNNING_PID
+# this is what actually works
+RUNNING_PID
+
 .sbtserver/
 /bin/

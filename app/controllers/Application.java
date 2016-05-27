@@ -2,6 +2,7 @@ package controllers;
 
 import com.lambdaworks.crypto.SCrypt;
 import com.lambdaworks.crypto.SCryptUtil;
+// Are you serious with these imports bro?
 import play.*;
 import play.data.*;
 import play.mvc.*;
@@ -9,9 +10,24 @@ import views.html.*;
 import java.util.*;
 import models.*;
 import play.data.Form;
+import play.data.FormFactory;
 import static play.data.Form.*;
 
+import javax.inject.Inject;
+
 public class Application extends Controller {
+
+    @Inject
+    FormFactory formFactory;
+
+    public Result registerUser() {
+      // Get form from POST request
+      Form<BasicUser> bUserForm = formFactory.form(BasicUser.class);
+      BasicUser bUser = bUserForm.bindFromRequest().get();
+
+      System.out.println("Got user " + bUser + " from request");
+      return ok(mainPage.render());
+    }
 
     public Result index() {
         return ok(mainPage.render());
