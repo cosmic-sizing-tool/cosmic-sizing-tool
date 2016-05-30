@@ -18,7 +18,7 @@ import javax.inject.Inject;
 public class Application extends Controller {
 
     @Inject
-    final FormFactory formFactory;
+    FormFactory formFactory;
 
     public Result registerUser() {
       // Get form from POST request
