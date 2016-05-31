@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/cosmic-sizing-tool -Dhttp.port=$PORT 
+web: target/universal/stage/bin/cosmic-sizing-tool -Dhttp.port=$PORT -Dconfig.file="./conf/application.conf"
