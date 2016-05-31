@@ -11,7 +11,7 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   "org.xerial" % "sqlite-jdbc" % "3.7.2",
-  "postgresql" % "postgresql" % "9.4-1208.jdbc4"
+  "postgresql" % "postgresql" % "9.1-901-1.jdbc4"
 )
 
 // Needed for excel file import/export feature
