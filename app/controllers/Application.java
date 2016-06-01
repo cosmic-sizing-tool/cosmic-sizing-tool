@@ -30,6 +30,7 @@ public class Application extends Controller {
     }
 
     public Result index() {
+      System.out.println("Rendering main page");
         return ok(mainPage.render());
     }
 
