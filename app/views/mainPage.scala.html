@@ -21,9 +21,9 @@
 
         <!-- Form -->
         <div class="col-md-2 vertical-center" style="margin-left:30px">
-            <section class="card" ng-app="registrationForm" ng-controller="RegistrationCtrl">
+            <section class="card" ng-controller="Application">
 
-                <form name="profil" method="post" ng-submit="register()" novalidate>
+                <form name="profil" method="post" ng-submit="registerUser()" novalidate>
                     <input type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
 
                     <input type="email" name="email" placeholder="Your email" ng-model="user.email" ng-required="true">
