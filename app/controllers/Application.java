@@ -27,6 +27,10 @@ public class Application extends Controller {
       BasicUser bUser = bUserForm.bindFromRequest().get();
 
       System.out.println("Got user " + bUser + " from request");
+      System.out.println("User info: ");
+      System.out.println("Email: " + bUser.getEmail());
+      System.out.println("Username: " + bUser.getUsername());
+      System.out.println("Pass: " + bUser.getPassword());
       return ok(mainPage.render());
     }
 
