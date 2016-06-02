@@ -10,6 +10,7 @@ libraryDependencies ++= Seq(
   javaJdbc,
   cache,
   javaWs,
+  evolutions,
   "org.xerial" % "sqlite-jdbc" % "3.7.2",
   "org.postgresql" % "postgresql" % "9.4-1201-jdbc41"
 )
