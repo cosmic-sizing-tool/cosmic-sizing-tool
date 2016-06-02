@@ -26,11 +26,15 @@ public class Application extends Controller {
       Form<BasicUser> bUserForm = formFactory.form(BasicUser.class);
       BasicUser bUser = bUserForm.bindFromRequest().get();
 
+      // Debug purposes
       System.out.println("Got user " + bUser + " from request");
       System.out.println("User info: ");
       System.out.println("Email: " + bUser.getEmail());
       System.out.println("Username: " + bUser.getUsername());
       System.out.println("Pass: " + bUser.getPassword());
+
+      bUser.save();
+      // Should probably return userPage... not my problem
       return ok(mainPage.render());
     }
 

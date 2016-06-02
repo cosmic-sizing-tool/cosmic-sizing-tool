@@ -7,7 +7,8 @@ import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
-public class BasicUser {
+@Entity
+public class BasicUser extends Model {
 
     @Constraints.Required
     @Column(unique = true)
