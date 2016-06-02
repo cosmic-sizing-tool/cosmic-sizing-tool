@@ -9,25 +9,9 @@
 
 [Consult the dashboard](https://waffle.io/cosmic-sizing-tool/cosmic-sizing-tool)
 
-# README #
-
-This README documents the steps necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
 ### How do I get set up? ###
 
-#### Summary of set up####
-
 The Play framework is needed in order to run this program.
-
-#### Configuration ####
-
-Write config info here.
 
 #### Dependencies ####
 
@@ -48,6 +32,8 @@ Write config info here.
 - Your server should now be running and deploying in development with "Activator run" should connect to local DB
 running at "postgres://localhost/default"
 
+#### Configuration ####
+Write config info here.
 
 #### How to run tests ####
 
