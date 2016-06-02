@@ -21,6 +21,7 @@ public class Application extends Controller {
     FormFactory formFactory;
 
     public Result registerUser() {
+      System.out.println("Inside registration method");
       // Get form from POST request
       Form<BasicUser> bUserForm = formFactory.form(BasicUser.class);
       BasicUser bUser = bUserForm.bindFromRequest().get();

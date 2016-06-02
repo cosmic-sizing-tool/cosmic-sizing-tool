@@ -23,7 +23,7 @@
         <div class="col-md-2 vertical-center" style="margin-left:30px">
             <section class="card" ng-controller="Application">
 
-                <form name="profil" method="post" ng-submit="registerUser()" novalidate>
+                <form name="profil" method="post" ng-submit="@routes.Application.registerUser()" novalidate>
                     <input type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
 
                     <input type="email" name="email" placeholder="Your email" ng-model="user.email" ng-required="true">
@@ -36,7 +36,7 @@
                         <option value="en" selected>English</option>
                         <option value="fr">Français</option>
                     </select>
-                    <button type="submit" class="btn btn-success navbar-btn btn-submit">Register to the COSMIC-sizing-tool</button>
+                    <button ng-click="@routes.Application.registerUser()" type="submit" class="btn btn-success navbar-btn btn-submit">Register to the COSMIC-sizing-tool</button>
                     <h6 class="small-text"  style="color: #f7efef">By clicking on "Register to the COSMIC-sizing-tool", you are agree to our
                         <a href="#" style="color: #3366FF">Terms <br> and Conditions</a> and the <a href="#" style="color: #3366FF">Privacy Policy</a>.
                     </h6>
