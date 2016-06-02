@@ -1,5 +1,6 @@
 # Home page
 GET     /                           controllers.Application.index()
+POST    /                           controllers.Application.registerUser()
 GET     /team                       controllers.Application.team()
 
 #Login
@@ -7,13 +8,14 @@ GET     /signup                      controllers.Application.signup()
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 
+
 #User
 #GET		/usertest    				controllers.UserCtrl.index()
 #GET 	/user/settings     		    controllers.UserCtrl.settings()
 #GET		/user/:userInfo     		controllers.UserCtrl.getUser(userInfo: String)
 #PUT     /users/:email/password      controllers.UserCtrl.updatePassword(email: String)
 #PUT     /users/:email				controllers.UserCtrl.updateInformation(email: String)
-#DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long) 
+#DELETE 	/users/:id                  controllers.UserCtrl.deleteUser(id: Long)
 #GET 	/users/:id/orgs  					controllers.OrganisationCtrl.getUserAdmin(id: Long)
 GET     /user/profil                controllers.UserCtrl.show()
 POST    /user/profil                controllers.UserCtrl.updateProfil()
@@ -42,7 +44,7 @@ DELETE 	/user/:idUser/organisations/:idOrganisation controllers.OrganisationCtrl
 #Organisation
 #POST	/organisations		  		controllers.OrganisationCtrl.createOrganisation()
 PUT 	/organisations/:idOrganisation		controllers.OrganisationCtrl.addAdminToAnOrganisation(idOrganisation: Long)
-#DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long) 
+#DELETE 	/organisations/:id          controllers.OrganisationCtrl.deleteOrganisation(id: Long)
 GET /organisations/:id/projects/:projectId/timers/current    controllers.ProjectTimer.getCurrentlyRunningTimer(id: Long, projectId: Long)
 GET /organisations/:id/projects/:projectId/timers   controllers.ProjectTimer.getTimers(id: Long, projectId: Long)
 POST /organisations/:id/projects/:projectId/timers    controllers.ProjectTimer.timerCtrl(id: Long, projectId: Long)
@@ -90,4 +92,3 @@ POST    /email                      controllers.EmailCtrl.addEmail()
 GET     /emails/test                controllers.EmailCtrl.test()
 GET     /email/current/emails       controllers.EmailCtrl.getUserEmails()
 GET     /email/delete/:id           controllers.EmailCtrl.deleteEmail(id: Long)
-
