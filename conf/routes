@@ -1,6 +1,6 @@
 # Home page
 GET     /                           controllers.Application.index()
-POST    /                           controllers.Application.registerUser()
+POST    /registerUser               controllers.Application.registerUser()
 GET     /team                       controllers.Application.team()
 
 #Login
