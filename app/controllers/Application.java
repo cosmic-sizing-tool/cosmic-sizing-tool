@@ -21,7 +21,6 @@ public class Application extends Controller {
     FormFactory formFactory;
 
     public Result registerUser() {
-      System.out.println("Inside registration method");
       // Get form from POST request
       Form<BasicUser> bUserForm = formFactory.form(BasicUser.class);
       BasicUser bUser = bUserForm.bindFromRequest().get();
@@ -33,9 +32,19 @@ public class Application extends Controller {
       System.out.println("Username: " + bUser.getUsername());
       System.out.println("Pass: " + bUser.getPassword());
 
-      bUser.save();
-      // Should probably return userPage... not my problem
+      try {
+        bUser.save();
+      } catch (Exception e) {
+        // If there is a DB save error like dual emails or usernames
+        System.out.println("Error occured: " + e);
+
+        // Handle error in a better way
+        // Maybe show an update message
+        return ok(mainPage.render());
+      }
+      // Should probably return to user page
       return ok(mainPage.render());
+
     }
 
     public Result index() {
