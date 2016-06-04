@@ -27,7 +27,7 @@ public class Certification extends Model {
     public String date;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    public User user; 
+    public CosmicUser user; 
 
     public static Finder<Long,Certification> find = new Finder<Long,Certification>(Long.class, Certification.class);
 

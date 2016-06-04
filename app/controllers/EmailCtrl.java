@@ -20,7 +20,7 @@ public class EmailCtrl extends Controller {
 
     public Result emails() {
       Long id = 15L;
-      User user = User.find.byId(id);
+      CosmicUser user = CosmicUser.find.byId(id);
       return ok(emails_settings.render(user.emails));
     }
     public Result addEmail() {
@@ -39,7 +39,7 @@ public class EmailCtrl extends Controller {
           //List<User> users = User.find.where().ilike("email", "admin12345@email.com").findList();
           //User user = users.get(0);
           Long id = 15L;
-          User user = User.find.byId(id);
+          CosmicUser user = CosmicUser.find.byId(id);
           temp.user = user;
           temp.save();
           user.emails.add(temp);
@@ -52,7 +52,7 @@ public class EmailCtrl extends Controller {
     }
     public Result getUserEmails() {
       Long id = 15L;
-      User user = User.find.byId(id);
+      CosmicUser user = CosmicUser.find.byId(id);
       List<Email> emails = user.emails;
       return ok(Json.toJson(emails));
     }
@@ -63,7 +63,7 @@ public class EmailCtrl extends Controller {
       return redirect(routes.EmailCtrl.emails());
     }
     public Result test(){
-        User user_test = new User();
+        CosmicUser user_test = new CosmicUser();
         user_test.name = "test";
         user_test.password = "1234";
         user_test.email = "admin12345@email.com";

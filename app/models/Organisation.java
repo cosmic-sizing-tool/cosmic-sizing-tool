@@ -33,7 +33,7 @@ public class Organisation extends Model {
 
 
     @ManyToMany(cascade = CascadeType.ALL)
-    public List<User> users = new ArrayList<User>();
+    public List<CosmicUser> users = new ArrayList<CosmicUser>();
 
 
 

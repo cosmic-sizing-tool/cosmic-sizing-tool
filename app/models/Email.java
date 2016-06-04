@@ -27,7 +27,7 @@ public class Email extends Model {
     public boolean deleted;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    public User user;
+    public CosmicUser user;
 
     public static Finder<Long,Email> find = new Finder<Long,Email>(Long.class, Email.class);
 

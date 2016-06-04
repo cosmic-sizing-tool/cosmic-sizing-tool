@@ -20,6 +20,23 @@ create table certification (
   constraint pk_certification primary key (id_certification)
 );
 
+create table cosmic_user (
+  id                            bigserial not null,
+  name                          varchar(255),
+  password                      varchar(255),
+  alias                         varchar(255),
+  deleted                       boolean,
+  disponible                    boolean,
+  email                         varchar(255),
+  created_at                    timestamp,
+  url                           varchar(255),
+  company                       varchar(255),
+  location                      varchar(255),
+  constraint uq_cosmic_user_alias unique (alias),
+  constraint uq_cosmic_user_email unique (email),
+  constraint pk_cosmic_user primary key (id)
+);
+
 create table data_group (
   id                            bigserial not null,
   name                          varchar(255) not null,
@@ -61,10 +78,10 @@ create table organisation (
   constraint pk_organisation primary key (id)
 );
 
-create table organisation_user (
+create table organisation_cosmic_user (
   organisation_id               bigint not null,
-  user_id                       bigint not null,
-  constraint pk_organisation_user primary key (organisation_id,user_id)
+  cosmic_user_id                bigint not null,
+  constraint pk_organisation_cosmic_user primary key (organisation_id,cosmic_user_id)
 );
 
 create table organization (
@@ -228,34 +245,17 @@ create table timer (
   constraint pk_timer primary key (timer_id)
 );
 
-create table "user" (
-  id                            bigserial not null,
-  name                          varchar(255),
-  password                      varchar(255),
-  alias                         varchar(255),
-  deleted                       boolean,
-  disponible                    boolean,
-  email                         varchar(255),
-  created_at                    timestamp,
-  url                           varchar(255),
-  company                       varchar(255),
-  location                      varchar(255),
-  constraint uq_user_alias unique (alias),
-  constraint uq_user_email unique (email),
-  constraint pk_user primary key (id)
-);
-
-alter table certification add constraint fk_certification_user_id foreign key (user_id) references "user" (id) on delete restrict on update restrict;
+alter table certification add constraint fk_certification_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_certification_user_id on certification (user_id);
 
-alter table email add constraint fk_email_user_id foreign key (user_id) references "user" (id) on delete restrict on update restrict;
+alter table email add constraint fk_email_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_email_user_id on email (user_id);
 
-alter table organisation_user add constraint fk_organisation_user_organisation foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
-create index ix_organisation_user_organisation on organisation_user (organisation_id);
+alter table organisation_cosmic_user add constraint fk_organisation_cosmic_user_organisation foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
+create index ix_organisation_cosmic_user_organisation on organisation_cosmic_user (organisation_id);
 
-alter table organisation_user add constraint fk_organisation_user_user foreign key (user_id) references "user" (id) on delete restrict on update restrict;
-create index ix_organisation_user_user on organisation_user (user_id);
+alter table organisation_cosmic_user add constraint fk_organisation_cosmic_user_cosmic_user foreign key (cosmic_user_id) references cosmic_user (id) on delete restrict on update restrict;
+create index ix_organisation_cosmic_user_cosmic_user on organisation_cosmic_user (cosmic_user_id);
 
 
 # --- !Downs
@@ -266,15 +266,17 @@ drop index if exists ix_certification_user_id;
 alter table if exists email drop constraint if exists fk_email_user_id;
 drop index if exists ix_email_user_id;
 
-alter table if exists organisation_user drop constraint if exists fk_organisation_user_organisation;
-drop index if exists ix_organisation_user_organisation;
+alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_organisation;
+drop index if exists ix_organisation_cosmic_user_organisation;
 
-alter table if exists organisation_user drop constraint if exists fk_organisation_user_user;
-drop index if exists ix_organisation_user_user;
+alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_cosmic_user;
+drop index if exists ix_organisation_cosmic_user_cosmic_user;
 
 drop table if exists basic_user cascade;
 
 drop table if exists certification cascade;
+
+drop table if exists cosmic_user cascade;
 
 drop table if exists data_group cascade;
 
@@ -282,7 +284,7 @@ drop table if exists email cascade;
 
 drop table if exists organisation cascade;
 
-drop table if exists organisation_user cascade;
+drop table if exists organisation_cosmic_user cascade;
 
 drop table if exists organization cascade;
 
@@ -300,4 +302,3 @@ drop table if exists team_member cascade;
 
 drop table if exists timer cascade;
 
-drop table if exists "user" cascade;

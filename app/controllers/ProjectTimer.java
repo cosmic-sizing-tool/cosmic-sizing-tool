@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.Organisation;
 import models.Project;
 import models.Timer;
-import models.User;
+import models.CosmicUser;
 //import models.User;
 import play.*;
 import play.db.ebean.Transactional;

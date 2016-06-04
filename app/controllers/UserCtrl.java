@@ -19,23 +19,23 @@ import com.avaje.ebean.*;
 @Transactional
 public class UserCtrl extends Controller {
 
-    User userGlobal;
+    CosmicUser userGlobal;
 
 	public Result show() {
 		Long id = 15L;
-		userGlobal = User.find.byId(id);
+		userGlobal = CosmicUser.find.byId(id);
 
 		return ok(profil.render(userGlobal.certifications));
 	}
 
 	public Result settings() {
     Long id = 12L;
-		userGlobal = User.find.byId(id);
+		userGlobal = CosmicUser.find.byId(id);
 	  return ok(account_settings.render());
 	}
 
 	public Result test1() {
-		User u1 = new User();
+		CosmicUser u1 = new CosmicUser();
 		u1.id = 12L;
 		u1.name = "Jhone";
 		u1.password = "secret";
@@ -52,7 +52,7 @@ public class UserCtrl extends Controller {
 		return ok(index.render("User test1 create"));
 	}
 	public Result test2() {
-		User u1 = new User();
+		CosmicUser u1 = new CosmicUser();
 		u1.id = 15L;
 		u1.name = "bob";
 		u1.password = "admin";
@@ -74,7 +74,7 @@ public class UserCtrl extends Controller {
 
 		// parse the JSON as a JsonNode
 		JsonNode json = Json.parse(request().body().asJson().toString());
-		User user = new User();
+		CosmicUser user = new CosmicUser();
 		user.id = Long.parseLong(json.findPath("id").toString()
 				.replaceAll("\"", ""));
 		user.name = json.findPath("name").toString().replaceAll("\"", "");
@@ -89,20 +89,20 @@ public class UserCtrl extends Controller {
 
 	public Result getUser() {
     Long id = 15L;
-    userGlobal = User.find.byId(id);
+    userGlobal = CosmicUser.find.byId(id);
 		return ok(Json.toJson(userGlobal));
 	}
 
   public Result getUserCertifications() {
     Long id = 15L;
-    userGlobal = User.find.byId(id);
+    userGlobal = CosmicUser.find.byId(id);
     List<Certification> certifications= userGlobal.certifications;
     return ok(Json.toJson(certifications));
   }
 
     public Result addCertification() {
 
-        User user = userGlobal; //test
+        CosmicUser user = userGlobal; //test
 
         RequestBody body = request().body();
 
@@ -143,7 +143,7 @@ public class UserCtrl extends Controller {
     }
 
 	public Result updatePassword() {
-	  User user = userGlobal; //test
+	  CosmicUser user = userGlobal; //test
 
 		RequestBody body = request().body();
 
@@ -167,7 +167,7 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result changeUsername(){
-	    User user = userGlobal; //test
+	    CosmicUser user = userGlobal; //test
 
 	    RequestBody body = request().body();
 	    String newUsername = body.asFormUrlEncoded().get("newUsername") == null ? "" : body.asFormUrlEncoded().get("newUsername")[0];
@@ -203,7 +203,7 @@ public class UserCtrl extends Controller {
 		String companySended = body.asFormUrlEncoded().get("company") == null ? "" : body.asFormUrlEncoded().get("company")[0];
 		String locationSended = body.asFormUrlEncoded().get("location") == null ?  "" :body.asFormUrlEncoded().get("location")[0];
 
-		User user = userGlobal;
+		CosmicUser user = userGlobal;
 
 		if(nameSended.length() == 0){
 
@@ -236,7 +236,7 @@ public class UserCtrl extends Controller {
     }
 
 	public Result deleteUser() {
-	    User user = userGlobal; //test
+	    CosmicUser user = userGlobal; //test
 	    Long id = user.id; //test
 
 		if (userExist(id)){
@@ -261,14 +261,14 @@ public class UserCtrl extends Controller {
 
 
 /* Helpers */
-	public User findUser(String userInformation) {
-		User user = null;
+	public CosmicUser findUser(String userInformation) {
+		CosmicUser user = null;
 		if (isNumeric(userInformation)) {
 			Long id = Long.parseLong(userInformation);
-			user = User.find.byId(id);
+			user = CosmicUser.find.byId(id);
 			return user;
 		} else {
-			List<User> users = User.find.where()
+			List<CosmicUser> users = CosmicUser.find.where()
 					.ilike("email", userInformation).findList();
 			if (users.size() == 1) {
 				user = users.get(0);
@@ -280,7 +280,7 @@ public class UserCtrl extends Controller {
 
 	public boolean userExist(long id) {
 		boolean exist = false;
-		User user = User.find.byId(id);
+		CosmicUser user = CosmicUser.find.byId(id);
 		if (user != null) {
 			exist = true;
 		}
@@ -289,13 +289,13 @@ public class UserCtrl extends Controller {
 	}
 
 	public boolean email_exist(String mail) {
-	   List<User> users = User.find.where()
+	   List<CosmicUser> users = CosmicUser.find.where()
 					.ilike("email", mail).findList();
 		return (users.size() == 1 ? true : false);
 	}
 
     public boolean username_exist(String username) {
-        List<User> users = User.find.where()
+        List<CosmicUser> users = CosmicUser.find.where()
 					.ilike("alias", username).findList();
 	     return (users.size() >= 1 ? true : false);
     }
@@ -315,7 +315,7 @@ public class UserCtrl extends Controller {
 	}
 
 
-	public ArrayList justePourTest(User globalUser) {
+	public ArrayList justePourTest(CosmicUser globalUser) {
 
 	    ArrayList userInfoList = new ArrayList<>();
 

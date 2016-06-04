@@ -7,7 +7,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Organisation;
-import models.User;
+import models.CosmicUser;
 //import models.User;
 import play.*;
 import play.db.ebean.Transactional;
@@ -37,7 +37,7 @@ public class OrganisationCtrl extends Controller {
     	//newUser.save();
 
     	// parse the JSON as a JsonNode
-    	User user = User.find.byId(Long.valueOf(idUser).longValue());
+    	CosmicUser user = CosmicUser.find.byId(Long.valueOf(idUser).longValue());
     	List<Organisation> list = Organisation.find.all();
     	JsonNode json = request().body().asJson();
     	if(json == null) {
@@ -76,7 +76,7 @@ public class OrganisationCtrl extends Controller {
     	//newUser.save();
 
     	// parse the JSON as a JsonNode
-    	User user = User.find.byId(Long.valueOf(idUser).longValue());
+    	CosmicUser user = CosmicUser.find.byId(Long.valueOf(idUser).longValue());
     	JsonNode json = request().body().asJson();
     	if(json == null) {
     	    return badRequest("Expecting Json data");
@@ -141,7 +141,7 @@ public class OrganisationCtrl extends Controller {
 	public Result deleteOrganisation(String idUser, String idOrganisation){
 
 		if(organisationExist(Long.valueOf(idOrganisation))){
-		    User user = User.find.byId(Long.valueOf(idUser).longValue());
+		    CosmicUser user = CosmicUser.find.byId(Long.valueOf(idUser).longValue());
 			for(int i=0;i<user.organisations.size();i++){
 			    if(user.organisations.get(i).id == Long.valueOf(idOrganisation)) {
 			        user.organisations.remove(i);

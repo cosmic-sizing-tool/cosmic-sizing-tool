@@ -70,7 +70,7 @@ public class Application extends Controller {
         member.email = "bob@bob.com";
         member.save();
 
-        List<User> members = User.find.all();
+        List<CosmicUser> members = CosmicUser.find.all();
         return ok(team.render(members));
     }
 
@@ -88,7 +88,7 @@ public class Application extends Controller {
        o3.name = "Concordia";
      //	o3.save();
 
-         User us1 = new User();
+         CosmicUser us1 = new CosmicUser();
        us1.id = 2L;
        us1.alias = "us1";
        us1.name = "User1 name";
@@ -97,9 +97,9 @@ public class Application extends Controller {
        us1.organisations.add(Organisation.find.byId(1L));
        us1.organisations.add(Organisation.find.byId(12L));
      //	us1.save();
-         us1 = User.find.byId(2L);
+         us1 = CosmicUser.find.byId(2L);
 
-       User us2 =  new User();
+       CosmicUser us2 =  new CosmicUser();
        us2.id = 3L;
        us2.alias = "us2";
        us2.name = "User2 name";
@@ -107,9 +107,9 @@ public class Application extends Controller {
        us2.email = "User2 email";
        us2.organisations.add(Organisation.find.byId(3L));
      //	us2.save();
-         us2 = User.find.byId(3L);
+         us2 = CosmicUser.find.byId(3L);
 
-         User realUser = User.find.byId(Long.valueOf(idUser).longValue());
+         CosmicUser realUser = CosmicUser.find.byId(Long.valueOf(idUser).longValue());
 
          //List<Organisation> orga = Organisation.find.all();
          return ok(organisation.render(realUser.organisations));

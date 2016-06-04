@@ -7,7 +7,7 @@ import play.data.format.*;
 import play.data.validation.*;
 
 @Entity
-public class User extends Model {
+public class CosmicUser extends Model {
 
     @Constraints.Required
     public String name;
@@ -51,7 +51,7 @@ public class User extends Model {
     public List<Email> emails = new ArrayList<Email>();
 
 
-    public static Finder<Long, User> find = new Finder<Long,User>(User.class);
+    public static Finder<Long, CosmicUser> find = new Finder<Long,CosmicUser>(CosmicUser.class);
     /*Setters*/
     public void setDeleted(boolean d) { this.deleted = d; }
     public void setDisponible(boolean b) { this.disponible = b;}
