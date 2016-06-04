@@ -228,7 +228,7 @@ create table timer (
   constraint pk_timer primary key (timer_id)
 );
 
-create table user (
+create table "user" (
   id                            bigserial not null,
   name                          varchar(255),
   password                      varchar(255),
@@ -245,16 +245,16 @@ create table user (
   constraint pk_user primary key (id)
 );
 
-alter table certification add constraint fk_certification_user_id foreign key (user_id) references user (id) on delete restrict on update restrict;
+alter table certification add constraint fk_certification_user_id foreign key (user_id) references "user" (id) on delete restrict on update restrict;
 create index ix_certification_user_id on certification (user_id);
 
-alter table email add constraint fk_email_user_id foreign key (user_id) references user (id) on delete restrict on update restrict;
+alter table email add constraint fk_email_user_id foreign key (user_id) references "user" (id) on delete restrict on update restrict;
 create index ix_email_user_id on email (user_id);
 
 alter table organisation_user add constraint fk_organisation_user_organisation foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
 create index ix_organisation_user_organisation on organisation_user (organisation_id);
 
-alter table organisation_user add constraint fk_organisation_user_user foreign key (user_id) references user (id) on delete restrict on update restrict;
+alter table organisation_user add constraint fk_organisation_user_user foreign key (user_id) references "user" (id) on delete restrict on update restrict;
 create index ix_organisation_user_user on organisation_user (user_id);
 
 
@@ -300,5 +300,4 @@ drop table if exists team_member cascade;
 
 drop table if exists timer cascade;
 
-drop table if exists user cascade;
-
+drop table if exists "user" cascade;
