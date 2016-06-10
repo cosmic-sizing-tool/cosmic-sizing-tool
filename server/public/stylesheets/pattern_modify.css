@@ -1,0 +1,60 @@
+body {
+  background-color: white;
+}
+
+.jumbotron {
+  background-color: white;
+}
+
+#patternModify h2 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+#patternModify #patternOverview {
+  text-align: center;
+  font-size: 16px;
+}
+
+#patternModify #patternOverview label {
+  font-weight: bold;
+}
+
+#patternModify #patternOverview span {
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+#patternModify #patternOverview label:not(:first-of-type) {
+  margin-left: 30px;
+}
+
+#patternModify #patternDescription {
+  text-align: center;
+}
+
+#patternModify #patternDescription label {
+  text-align: left;
+}
+
+#patternModify #patternDescription label:nth-of-type(1) {
+  width: 20%;
+}
+
+#patternModify #patternDescription label:nth-of-type(2) {
+  width: 50%;
+}
+
+#patternModify #patternDescription label:nth-of-type(3) {
+  width: 20%;
+}
+
+#patternModify #patternDescription input[type="text"][disabled] {
+  background-color: #eee!important;
+}
+
+
+#patternModify #patternFooter{
+	margin-top:20px;
+	text-align:center;
+}

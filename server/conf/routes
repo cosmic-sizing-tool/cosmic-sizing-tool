@@ -71,13 +71,11 @@ PUT     /api/pattern/:id_pattern       controllers.Pattern.update(id_pattern: Lo
 GET     /counter                    controllers.Application.counter()
 
 
-
 #Project page
 GET     /project                controllers.ProjectController.index(projectId: String ?= null)
 POST    /project/                controllers.ProjectController.submit()
 
 GET     /api/project/:projectId  controllers.ProjectController.fetch(projectId: String)
-
 
 
 # Mesures page
@@ -94,5 +92,5 @@ GET     /email/delete/:id           controllers.EmailCtrl.deleteEmail(id: Long)
 
 
 # Patterns pages
-GET     /patterns/list                     controllers.Application.patternList()
-GET     /patterns/modify                   controllers.Application.patternModify()
+GET     /pattern/list                     controllers.Application.patternList()
+GET     /pattern/modify                   controllers.Application.patternModify()
