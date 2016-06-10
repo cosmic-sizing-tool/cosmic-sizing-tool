@@ -23,17 +23,14 @@ The Play framework is needed in order to run this program.
 
 #### Database configuration ####
 
-** Install PostgreSQL on your machine
-- Follow instructions to install a Postgres Server on your machine
-- Run postgres "createdb" util and Create Database "default" using your postgres user
-- ``createdb -U postgres default``
-- Create user "cosmic" with password "cosmic123" as per application config
-- ``postgres=# CREATE USER cosmic PASSWORD 'cosmic123';``
-- Your server should now be running and deploying in development with "Activator run" should connect to local DB
+* Install PostgreSQL on your machine
+  1. Follow instructions to install a Postgres Server on your machine
+ 2.  Run postgres "createdb" util and Create Database "default" using your postgres user
+ 3. ``createdb -U postgres default``
+ 4. Create user "cosmic" with password "cosmic123" as per application config
+ 5. ``postgres=# CREATE USER cosmic PASSWORD 'cosmic123';``
+ 6.  Your server should now be running and deploying in development with "Activator run" should connect to local DB
 running at "postgres://localhost/default"
-
-#### Configuration ####
-Write config info here.
 
 #### How to run tests ####
 
@@ -41,9 +38,8 @@ Write content here.
 
 #### Deployment instructions ###
 
-To build and run the application in the Play server, execute `make server`. It may take some time to download some missing packages the first time if you have installed *activator-minimal*.
-
-Once the server is running you can connect to the application's webpage by entering ``http://127.0.0.1:9000`` in your browser's address bar. The first time you access the application, it may take a while because of the compilation process.
+Build and run usint the ``activator run`` command from the root directory
+Once the server is running you can connect to the application's webpage by entering ``http://localhost:9000`` in your browser's address bar. The first time you access the application, it may take a while because of the compilation process.
 
 Use ``Ctrl + D`` to stop the server and go back to the console.
 
