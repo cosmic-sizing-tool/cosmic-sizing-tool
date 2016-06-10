@@ -11,13 +11,13 @@
   <hr>
   <div id="patternOverview">
     <span class="patternLabel">#FP:</span><span id="patternNFp" class="patternValue"></span>
-    <br/>
     <span class="patternLabel">Size (CFP):</span><span id="patternSize" class="patternValue"></span>
     <br/>
-    <span class="patternLabel">E:</span><span id="patternSizeE" class="patternValue"></span>
-    <span class="patternLabel">X:</span><span id="patternSizeX" class="patternValue"></span>
-    <span class="patternLabel">R:</span><span id="patternSizeR" class="patternValue"></span>
-    <span class="patternLabel">W:</span><span id="patternSizeW" class="patternValue"></span>
+    <span id="cfpE" class="cfpTotal"><span class="patternLabel smaller">E:</span><span class="patternValue smaller"></span></span>
+    <span id="cfpX" class="cfpTotal"><span class="patternLabel smaller">X:</span><span class="patternValue smaller"></span></span>
+    <span id="cfpR" class="cfpTotal"><span class="patternLabel smaller">R:</span><span class="patternValue smaller"></span></span>
+    <span id="cfpW" class="cfpTotal"><span class="patternLabel smaller">W:</span><span class="patternValue smaller"></span></span>
+    &#x21B5;
     <br/>
     <span class="patternLabel">Date created:</span><span id="patternDateCreated" class="patternValue"></span>
     <br/>
@@ -36,15 +36,27 @@
       <input type="text" id="User_ID" disabled="disabled">
     </label>
   </div>
+  <table id="patternTable">
+    <thead>
+      <tr>
+        <td width="35%">Functional process</td>
+        <td width="35%">Data groups</td>
+        <td width="15%">Data movements</td>
+        <td width="15%">Size (CFP)</td>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
   <div id="patternFooter">
-    <button type="button" class="btn btn-success">Save</button>
+    <button type="button" class="btn btn-success" id="patternSave">Save</button>
   </div>
 </div>
 <script type="text/javascript">
-bindButton();
+bindSaveButton();
+bindInputs();
 windowResize();
 
 /* Test */
-displayPattern(testPatternObj);
+displayPattern(pattern);
 </script>
 }

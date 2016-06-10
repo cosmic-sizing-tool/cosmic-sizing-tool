@@ -1,3 +1,5 @@
+/* Page styles */
+
 body {
   background-color: white;
 }
@@ -11,26 +13,45 @@ body {
   font-size: 24px;
 }
 
+
+/* Overview styles */
+
 #patternModify #patternOverview {
   text-align: right;
   width: 90%;
   margin: 0 auto 25px auto;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 #patternModify #patternOverview .patternLabel {
   display: inline-block;
-  font-weight: bold;
   line-height: 25px;
   margin-left: 5px;
   margin-right: 5px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 #patternModify #patternOverview .patternValue {
   display: inline-block;
   margin-left: 5px;
   margin-right: 5px;
+  color: #4078C0;
+  font-weight: bold;
+  font-size: 14px;
 }
+
+#patternModify #patternOverview .smaller {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+#patternModify #patternOverview .cfpTotal {
+  display: none;
+}
+
+
+/* Description styles */
 
 #patternModify #patternDescription {
   text-align: center;
@@ -56,7 +77,61 @@ body {
   background-color: #eee!important;
 }
 
+#patternModify #patternDescription input {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+
+/* Table styles */
+
+#patternModify #patternTable {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#patternModify #patternTable thead {
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  background: #005790;
+  background: linear-gradient(to bottom, #005790 0%, #005580 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#005790', endColorstr='#005580', GradientType=0);
+}
+
+#patternModify #patternTable thead td {
+  padding: 5px 8px;
+  border-left: 1px solid #3977a0;
+}
+
+#patternModify #patternTable thead td:first-child {
+  border-radius: 8px 0 0!important;
+  border-left: none;
+}
+
+#patternModify #patternTable thead td:last-child {
+  border-radius: 0 8px 0 0!important;
+}
+
+#patternModify #patternTable tbody tr:nth-child(even) {
+  background-color: #E1EEF4;
+}
+
+#patternModify #patternTable tbody td {
+  padding: 5px 8px;
+  vertical-align: top;
+}
+
+#patternModify #patternTable tbody td input {
+  font-size: 12px;
+}
+
+#patternModify #patternTable tbody td span {
+  line-height:40px;
+}
+
 #patternModify #patternFooter {
-  margin-top: 20px;
-  text-align: center;
+  width: 90%;
+  margin: 20px auto;
+  text-align: right;
 }
