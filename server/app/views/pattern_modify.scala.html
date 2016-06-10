@@ -10,26 +10,34 @@
   <h2>Create/Modify Pattern</h2>
   <hr>
   <div id="patternOverview">
-    <label>#FP: </label><span id="patternNFp"></span>
-    <label>Size: </label><span id="patternSize"></span>
+    <span class="patternLabel">#FP:</span><span id="patternNFp" class="patternValue"></span>
+    <br/>
+    <span class="patternLabel">Size (CFP):</span><span id="patternSize" class="patternValue"></span>
+    <br/>
+    <span class="patternLabel">E:</span><span id="patternSizeE" class="patternValue"></span>
+    <span class="patternLabel">X:</span><span id="patternSizeX" class="patternValue"></span>
+    <span class="patternLabel">R:</span><span id="patternSizeR" class="patternValue"></span>
+    <span class="patternLabel">W:</span><span id="patternSizeW" class="patternValue"></span>
+    <br/>
+    <span class="patternLabel">Date created:</span><span id="patternDateCreated" class="patternValue"></span>
+    <br/>
   </div>
-  <hr>
   <div id="patternDescription">
     <label>Pattern
       <br/>
-      <input type="text" id="patternNameInput">
+      <input type="text" id="Pattern_Name">
     </label>
     <label>Description
       <br/>
-      <input type="text" id="patternDescriptionInput">
+      <input type="text" id="Pattern_Desc">
     </label>
     <label>User
       <br/>
-      <input type="text" id="patternUserInput" disabled="disabled">
+      <input type="text" id="User_ID" disabled="disabled">
     </label>
   </div>
   <div id="patternFooter">
-    <button type="button" class="btn btn-success">Update</button>
+    <button type="button" class="btn btn-success">Save</button>
   </div>
 </div>
 <script type="text/javascript">
@@ -37,6 +45,6 @@ bindButton();
 windowResize();
 
 /* Test */
-testPattern();
+displayPattern(testPatternObj);
 </script>
 }
