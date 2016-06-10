@@ -1,0 +1,34 @@
+@(form: Form[Application.Login])
+
+<html>
+    <head>
+        <title>Zentasks</title>
+        
+    </head>
+    <body>
+        <header>
+                
+            @helper.form(routes.Application.authenticate) {
+               <h1>Sign in</h1>
+
+               <p>
+                   <input type="email" name="email" placeholder="Email" value="@form("email").value">
+               </p>
+               <p>
+                   <input type="password" name="password" placeholder="Password">
+               </p>
+               <p>
+                   <button type="submit">Login</button>
+               </p>
+            }
+
+            @if(form.hasGlobalErrors) {
+                <p class="error">
+                    @form.globalError.message
+                </p>
+            }
+            
+        </header>
+    
+    </body>
+</html>

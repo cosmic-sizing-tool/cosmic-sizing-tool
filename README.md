@@ -9,25 +9,9 @@
 
 [Consult the dashboard](https://waffle.io/cosmic-sizing-tool/cosmic-sizing-tool)
 
-# README #
-
-This README documents the steps necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
 ### How do I get set up? ###
 
-#### Summary of set up####
-
 The Play framework is needed in order to run this program.
-
-#### Configuration ####
-
-Write config info here.
 
 #### Dependencies ####
 
@@ -37,14 +21,19 @@ Write config info here.
  3. Add ``activator`` to your **PATH** or create the following link substituting ``/path/to/activator`` with the absolute path to the ``activator`` executable
  by executing ``sudo ln -s /path/to/activator /usr/local/bin/activator``. Consult this [link](https://www.playframework.com/documentation/2.4.x/Installing) for the complete installation documentation.
 
-* SQLite 3
- 1. Download and install SQLite 3 for your platform at https://www.sqlite.org/.
-
 #### Database configuration ####
 
-Manual configuration is not needed. An sql script will be executed to create the missing tables when the server is run.
+** Install PostgreSQL on your machine
+- Follow instructions to install a Postgres Server on your machine
+- Run postgres "createdb" util and Create Database "default" using your postgres user
+- ``createdb -U postgres default``
+- Create user "cosmic" with password "cosmic123" as per application config
+- ``postgres=# CREATE USER cosmic PASSWORD 'cosmic123';``
+- Your server should now be running and deploying in development with "Activator run" should connect to local DB
+running at "postgres://localhost/default"
 
-You may get the message `Database 'default' is in an inconsistent state!`. This is because Sqlite3 doesn't seem to work with foreign keys. Just click on *Mark it resolved*.
+#### Configuration ####
+Write config info here.
 
 #### How to run tests ####
 
