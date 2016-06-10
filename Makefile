@@ -1,3 +1,4 @@
+SHELL=C:/Windows/System32/cmd.exe
 client-setup:
 	cd client && npm install && bower install
 
