@@ -1,0 +1,9 @@
+{
+  "CONTAINS": "Contains",
+  "AND": "And",
+  "OR": "Or",
+  "CLEAR_FILTER": "Clear filter",
+  "FILTER": "Filter",
+  "TERM": "Term",
+  "DEFINITION": "Definition"
+}
