@@ -10,9 +10,11 @@ import play.data.validation.*;
 @Entity
 public class MeasurementMethod extends Model {
 
+  @Id
+  public int id;
+
   String name;
 
-  //(mappedBy = "method", cascade = CascadeType.ALL)
-  // @OneToMany(cascade = CascadeType.ALL)
-  // public List<MeasurementMethodVersion> measurementMethodVersions = new ArrayList<MeasurementMethodVersion>();
+  @OneToMany(cascade = CascadeType.ALL)
+  public List<MeasurementMethodVersion> measurementMethodVersions = new ArrayList<MeasurementMethodVersion>();
 }

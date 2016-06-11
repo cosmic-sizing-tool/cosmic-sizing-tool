@@ -8,7 +8,7 @@ create table address (
   postal_code                   varchar(255),
   street                        varchar(255),
   appartment                    varchar(255),
-  city_id_city                  integer,
+  city_id                       integer,
   organisation_id               bigint,
   constraint pk_address primary key (id)
 );
@@ -31,9 +31,9 @@ create table certification (
 );
 
 create table city (
-  id_city                       serial not null,
+  id                            serial not null,
   name                          varchar(255),
-  constraint pk_city primary key (id_city)
+  constraint pk_city primary key (id)
 );
 
 create table cosmic_user (
@@ -53,8 +53,14 @@ create table cosmic_user (
   constraint pk_cosmic_user primary key (id)
 );
 
+create table cosmic_user_measurement_method_version (
+  id                            serial not null,
+  measurement_method_version_id integer,
+  constraint pk_cosmic_user_measurement_method_version primary key (id)
+);
+
 create table cosmic_users_city (
-  city_id_city                  integer,
+  city_id                       integer,
   cosmic_user_id                bigint
 );
 
@@ -98,11 +104,16 @@ create table email (
 );
 
 create table measurement_method (
-  name                          varchar(255)
+  id                            serial not null,
+  name                          varchar(255),
+  constraint pk_measurement_method primary key (id)
 );
 
 create table measurement_method_version (
-  method_number                 integer
+  id                            serial not null,
+  method_number                 integer,
+  measurement_method_id         integer,
+  constraint pk_measurement_method_version primary key (id)
 );
 
 create table organisation (
@@ -285,8 +296,8 @@ create table timer (
   constraint pk_timer primary key (timer_id)
 );
 
-alter table address add constraint fk_address_city_id_city foreign key (city_id_city) references city (id_city) on delete restrict on update restrict;
-create index ix_address_city_id_city on address (city_id_city);
+alter table address add constraint fk_address_city_id foreign key (city_id) references city (id) on delete restrict on update restrict;
+create index ix_address_city_id on address (city_id);
 
 alter table address add constraint fk_address_organisation_id foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
 create index ix_address_organisation_id on address (organisation_id);
@@ -294,14 +305,20 @@ create index ix_address_organisation_id on address (organisation_id);
 alter table certification add constraint fk_certification_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_certification_user_id on certification (user_id);
 
-alter table cosmic_users_city add constraint fk_cosmic_users_city_city_id_city foreign key (city_id_city) references city (id_city) on delete restrict on update restrict;
-create index ix_cosmic_users_city_city_id_city on cosmic_users_city (city_id_city);
+alter table cosmic_user_measurement_method_version add constraint fk_cosmic_user_measurement_method_version_measurement_met_1 foreign key (measurement_method_version_id) references measurement_method_version (id) on delete restrict on update restrict;
+create index ix_cosmic_user_measurement_method_version_measurement_met_1 on cosmic_user_measurement_method_version (measurement_method_version_id);
+
+alter table cosmic_users_city add constraint fk_cosmic_users_city_city_id foreign key (city_id) references city (id) on delete restrict on update restrict;
+create index ix_cosmic_users_city_city_id on cosmic_users_city (city_id);
 
 alter table cosmic_users_city add constraint fk_cosmic_users_city_cosmic_user_id foreign key (cosmic_user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_cosmic_users_city_cosmic_user_id on cosmic_users_city (cosmic_user_id);
 
 alter table email add constraint fk_email_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_email_user_id on email (user_id);
+
+alter table measurement_method_version add constraint fk_measurement_method_version_measurement_method_id foreign key (measurement_method_id) references measurement_method (id) on delete restrict on update restrict;
+create index ix_measurement_method_version_measurement_method_id on measurement_method_version (measurement_method_id);
 
 alter table organisation_cosmic_user add constraint fk_organisation_cosmic_user_organisation foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
 create index ix_organisation_cosmic_user_organisation on organisation_cosmic_user (organisation_id);
@@ -312,8 +329,8 @@ create index ix_organisation_cosmic_user_cosmic_user on organisation_cosmic_user
 
 # --- !Downs
 
-alter table if exists address drop constraint if exists fk_address_city_id_city;
-drop index if exists ix_address_city_id_city;
+alter table if exists address drop constraint if exists fk_address_city_id;
+drop index if exists ix_address_city_id;
 
 alter table if exists address drop constraint if exists fk_address_organisation_id;
 drop index if exists ix_address_organisation_id;
@@ -321,14 +338,20 @@ drop index if exists ix_address_organisation_id;
 alter table if exists certification drop constraint if exists fk_certification_user_id;
 drop index if exists ix_certification_user_id;
 
-alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_city_id_city;
-drop index if exists ix_cosmic_users_city_city_id_city;
+alter table if exists cosmic_user_measurement_method_version drop constraint if exists fk_cosmic_user_measurement_method_version_measurement_met_1;
+drop index if exists ix_cosmic_user_measurement_method_version_measurement_met_1;
+
+alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_city_id;
+drop index if exists ix_cosmic_users_city_city_id;
 
 alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_cosmic_user_id;
 drop index if exists ix_cosmic_users_city_cosmic_user_id;
 
 alter table if exists email drop constraint if exists fk_email_user_id;
 drop index if exists ix_email_user_id;
+
+alter table if exists measurement_method_version drop constraint if exists fk_measurement_method_version_measurement_method_id;
+drop index if exists ix_measurement_method_version_measurement_method_id;
 
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_organisation;
 drop index if exists ix_organisation_cosmic_user_organisation;
@@ -345,6 +368,8 @@ drop table if exists certification cascade;
 drop table if exists city cascade;
 
 drop table if exists cosmic_user cascade;
+
+drop table if exists cosmic_user_measurement_method_version cascade;
 
 drop table if exists cosmic_users_city cascade;
 

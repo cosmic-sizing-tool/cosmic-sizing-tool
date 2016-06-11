@@ -10,8 +10,14 @@ import play.data.validation.*;
 @Entity
 public class MeasurementMethodVersion extends Model {
 
+  @Id
+  public int id;
+
   int methodNumber;
 
-  // @ManyToOne
-  // public MeasurementMethod measurementMethod;
+  @ManyToOne(cascade = CascadeType.ALL)
+  public MeasurementMethod measurementMethod;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  public List<CosmicUserMeasurementMethodVersion> cosmicUserMeasurementMethodVersions = new ArrayList<CosmicUserMeasurementMethodVersion>();
 }

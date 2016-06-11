@@ -15,7 +15,7 @@ import play.data.validation.*;
 public class City extends Model{
 
     @Id
-    public int idCity;
+    public int id;
 
     public String name;
 
