@@ -63,7 +63,7 @@ Write config info here.
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
-  1. Add ressource to the file just created :
+  i. Add ressource to the file just created :
   ```html
    {
      "WEBSITE_SECTION":
@@ -74,7 +74,7 @@ Write config info here.
    ```
    Where **WEBSITE_SECTION** and **RESOURCE_NAME** are the same for all the languages JSON files (refer to the english JSON file).
    
-  2. Add filter and ID in your html tag :
+  ii. Add filter and ID in your html tag :
   ```html
    <p>WEBSITE_SECTION.RESOURCE_NAME | translate</p>
    ```
