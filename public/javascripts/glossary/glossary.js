@@ -59,7 +59,6 @@ angular.module('glossaryModule', [])
             });
 
             $scope.filterByLetter = function(letter){
-    	    	$scope.glossary  = 
     	    	/*if( row.term[0].toUpperCase() === $scope.currentLetter){
     	    	 return row;
     	    	}*/
