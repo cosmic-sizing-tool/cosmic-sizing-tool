@@ -26,6 +26,7 @@ create table cosmic_user (
   country                       varchar(255),
   state                         varchar(255),
   city                          varchar(255),
+  location                      varchar(255),
   constraint uq_cosmic_user_alias unique (alias),
   constraint uq_cosmic_user_email unique (email),
   constraint pk_cosmic_user primary key (id)
