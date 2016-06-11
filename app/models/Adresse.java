@@ -20,6 +20,11 @@ public class Adresse extends Model {
     public String postalCode;
     public String street;
     public String appartment;
-    public City city;
+
+    @ManyToOne
+    public List<City> city = new ArrayList<City>();
+
+    @ManyToOne
+    public List<Organisation> orgs = new ArrayList<Organisation>();
 
 }

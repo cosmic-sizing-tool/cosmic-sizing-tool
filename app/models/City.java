@@ -18,6 +18,10 @@ public class City extends Model{
     public int idCity;
 
     public String name;
-    public CountryDivisionType divisionType;
 
+    @ManyToOne
+    public List<CountryDivisionType> divisionType = new ArrayList<CountryDivisionType>();
+
+    @OneToMany
+    public List<Adresse> adresses = new ArrayList<Adresse>();
 }
