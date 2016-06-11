@@ -29,16 +29,24 @@
             border-color: #c0c0c0;
          }
          .informationBoxTitle {
-            background-color: d0d0d0;
             padding-left: 15px;
             text-align: left;
+            border-bottom: 1px solid #d0d0d0;
          }
          .informationBoxBody {
             padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
             text-align: left;
          }
          .captchaWrapper {
 
+         }
+         #email {
+            width: 250px;
+         }
+         #submitbtn {
+            width: 250px;
          }
       </style>
    </head>
@@ -46,12 +54,13 @@
        <div class="wrapper">
            <div class="informationBox">
                 <div class="informationBoxTitle">
-                    <h3 class="form-signin-heading" align="center">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate}}</h3>
+                    <h3 class="form-signin-heading">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate}}</h3>
                 </div>
                 <div class="informationBoxBody">
                     <form class="form-signin" method="get" action="/user/reset_pwd">
+                        <br/><br/>
                         <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate}}</p>
-                        <input class="form-control" id="" name="email" type="text"/><br/>
+                        <input class="form-control" id="email" name="email" type="text"/><br/>
 
                         <div class="captchaWrapper">
                             <div class="g-recaptcha" data-sitekey="6LeEWyITAAAAADnKeiEquBHh5ijfC9rQoigI4Vdv" data-callback="captchaCallback"></div>
@@ -62,13 +71,13 @@
                                 document.getElementById("recaptcha").value = document.getElementById("g-recaptcha-response").value;
                               }
                             </script>
-                        </div>
+                        </div><br/><br/>
 
-                        <button type="submit" class="btn btn-success" style="width: 100%;">
+                        <button type="submit" class="btn btn-success" id="submitbtn">
                             {{ 'RECOVER_PASSWORD.SEND' | translate}}
-                        </button><br/>
+                        </button><br/><br/>
 
-                        @validEmail<br/><br/>
+                        code retour = @validEmail<br/>
                         {{validEmail == 1 ? 'RECOVER_PASSWORD.EMAIL_SENT' : (validEmail == 0 ? 'RECOVER_PASSWORD.EMAIL_NOT_VALID' : '')}}
                     </form>
                 </div>
