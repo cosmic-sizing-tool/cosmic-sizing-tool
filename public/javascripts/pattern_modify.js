@@ -279,17 +279,34 @@ function savePattern() {
   var updatedPattern = collectPattern();
   validatePattern(updatedPattern);
   displayPattern(updatedPattern);
+  sendPattern(updatedPattern);
+}
+
+function sendPattern(pattern){
+  /* Send the pattern to the server */
 }
 
 /*
 Validation rules
   - A FP must have at least 1 DG and at least 1 DM
-  - A FP is unique in the pattern (must not be identical to any other)
+  - A FP is unique in the pattern
 */
 function validatePattern(updatedPattern) {
   var isValid = true;
-  /* TODO: Validate the pattern from the data contained
-    in the pattern object (maybe highlight in red what's invalid) */
+  var fps = updatedPattern.Pattern_FP;
+  for( var i = 0 ; i < fps.length ; i++){
+    var fp = fps[i];
+    var dgdms = fp.Pattern_DGDM;
+    if( dgdms.length < 1 ){
+      isValid = false;
+      continue;
+    }
+    var nMovements = 0;
+    for( var j = 0 ; j < dgdms.length ; j++){
+      var dgdm = dgdms[j];
+      nMovements += dgdms
+    }
+  }
   updatedPattern.isAValidPattern = isValid;
 }
 
