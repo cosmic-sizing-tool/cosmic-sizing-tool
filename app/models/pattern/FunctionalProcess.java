@@ -3,9 +3,9 @@
 
 package models.pattern;
 
-import com.avaje.ebean.Model;
-
 import java.util.*;
+
+import com.avaje.ebean.Model;
 
 public class FunctionalProcess extends Model {
     private Long id;
@@ -14,7 +14,6 @@ public class FunctionalProcess extends Model {
     private Set<DataGroup> dataGroupSet;
 
     public FunctionalProcess() {
-        id = null;
         this.dataGroupSet = new HashSet<>();
     }
 
