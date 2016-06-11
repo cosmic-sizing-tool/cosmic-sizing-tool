@@ -45,14 +45,14 @@ Write config info here.
 * HOW TO ADD NEW LANGUAGE</br>
  1. Create a file in public/resources called **xx.json** where **xx** is the code of the language you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  2. Add you language to the following section of public/javascript/app/app.js :
-```javascript  
-$translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
-   'en_*': 'en',
-   'fr_*': 'fr',
-   'xx_*': 'xx'
-  });
- ```
-  where **xx** is the code of the language you're trying to add.
+  ```javascript  
+  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
+     'en_*': 'en',
+     'fr_*': 'fr',
+     'xx_*': 'xx'
+    });
+   ```
+   where **xx** is the code of the language you're trying to add.
 
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
