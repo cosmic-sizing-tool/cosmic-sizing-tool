@@ -9,7 +9,9 @@ import play.data.validation.*;
 
 import util.*;
 
+@Entity
 public class DataGroup extends Model implements JsonSerializable {
+    @Id
     private Long id;
     private String name;
     
@@ -24,6 +26,16 @@ public class DataGroup extends Model implements JsonSerializable {
         this.write = write;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
+    
     @Override
     public String toJson() {
         JsonBuilder json = new JsonBuilder();
@@ -35,10 +47,6 @@ public class DataGroup extends Model implements JsonSerializable {
         json.add("write", write);
 
         return json.toString();
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getName() {

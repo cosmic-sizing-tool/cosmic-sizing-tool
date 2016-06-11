@@ -37,18 +37,6 @@ create table cosmic_user (
   constraint pk_cosmic_user primary key (id)
 );
 
-create table data_group (
-  id                            bigserial not null,
-  name                          varchar(255) not null,
-  comment                       varchar(255) not null,
-  process                       bigint not null,
-  entry                         integer not null,
-  exit                          integer not null,
-  read                          integer not null,
-  write                         integer not null,
-  constraint pk_data_group primary key (id)
-);
-
 create table email (
   id                            bigserial not null,
   addresse                      varchar(255),
@@ -88,29 +76,6 @@ create table organization (
   time_stamp                    timestamp,
   unique_id                     uuid,
   name                          varchar(255)
-);
-
-create table pattern (
-  id                            bigserial not null,
-  name                          varchar(20) not null,
-  description_courte            varchar(30) not null,
-  description_longue            varchar(250) not null,
-  constraint pk_pattern primary key (id)
-);
-
-create table pattern_data_group (
-  id                            bigserial not null,
-  name                          varchar(50) not null,
-  mouvement                     varchar(4) not null,
-  process                       bigint not null,
-  constraint pk_pattern_data_group primary key (id)
-);
-
-create table pattern_process (
-  id                            bigserial not null,
-  name                          varchar(50) not null,
-  pattern                       bigint not null,
-  constraint pk_pattern_process primary key (id)
 );
 
 create table process (
@@ -278,8 +243,6 @@ drop table if exists certification cascade;
 
 drop table if exists cosmic_user cascade;
 
-drop table if exists data_group cascade;
-
 drop table if exists email cascade;
 
 drop table if exists organisation cascade;
@@ -287,12 +250,6 @@ drop table if exists organisation cascade;
 drop table if exists organisation_cosmic_user cascade;
 
 drop table if exists organization cascade;
-
-drop table if exists pattern cascade;
-
-drop table if exists pattern_data_group cascade;
-
-drop table if exists pattern_process cascade;
 
 drop table if exists process cascade;
 
