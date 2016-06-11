@@ -1,34 +1,37 @@
 @main("Search measurer"){
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+<script type="text/javascript" src="/assets/javascripts/measurers/module.js"></script>
+<script type="text/javascript" src="/assets/javascripts/measurers/search.js"></script>
 <style>
     table.table-striped td{
         padding-left: 8px;
     }
 </style>
-<div class="container">
+<div class="container" ng-controller="MeasurersController">
     <div style="margin-top: 110px">
     <div class="panel panel-default">
         <div>
             <div style="background-color: white; vertical-align: top" >
                 <div class="panel header" style="background-color: #f5f5f5; width: 100%; padding: 5px">
-                    <div id="ViewHeader" style="text-align: left; width: 50%"><h2>Find a certified measurer</h2></div>
+                    <div id="ViewHeader" style="text-align: left; width: 50%"><h2>Find a measurer</h2></div>
                 </div>
                 <div class="panel body">
                     <div class="form-group" style="background-color: #fafafa; padding-left: 10px; align-content: stretch">
                         <div id="DropDownControls" style="display: flex; justify-content: space-between;">
 
-                            <select id="SelectMethod" style="width: 25%; padding: 4px">
-                                <option selected disabled>Select method</option>
+                            <select class="form-control" id="SelectMethod" style="width: 25%; padding: 4px" ng-model="model.filters.method">
+                                <option ng-repeat="method in model.methods" ng-selected="method.code == null" value="{{method.code}}">{{method.name}}</option>
                             </select>
-                            <select id="SelectCountry" style="width: 25%; padding: 4px">
-                                <option selected disabled>Select country</option>
+                            <select class="form-control" id="SelectCountry" style="width: 25%; padding: 4px" ng-model="model.filters.country">
+                                <option ng-repeat="country in model.countries" ng-selected="country.code == null" value="{{country.code}}">{{country.name}}</option>
                              </select>
 
-                            <select id="SelectState" style="width: 25%; padding: 4px">
-                                <option selected disabled>Select state</option>
+                            <select class="form-control" id="SelectState" style="width: 25%; padding: 4px" ng-model="model.filters.state" ng-disabled="!model.filters.country" ng-class="{disabled : !model.filters.country}">
+                                <option ng-repeat="state in model.states" ng-selected="state.code == null" value="{{state.code}}">{{state.name}}</option>
                            </select>
-                            <select id="SelectCity" style="width: 25%; padding: 4px">
-                                <option selected disabled>Select city</option>
+
+                            <select class="form-control" id="SelectCity" style="width: 25%; padding: 4px" ng-model="model.filters.city">
+                                <option ng-repeat="city in model.cities" value="{{city.code}}">{{city.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -41,13 +44,17 @@
                                         <th align="left" width="33%" style="padding-left: 5px">Email</th>
                                         <th align="left" width="33%" style="padding-left: 5px">Certifications</th>
                                     </tr>
-                                    <tr><td>a</td><td>5</td><td>f</td></tr>
-                                    <tr><td>a</td><td>5</td><td>f</td></tr>
+                                    <tr ng-repeat="measurer in model.filteredMeasurers">
+                                        <td>{{measurer.name}}</td>
+                                        <td><a href="{{measurer.email}}">{{measurer.email}}</a></td>
+                                        <td>{{measurer.certification}}</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button type="button" ng-click="actions.search()" class="btn btn-success">Search</button>
             </div>
         </div>
     </div>

@@ -162,7 +162,6 @@ public class Application extends Controller {
 
 
     }
-
     public static class Login {
 
         public String email;
