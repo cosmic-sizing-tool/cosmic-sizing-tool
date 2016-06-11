@@ -58,7 +58,10 @@ $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
   When the label is in an attribute (ex: alt, title, etc.):
-  1. Start: <code><p><"Image of something"/></p></code>
+  1. Start:
+   ```html 
+   <img><"Image of something"/></img>
+   ```
   2. Add ressource to the file:{"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
   3. Add filter and ID:<img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
 
