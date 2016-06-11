@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import models.*;
 import util.SendEmail;
+import javax.inject.Inject;
 
 import play.*;
 import play.db.ebean.Transactional;
@@ -150,10 +151,9 @@ public class UserCtrl extends Controller {
 
     public Result resetPassword(String email) {
 		String message = "";
+		int validEmail = -1;
 
-		if (email == null) {
-		}
-		else {
+		if (email != null) {
 			CosmicUser user = findUser(email);
 			if (user != null) {
 				user.password = "bob";//crypto.encrypt("bob");
@@ -164,14 +164,17 @@ public class UserCtrl extends Controller {
 
 				SendEmail sendEmail = new SendEmail("cosmic@do-not-respond.com", email, "Password recovery", emailContent);
 				sendEmail.send();
-				message = "Email sent.";
+
+				//message = "Email sent.";
+				validEmail = 1;
 			}
 			else {
-				message = "Invalid email address.";
+				//message = "Invalid email address.";
+				validEmail = 0;
 			}
 		}
 
-        return ok(reset_pwd.render(message));
+        return ok(reset_pwd.render(validEmail));
     }
 
 	public Result updatePassword() {

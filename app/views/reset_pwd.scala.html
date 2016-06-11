@@ -1,9 +1,9 @@
-@(message: String)
+@(validEmail: Integer)
 
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <title>Mot de passe oublié</title>
+      <title>RECOVER_PASSWORD.PASSWORD_RECOVERY | translate</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -42,15 +42,15 @@
          }
       </style>
    </head>
-   <body>
+   <body ng-app="app">
        <div class="wrapper">
            <div class="informationBox">
                 <div class="informationBoxTitle">
-                    <h3 class="form-signin-heading" align="center">Password recovery</h3>
+                    <h3 class="form-signin-heading" align="center">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate}}</h3>
                 </div>
                 <div class="informationBoxBody">
                     <form class="form-signin" method="get" action="/user/reset_pwd">
-                        <p style="font-size: 12px;">Your email address</p>
+                        <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate}}</p>
                         <input class="form-control" id="" name="email" type="text"/><br/>
 
                         <div class="captchaWrapper">
@@ -65,10 +65,11 @@
                         </div>
 
                         <button type="submit" class="btn btn-success" style="width: 100%;">
-                            Send password
+                            {{ 'RECOVER_PASSWORD.SEND' | translate}}
                         </button><br/>
 
-                        @message
+                        @validEmail<br/><br/>
+                        {{validEmail == 1 ? 'RECOVER_PASSWORD.EMAIL_SENT' : (validEmail == 0 ? 'RECOVER_PASSWORD.EMAIL_NOT_VALID' : '')}}
                     </form>
                 </div>
             </div>

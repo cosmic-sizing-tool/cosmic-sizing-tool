@@ -24,10 +24,12 @@
     "PRIVACY_POLICY" : "Privacy Policy"
   },
   "RECOVER_PASSWORD" : {
+    "PASSWORD_RECOVERY" : "Password recovery",
+    "EMAIL_ADDRESS" : "Your email address",
     "FORGOT_PASSWORD" : "I forgot my password",
     "NOT_A_ROBOT" : "I am not a robot",
     "SEND" : "Send",
-    "USER_NOT_EXIST" : "This user does not exist",
+    "EMAIL_SENT" : "Email sent",
     "EMAIL_NOT_VALID" : "This email is invalid"
   }
 }
