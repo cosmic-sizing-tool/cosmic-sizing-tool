@@ -48,7 +48,7 @@ Write config info here.
  ```javascript  
  $socpe.languages = [
    {id:'en', name:'English'},
-   {id:'fr', name:'Français'}
+   {id:'fr', name:'Français'},
    {id:'xx', name:'NewLanguage'}
  ];
  
@@ -63,7 +63,7 @@ Write config info here.
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
-  Start, add ressource to the file and add filter and ID :
+  Add ressource to the file just created :
    ```html
    {
      "WEBSITE_SECTION":
@@ -71,6 +71,11 @@ Write config info here.
        "NAME_OF_RESSOURCE":"Text to print"
        }
    }
+   ```
+   
+   Add filter and ID in your html tag :
+   ```html
+   <p data-translate>SECTION_DU_SITE.NOM_DE_LA_RESSOURCE</p>
    ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE in its controler :
