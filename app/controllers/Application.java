@@ -73,6 +73,14 @@ public class Application extends Controller {
         );
     }
 
+    public Result patternList() {
+        return ok(pattern_list.render());
+    }
+
+    public Result patternModify() {
+        return ok(pattern_modify.render());
+    }
+
     public Result team(){
 
         flash("success", "message de succes");

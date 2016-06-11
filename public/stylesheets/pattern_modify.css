@@ -1,0 +1,142 @@
+/* Page styles */
+
+body {
+  background-color: #ddd;
+}
+
+.jumbotron {
+  background-color: white;
+}
+
+#patternModify h2 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+
+/* Overview styles */
+
+#patternModify #patternOverview {
+  text-align: right;
+  width: 90%;
+  margin: 0 auto 25px auto;
+  font-size: 18px;
+}
+
+#patternModify #patternOverview .patternLabel {
+  display: inline-block;
+  line-height: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#patternModify #patternOverview .patternValue {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #4078C0;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#patternModify #patternOverview .smaller {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+#patternModify #patternOverview .cfpTotal {
+  display: none;
+}
+
+
+/* Description styles */
+
+#patternModify #patternDescription {
+  text-align: center;
+}
+
+#patternModify #patternDescription label {
+  text-align: left;
+}
+
+#patternModify #patternDescription label:nth-of-type(1) {
+  width: 25%;
+}
+
+#patternModify #patternDescription label:nth-of-type(2) {
+  width: 65%;
+}
+
+#patternModify #patternDescription input[type="text"][disabled] {
+  background-color: #eee!important;
+}
+
+#patternModify #patternDescription input {
+  font-weight: normal;
+  font-size: 14px;
+}
+
+
+/* Table styles */
+
+#patternModify #patternTable {
+  width: 90%;
+  margin: 0 auto;
+  background-color:#bbdeef;
+}
+
+#patternModify #patternTable thead {
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  background: #005790;
+}
+
+#patternModify #patternTable thead td {
+  padding: 5px 8px;
+  border-left: 1px solid #3977a0;
+}
+
+#patternModify #patternTable thead td:first-child {
+  border-radius: 8px 0 0!important;
+  border-left: none;
+}
+
+#patternModify #patternTable thead td:last-child {
+  border-radius: 0 8px 0 0!important;
+}
+
+#patternModify #patternTable tbody tr.even {
+  background-color: #E1EEF4;
+}
+
+#patternModify #patternTable tbody td {
+  padding: 5px 8px;
+  vertical-align: top;
+}
+
+#patternModify #patternTable tbody td input {
+  font-size: 12px;
+}
+
+#patternModify #patternTable tbody td span {
+  line-height: 40px;
+}
+
+#patternModify #patternTable tfoot {
+  background:#fff;
+}
+
+#patternModify #patternTable tfoot td {
+  padding: 5px 8px;
+  vertical-align: top;
+}
+
+
+#patternModify #patternFooter {
+  width: 90%;
+  margin: 20px auto;
+  text-align: right;
+}
