@@ -2,7 +2,7 @@
 form{
 
     margin-top: 110px;
-    padding-top: 5px;
+    padding-top: 1px;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -15,4 +15,29 @@ form{
     border-bottom-right-radius: 5px;
 
     background-color: #fafafa;
+}
+
+label{
+    padding-right: 10px;
+}
+
+.delete-but{
+    background-color: #df3e3e;
+    color: #FFFFFF;
+}
+
+.save-but{
+    background-color: #70c154;
+    color: #FFFFFF;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.form-inline{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group{
+    margin-right: 40px;
 }

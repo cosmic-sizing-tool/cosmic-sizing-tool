@@ -9,13 +9,20 @@
         <form ng-module="AddOrganisationModule" ng-controller="ModifierOrganisationController">
             <h3>Create Organization</h3>
 
+            <div class="form-group">
+                <label for="logoFile">Logo</label>
+                <input type="file" id="logoFile">
+            </div>
+
             <div class="form-inline">
                 <div class="form-group">
                     <label for="OrgName">Organization name</label>
+                    <br/>
                     <input type="email" class="form-control" id="OrgName" placeholder="Name" ng-model="organisationName">
                 </div>
                 <div class="form-group">
                     <label for="OrgCode">Organization code</label>
+                    <br/>
                     <input type="email" class="form-control" id="OrgCode" placeholder="Code" ng-model="code">
                 </div>
             </div>
@@ -39,10 +46,12 @@
             <div class="form-inline">
                 <div class="form-group">
                     <label for="ContactPhone">Phone Number</label>
+                    <br/>
                     <input type="email" class="form-control" id="ContactPhone" placeholder="Phone number" ng-model="contactPhone">
                 </div>
                 <div class="form-group">
                     <label for="ContactEmail">Email</label>
+                    <br/>
                     <input type="email" class="form-control" id="ContactEmail" placeholder="Email" ng-model="email">
                 </div>
             </div>
@@ -52,14 +61,17 @@
             <div class="form-inline">
                 <div class="form-group">
                     <label for="address1">Address 1</label>
-                    <input type="email" class="form-control" id="address1" placeholder="Addr 1" ng-model="address1">
+                    <br/>
+                    <input type="email" class="form-control" id="address1" placeholder="Address 1" ng-model="address1">
                 </div>
                 <div class="form-group">
                     <label for="address2">Address 2</label>
-                    <input type="email" class="form-control" id="address2" placeholder="Addr 2" ng-model="address2">
+                    <br/>
+                    <input type="email" class="form-control" id="address2" placeholder="Address 2" ng-model="address2">
                 </div>
                 <div class="form-group">
                     <label for="zipCode">Zip code</label>
+                    <br/>
                     <input type="email" class="form-control" id="zipCode" placeholder="Zip code" ng-model="zipcode">
                 </div>
             </div>
@@ -67,22 +79,24 @@
             <div class="form-inline">
                 <div class="form-group">
                     <label for="City">City</label>
+                    <br/>
                     <input type="email" class="form-control" id="City" placeholder="City" ng-model="city">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Country</label>
+                    <br/>
                     <select class="form-control">Country
                         <option>Canada</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="StateProvince">State/Province/Region</label>
+                    <br/>
                     <input type="email" class="form-control" id="StateProvince" placeholder="State/Province/Region">
                 </div>
             </div>
 
-
-            <button type="submit" class="btn btn-default">Save Organization</button>
+            <button type="submit" class="btn save-but">Save Organization</button>
         </form>
         
         <div class="container site-footer-container"></div>
