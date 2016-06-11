@@ -62,8 +62,14 @@ $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
    ```html 
    <img><"Image of something"/></img>
    ```
-  2. Add ressource to the file:{"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
-  3. Add filter and ID:<img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
+  2. Add ressource to the file:
+  ```html
+  {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
+  ```
+  3. Add filter and ID:
+  ```html 
+  <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
+  ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
   in its controler.
