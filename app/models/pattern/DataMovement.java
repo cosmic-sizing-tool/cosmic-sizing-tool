@@ -7,10 +7,16 @@ import play.data.format.*;
 import play.data.validation.*; 
 
 public class DataMovement {
-    private Long id;
     private int entry, exit, read, write;
     
-    protected int getSizeCFP() {
+    protected DataMovement(int entry, int exit, int read, int write) {
+        this.entry = entry;
+        this.exit = exit;
+        this.read = read;
+        this.write = write;
+    }
+    
+    protected int getCFPSize() {
         return entry + exit + read + write;
     }
 }
