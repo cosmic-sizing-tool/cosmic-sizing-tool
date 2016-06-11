@@ -64,8 +64,10 @@ Write config info here.
    <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
    ```
 
-* ANY MODULE THAT YOU ADD MUST HAVE .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
-  in its controler.
+* ANY MODULE THAT YOU ADD MUST HAVE in its controler :
+ ```html
+ .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
+ ```
 
 #### Database configuration ####
 
