@@ -63,19 +63,20 @@ Write config info here.
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
-  Add ressource to the file just created :
+  1. Add ressource to the file just created :
    ```html
    {
      "WEBSITE_SECTION":
        {
-         "NAME_OF_RESSOURCE":"Text to print"
+         "RESOURCE_NAME":"Text to print"
        }
    }
    ```
+   Where **WEBSITE_SECTION** and **RESOURCE_NAME** are the same for all the languages JSON files (refer to the english JSON file).
    
-   Add filter and ID in your html tag :
+   2. Add filter and ID in your html tag :
    ```html
-   <p data-translate>SECTION_DU_SITE.NOM_DE_LA_RESSOURCE</p>
+   <p data-translate>WEBSITE_SECTION.RESOURCE_NAME</p>
    ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE in its controler :
