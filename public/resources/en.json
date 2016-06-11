@@ -1,0 +1,26 @@
+﻿{
+  "MAIN" : {
+    "REGISTER" : "Register",
+    "LOGIN" : "Log In",
+    "TERMS_AND_CONDITIONS" : "Terms and Conditions",
+    "CONTACT" : "Contact",
+    "HELP" : "Help"
+  },
+  "HOME" : {
+    "WHERE_SOFTWARE_FUNCTIONAL" : "Where software functional",
+    "SIZE_IS_MEASURED" : "size is Measured!",
+    "OPEN_SOURCE_COSMIC" : "Open-source COSMIC software functional size measurement support tool",
+    "FREE_TO_USE" : "Free to use",
+    "PICK_A_USERNAME" : "Pick a username",
+    "YOUR_EMAIL" : "Your email",
+    "CREATE_PASSWORD" : "Create a password",
+    "USE_AT_LEAST" : "Use at least one letter and one numeral.",
+    "MINIMUM_8_CHARACTERS" : "Minimum 8 characters and maximum 20.",
+    "REGISTER_TO_THE_COSMIC" : "Register to the COSMIC-sizing-tool",
+    "BY_CLICKING_ON" : "By clicking on \"Register to the COSMIC-sizing-tool\", you are agree to our",
+    "TERMS" : "Terms",
+    "CONDITIONS" : "et Conditions",
+    "AND_THE" : "and the",
+    "PRIVACY_POLICY" : "Privacy Policy"
+  }
+}

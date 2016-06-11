@@ -1,0 +1,27 @@
+﻿{
+  "MAIN" : {
+    "REGISTER" : "Inscription",
+    "LOGIN" : "Acceder",
+    "TERMS_AND_CONDITIONS" : "Termes et Conditions",
+    "CONTACT" : "Contact",
+    "HELP" : "Aide"
+  },
+  "HOME" : {
+    "WHERE_SOFTWARE_FUNCTIONAL" : "Ou la taille des logiciels",
+    "SIZE_IS_MEASURED" : "est Mesuree!",
+    "OPEN_SOURCE_COSMIC" : "COSMIC, un logiciel libre pour l'aide au calcul de grandeur des fonctionnalites d'un logiciel",
+    "FREE_TO_USE" : "Gratuit",
+    "PICK_A_USERNAME" : "Choisir un nom d'usager",
+    "YOUR_EMAIL" : "Votre courriel",
+    "CREATE_PASSWORD" : "Choisir un mot de passe",
+    "USE_AT_LEAST" : "Le mot de passe doit avoir au moins une lettre et un chiffre.",
+    "MINIMUM_8_CHARACTERS" : "Minimum de 8 caracteres et maximum de 20.",
+    "REGISTER_TO_THE_COSMIC" : "Inscription au COSMIC-sizing-tool",
+    "BY_CLICKING_ON" : "En cliquant sur \"Inscription au COSMIC-sizing-tool\", vous acceptez nos",
+    "TERMS" : "Termes",
+    "CONDITIONS" : "et Conditions",
+    "AND_THE" : "et l'",
+    "PRIVACY_POLICY" : "Entente de Confidentialite"
+  }
+}
+
