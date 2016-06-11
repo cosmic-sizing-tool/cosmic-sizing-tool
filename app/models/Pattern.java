@@ -1,16 +1,15 @@
 package models;
 
 /*
-    13-03-2016
-    Team Cowabunga :    Dany Deroy
-                        Francis Bilodeau
-                        Simon Zeni
-                        John Béjot
-                        Julien Girard
+ 13-03-2016
+ Team Cowabunga :    Dany Deroy
+ Francis Bilodeau
+ Simon Zeni
+ John Béjot
+ Julien Girard
 
-    Table Pattern (master) pour la sauvegarde des patrons (pattern)
-*/
-
+ Table Pattern (master) pour la sauvegarde des patrons (pattern)
+ */
 import java.util.*;
 import javax.persistence.*;
 
@@ -20,40 +19,45 @@ import play.data.validation.*;
 
 import util.*;
 
-@Entity
-public class Pattern extends Model implements JsonSerializable{
+public class Pattern extends Model implements JsonSerializable {
 
-    @Id
     private Long id;
-
-    @Column(length = 20, nullable = false)
     private String name;
+    private String description;
+    private Date dateLastModified;
+    private Date dateCreated;
+    private boolean isValid;
+    
+    private Set<FunctionalProcess> funcProcessSet;
 
-    @Column(length = 30, nullable = false)
-    private String descriptionCourte;
-
-    @Column(length = 250, nullable = false)
-    private String descriptionLongue;
-
-
-    public Pattern(String name, String descriptionCourte, String descriptionLongue) {
-        id = null;
-        this.descriptionCourte = descriptionCourte;
-        this.descriptionLongue = descriptionLongue;
+    
+    
+    public Set<FunctionalProcess> getFuncProcessSet() {
+        return funcProcessSet;
     }
 
+    public void setFuncProcessList(Set<FunctionalProcess> funcProcessList) {
+        this.funcProcessSet = funcProcessList;
+    }
+    
     @Override
-    public String toJson()
-    {
+    public String toJson() {
         JsonBuilder json = new JsonBuilder();
         json.add("id", id);
         json.add("name", name);
-        json.add("process", getProcess());
 
         return json.toString();
     }
-
-    public List<PatternProcess> getProcess() {
-        return PatternProcess.find.where().eq("pattern", id).findList();
+    
+    public int getNumberFuncProcess() {
+        return funcProcessSet.size();
+    }
+    
+    public int getCFPSize() {
+        
+        for(FunctionalProcess funcProcess : funcProcessSet) {
+            funcProcessSet
+        }
+        return 0;
     }
 }
