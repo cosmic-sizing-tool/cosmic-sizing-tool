@@ -1,29 +1,56 @@
 @main("Search measurer"){
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<style>
+    table.table-striped td{
+        padding-left: 8px;
+    }
+</style>
+<div class="container">
+    <div style="margin-top: 110px">
+    <div class="panel panel-default">
+        <div>
+            <div style="background-color: white; vertical-align: top" >
+                <div class="panel header" style="background-color: #f5f5f5; width: 100%; padding: 5px">
+                    <div id="ViewHeader" style="text-align: left; width: 50%"><h2>Find a certified measurer</h2></div>
+                </div>
+                <div class="panel body">
+                    <div class="form-group" style="background-color: #fafafa; padding-left: 10px; align-content: stretch">
+                        <div id="DropDownControls" style="display: flex; justify-content: space-between;">
 
-    <div class="container">
-        <div id="ViewHeader">Find a certified measurer</div>
-        <div id="DropDownControls">
-            <select id="SelectMethod">
-                <option selected disabled>Select method</option>
-            </select>
-            <select id="SelectCountry">
-                <option selected disabled>Select country</option>
-            </select>
-            <select id="SelectState">
-                <option selected disabled>Select state</option>
-            </select>
-            <select id="SelectCity">
-                <option selected disabled>Select city</option>
-            </select>
-        </div>
-        <div id="ResultsTable">
-            <table id="MeasurersTable">
-                <tr>
-                    <th>Name, Surname</th>
-                    <th>Email</th>
-                    <th>Certifications</th>
-                </tr>
-            </table>
+                            <select id="SelectMethod" style="width: 25%; padding: 4px">
+                                <option selected disabled>Select method</option>
+                            </select>
+                            <select id="SelectCountry" style="width: 25%; padding: 4px">
+                                <option selected disabled>Select country</option>
+                             </select>
+
+                            <select id="SelectState" style="width: 25%; padding: 4px">
+                                <option selected disabled>Select state</option>
+                           </select>
+                            <select id="SelectCity" style="width: 25%; padding: 4px">
+                                <option selected disabled>Select city</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="background-color: white">
+                        <div>
+                            <div id="ResultsTable" class="table-responsive">
+                                <table id="MeasurersTable" width="100%" class="table-striped" style="padding:10px">
+                                    <tr>
+                                        <th align="left" width="33%" style="padding-left: 5px">Name, Surname</th>
+                                        <th align="left" width="33%" style="padding-left: 5px">Email</th>
+                                        <th align="left" width="33%" style="padding-left: 5px">Certifications</th>
+                                    </tr>
+                                    <tr><td>a</td><td>5</td><td>f</td></tr>
+                                    <tr><td>a</td><td>5</td><td>f</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    </div>
+</div>
 }
