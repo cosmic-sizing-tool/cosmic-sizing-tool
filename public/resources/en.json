@@ -4,7 +4,11 @@
     "LOGIN" : "Log In",
     "TERMS_AND_CONDITIONS" : "Terms and Conditions",
     "CONTACT" : "Contact",
-    "HELP" : "Help"
+    "HELP" : "Help",
+    "COSMIC_GLOSSARY" : "COSMIC Glossary",
+    "FIND_A_MEASURER" : "Find a measurer",
+    "GO_TO_COSMIC_SITE" : "Go to COSMIC site",
+    "ABOUT_THIS_TOOL" : "About this tool"
   },
   "HOME" : {
     "WHERE_SOFTWARE_FUNCTIONAL" : "Where software functional",
