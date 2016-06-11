@@ -59,15 +59,15 @@
 
     <div class="col-md-6 col-md-offset-3">
       <div class="row">
+        
         <div class="col-md-1">
-
           <button type="button" ng-click="collapsed=!collapsed" ng-attr-class="{{filtered && 'btn btn-danger btn-circle' || 'btn btn-primary btn-circle'}}">
               <span class="glyphicon glyphicon-filter"></span>
             </button>
         </div>
-			
-        <div class="col-sm-offset-1 col-md-10 panel panel-default">
-          <a ng-href="#" ng-style="!exist && {'text-decoration':'none', color:'black'}" ng-repeat="letter in letters" ng-click="filterByLetter(letter)">{{letter}} </a>
+
+        <div class="col-md-offset-1 col-md-9 panel panel-default">
+          <a href="#" ng-style="!exist(letter) && {'text-decoration':'none', color:'black'}" ng-repeat="letter in letters">{{letter}} </a>
         </div>
 
       </div>

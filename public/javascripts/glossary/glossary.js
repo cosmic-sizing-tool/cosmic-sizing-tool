@@ -6,7 +6,12 @@ angular.module('glossaryModule', [])
             $scope.letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-            $scope.exist = true;
+            $scope.activeLetters = [];
+
+            $scope.exist = function(letter) {
+                loadActiveLetters($scope.glossary);
+                 return $scope.activeLetters.indexOf(letter) >= 0;
+            };
 
             $scope.searchText1 = null;
             $scope.searchText2 = null;
@@ -26,6 +31,21 @@ angular.module('glossaryModule', [])
                 $scope.searchText3 = null;
                 $scope.optRadio1 = null;
                 $scope.optRadio2 = null;
+            };
+
+            var loadActiveLetters = function (glossary) {
+                angular.forEach(glossary, function(entry) {
+                    $scope.activeLetters.push(entry.term[0].toUpperCase());
+                });
+                removeDuplicate($scope.activeLetters);
+            };
+
+            var removeDuplicate = function (array) {
+                array.sort();
+                for (var i = 1; i < array.length; i++) {
+                    if (array[i - 1] === array[i])
+                        array.splice(i, 1);
+                };
             };
 
 
