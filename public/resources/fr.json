@@ -5,10 +5,10 @@
     "TERMS_AND_CONDITIONS" : "Termes et Conditions",
     "CONTACT" : "Contact",
     "HELP" : "Aide",
-    "COSMIC_GLOSSARY" : "COSMIC Glossary",
-    "FIND_A_MEASURER" : "Find a measurer",
-    "GO_TO_COSMIC_SITE" : "Go to COSMIC site",
-    "ABOUT_THIS_TOOL" : "About this tool"
+    "COSMIC_GLOSSARY" : "Glossaire COSMIC",
+    "FIND_A_MEASURER" : "Trouver un mesureur",
+    "GO_TO_COSMIC_SITE" : "Aller au site COSMIC",
+    "ABOUT_THIS_TOOL" : "A propos de cet outil"
   },
   "HOME" : {
     "WHERE_SOFTWARE_FUNCTIONAL" : "Ou la taille des logiciels",
