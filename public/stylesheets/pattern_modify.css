@@ -1,7 +1,7 @@
 /* Page styles */
 
 body {
-  background-color: white;
+  background-color: #ddd;
 }
 
 .jumbotron {
@@ -84,6 +84,7 @@ body {
 #patternModify #patternTable {
   width: 90%;
   margin: 0 auto;
+  background-color:#bbdeef;
 }
 
 #patternModify #patternTable thead {
@@ -91,8 +92,6 @@ body {
   font-weight: bold;
   font-size: 11px;
   background: #005790;
-  background: linear-gradient(to bottom, #005790 0%, #005580 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#005790', endColorstr='#005580', GradientType=0);
 }
 
 #patternModify #patternTable thead td {
@@ -109,7 +108,7 @@ body {
   border-radius: 0 8px 0 0!important;
 }
 
-#patternModify #patternTable tbody tr:nth-child(even) {
+#patternModify #patternTable tbody tr.even {
   background-color: #E1EEF4;
 }
 
@@ -125,6 +124,16 @@ body {
 #patternModify #patternTable tbody td span {
   line-height: 40px;
 }
+
+#patternModify #patternTable tfoot {
+  background:#fff;
+}
+
+#patternModify #patternTable tfoot td {
+  padding: 5px 8px;
+  vertical-align: top;
+}
+
 
 #patternModify #patternFooter {
   width: 90%;
