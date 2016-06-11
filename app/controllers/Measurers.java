@@ -22,7 +22,7 @@ import com.avaje.ebean.*;
 public class Measurers extends Controller {
 
   public Result index() {
-      return ok("index!");
+      return ok(measurers.render());
   }
 
   public Result search() {
