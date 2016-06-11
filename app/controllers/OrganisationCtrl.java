@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import jdk.nashorn.internal.parser.JSONParser;
 import models.Organisation;
 import models.CosmicUser;
 //import models.User;
@@ -13,6 +14,7 @@ import play.*;
 import play.db.ebean.Transactional;
 import play.libs.Json;
 import play.mvc.*;
+import scala.util.parsing.json.JSONObject;
 import views.html.*;
 
 import com.avaje.ebean.*;
@@ -32,42 +34,55 @@ public class OrganisationCtrl extends Controller {
     }
     //curl -H "Content-Type: application/json" -X POST -d '{"name":"UQAM"}' http://127.0.0.1:9000/user/123/orgs
     @BodyParser.Of(play.mvc.BodyParser.Json.class)
-    public Result createOrganisation(String idUser){
+    public Result createOrganisation(JSONObject jsonObject){
     	//User newUser = Json.fromJson(request().body().asJson(), User.class);
     	//newUser.save();
 
+//        JSONParser parser = Json;
     	// parse the JSON as a JsonNode
-    	CosmicUser user = CosmicUser.find.byId(Long.valueOf(idUser).longValue());
+
     	List<Organisation> list = Organisation.find.all();
     	JsonNode json = request().body().asJson();
     	if(json == null) {
     	    return badRequest("Expecting Json data");
     	} else {
     	System.out.println(json);
-    	Organisation o1 = new Organisation();
-    	o1.id = Long.valueOf(list.size() + 1);
-    	o1.name = json.findPath("name").textValue();
-    	o1.description =  json.findPath("description").toString().replaceAll("\"", "");
-        o1.urlOrgnisation =  json.findPath("url_orgnisation").toString().replaceAll("\"", "");
-        o1.urlImage =  json.findPath("url_image").toString().replaceAll("\"", "");
-        o1.nomContact =  json.findPath("nom_contact").toString().replaceAll("\"", "");
-        o1.telContact =  json.findPath("tel_contact").toString().replaceAll("\"", "");
-        o1.courrielContact =  json.findPath("courriel_contact").toString().replaceAll("\"", "");;
-        o1.adresse1 =  json.findPath("adresse1").toString().replaceAll("\"", "");
-        o1.adresse2 =  json.findPath("adresse2").toString().replaceAll("\"", "");
-        o1.pays =  json.findPath("pays").toString().replaceAll("\"", "");
-        o1.etat =  json.findPath("etat").toString().replaceAll("\"", "");
-        o1.ville =  json.findPath("ville").toString().replaceAll("\"", "");
-    	//u1.deleted = false;
+            validJson(jsonObject);
+    	Organisation org = new Organisation();
+        int idUser = json.get("idUser").asInt();
+            CosmicUser user = CosmicUser.find.byId(Long.valueOf(idUser).longValue());
 
-        o1.users.add(user);
-    	o1.save();
+//    	o1.id = Long.valueOf(list.size() + 1);
+//    	o1.name = json.findPath("name").textValue();
+//    	o1.description =  json.findPath("description").toString().replaceAll("\"", "");
+//        o1.urlOrgnisation =  json.findPath("url_orgnisation").toString().replaceAll("\"", "");
+//        o1.urlImage =  json.findPath("url_image").toString().replaceAll("\"", "");
+//        o1.nomContact =  json.findPath("nom_contact").toString().replaceAll("\"", "");
+//        o1.telContact =  json.findPath("tel_contact").toString().replaceAll("\"", "");
+//        o1.courrielContact =  json.findPath("courriel_contact").toString().replaceAll("\"", "");;
+//        o1.adresse1 =  json.findPath("adresse1").toString().replaceAll("\"", "");
+//        o1.adresse2 =  json.findPath("adresse2").toString().replaceAll("\"", "");
+//        o1.pays =  json.findPath("pays").toString().replaceAll("\"", "");
+//        o1.etat =  json.findPath("etat").toString().replaceAll("\"", "");
+//        o1.ville =  json.findPath("ville").toString().replaceAll("\"", "");
+//    	//u1.deleted = false;
+//
+//        o1.users.add(user);
+//    	o1.save();
 
-    	user.organisations.add(o1);
+//    	user.organisations.add(o1);
     	user.save();
     	// read the JsonNode as a Person
     	return ok(index.render("created"));
     	}
+    }
+
+    private Boolean validJson(JSONObject jsonObject) {
+
+        //validate all params in jsonObject
+
+
+        return true;
     }
 
     @BodyParser.Of(play.mvc.BodyParser.Json.class)
@@ -88,15 +103,15 @@ public class OrganisationCtrl extends Controller {
     	        o1.name = json.findPath("name").textValue();
     	        o1.description =  json.findPath("description").toString().replaceAll("\"", "");
                 o1.urlOrgnisation =  json.findPath("url_orgnisation").toString().replaceAll("\"", "");
-                o1.urlImage =  json.findPath("url_image").toString().replaceAll("\"", "");
+//                o1.urlImage =  json.findPath("url_image").toString().replaceAll("\"", "");
                 o1.nomContact =  json.findPath("nom_contact").toString().replaceAll("\"", "");
-                 o1.telContact =  json.findPath("tel_contact").toString().replaceAll("\"", "");
+//                 o1.telContact =  json.findPath("tel_contact").toString().replaceAll("\"", "");
                 o1.courrielContact =  json.findPath("courriel_contact").toString().replaceAll("\"", "");;
-                 o1.adresse1 =  json.findPath("adresse1").toString().replaceAll("\"", "");
-                o1.adresse2 =  json.findPath("adresse2").toString().replaceAll("\"", "");
-                o1.pays =  json.findPath("pays").toString().replaceAll("\"", "");
-                o1.etat =  json.findPath("etat").toString().replaceAll("\"", "");
-                o1.ville =  json.findPath("ville").toString().replaceAll("\"", "");
+//                 o1.adresse1 =  json.findPath("adresse1").toString().replaceAll("\"", "");
+//                o1.adresse2 =  json.findPath("adresse2").toString().replaceAll("\"", "");
+//                o1.pays =  json.findPath("pays").toString().replaceAll("\"", "");
+//                o1.etat =  json.findPath("etat").toString().replaceAll("\"", "");
+//                o1.ville =  json.findPath("ville").toString().replaceAll("\"", "");
     	        o1.save();
 			  }
 		}
