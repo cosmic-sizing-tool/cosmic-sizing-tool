@@ -26,6 +26,14 @@ public class Measurers extends Controller {
   }
 
   public Result search() {
-    return ok("search!");
+    String method = Controller.request().queryString().get("method")[0];
+    String country = Controller.request().queryString().get("country")[0];
+    String state = Controller.request().queryString().get("state")[0];
+    String city = Controller.request().queryString().get("city")[0];
+
+
+    CosmicUser.
+
+    return ok();
   }
 }
