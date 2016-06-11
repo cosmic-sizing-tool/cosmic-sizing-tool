@@ -72,7 +72,7 @@ Write config info here.
        }
    }
    ```
-   Where **WEBSITE_SECTION** and **RESOURCE_NAME** are the same for all the languages JSON files (refer to the english JSON file).
+   ⋅⋅* Where **WEBSITE_SECTION** and **RESOURCE_NAME** are the same for all the languages JSON files (refer to the english JSON file).
   
    
   2. Add filter and ID in your html tag :
