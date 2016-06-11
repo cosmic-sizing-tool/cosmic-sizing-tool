@@ -46,6 +46,12 @@ Write config info here.
  1. Create a file in public/resources called **xx.json** where **xx** is the code of the language you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  2. Add you language to the following section of public/javascript/app/app.js :
  ```javascript  
+ $socpe.languages = [
+   {id:'en', name:'English'},
+   {id:'fr', name:'Français'}
+   {id:'xx', name:'NewLanguage'}
+ ];
+ 
  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
     'en_*': 'en',
     'fr_*': 'fr',
@@ -59,8 +65,12 @@ Write config info here.
 
   Start, add ressource to the file and add filter and ID :
    ```html
-   {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
-   <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
+   {
+     "WEBSITE_SECTION":
+       {
+       "NAME_OF_RESSOURCE":"Text to print"
+       }
+   }
    ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE in its controler :
