@@ -48,7 +48,8 @@ project.sectionB9_sto= (Story Points)
 project.sectionB12=12. Is the development team involved in a process improvement program?
 project.sectionB12_yes=Yes
 project.sectionB12_no=No
-project.sectionB12_whi=Which if any, software process or quality standards was the project performed under? (Where applicable, pls provide details such as version, level, year of certification.)
+project.sectionB12_whi=Which if any, software process or quality standards was the project performed\
+   under? (Where applicable, pls provide details such as version, level, year of certification.)
 project.sectionB12_sof=Software-CMM
 project.sectionB12_cmm=CMMI
 project.sectionB12_spi= SPICE
@@ -60,7 +61,6 @@ project.sectionB12_oth=Other
 
 #SectionC
 
-
 project.sectionC=C. Technology
 project.sectionC58=58. What was the primary technology used to build or enhance the software? i.e. that used for most of the build effort.
 project.sectionC58_pro=Programming Language
@@ -71,7 +71,7 @@ project.sectionC58_dat=Database
 project.sectionC58_obj=Object/Component Server
 project.sectionC58_htm=HTML/Web Server
 project.sectionC58_ema=E-Mail or Message Server
-project.sectionC58_oth=Other (specify):  
+project.sectionC58_oth=Other (specify):
 project.sectionC58_yes=Yes  Primary Tool  (version)
 project.sectionC58_no=No
 project.sectionC58_pri=Primary Tool
@@ -94,17 +94,76 @@ project.sectionC63_mul=Multi Platform
 project.sectionC63_oth=Other (specify):                   	                          	 
 project.sectionC63_if=If ‘mobile or device embedded’, please specify the target:
 project.sectionC63_aut=Automotive
-project.sectionC63_avi=Aviation	
+project.sectionC63_avi=Aviation
 project.sectionC63_dom=Domestic appliance
 project.sectionC63_gam=Games device
 project.sectionC63_mac=Machine tool
-project.sectionC63_mob=Mobile phone 
+project.sectionC63_mob=Mobile phone
 project.sectionC63_pda=PDA
-project.sectionC63_gam=Games device  
+project.sectionC63_gam=Games device
 project.sectionC63_mus= Music device
 project.sectionC63_oth=Other (specify):                    	                          	 
 
-
-
 #SectionD
+
 #SectionE
+project.sectionEProduct=E. Product
+project.sectionE87=What type of software, within the selected domain, has the projectproduced or enhanced ?
+
+#Business Application
+project.sectionEBus_App=Business Application
+
+project.sectionECat_reg=Catalogue or register of things or events
+project.sectionECos_rel_mang=Customer relationship management
+project.sectionEDoc_manag=Document management
+project.sectionEFin_proc=Financial transact. processing & accounting
+project.sectionELog_plan=Logistic or supply planning & control
+project.sectionEOnl_rep=Online analysis and reporting
+project.sectionEStock_cont=Stock control & order processing
+project.sectionEWork_supp=Workflow support & management
+project.sectionEData_Wareh=Data Warehouse system
+project.sectionEElec_inter=Electronic data interchange
+project.sectionEJob_case=Job, Case, incident or project management
+project.sectionEManag_perf=Management or performance reporting
+project.sectionECos_Bill=Customer billing
+project.sectionERes_Sys=Reservation system (e.g. Airline, hotel)
+project.sectionETrad=Trading
+project.sectionEOther_Bus=Other (specify):
+
+#Real-time Application
+project.sectionERea_time_App=Real-time Application
+project.sectionEAuto_data_log=Automatic Data Logging
+project.sectionECmd_ctrl_sys=Command & control system
+project.sectionERobo_ctrl=Robot control
+project.sectionETranspor_ctrl=Transportation control
+project.sectionEmbed_soft_simpl_devic_ctrl=Embedded software for simple device control
+project.sectionEComplex_process_ctrl=Complex process control
+project.sectionETel_network_managmt=Telecom & network management
+project.sectionEOther_realTime_app=Other
+
+#Mathematically-Intensive Application
+project.sectionEMath_intens_app=Mathematically-Intensive Application
+project.sectionE3D_model_or_Anim=3D modelling or animation
+project.sectionEImg_vid_sound_process=Image, video or sound processing
+project.sectionEScient_engineer_app=Scientific/engineering application
+project.sectionEGeograph_spatial_info_sys=Geographic or spatial information systems
+project.sectionEMath_model=Mathematical modelling
+project.sectionEStat_analysis=Statistical analysis
+project.sectionEOther=Other
+
+#Infrastructure Software
+project.sectionEInfra_soft=Infrastructure Software
+project.sectionEData_db_managmnt=Data or database management
+project.sectionEGraph_pub_tool_sys=Graphics & publishing tools or system
+project.sectionEPerso_productivity=Personal productivity
+project.sectionEDevice_interface_driver=Device or interface driver
+project.sectionEOs_soft_utility=Operating system or software utility
+project.sectionESoft_dev_tool=Software development tool
+project.sectionEOther_infra_soft=Other
+
+#Minor component
+project.sectionEMinor_comp=Minor component
+project.sectionESoft_comp=Software component
+
+
+

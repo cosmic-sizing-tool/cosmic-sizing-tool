@@ -21,16 +21,12 @@ public class ProjectController extends Controller {
         
         if(projectId != null) {
             projectModel = Project.find.byId(projectId);
-            if(projectModel == null) {
-                return ok(project.render(projectModel));
-            } else {
+            if(projectModel != null) {
                 return ok(project.render(projectModel));
             }
-            
         }
         
         return ok(project.render(new Project()));
-
     }
     
     public Result fetch(String projectId) {
@@ -40,22 +36,23 @@ public class ProjectController extends Controller {
     
     
     public Result submit() {
-        
-        Form<Project> formData = Form.form(Project.class).bindFromRequest();
-        
-        String id = formData.data().get("id");
-        
-        Project projectModel= formData.get();
-        
-        System.out.println(projectModel.id);
-        
-         projectModel.save();
 
-        flash("Saved");
-        
-        System.out.println(projectModel.contact_person);
-        
-        
+        Form<Project> formData = Form.form(Project.class).bindFromRequest();
+
+        Project projectModel= formData.get();
+
+        try{
+            projectModel.save();
+            flash("Saved");
+            System.out.println("Project: " + projectModel.projectID + " is created!");
+        }
+        catch (Exception e)
+        {
+            flash("Updated");
+            projectModel.update();
+            System.out.println("Project: " + projectModel.projectID + " is updated!");
+        }
+
         return redirect("/project?projectId=" + projectModel.projectID);
     }
     
