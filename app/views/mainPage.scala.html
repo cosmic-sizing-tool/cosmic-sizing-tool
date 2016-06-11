@@ -24,11 +24,11 @@
             <section class="card" ng-controller="Application">
 
                 <form name="profil" method="post" action="/registerUser/" ng-submit="registerUser()" novalidate>
-                    <input type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="BasicUser.username" ng-required="true">
+                    <input type="text" class="text" id="alias" name="alias" placeholder="Pick a username" value="" ng-model="CosmicUser.alias" ng-required="true">
 
-                    <input type="email" name="email" placeholder="Your email" ng-model="BasicUser.email" ng-required="true">
+                    <input type="email" name="email" placeholder="Your email" ng-model="CosmicUser.email" ng-required="true">
 
-                    <input type="password" name="password" placeholder="Create a password" ng-model="BasicUser.password"
+                    <input type="password" name="password" placeholder="Create a password" ng-model="CosmicUser.password"
                            ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
                     <h6 class="small-text" style="color: #f7efef">Use at least one letter and one numeral.<br> Minimum 8 characters and maximum 20.</h6>
 

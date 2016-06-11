@@ -12,10 +12,10 @@ public class CosmicUser extends Model {
     @Constraints.Required
     @Column(unique = true)
     public String alias;
-	
+
     @Constraints.Required
     public String password;
-    
+
     public String name;
 
     public boolean deleted;
@@ -42,6 +42,8 @@ public class CosmicUser extends Model {
     public String state;
 
     public String city;
+
+    public String location;
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
@@ -155,8 +157,7 @@ public class CosmicUser extends Model {
 		this.company = company;
 	}
 
-
-	public String getLocation() {
+  public String getLocation() {
 		return location;
 	}
 
@@ -164,7 +165,6 @@ public class CosmicUser extends Model {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
 
 	public List<Organisation> getOrganisations() {
 		return organisations;
@@ -194,6 +194,6 @@ public class CosmicUser extends Model {
 	public void setEmails(List<Email> emails) {
 		this.emails = emails;
 	}
-    
-    
+
+
 }
