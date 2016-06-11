@@ -6,7 +6,7 @@
     <div role="main" class="main-content">
 
 
-        <form ng-module="AddOrganisationModule" ng-controller="ModifierOrganisationController">
+        <form ng-app="AddOrganisationModule" ng-controller="AddOrganisationController">
             <h3>Create Organization</h3>
 
             <div class="form-group">
@@ -33,14 +33,14 @@
             </div>
             <div class="form-group">
                 <label for="OrgURL">URL</label>
-                <input type="url" class="form-control" id="OrgURL" placeholder="URL" ng-model="url">
+                <input type="text" class="form-control" id="OrgURL" placeholder="URL" ng-model="url">
             </div>
 
             <h3>Contact Info</h3>
 
             <div class="form-group">
                 <label for="ContactName">Name</label>
-                <input type="email" class="form-control" id="ContactName" placeholder="Name" ng-model="name">
+                <input type="text" class="form-control" id="ContactName" placeholder="Name" ng-model="name">
             </div>
 
             <div class="form-inline">
