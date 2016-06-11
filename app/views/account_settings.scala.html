@@ -1,4 +1,5 @@
 @main("Homepage") {
+  <br/><br/><br/><br/><br/><br/>
       <!-- Debut container -->
       <div class="container">
          <div class="row">
@@ -8,7 +9,7 @@
                   <div id="link-menu" class="panel-body">
                      <a class="link" href="@routes.UserCtrl.show()">Profil</a><br>
                      <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a><br>
-                      <a class="link" href="@routes.EmailCtrl.emails()">Gestion des courriels</a>
+                      <a class="link" href="@routes.EmailCtrl.emails()">Mes courriels</a>
                   </div>
                </div>
             </div>   <!-- fin du col-md-4 -->
@@ -31,7 +32,7 @@
                               <input class="form-control" id="confirmationPassword" name="confirmationPassword" type="password"> <br>
                            </div>
                            <div class="col-xs-8" style="padding-bottom: 5px;">
-                              <button type="submit" class="btn btn-success"><strong> Mettre à jour le mot de passe</strong></button>
+                              <button type="submit" class="btn btn-success"><strong> Mettre à jour le mot de passe</strong></button><br/>
                               <a href="@routes.UserCtrl.resetPassword()" style="font-size: 12px;"> j'ai oublié mon mot de passe</a>
                            </div>
                            <br>
