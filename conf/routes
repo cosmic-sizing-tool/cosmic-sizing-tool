@@ -35,6 +35,7 @@ POST    /user/certification         controllers.UserCtrl.addCertification()
 # User organization
 GET     /user/:idUser/organisations     controllers.Application.organisations(idUser: String)
 GET     /user/:idUser/organisations/add     controllers.Application.addOrganisations(idUser: String)
+GET     /user/:idUser/organisations/put     controllers.Application.modifyOrganisations(idUser: String)
 #POST    /user/:idUser/organisations/add     controllers.OrganisationCtrl.createOrganisation(idUser: String)
 #POST    /user/:id/orgs				controllers.UserCtrl.addOrganisation(id: Long)
 DELETE 	/user/:idUser/organisations/:idOrganisation controllers.OrganisationCtrl.deleteOrganisation(idUser: String, idOrganisation: String)
