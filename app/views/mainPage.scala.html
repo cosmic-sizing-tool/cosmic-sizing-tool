@@ -17,11 +17,13 @@
             <section class="card">
 
                 <form name="profil" method="post" action="/registerUser/" ng-submit="registerUser()" novalidate>
-                    <input type="text" class="text" id="username" name="username" placeholder="{{ 'HOME.PICK_A_USERNAME' | translate}}" value="" ng-model="BasicUser.username" ng-required="true">
 
-                    <input type="email" name="email" placeholder="{{ 'HOME.YOUR_EMAIL' | translate}}" ng-model="BasicUser.email" ng-required="true">
+                    <input type="text" class="text" id="username" name="username" placeholder="{{ 'HOME.PICK_A_USERNAME' | translate}}" value="" ng-model="CosmicUser.alias" ng-required="true">
 
-                    <input type="password" name="password" placeholder="{{ 'HOME.CREATE_PASSWORD' | translate}}" ng-model="BasicUser.password"
+                    <input type="email" name="email" placeholder="{{ 'HOME.YOUR_EMAIL' | translate}}" ng-model="CosmicUser.email" ng-required="true">
+
+                    <input type="password" name="password" placeholder="{{ 'HOME.CREATE_PASSWORD' | translate}}" ng-model="CosmicUser.password"
+
                            ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
                     <h6 class="small-text" style="color: #f7efef">{{ 'HOME.USE_AT_LEAST' | translate}}<br> {{ 'HOME.MINIMUM_8_CHARACTERS' | translate}}</h6>
 

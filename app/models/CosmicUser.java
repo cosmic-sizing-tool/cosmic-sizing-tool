@@ -10,14 +10,13 @@ import play.data.validation.*;
 public class CosmicUser extends Model {
 
     @Constraints.Required
-    public String name;
+    @Column(unique = true)
+    public String alias;
 
     @Constraints.Required
     public String password;
 
-    @Constraints.Required
-    @Column(unique = true)
-    public String alias;
+    public String name;
 
     public boolean deleted;
     public boolean disponible;
@@ -44,6 +43,8 @@ public class CosmicUser extends Model {
 
     public String city;
 
+    public String location;
+
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
 
@@ -55,15 +56,144 @@ public class CosmicUser extends Model {
 
 
     public static Finder<Long, CosmicUser> find = new Finder<Long,CosmicUser>(CosmicUser.class);
-    /*Setters*/
-    public void setDeleted(boolean d) { this.deleted = d; }
-    public void setDisponible(boolean b) { this.disponible = b;}
-    public void setAlias(String a) { this.alias = a;}
-    public void setPassword(String p) { this.password = p;}
-    public void setName(String n) { this.name = n;}
-    public void setUrl(String u) { this.url = u;}
-    public void setCompany(String c){ this.company = c;}
-    public void setLocation(String l){ this.location = l;}
-    public void setId(Long i) { this.id = i;}
-    public void setEmail(String e) { this.email = e;}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getAlias() {
+		return alias;
+	}
+
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public Date getCreated_at() {
+		return created_at;
+	}
+
+
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getUrl() {
+		return url;
+	}
+
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+
+	public String getCompany() {
+		return company;
+	}
+
+
+	public void setCompany(String company) {
+		this.company = company;
+	}
+
+  public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public List<Organisation> getOrganisations() {
+		return organisations;
+	}
+
+
+	public void setOrganisations(List<Organisation> organisations) {
+		this.organisations = organisations;
+	}
+
+
+	public List<Certification> getCertifications() {
+		return certifications;
+	}
+
+
+	public void setCertifications(List<Certification> certifications) {
+		this.certifications = certifications;
+	}
+
+
+	public List<Email> getEmails() {
+		return emails;
+	}
+
+
+	public void setEmails(List<Email> emails) {
+		this.emails = emails;
+	}
+
+
 }
