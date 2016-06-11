@@ -19,9 +19,8 @@ public class City extends Model{
 
     public String name;
 
-    @ManyToOne
     public List<CountryDivisionType> divisionType = new ArrayList<CountryDivisionType>();
 
-    @OneToMany
-    public List<Adresse> adresses = new ArrayList<Adresse>();
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // public List<Adresse> adresses = new ArrayList<Adresse>();
 }

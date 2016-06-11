@@ -22,8 +22,8 @@ public class Organisation extends Model {
     public String phoneNumber;
     public String courrielContact;
 
-    @OneToMany
-    public List<Adresse> adresses = new ArrayList<Adresse>();
+    // @ManyToOne(cascade = CascadeType.ALL)
+    // public List<Adresse> adresses = new ArrayList<Adresse>();
 
     public long id_admin;
 

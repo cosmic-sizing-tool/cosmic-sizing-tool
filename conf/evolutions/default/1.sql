@@ -3,12 +3,12 @@
 
 # --- !Ups
 
-create table adresse (
+create table addresse (
   id                            serial not null,
   postal_code                   varchar(255),
   street                        varchar(255),
   appartment                    varchar(255),
-  constraint pk_adresse primary key (id)
+  constraint pk_addresse primary key (id)
 );
 
 create table basic_user (
@@ -95,16 +95,11 @@ create table organisation (
   name                          varchar(255),
   description                   varchar(255),
   url_orgnisation               varchar(255),
-  url_image                     varchar(255),
   nom_contact                   varchar(255),
-  tel_contact                   varchar(255),
+  phone_number                  varchar(255),
   courriel_contact              varchar(255),
-  adresse1                      varchar(255),
-  adresse2                      varchar(255),
-  pays                          varchar(255),
-  etat                          varchar(255),
-  ville                         varchar(255),
   id_admin                      bigint,
+  photo                         varchar(255),
   constraint pk_organisation primary key (id)
 );
 
@@ -302,7 +297,7 @@ drop index if exists ix_organisation_cosmic_user_organisation;
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_cosmic_user;
 drop index if exists ix_organisation_cosmic_user_cosmic_user;
 
-drop table if exists adresse cascade;
+drop table if exists addresse cascade;
 
 drop table if exists basic_user cascade;
 
