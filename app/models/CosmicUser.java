@@ -37,8 +37,11 @@ public class CosmicUser extends Model {
 
     public String company;
 
-    public String location;
+    public String country;
 
+    public String state;
+
+    public String city;
 
     @ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
     public List<Organisation> organisations = new ArrayList<Organisation>();
