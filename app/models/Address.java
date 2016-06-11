@@ -13,7 +13,7 @@ import play.data.validation.*;
  */
 
 @Entity
-public class Addresse extends Model {
+public class Address extends Model {
 
     @Id
     public int id;
@@ -26,5 +26,4 @@ public class Addresse extends Model {
 
     // @ManyToOne
     // public List<Organisation> orgs = new ArrayList<Organisation>();
-
 }
