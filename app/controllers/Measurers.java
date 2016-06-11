@@ -22,7 +22,7 @@ import com.avaje.ebean.*;
 public class Measurers extends Controller {
 
   public Result index() {
-      return ok("index!");
+      return ok(views.html.measurers.render());
   }
 
   public Result search() {
@@ -32,7 +32,7 @@ public class Measurers extends Controller {
     String city = Controller.request().queryString().get("city")[0];
 
 
-    CosmicUser.
+    //CosmicUser.
 
     return ok();
   }

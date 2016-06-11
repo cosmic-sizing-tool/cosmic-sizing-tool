@@ -86,7 +86,7 @@ POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 
 # Measurers
-GET     /measurers        controllers.Measurers.index()
+GET    /measurers             controllers.Measurers.index()
 GET    /measurers/search       controllers.Measurers.search()
 
 
