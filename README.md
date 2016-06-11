@@ -39,6 +39,30 @@ Write config info here.
 
 * SQLite 3
  1. Download and install SQLite 3 for your platform at https://www.sqlite.org/.
+ 
+### Internationlization insctructions ###
+
+HOW TO ADD NEW LANGUAGE
+1. Create a file in public/resources called xx.json where xx is the code of the language you're trying to add according to ISO 639-1.
+https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+2. Add you language to the following section of public/javascript/app/app.js:
+$translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
+    'en_*': 'en',
+    'fr_*': 'fr',
+    'xx_*': 'xx'
+});
+where xx is the code of the language you're trying to add.
+
+HOW TO FORMAT HTML LABELS
+https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
+
+When the label is in an attribute(ex: alt, title, etc.):
+1. Start:<img alt="Image of something"/>
+2. Add ressource to the file:{"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"} }
+3. Add filter and ID:<img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
+
+ANY MODULE THAT YOU ADD MUST HAVE .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
+in its controler.
 
 #### Database configuration ####
 
