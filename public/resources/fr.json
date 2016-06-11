@@ -4,7 +4,11 @@
     "LOGIN" : "Acceder",
     "TERMS_AND_CONDITIONS" : "Termes et Conditions",
     "CONTACT" : "Contact",
-    "HELP" : "Aide"
+    "HELP" : "Aide",
+    "COSMIC_GLOSSARY" : "COSMIC Glossary",
+    "FIND_A_MEASURER" : "Find a measurer",
+    "GO_TO_COSMIC_SITE" : "Go to COSMIC site",
+    "ABOUT_THIS_TOOL" : "About this tool"
   },
   "HOME" : {
     "WHERE_SOFTWARE_FUNCTIONAL" : "Ou la taille des logiciels",
