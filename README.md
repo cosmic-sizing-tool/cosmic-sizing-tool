@@ -76,7 +76,7 @@ Write config info here.
    
   ii. Add filter and ID in your html tag :
   ```html
-   <p>WEBSITE_SECTION.RESOURCE_NAME | translate</p>
+   <p>'WEBSITE_SECTION.RESOURCE_NAME' | translate</p>
    ```
 
 * ANY MODULE THAT YOU ADD MUST INJECT THE $translate MODULE AS SHOWN IN THE FOLLOWING EXAMPLE :
