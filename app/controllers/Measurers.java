@@ -19,9 +19,6 @@ import views.html.*;
 
 import com.avaje.ebean.*;
 
-/**
- * Created by Mathieu on 6/11/2016.
- */
 public class Measurers extends Controller {
 
   public Result index() {
