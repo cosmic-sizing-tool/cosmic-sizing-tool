@@ -44,7 +44,7 @@ Write config info here.
 
 * HOW TO ADD NEW LANGUAGE</br>
  1. Create a file in public/resources called **xx.json** where **xx** is the code of the language you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
- 2. Add you language to the following section of public/javascript/app/app.js:
+ 2. Add you language to the following section of public/javascript/app/app.js :
 ```javascript  
 $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
    'en_*': 'en',
@@ -57,16 +57,15 @@ $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
-  When the label is in an attribute (ex: alt, title, etc.):
-  1. Start:
+  1. Start :
    ```html 
    <img><"Image of something"/></img>
    ```
-  2. Add ressource to the file:
+  2. Add ressource to the file :
   ```html
   {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
   ```
-  3. Add filter and ID:
+  3. Add filter and ID :
   ```html 
   <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
   ```
