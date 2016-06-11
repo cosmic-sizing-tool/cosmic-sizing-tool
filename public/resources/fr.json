@@ -1,4 +1,9 @@
 ﻿{
+  "GENERAL": {
+    "YES": "Yes",
+    "NO" : "No"
+  },
+
   "MAIN": {
     "REGISTER": "Inscription",
     "LOGIN": "Acceder",
@@ -10,6 +15,7 @@
     "GO_TO_COSMIC_SITE": "Aller au site COSMIC",
     "ABOUT_THIS_TOOL": "À propos de cet outil"
   },
+
   "HOME": {
     "WHERE_SOFTWARE_FUNCTIONAL": "Là où la taille des logiciels",
     "SIZE_IS_MEASURED": "se mesure!",
