@@ -8,6 +8,8 @@ create table address (
   postal_code                   varchar(255),
   street                        varchar(255),
   appartment                    varchar(255),
+  city_id_city                  integer,
+  organisation_id               bigint,
   constraint pk_address primary key (id)
 );
 
@@ -51,6 +53,11 @@ create table cosmic_user (
   constraint pk_cosmic_user primary key (id)
 );
 
+create table cosmic_users_city (
+  city_id_city                  integer,
+  cosmic_user_id                bigint
+);
+
 create table country (
   short_name                    varchar(255) not null,
   name                          varchar(255),
@@ -88,6 +95,14 @@ create table email (
   user_id                       bigint,
   constraint uq_email_addresse unique (addresse),
   constraint pk_email primary key (id)
+);
+
+create table measurement_method (
+  name                          varchar(255)
+);
+
+create table measurement_method_version (
+  method_number                 integer
 );
 
 create table organisation (
@@ -270,8 +285,20 @@ create table timer (
   constraint pk_timer primary key (timer_id)
 );
 
+alter table address add constraint fk_address_city_id_city foreign key (city_id_city) references city (id_city) on delete restrict on update restrict;
+create index ix_address_city_id_city on address (city_id_city);
+
+alter table address add constraint fk_address_organisation_id foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
+create index ix_address_organisation_id on address (organisation_id);
+
 alter table certification add constraint fk_certification_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_certification_user_id on certification (user_id);
+
+alter table cosmic_users_city add constraint fk_cosmic_users_city_city_id_city foreign key (city_id_city) references city (id_city) on delete restrict on update restrict;
+create index ix_cosmic_users_city_city_id_city on cosmic_users_city (city_id_city);
+
+alter table cosmic_users_city add constraint fk_cosmic_users_city_cosmic_user_id foreign key (cosmic_user_id) references cosmic_user (id) on delete restrict on update restrict;
+create index ix_cosmic_users_city_cosmic_user_id on cosmic_users_city (cosmic_user_id);
 
 alter table email add constraint fk_email_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_email_user_id on email (user_id);
@@ -285,8 +312,20 @@ create index ix_organisation_cosmic_user_cosmic_user on organisation_cosmic_user
 
 # --- !Downs
 
+alter table if exists address drop constraint if exists fk_address_city_id_city;
+drop index if exists ix_address_city_id_city;
+
+alter table if exists address drop constraint if exists fk_address_organisation_id;
+drop index if exists ix_address_organisation_id;
+
 alter table if exists certification drop constraint if exists fk_certification_user_id;
 drop index if exists ix_certification_user_id;
+
+alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_city_id_city;
+drop index if exists ix_cosmic_users_city_city_id_city;
+
+alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_cosmic_user_id;
+drop index if exists ix_cosmic_users_city_cosmic_user_id;
 
 alter table if exists email drop constraint if exists fk_email_user_id;
 drop index if exists ix_email_user_id;
@@ -307,6 +346,8 @@ drop table if exists city cascade;
 
 drop table if exists cosmic_user cascade;
 
+drop table if exists cosmic_users_city cascade;
+
 drop table if exists country cascade;
 
 drop table if exists country_division_type cascade;
@@ -316,6 +357,10 @@ drop table if exists data_group cascade;
 drop table if exists division_name cascade;
 
 drop table if exists email cascade;
+
+drop table if exists measurement_method cascade;
+
+drop table if exists measurement_method_version cascade;
 
 drop table if exists organisation cascade;
 
