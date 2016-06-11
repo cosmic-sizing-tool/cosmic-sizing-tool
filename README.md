@@ -64,7 +64,7 @@ Write config info here.
    ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE in its controler :
- ```html
+ ```javascript
  .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
  ```
 
