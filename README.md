@@ -47,9 +47,9 @@ Write config info here.
  2. Add you language to the following section of public/javascript/app/app.js :
  ```javascript  
  $socpe.languages = [
-   {id:'en', name:'English'},
-    {id:'fr', name:'Français'},
-    {id:'xx', name:'NewLanguage'}
+  {id:'en', name:'English'},
+  {id:'fr', name:'Français'},
+  {id:'xx', name:'NewLanguage'}
  ];
  
  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
