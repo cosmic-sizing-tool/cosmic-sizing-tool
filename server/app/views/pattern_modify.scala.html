@@ -19,7 +19,8 @@
     <span id="cfpW" class="cfpTotal"><span class="patternLabel smaller">W:</span><span class="patternValue smaller"></span></span>
     &#x21B5;
     <br/>
-    <span class="patternLabel">Date created:</span><span id="patternDateCreated" class="patternValue"></span>
+    <span class="patternLabel">Created on </span><span id="patternDateCreated" class="patternValue"></span>
+    <span class="patternLabel">by</span><span id="patternUserID" class="patternValue"></span>
     <br/>
   </div>
   <div id="patternDescription">
@@ -30,10 +31,6 @@
     <label>Description
       <br/>
       <input type="text" id="Pattern_Desc">
-    </label>
-    <label>User
-      <br/>
-      <input type="text" id="User_ID" disabled="disabled">
     </label>
   </div>
   <table id="patternTable">
@@ -52,11 +49,12 @@
   </div>
 </div>
 <script type="text/javascript">
+/* Test */
+displayPattern(testPattern);
+
+
 bindSaveButton();
 bindInputs();
 windowResize();
-
-/* Test */
-displayPattern(pattern);
 </script>
 }
