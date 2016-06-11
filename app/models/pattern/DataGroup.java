@@ -1,4 +1,7 @@
-package models;
+/** Team Epique
+ *  2016/06/11 */
+
+package models.pattern;
 
 import java.util.*;
 import javax.persistence.*;
