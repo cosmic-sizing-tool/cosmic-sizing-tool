@@ -24,8 +24,10 @@ public class FunctionalProcess extends Model {
     }
     
     public int getCFPSize() {
-        for(FunctionalProcess funcProcess : dataGroups) {
-            funcProcessSet
+        int total = 0;
+        for(DataGroup dataGroup : dataGroupSet) {
+            total += dataGroup.getCFPSize();
         }
+        return total;
     }
 }

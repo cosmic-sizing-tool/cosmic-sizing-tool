@@ -54,10 +54,10 @@ public class Pattern extends Model implements JsonSerializable {
     }
     
     public int getCFPSize() {
-        
+        int total = 0;
         for(FunctionalProcess funcProcess : funcProcessSet) {
-            funcProcessSet
+            total += funcProcess.getCFPSize();
         }
-        return 0;
+        return total;
     }
 }
