@@ -44,7 +44,7 @@ Write config info here.
 
 * HOW TO ADD NEW LANGUAGE</br>
  1. Create a file in public/resources called **xx.json** where **xx** is the code of the language you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
- 2. Add you language to the following section of public/javascript/app/app.js :
+ 2. Add you language to the following section of public/javascript/app/app.js :</br>
     ```javascript  
     $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
        'en_*': 'en',
