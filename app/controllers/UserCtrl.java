@@ -3,7 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.*;
-
+import util.SendEmail;
 
 import play.*;
 import play.db.ebean.Transactional;
@@ -29,7 +29,7 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result settings() {
-    Long id = 12L;
+    	Long id = 12L;
 		userGlobal = CosmicUser.find.byId(id);
 	  return ok(account_settings.render());
 	}
@@ -88,16 +88,25 @@ public class UserCtrl extends Controller {
 	}
 
 	public Result getUser() {
-    Long id = 15L;
-    userGlobal = CosmicUser.find.byId(id);
+    	Long id = 15L;
+    	userGlobal = CosmicUser.find.byId(id);
+
 		return ok(Json.toJson(userGlobal));
 	}
 
+	public CosmicUser getUser(String email) {
+		userGlobal = CosmicUser.find.where().eq("email", email).findUnique();
+		/*System.out.println("Appel a getUser() on dump le contenu de l'objet: ");
+		System.out.println(userGlobal);*/
+
+		return userGlobal;
+	}
+
   public Result getUserCertifications() {
-    Long id = 15L;
-    userGlobal = CosmicUser.find.byId(id);
-    List<Certification> certifications= userGlobal.certifications;
-    return ok(Json.toJson(certifications));
+	Long id = 15L;
+	userGlobal = CosmicUser.find.byId(id);
+	List<Certification> certifications= userGlobal.certifications;
+	return ok(Json.toJson(certifications));
   }
 
     public Result addCertification() {
@@ -138,8 +147,31 @@ public class UserCtrl extends Controller {
         }
         return redirect(routes.UserCtrl.show());
     }
-    public Result resetPassword() {
-        return ok(reset_pwd.render());
+
+    public Result resetPassword(String email) {
+		String message = "";
+
+		if (email == null) {
+		}
+		else {
+			CosmicUser user = findUser(email);
+			if (user != null) {
+				user.password = "bob";//crypto.encrypt("bob");
+				// send email
+				String emailContent = "Hello %NAME%,\n\nWe have received a password recovery request for this email address.\n\nYour password is : %PASSWORD%\n\nIf you did not request your password, please ignore this message.\n\nThank you,\nThe COSMIC-sizing-tool team.\n\nN.B.  This message was generated automatically. Please do not reply to this address.";
+				emailContent = emailContent.replace("%NAME%", user.name);
+				emailContent = emailContent.replace("%PASSWORD%", user.password);
+
+				SendEmail sendEmail = new SendEmail("cosmic@do-not-respond.com", email, "Password recovery", emailContent);
+				sendEmail.send();
+				message = "Email sent.";
+			}
+			else {
+				message = "Invalid email address.";
+			}
+		}
+
+        return ok(reset_pwd.render(message));
     }
 
 	public Result updatePassword() {

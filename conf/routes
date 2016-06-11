@@ -27,7 +27,7 @@ GET 	  /user/settings     		      controllers.UserCtrl.settings()
 GET		  /user/current     		      controllers.UserCtrl.getUser()
 GET     /user/current/certifications  controllers.UserCtrl.getUserCertifications()
 POST	  /user						            controllers.UserCtrl.createUser()
-GET     /user/reset_pwd             controllers.UserCtrl.resetPassword()
+GET     /user/reset_pwd             controllers.UserCtrl.resetPassword(email: String ?= null)
 POST	  /user/delete                controllers.UserCtrl.deleteUser()
 POST    /user/certification         controllers.UserCtrl.addCertification()
 

@@ -1,3 +1,5 @@
+@(message: String)
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -12,20 +14,56 @@
          body {
             background: #eee !important;
          }
-</style>
+         .wrapper {
+
+         }
+         .informationBox {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width:1024px;
+            border-radius: 3px;
+            border-style: solid;
+            border-size: 1px;
+            border-color: #c0c0c0;
+         }
+         .informationBoxTitle {
+            background-color: d0d0d0;
+            padding-left: 15px;
+            text-align: left;
+         }
+         .informationBoxBody {
+            padding-left: 15px;
+            text-align: left;
+         }
+         .captchaWrapper {
+
+         }
+      </style>
    </head>
    <body>
-   <div class="wrapper">
-   <h3 class="form-signin-heading" align="center">Réinitialiser votre mot de passe</h2>
-    <form class="form-signin">
-    <p style="font-size: 12px;">Entrez votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.
-    </p>       
-    <input class="form-control" id="" type="text"> <br>
-     <button type="button" class="btn btn-success" style="width: 100%;">
-     Envoie du courriel de réinitialisation 
-     </button>
-    </form>
-  </div>
-      
+       <div class="wrapper">
+           <div class="informationBox">
+                <div class="informationBoxTitle">
+                    <h3 class="form-signin-heading" align="center">Password recovery</h3>
+                </div>
+                <div class="informationBoxBody">
+                    <form class="form-signin" method="get" action="/user/reset_pwd">
+                        <p style="font-size: 12px;">Your email address</p>
+                        <input class="form-control" id="" name="email" type="text"/><br/>
+
+                        <div class="captchaWrapper">
+
+                        </div>
+
+                        <button type="submit" class="btn btn-success" style="width: 100%;">
+                            Send password
+                        </button><br/>
+
+                        @message
+                    </form>
+                </div>
+            </div>
+       </div>
    </body>
-   </html>
+</html>
