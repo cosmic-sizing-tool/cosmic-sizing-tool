@@ -50,8 +50,8 @@ public class CosmicUser extends Model {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     public List<Email> emails = new ArrayList<Email>();
 
-    // @OneToMany(cascade = CascadeType.ALL)
-    // public List<CosmicUserMeasurementMethodVersion> measurementMethodVersions = new ArrayList<CosmicUserMeasurementMethodVersion>();
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<CosmicUsersCity> cosmicUsersCities = new ArrayList<CosmicUsersCity>();
 
 
     public static Finder<Long, CosmicUser> find = new Finder<Long,CosmicUser>(CosmicUser.class);
