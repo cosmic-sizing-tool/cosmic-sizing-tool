@@ -34,7 +34,6 @@ public class DataGroup extends Model implements JsonSerializable {
         JsonBuilder json = new JsonBuilder();
         json.add("id", id);
         json.add("name", name);
-        json.add("process_id", process);
         json.add("entry", entry);
         json.add("exit", exit);
         json.add("read", read);
