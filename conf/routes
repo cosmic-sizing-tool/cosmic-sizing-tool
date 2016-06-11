@@ -80,13 +80,13 @@ POST    /project/                controllers.ProjectController.submit()
 GET     /api/project/:projectId  controllers.ProjectController.fetch(projectId: String)
 
 
-# Measures page
+# Mesures page
 GET     /measures/add		        controllers.Measures.add()
 POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 
 # Measurers
-GET    /measurers             controllers.Measurers.index()
+GET    /measurers              controllers.Measurers.index()
 GET    /measurers/search       controllers.Measurers.search()
 
 

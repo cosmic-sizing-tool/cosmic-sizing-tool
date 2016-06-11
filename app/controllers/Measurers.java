@@ -22,6 +22,9 @@ import com.avaje.ebean.*;
 public class Measurers extends Controller {
 
   public Result index() {
+
+      // send all methods and versions to this view
+
       return ok(views.html.measurers.render());
   }
 
@@ -31,6 +34,20 @@ public class Measurers extends Controller {
     String state = Controller.request().queryString().get("state")[0];
     String city = Controller.request().queryString().get("city")[0];
 
+
+    // {
+    //   users: [
+    //     cityCode: "",
+    //     email: "",
+    //     name: "",
+    //     certification_methods: [
+    //       {
+              //   method: "",
+              //   version: ""
+              // }
+    //     ]
+    //   ]
+    // }
 
     //CosmicUser.
 
