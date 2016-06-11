@@ -3,6 +3,14 @@
 
 # --- !Ups
 
+create table adresse (
+  id                            serial not null,
+  postal_code                   varchar(255),
+  street                        varchar(255),
+  appartment                    varchar(255),
+  constraint pk_adresse primary key (id)
+);
+
 create table basic_user (
   username                      varchar(255),
   email                         varchar(255),
@@ -18,6 +26,12 @@ create table certification (
   date                          varchar(255),
   user_id                       bigint,
   constraint pk_certification primary key (id_certification)
+);
+
+create table city (
+  id_city                       serial not null,
+  name                          varchar(255),
+  constraint pk_city primary key (id_city)
 );
 
 create table cosmic_user (
@@ -37,6 +51,18 @@ create table cosmic_user (
   constraint pk_cosmic_user primary key (id)
 );
 
+create table country (
+  short_name                    varchar(255) not null,
+  name                          varchar(255),
+  constraint pk_country primary key (short_name)
+);
+
+create table country_division_type (
+  short_name                    varchar(255) not null,
+  name                          varchar(255),
+  constraint pk_country_division_type primary key (short_name)
+);
+
 create table data_group (
   id                            bigserial not null,
   name                          varchar(255) not null,
@@ -47,6 +73,10 @@ create table data_group (
   read                          integer not null,
   write                         integer not null,
   constraint pk_data_group primary key (id)
+);
+
+create table division_name (
+  name                          varchar(255)
 );
 
 create table email (
@@ -272,13 +302,23 @@ drop index if exists ix_organisation_cosmic_user_organisation;
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_cosmic_user;
 drop index if exists ix_organisation_cosmic_user_cosmic_user;
 
+drop table if exists adresse cascade;
+
 drop table if exists basic_user cascade;
 
 drop table if exists certification cascade;
 
+drop table if exists city cascade;
+
 drop table if exists cosmic_user cascade;
 
+drop table if exists country cascade;
+
+drop table if exists country_division_type cascade;
+
 drop table if exists data_group cascade;
+
+drop table if exists division_name cascade;
 
 drop table if exists email cascade;
 

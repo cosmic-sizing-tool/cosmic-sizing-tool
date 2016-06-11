@@ -86,8 +86,8 @@ POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 
 # Measurers
-GET     /measurers/index        controllers.Measurers.index()
-POST    /measurers/search       controllers.Measurers.search()
+#GET     /measurers/index        controllers.Measurers.index()
+#POST    /measurers/search       controllers.Measurers.search()
 
 
 # Emails
