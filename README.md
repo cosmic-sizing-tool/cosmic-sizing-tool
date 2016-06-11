@@ -58,8 +58,7 @@ Write config info here.
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
   Start, add ressource to the file and add filter and ID :
-   ```html 
-   <img><"Image of something"/></img>
+   ```html
    {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
    <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
    ```
