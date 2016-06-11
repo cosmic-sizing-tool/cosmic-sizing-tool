@@ -57,18 +57,12 @@ Write config info here.
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
-  1. Start :
+  Start, add ressource to the file and add filter and ID :
    ```html 
    <img><"Image of something"/></img>
+   {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
+   <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
    ```
-  2. Add ressource to the file :
-  ```html
-  {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
-  ```
-  3. Add filter and ID :
-  ```html 
-  <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
-  ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
   in its controler.
