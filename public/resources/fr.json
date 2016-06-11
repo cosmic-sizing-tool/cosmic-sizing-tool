@@ -22,6 +22,13 @@
     "CONDITIONS" : "et Conditions",
     "AND_THE" : "et l'",
     "PRIVACY_POLICY" : "Entente de Confidentialite"
+  },
+  "RECOVER_PASSWORD" : {
+    "FORGOT_PASSWORD" : "J'ai oublié mon mot de passe",
+    "NOT_A_ROBOT" : "Je ne suis pas un robot",
+    "SEND" : "Envoyer",
+    "USER_NOT_EXIST" : "Cet utilisateur n'existe pas",
+    "EMAIL_NOT_VALID" : "Ce courriel n'est pas valide"
   }
 }
 

@@ -22,5 +22,12 @@
     "CONDITIONS" : "et Conditions",
     "AND_THE" : "and the",
     "PRIVACY_POLICY" : "Privacy Policy"
+  },
+  "RECOVER_PASSWORD" : {
+    "FORGOT_PASSWORD" : "I forgot my password",
+    "NOT_A_ROBOT" : "I am not a robot",
+    "SEND" : "Send",
+    "USER_NOT_EXIST" : "This user does not exist",
+    "EMAIL_NOT_VALID" : "This email is invalid"
   }
 }
