@@ -65,9 +65,9 @@
               <span class="glyphicon glyphicon-filter"></span>
             </button>
         </div>
-
-        <div class="col-sm-offset-1 col-md-9 panel panel-default">
-          <a ng-href="#" ng-style="!exist && {'text-decoration':'none', color:'black'}" ng-repeat="letter in letters">{{letter}} </a>
+			
+        <div class="col-sm-offset-1 col-md-10 panel panel-default">
+          <a ng-href="#" ng-style="!exist && {'text-decoration':'none', color:'black'}" ng-repeat="letter in letters" ng-click="filterByLetter(letter)">{{letter}} </a>
         </div>
 
       </div>
@@ -82,15 +82,20 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="row in glossary | orderBy: 'term'">
+          <tr ng-repeat="row in glossary | orderBy: 'term' ">
             <td>{{row.term}}</td>
             <td>{{row.definition}}</td>
           </tr>
         </tbody>
       </table>
+
     </div>
 
   </div>
+  <div class="back-to-top">
+     <a id ="top" href="#" ><img src='@routes.Assets.versioned("images/haut_page.png")' alt="Haut de page"> <br/> <span>Top of page</span></a><br/>
+     
+ </div>
 </div>
 
 }

@@ -38,5 +38,14 @@ angular.module('glossaryModule', [])
                 $scope.glossary = glossary.data;
             });
 
-
+            $scope.filterByLetter = function(letter){
+    	    	$scope.glossary  = 
+    	    	/*if( row.term[0].toUpperCase() === $scope.currentLetter){
+    	    	 return row;
+    	    	}*/
+    	    };
+     
+    	  $scope.byFirstLetter = function(row){
+    	    return row.term[0].toUpperCase() === $scope.currentLetter;	
+    	  };
         }]);
