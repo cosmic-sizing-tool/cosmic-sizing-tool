@@ -9,6 +9,7 @@
       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src='https://www.google.com/recaptcha/api.js'></script>
       <link rel="stylesheet" type="text/css" href="style.css">
       <style type="text/css">
          body {
@@ -53,7 +54,14 @@
                         <input class="form-control" id="" name="email" type="text"/><br/>
 
                         <div class="captchaWrapper">
+                            <div class="g-recaptcha" data-sitekey="6LeEWyITAAAAADnKeiEquBHh5ijfC9rQoigI4Vdv" data-callback="captchaCallback"></div>
+                            <input type="hidden" name="recaptcha" id="recaptcha" />
 
+                            <script>
+                              function captchaCallback() {
+                                document.getElementById("recaptcha").value = document.getElementById("g-recaptcha-response").value;
+                              }
+                            </script>
                         </div>
 
                         <button type="submit" class="btn btn-success" style="width: 100%;">

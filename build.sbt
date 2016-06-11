@@ -22,7 +22,9 @@ libraryDependencies ++= Seq(
   "org.apache.poi" % "poi-ooxml-schemas" % "3.13",
   "org.apache.xmlbeans" % "xmlbeans" % "2.6.0",
   "com.lambdaworks" % "scrypt" % "1.4.0",
-  "org.apache.commons" % "commons-email" % "1.2"
+  "org.apache.commons" % "commons-email" % "1.2",
+  "com.nappin" %% "play-recaptcha" % "1.0"
+
 )
 
 // Play provides two styles of routers, one expects its actions to be injected, the
