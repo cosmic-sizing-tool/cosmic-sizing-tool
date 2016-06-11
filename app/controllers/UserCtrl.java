@@ -254,7 +254,7 @@ public class UserCtrl extends Controller {
             user.setEmail(emailSended);
             user.setName(nameSended);
             user.setCompany(companySended);
-            user.setLocation(locationSended);
+            //user.setLocation(locationSended);
             Ebean.update(user);
     		    flash("success", "Modifications effectuées avec succes");
 
@@ -344,21 +344,5 @@ public class UserCtrl extends Controller {
 			return false;
 		}
 		return true;
-	}
-
-
-	public ArrayList justePourTest(CosmicUser globalUser) {
-
-	    ArrayList userInfoList = new ArrayList<>();
-
-        userInfoList.add(globalUser.name);
-        userInfoList.add(globalUser.password);
-        userInfoList.add(globalUser.email);
-        userInfoList.add(globalUser.alias);
-        userInfoList.add(globalUser.url);
-        userInfoList.add(globalUser.company);
-        userInfoList.add(globalUser.location);
-
-        return userInfoList;
 	}
 }

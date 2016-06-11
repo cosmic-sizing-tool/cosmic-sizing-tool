@@ -3,14 +3,6 @@
 
 # --- !Ups
 
-create table basic_user (
-  username                      varchar(255),
-  email                         varchar(255),
-  password                      varchar(255),
-  constraint uq_basic_user_username unique (username),
-  constraint uq_basic_user_email unique (email)
-);
-
 create table certification (
   id_certification              bigserial not null,
   method                        varchar(255) not null,
@@ -22,15 +14,18 @@ create table certification (
 
 create table cosmic_user (
   id                            bigserial not null,
-  name                          varchar(255),
-  password                      varchar(255),
   alias                         varchar(255),
+  password                      varchar(255),
+  name                          varchar(255),
   deleted                       boolean,
   disponible                    boolean,
   email                         varchar(255),
   created_at                    timestamp,
   url                           varchar(255),
   company                       varchar(255),
+  country                       varchar(255),
+  state                         varchar(255),
+  city                          varchar(255),
   location                      varchar(255),
   constraint uq_cosmic_user_alias unique (alias),
   constraint uq_cosmic_user_email unique (email),
@@ -271,8 +266,6 @@ drop index if exists ix_organisation_cosmic_user_organisation;
 
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_cosmic_user;
 drop index if exists ix_organisation_cosmic_user_cosmic_user;
-
-drop table if exists basic_user cascade;
 
 drop table if exists certification cascade;
 
