@@ -48,8 +48,8 @@ Write config info here.
  ```javascript  
  $socpe.languages = [
    {id:'en', name:'English'},
-   {id:'fr', name:'Français'},
-   {id:'xx', name:'NewLanguage'}
+    {id:'fr', name:'Français'},
+    {id:'xx', name:'NewLanguage'}
  ];
  
  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
@@ -68,7 +68,7 @@ Write config info here.
    {
      "WEBSITE_SECTION":
        {
-       "NAME_OF_RESSOURCE":"Text to print"
+         "NAME_OF_RESSOURCE":"Text to print"
        }
    }
    ```
