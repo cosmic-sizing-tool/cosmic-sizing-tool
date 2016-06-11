@@ -18,10 +18,10 @@ public class CountryDivisionType extends Model{
     @Id
     public String shortName;
 
-    @ManyToOne
-    public Country country;
+    // @ManyToOne
+    // public Country country;
 
-    @ManyToOne
-    public DivisionName divisionName;
+    // @ManyToOne
+    // public DivisionName divisionName;
 
 }

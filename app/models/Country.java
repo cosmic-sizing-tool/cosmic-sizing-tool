@@ -18,6 +18,6 @@ public class Country extends Model{
     @Id
     public String shortName;
 
-    @OneToMany
-    public City cities;
+    // @OneToMany
+    // public City cities;
 }
