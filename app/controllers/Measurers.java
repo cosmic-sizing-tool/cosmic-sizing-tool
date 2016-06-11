@@ -10,6 +10,6 @@ public class Measurers extends Controller {
   }
 
   public Result search() {
-    return ok("search!")
+    return ok("search!");
   }
 }
