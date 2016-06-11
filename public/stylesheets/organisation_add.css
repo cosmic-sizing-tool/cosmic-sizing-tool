@@ -1,16 +1,18 @@
 
-dl.form>dd input[type="text"], dl.form>dd input[type="password"], dl.form>dd input[type="email"], dl.form>dd input[type="url"] {
-    width: 230px;
-}
+form{
 
-#table-confirm-add{
-    margin-bottom: 50px;
-}
+    margin-top: 110px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 900px;
+    margin-left: auto ;
+    margin-right: auto ;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 
-body {
-    margin: 0 auto;
-}
-
-#message {
-    display : none;
+    background-color: #fafafa;
 }
