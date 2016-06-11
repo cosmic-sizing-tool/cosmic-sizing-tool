@@ -10,16 +10,11 @@ import play.data.validation.*;
 import util.*;
 
 public class DataGroup extends Model implements JsonSerializable {
-
     private Long id;
     private String name;
     
-    /* 0 if mouvement is not there, 1 if yes, not booleans because of possible
-        other options */
-    private int entry;
-    private int exit;
-    private int read;
-    private int write;
+    //0 if mouvement is not there, else 1; not booleans because of possible further development
+    private int entry, exit, read, write;
 
     public DataGroup(String name, int entry, int exit, int read, int write) {
         this.name = name;
@@ -54,20 +49,20 @@ public class DataGroup extends Model implements JsonSerializable {
         this.name = name;
     }
 
-    public boolean getEntry() {
-        return entry == 1;
+    public int getEntry() {
+        return entry;
     }
 
-    public boolean getExit() {
-        return exit == 1;
+    public int getExit() {
+        return exit;
     }
 
-    public boolean getRead() {
-        return read == 1;
+    public int getRead() {
+        return read;
     }
 
-    public boolean getWrite() {
-        return write == 1;
+    public int getWrite() {
+        return write;
     }
 
     public void setEntry(int val) {
@@ -89,6 +84,4 @@ public class DataGroup extends Model implements JsonSerializable {
     public int getCFPSize() {
         return entry + exit + read + write;
     }
-
-    public static Finder<Long, DataGroup> find = new Finder<Long, DataGroup>(Long.class, DataGroup.class);
 }
