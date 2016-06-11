@@ -1,7 +1,15 @@
-server/db.sqlite
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.project
+/.settings
 
-server/conf/evolutions
+# Running pid is not a directory...
+/RUNNING_PID
+# this is what actually works
+RUNNING_PID
 
-.idea
-.DS_Store
-
+.sbtserver/
+/bin/
