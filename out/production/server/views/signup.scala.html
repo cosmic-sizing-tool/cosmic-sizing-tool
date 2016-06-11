@@ -1,0 +1,46 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <!-- Boostrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        
+        <title>Cosmic sizing tool - @title</title>
+    </head>
+    <body>
+        <h1>Cosmic sizing tool - Sign up</h1>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="@routes.Application.index()">Home</a></li>
+                        <li><a href="@routes.Application.team()">Team</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </nav>
+        <div class ="col-lg-4 col-lg-offset-4">            
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Please sign up</h2>
+                <label for="inputEmail" class="sr-only">Username</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus></br></br>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></br></br>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required></br></br>
+                
+                <div class ="col-lg-4 col-lg-offset-3">
+                    </br></br><button id="#debug"  style="background-color: #60b044;" class="btn btn-lg btn-primary btn-lg" type="submit">Create an account</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+
+

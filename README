@@ -1,0 +1,14 @@
+This is your new Play application
+=================================
+
+This file will be packaged with your application, when using `activator dist`.
+
+---------------------------------
+Documentation for Heroku and DB setup
+
+- App hosted @ https://cosmic-sizing-tool-dev.herokuapp.com/
+- Git remote repo is: git@heroku.com:cosmic-sizing-tool-dev.git
+- Database configuration can be found in ./conf/application.conf
+- Environment variable $(DATABASE_URL) needed
+
+** Actual play application must be in root directory for it to run on Heroku from a git repo
