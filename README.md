@@ -46,6 +46,12 @@ Write config info here.
  1. Create a file in public/resources called **xx.json** where **xx** is the code of the language you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
  2. Add you language to the following section of public/javascript/app/app.js :
  ```javascript  
+ $socpe.languages = [
+    {id:'en', name:'English'},
+    {id:'fr', name:'Français'},
+    {id:'xx', name:'NewLanguage'}
+ ];
+ 
  $translateProvider.registerAvailableLanguageKeys(['en', 'fr', xx], {
     'en_*': 'en',
     'fr_*': 'fr',
@@ -57,10 +63,20 @@ Write config info here.
 * HOW TO FORMAT HTML LABELS</br>
   https://angular-translate.github.io/docs/#/guide/05_using-translate-directive
 
-  Start, add ressource to the file and add filter and ID :
-   ```html
-   {"WEBSITE_SECTION": {"NAME_OF_RESSOURCE":"Image of something"}}
-   <img alt="{{'WEBSITE_SECTION.NAME_OF_RESSOURCE ' | translate}}"/>
+  i. Add ressource to the file just created :
+  ```html
+   {
+     "WEBSITE_SECTION":
+       {
+         "RESOURCE_NAME":"Text to print"
+       }
+   }
+   ```
+   Where **WEBSITE_SECTION** and **RESOURCE_NAME** are the same for all the languages JSON files (refer to the english JSON file).
+   
+  ii. Add filter and ID in your html tag :
+  ```html
+   <p>WEBSITE_SECTION.RESOURCE_NAME | translate</p>
    ```
 
 * ANY MODULE THAT YOU ADD MUST HAVE in its controler :
