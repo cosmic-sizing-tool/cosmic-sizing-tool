@@ -88,7 +88,8 @@ function displayPatternDescription(desc) {
   $("#Pattern_Desc").val(desc);
 }
 
-function displayPatternTable(fps) {
+function displayPatternTable(pattern) {
+  var fps = pattern.Pattern_FP;
   var table = $("#patternTable tbody").html("");
   for (var i = 0; i < fps.length; i++) {
     var fp = fps[i];
@@ -123,7 +124,20 @@ function displayPatternTable(fps) {
         row.addClass("even");
       table.append(row);
     }
+    var row = $("<tr/>").append(
+      $("<td/>"),
+      $("<td/>").append(generateNewDataGroupButton()),
+      $("<td/>"),
+      $("<td/>")
+    ).attr("class", "ignore");
+    if (i % 2 === 0)
+      row.addClass("even");
+    table.append(row);
   }
+}
+
+function generateNewDataGroupButton() {
+  return "<button id='' class='btn btn-primary'>Add data group</button>";
 }
 
 function bindNewRowButton() {
@@ -135,7 +149,7 @@ function clickedNewRowButton() {
   var fp = {
     Pattern_ID: "",
     Pattern_FP_ID: "",
-    Pattern_DGDM:[{}],
+    Pattern_DGDM: [{}],
   }
   pattern.Pattern_FP.push(fp);
   displayPattern(pattern);
@@ -179,18 +193,6 @@ function fourthPatternColumn(fpSize) {
   return cell;
 }
 
-function getPatternNFp() {
-  return $("#patternNFp").text();
-}
-
-function getPatternSize() {
-  return $("#patternSize").text();
-}
-
-function getPatternDateCreated() {
-  return $("#patternDateCreated").text();
-}
-
 function getPatternName() {
   return $("#Pattern_Name").val();
 }
@@ -203,20 +205,8 @@ function getPatternUser() {
   return $("#patternUserID").text();
 }
 
-function getPatternSizeE() {
-  return $("#cfpE .patternValue").text();
-}
-
-function getPatternSizeX() {
-  return $("#cfpX .patternValue").text();
-}
-
-function getPatternSizeR() {
-  return $("#cfpR .patternValue").text();
-}
-
-function getPatternSizeW() {
-  return $("#cfpW .patternValue").text();
+function getPatternDateCreated() {
+  return $("#patternDateCreated").text();
 }
 
 function bindSaveButton() {
@@ -241,6 +231,7 @@ function collectPattern() {
   var rows = $("#patternTable tbody tr");
   for (var i = 0; i < rows.length; i++) {
     var row = $(rows[i]);
+    if( row.hasClass("ignore") ) continue;
     var input1 = row.find("td:eq(0) input");
     if (input1.length > 0) {
       if (i > 0)
@@ -261,7 +252,7 @@ function collectPattern() {
     dgdm.Pattern_DM_W = input3.val().indexOf("W") > -1 ? 1 : 0;
     fp.Pattern_DGDM.push(dgdm);
   }
-  if( typeof fp === "object") updatedPattern.Pattern_FP.push(fp);
+  if (typeof fp === "object") updatedPattern.Pattern_FP.push(fp);
   return updatedPattern;
 }
 
@@ -272,7 +263,7 @@ function displayPattern(pattern) {
   displayPatternUser(pattern.User_ID);
   displayPatternName(pattern.Pattern_Name);
   displayPatternDescription(pattern.Pattern_Desc);
-  displayPatternTable(pattern.Pattern_FP);
+  displayPatternTable(pattern);
 }
 
 function savePattern() {
@@ -282,7 +273,7 @@ function savePattern() {
   sendPattern(updatedPattern);
 }
 
-function sendPattern(pattern){
+function sendPattern(pattern) {
   /* Send the pattern to the server */
 }
 
@@ -294,17 +285,31 @@ Validation rules
 function validatePattern(updatedPattern) {
   var isValid = true;
   var fps = updatedPattern.Pattern_FP;
-  for( var i = 0 ; i < fps.length ; i++){
+  var fpNames = [];
+  for (var i = 0; i < fps.length; i++) {
     var fp = fps[i];
-    var dgdms = fp.Pattern_DGDM;
-    if( dgdms.length < 1 ){
+    var fpName = fp.Pattern_FP_ID;
+    if( fpNames.indexOf(fpName) > -1){
+      alert("All functional processes must be unique.");
       isValid = false;
-      continue;
+      break;
+    }
+    fpNames.push(fpName);
+    var dgdms = fp.Pattern_DGDM;
+    if (dgdms.length < 1) {
+      alert("A functional process must contain at least one data group.");
+      isValid = false;
+      break;
     }
     var nMovements = 0;
-    for( var j = 0 ; j < dgdms.length ; j++){
+    for (var j = 0; j < dgdms.length; j++) {
       var dgdm = dgdms[j];
-      nMovements += dgdms
+      nMovements += dgdm.Pattern_DM_E + dgdm.Pattern_DM_X + dgdm.Pattern_DM_R + dgdm.Pattern_DM_W;
+    }
+    if (nMovements < 1) {
+      alert("A functional process must contain at least one data movement.");
+      isValid = false;
+      break;
     }
   }
   updatedPattern.isAValidPattern = isValid;

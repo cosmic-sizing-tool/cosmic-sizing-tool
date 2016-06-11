@@ -113,7 +113,7 @@ body {
 }
 
 #patternModify #patternTable tbody td {
-  padding: 5px 8px;
+  padding: 0 5px;
   vertical-align: top;
 }
 
@@ -125,6 +125,14 @@ body {
   line-height: 40px;
 }
 
+#patternModify #patternTable tbody td button{
+  margin: 0 0 10px 0;
+}
+
+#patternModify #patternTable tbody .ignore {
+  text-align:center;
+}
+
 #patternModify #patternTable tfoot {
   background:#fff;
 }
@@ -132,11 +140,4 @@ body {
 #patternModify #patternTable tfoot td {
   padding: 5px 8px;
   vertical-align: top;
-}
-
-
-#patternModify #patternFooter {
-  width: 90%;
-  margin: 20px auto;
-  text-align: right;
 }
