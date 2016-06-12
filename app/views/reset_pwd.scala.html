@@ -39,6 +39,9 @@
          #submitbtn {
             width: 350px;
          }
+         .warning {
+            color: red;
+         }
     </style>
 
     <!-- Angular -->
@@ -48,7 +51,7 @@
     <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate-loader-static-files.js")'></script>
 
     <!-- Recaptcha -->
-    <script src='https://www.google.com/recaptcha/api.js'></script><!-- ?hl=fr -->
+    <script src='https://www.google.com/recaptcha/api.js?hl=en'></script><!-- Select language using this parameter: ?hl=fr -->
 
     <div class="wrapper" ng-app="registrationForm" ng-controller="RegistrationCtrl">
        <div class="informationBox">
@@ -57,6 +60,12 @@
             </div>
             <div class="informationBoxBody">
                 <form class="form-signin" method="get" action="/user/reset_pwd">
+                    <div ng-switch="@validEmail">
+                        <div ng-switch-when="1" class="warning"><br/><br/>{{ 'RECOVER_PASSWORD.EMAIL_SENT' | translate }}</div>
+                        <div ng-switch-when="0" class="warning"><br/><br/>{{ 'RECOVER_PASSWORD.EMAIL_NOT_VALID' | translate }}</div>
+                        <div ng-switch-when="-1"></div>
+                    </div>
+
                     <br/><br/>
                     <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate }}</p>
                     <input class="form-control" id="email" name="email" type="text"/><br/>
@@ -75,9 +84,6 @@
                     <button type="submit" class="btn btn-success" id="submitbtn">
                         {{ 'RECOVER_PASSWORD.SEND' | translate}}
                     </button><br/><br/>
-
-                    code retour = @validEmail<br/>
-                    {{validEmail == 1 ? 'RECOVER_PASSWORD.EMAIL_SENT' : (validEmail == 0 ? 'RECOVER_PASSWORD.EMAIL_NOT_VALID' : '')}}
                 </form>
             </div>
         </div>
