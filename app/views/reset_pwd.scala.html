@@ -2,9 +2,44 @@
 @main("Password recovery") {
     <link rel="stylesheet" href='@routes.Assets.versioned("bootstrap/dist/css/bootstrap.min.css")'>
 
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <style type="text/css">
+         body {
+            background: #eee !important;
+         }
+         .wrapper {
+            margin-top: 150px;
+         }
+         .informationBox {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 1024px;
+            border-radius: 5px;
+            border-style: solid;
+            border-size: 1px;
+            border-color: #d0d0d0;
+         }
+         .informationBoxTitle {
+            padding-left: 15px;
+            text-align: left;
+            border-bottom: 1px solid #d0d0d0;
+         }
+         .informationBoxBody {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 15px;
+            text-align: left;
+         }
+         .captchaWrapper {
+         }
+
+         #email {
+            width: 350px;
+         }
+         #submitbtn {
+            width: 350px;
+         }
+    </style>
 
     <!-- Angular -->
     <script src='@routes.Assets.versioned("javascripts/app/app.js")'></script>
@@ -15,75 +50,36 @@
     <!-- Recaptcha -->
     <script src='https://www.google.com/recaptcha/api.js'></script><!-- ?hl=fr -->
 
-    <style type="text/css">
-             body {
-                background: #eee !important;
-             }
-             .wrapper {
-                margin-top: 150px;
-             }
-             .informationBox {
-                margin-top: 20px;
-                margin-left: auto;
-                margin-right: auto;
-                width:1024px;
-                border-radius: 5px;
-                border-style: solid;
-                border-size: 1px;
-                border-color: #d0d0d0;
-             }
-             .informationBoxTitle {
-                padding-left: 15px;
-                text-align: left;
-                border-bottom: 1px solid #d0d0d0;
-             }
-             .informationBoxBody {
-                padding-left: 15px;
-                padding-right: 15px;
-                padding-bottom: 15px;
-                text-align: left;
-             }
-             .captchaWrapper {
+    <div class="wrapper" ng-app="registrationForm" ng-controller="RegistrationCtrl">
+       <div class="informationBox">
+            <div class="informationBoxTitle">
+                <h3 class="form-signin-heading">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate }}</h3>
+            </div>
+            <div class="informationBoxBody">
+                <form class="form-signin" method="get" action="/user/reset_pwd">
+                    <br/><br/>
+                    <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate }}</p>
+                    <input class="form-control" id="email" name="email" type="text"/><br/>
 
-             }
-             #email {
-                width: 250px;
-             }
-             #submitbtn {
-                width: 250px;
-             }
-        </style>
+                    <div class="captchaWrapper">
+                        <div class="g-recaptcha" data-sitekey="6LeEWyITAAAAADnKeiEquBHh5ijfC9rQoigI4Vdv" data-callback="captchaCallback"></div>
+                        <input type="hidden" name="recaptcha" id="recaptcha" />
 
-        <div class="wrapper" ng-app="registrationForm" ng-controller="RegistrationCtrl">
-           <div class="informationBox">
-                <div class="informationBoxTitle">
-                    <h3 class="form-signin-heading">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate }}</h3>
-                </div>
-                <div class="informationBoxBody">
-                    <form class="form-signin" method="get" action="/user/reset_pwd">
-                        <br/><br/>
-                        <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate }}</p>
-                        <input class="form-control" id="email" name="email" type="text"/><br/>
+                        <script>
+                          function captchaCallback() {
+                            document.getElementById("recaptcha").value = document.getElementById("g-recaptcha-response").value;
+                          }
+                        </script>
+                    </div><br/>
 
-                        <div class="captchaWrapper">
-                            <div class="g-recaptcha" data-sitekey="6LeEWyITAAAAADnKeiEquBHh5ijfC9rQoigI4Vdv" data-callback="captchaCallback"></div>
-                            <input type="hidden" name="recaptcha" id="recaptcha" />
+                    <button type="submit" class="btn btn-success" id="submitbtn">
+                        {{ 'RECOVER_PASSWORD.SEND' | translate}}
+                    </button><br/><br/>
 
-                            <script>
-                              function captchaCallback() {
-                                document.getElementById("recaptcha").value = document.getElementById("g-recaptcha-response").value;
-                              }
-                            </script>
-                        </div><br/><br/>
-
-                        <button type="submit" class="btn btn-success" id="submitbtn">
-                            {{ 'RECOVER_PASSWORD.SEND' | translate}}
-                        </button><br/><br/>
-
-                        code retour = @validEmail<br/>
-                        {{validEmail == 1 ? 'RECOVER_PASSWORD.EMAIL_SENT' : (validEmail == 0 ? 'RECOVER_PASSWORD.EMAIL_NOT_VALID' : '')}}
-                    </form>
-                </div>
+                    code retour = @validEmail<br/>
+                    {{validEmail == 1 ? 'RECOVER_PASSWORD.EMAIL_SENT' : (validEmail == 0 ? 'RECOVER_PASSWORD.EMAIL_NOT_VALID' : '')}}
+                </form>
             </div>
         </div>
+    </div>
 }
