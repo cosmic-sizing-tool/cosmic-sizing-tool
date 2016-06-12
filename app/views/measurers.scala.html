@@ -20,14 +20,14 @@
                         <div id="DropDownControls" style="display: flex; justify-content: space-between;">
 
                             <select class="form-control" id="SelectMethod" style="width: 25%; padding: 4px" ng-model="model.filters.method">
-                                <option ng-repeat="method in model.methods" ng-selected="method.code == null" value="{{method.code}}">{{method.name}}</option>
+                                <option ng-repeat="method in model.methods" ng-selected="method.code == ''" value="{{method.code}}">{{method.name}}</option>
                             </select>
                             <select class="form-control" id="SelectCountry" style="width: 25%; padding: 4px" ng-model="model.filters.country">
-                                <option ng-repeat="country in model.countries" ng-selected="country.code == null" value="{{country.code}}">{{country.name}}</option>
+                                <option ng-repeat="country in model.countries" ng-selected="country.code == ''" value="{{country.code}}">{{country.name}}</option>
                              </select>
 
                             <select class="form-control" id="SelectState" style="width: 25%; padding: 4px" ng-model="model.filters.state" ng-disabled="!model.filters.country" ng-class="{disabled : !model.filters.country}">
-                                <option ng-repeat="state in model.states" ng-selected="state.code == null" value="{{state.code}}">{{state.name}}</option>
+                                <option ng-repeat="state in model.states" ng-selected="state.code == ''" value="{{state.code}}">{{state.name}}</option>
                            </select>
 
                             <select class="form-control" id="SelectCity" style="width: 25%; padding: 4px" ng-model="model.filters.city">

@@ -13,6 +13,27 @@ angular
         function ($scope, $http) {
             var SearchServiceRoute = '/measurers/search';
 
+            //TODO: Bind country and regions on DB
+            var hardcodedCountryRegionJson = {"CA":{"name":"Canada","divisions":{"CA-AB":"Alberta","CA-BC":"British Columbia","CA-MB":"Manitoba","CA-NB":"New Brunswick","CA-NF":"Newfoundland","CA-NS":"Nova Scotia","CA-ON":"Ontario","CA-PE":"Prince Edward Island","CA-QC":"Quebec","CA-SK":"Saskatchewan","CA-NT":"Northwest Territories","CA-YT":"Yukon Territory"}}, "US":{"name":"United States","divisions":{"US-AL":"Alabama","US-AK":"Alaska","US-AZ":"Arizona","US-AR":"Arkansas","US-CA":"California","US-CO":"Colorado","US-CT":"Connecticut","US-DE":"Delaware","US-FL":"Florida","US-GA":"Georgia","US-HI":"Hawaii","US-ID":"Idaho","US-IL":"Illinois","US-IN":"Indiana","US-IA":"Iowa","US-KS":"Kansas","US-KY":"Kentucky","US-LA":"Louisiana","US-ME":"Maine","US-MD":"Maryland","US-MA":"Massachusetts","US-MI":"Michigan","US-MN":"Minnesota","US-MS":"Mississippi","US-MO":"Missouri","US-MT":"Montana","US-NE":"Nebraska","US-NV":"Nevada","US-NH":"New Hampshire","US-NJ":"New Jersey","US-NM":"New Mexico","US-NY":"New York","US-NC":"North Carolina","US-ND":"North Dakota","US-OH":"Ohio","US-OK":"Oklahoma","US-OR":"Oregon","US-PA":"Pennsylvania","US-RI":"Rhode Island","US-SC":"South Carolina","US-SD":"South Dakota","US-TN":"Tennessee","US-TX":"Texas","US-UT":"Utah","US-VT":"Vermont","US-VA":"Virginia","US-WA":"Washington","US-WV":"West Virginia","US-WI":"Wisconsin","US-WY":"Wyoming","US-DC":"District of Columbia"}}};
+
+            function countriesFromJSON(json){
+                var countriesKeyValuePairs = _.toPairs(json);
+                var countries = _.map(countriesKeyValuePairs, function(pair){return {code: pair[0], name: pair[1].name, regions: regionsFromJSON(pair[1].divisions)}});
+                return _.sortBy(countries, function(country){
+                    return country.name;
+                });
+            };
+
+            function regionsFromJSON(json){
+                var regionKeyValuePairs = _.toPairs(json);
+                var regions = _.map(regionKeyValuePairs, function(pair){
+                   return {code: pair[0], name: pair[1]};
+                });
+                return _.sortBy(regions, function(region){
+                    return region.name;
+                });
+            };
+
             $scope.model = {
                 measurers : [],
                 filteredMeasurers : [],
@@ -22,73 +43,10 @@ angular
                     state : null,
                     city : null
                 },
-                methods : [ {code: null, name: "All Methods"}, {code: "COSMIC", name: "COSMIC"}, {code: "IFPUG", name: "IFPUG"}, {code: "NESMA", name: "NESMA"}, {code: "FISMA", name: "FISMA"}, {code: "Mark II", name: "Mark II"}],
-                countries : [
-                    {
-                        code: null,
-                        name: "All Countries"
-                    },
-                    {
-                    code:  "ca",
-                    name: "Canada"
-                }],
-                states : [
-                    {
-                        code: null,
-                        name: "All states"
-                    },
-                    {
-                    code: "AB",
-                    name: "Alberta"
-                },
-                    {
-                        code: "BC",
-                        name: "British Columbia"
-                    },
-                    {
-                        code: "MB",
-                        name: "Manitoba"
-                    },
-                    {
-                        code: "NB",
-                        name: "New Brunswick"
-                    },
-                    {
-                        code: "NL",
-                        name: "Newfoundland and Labrador"
-                    },
-                    {
-                        code: "NS",
-                        name: "Nova Scotia"
-                    },
-                    {
-                        code: "ON",
-                        name: "Ontario"
-                    },
-                    {
-                        code: "PE",
-                        name: "Prince Edward Island"
-                    },
-                    {
-                        code: "QC",
-                        name: "Quebec"
-                    },
-                    {
-                        code: "SK",
-                        name: "Saskatchewan"
-                    },
-                    {
-                        code: "NT",
-                        name: "Northwest Territories"
-                    },
-                    {
-                        code: "NU",
-                        name: "Nunavut"
-                    },
-                    {
-                        code: "YT",
-                        name: "Yukon"
-                    }],
+                //TODO: Bind methods on certifications in DB
+                methods : [ {code: "", name: "All Methods"}, {code: "COSMIC", name: "COSMIC"}, {code: "IFPUG", name: "IFPUG"}, {code: "NESMA", name: "NESMA"}, {code: "FISMA", name: "FISMA"}, {code: "Mark II", name: "Mark II"}],
+                countries : [],
+                states : [],
                 cities : [],
                 hasError : false
             };
@@ -98,6 +56,7 @@ angular
                     return SearchServiceRoute;
                 },
                 search : function(){
+                    //TODO: Add a condition to not execute the get if the filters didn't change
                     $http.get($scope.actions.constructServiceUrl)
                         .then(function(data){
                             //success
@@ -113,7 +72,6 @@ angular
 
             var update = {
                 cities: function(measurers){
-                    //get cities info for all measurer.city
                     if($scope.model.filters.country && $scope.model.filters.state){
                         $scope.cities = _.sortedUniqBy(measurers, function(measurer){
                             return measurer.city;
@@ -124,11 +82,24 @@ angular
                     $scope.filteredMeasurers = _.filter($scope.measurers, function(measurer){
                        return measurer.city == city;
                     });
+                },
+                resetRegions : function(){
+                    $scope.model.filters.state = "";
+                },
+                regions: function(countryCode){
+                    $scope.model.states = regionsFromJSON(hardcodedCountryRegionJson[countryCode].divisions);
                 }
             };
 
             //load countries & states
-            //load cities
+            $scope.model.countries = countriesFromJSON(hardcodedCountryRegionJson);
+
+            $scope.$watch('model.filters.country', function(newValue, oldValue){
+                if(newValue != oldValue){
+                    update.resetRegions();
+                    update.regions(newValue);
+                }
+            });
 
             $scope.$watch('model.measurers', function(newValue, oldValue){
                 if(newValue != oldValue && newValue != []){
