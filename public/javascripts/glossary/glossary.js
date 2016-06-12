@@ -8,9 +8,47 @@ angular.module('glossaryModule', [])
 
             $scope.activeLetters = [];
 
-            $scope.exist = function(letter) {
-                loadActiveLetters($scope.glossary);
-                 return $scope.activeLetters.indexOf(letter) >= 0;
+            $scope.loadGlossary = function (lang) {
+                var glossaryfile = "assets/json/glossary_" + lang + ".json";
+                $http.get(glossaryfile).then(function (success) {
+                    $scope.filteredGlossary = $scope.glossary = success.data;
+                    $scope.getActiveLetters($scope.filteredGlossary);
+                });
+            };
+
+            $scope.loadGlossary("fr");
+
+            var notExist = function (letter) {
+                return $scope.activeLetters.indexOf(letter) == -1;
+            };
+
+            $scope.getActiveLetters = function (glossary) {
+                angular.forEach(glossary, function (entry) {
+                    var firstLetter = entry.term[0].toUpperCase();
+                    if (notExist(firstLetter)) {
+                        $scope.activeLetters.push(firstLetter);
+                    }
+                });
+            };
+
+            $scope.inactive = function (letter) {
+                return notExist(letter);
+            };
+
+            $scope.filterByLetter = function (letter) {
+                var filteredGlossary = [];
+                if (letter) {
+                    angular.forEach($scope.glossary, function (entry) {
+                        if (angular.equals(entry.term[0].toUpperCase(), letter)) {
+                            filteredGlossary.push(entry);
+                        }
+                    });
+
+                    $scope.filteredGlossary = filteredGlossary;
+
+                } else {
+                    $scope.filteredGlossary = $scope.glossary;
+                }
             };
 
             $scope.searchText1 = null;
@@ -33,38 +71,10 @@ angular.module('glossaryModule', [])
                 $scope.optRadio2 = null;
             };
 
-            var loadActiveLetters = function (glossary) {
-                angular.forEach(glossary, function(entry) {
-                    $scope.activeLetters.push(entry.term[0].toUpperCase());
-                });
-                removeDuplicate($scope.activeLetters);
-            };
-
-            var removeDuplicate = function (array) {
-                array.sort();
-                for (var i = 1; i < array.length; i++) {
-                    if (array[i - 1] === array[i])
-                        array.splice(i, 1);
-                };
-            };
-
 
             $http.get('assets/json/ressources_en.json').then(function (ressources) {
                 $scope.labels = ressources.data;
             });
 
 
-            $http.get('assets/json/glossary_fr.json').then(function (glossary) {
-                $scope.glossary = glossary.data;
-            });
-
-            $scope.filterByLetter = function(letter){
-    	    	/*if( row.term[0].toUpperCase() === $scope.currentLetter){
-    	    	 return row;
-    	    	}*/
-    	    };
-     
-    	  $scope.byFirstLetter = function(row){
-    	    return row.term[0].toUpperCase() === $scope.currentLetter;	
-    	  };
         }]);
