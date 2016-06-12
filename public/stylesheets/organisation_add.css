@@ -39,5 +39,37 @@ label{
 }
 
 .form-group{
-    margin-right: 40px;
+    margin-right: 20px;
+}
+
+#orgsection{
+    width: 300px;
+}
+
+#OrgDescription{
+    width: 450px;
+}
+
+#OrgURL{
+    width: 450px;
+}
+
+#location{
+    width: 300px;
+}
+
+#zip{
+    width: 100px;
+}
+
+#City{
+    width: 300px;
+}
+
+#Country{
+    width: 200px;
+}
+
+#StateProvince{
+    width: 300px;
 }
