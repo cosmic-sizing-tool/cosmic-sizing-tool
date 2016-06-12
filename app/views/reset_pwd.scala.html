@@ -1,65 +1,74 @@
 @(validEmail: Integer)
-
+@main("Password recovery") {
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <title>RECOVER_PASSWORD.PASSWORD_RECOVERY | translate</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-      <script src='https://www.google.com/recaptcha/api.js'></script>
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <style type="text/css">
-         body {
-            background: #eee !important;
-         }
-         .wrapper {
+<head>
+    <!-- Custom syle -->
+    <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/styles.css")'>
+    <link rel="stylesheet" href='@routes.Assets.versioned("bootstrap/dist/css/bootstrap.min.css")'>
 
-         }
-         .informationBox {
-            margin-top: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            width:1024px;
-            border-radius: 3px;
-            border-style: solid;
-            border-size: 1px;
-            border-color: #c0c0c0;
-         }
-         .informationBoxTitle {
-            padding-left: 15px;
-            text-align: left;
-            border-bottom: 1px solid #d0d0d0;
-         }
-         .informationBoxBody {
-            padding-left: 15px;
-            padding-right: 15px;
-            padding-bottom: 15px;
-            text-align: left;
-         }
-         .captchaWrapper {
+    <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-         }
-         #email {
-            width: 250px;
-         }
-         #submitbtn {
-            width: 250px;
-         }
-      </style>
-   </head>
-   <body ng-app="app">
-       <div class="wrapper">
+    <!-- Angular -->
+    <script src='@routes.Assets.versioned("javascripts/app/app.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/registration.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate.min.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate-loader-static-files.js")'></script>
+
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script><!-- ?hl=fr -->
+
+    <style type="text/css">
+             body {
+                background: #eee !important;
+             }
+             .wrapper {
+                margin-top: 150px;
+             }
+             .informationBox {
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
+                width:1024px;
+                border-radius: 5px;
+                border-style: solid;
+                border-size: 1px;
+                border-color: #d0d0d0;
+             }
+             .informationBoxTitle {
+                padding-left: 15px;
+                text-align: left;
+                border-bottom: 1px solid #d0d0d0;
+             }
+             .informationBoxBody {
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 15px;
+                text-align: left;
+             }
+             .captchaWrapper {
+
+             }
+             #email {
+                width: 250px;
+             }
+             #submitbtn {
+                width: 250px;
+             }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper" ng-app="registrationForm" ng-controller="RegistrationCtrl">
            <div class="informationBox">
                 <div class="informationBoxTitle">
-                    <h3 class="form-signin-heading">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate}}</h3>
+                    <h3 class="form-signin-heading">{{ 'RECOVER_PASSWORD.PASSWORD_RECOVERY' | translate }}</h3>
                 </div>
                 <div class="informationBoxBody">
                     <form class="form-signin" method="get" action="/user/reset_pwd">
                         <br/><br/>
-                        <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate}}</p>
+                        <p style="font-size: 12px;">{{ 'RECOVER_PASSWORD.EMAIL_ADDRESS' | translate }}</p>
                         <input class="form-control" id="email" name="email" type="text"/><br/>
 
                         <div class="captchaWrapper">
@@ -82,6 +91,7 @@
                     </form>
                 </div>
             </div>
-       </div>
+        </div>
    </body>
 </html>
+}

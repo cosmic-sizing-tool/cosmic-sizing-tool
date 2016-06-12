@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import models.*;
 import util.SendEmail;
 import javax.inject.Inject;
+import play.api.libs.Crypto;
 
 import play.*;
 import play.db.ebean.Transactional;
@@ -20,7 +21,10 @@ import com.avaje.ebean.*;
 @Transactional
 public class UserCtrl extends Controller {
 
-    CosmicUser userGlobal;
+	@Inject Crypto crypto;
+
+
+	CosmicUser userGlobal;
 
 	public Result show() {
 		Long id = 15L;
@@ -97,8 +101,6 @@ public class UserCtrl extends Controller {
 
 	public CosmicUser getUser(String email) {
 		userGlobal = CosmicUser.find.where().eq("email", email).findUnique();
-		/*System.out.println("Appel a getUser() on dump le contenu de l'objet: ");
-		System.out.println(userGlobal);*/
 
 		return userGlobal;
 	}
@@ -150,27 +152,23 @@ public class UserCtrl extends Controller {
     }
 
     public Result resetPassword(String email) {
-		String message = "";
-		int validEmail = -1;
+		int validEmail = -1;	// No email specified (do not display message to user)
 
 		if (email != null) {
 			CosmicUser user = findUser(email);
+
 			if (user != null) {
-				user.password = "bob";//crypto.encrypt("bob");
-				// send email
+				// Send email
 				String emailContent = "Hello %NAME%,\n\nWe have received a password recovery request for this email address.\n\nYour password is : %PASSWORD%\n\nIf you did not request your password, please ignore this message.\n\nThank you,\nThe COSMIC-sizing-tool team.\n\nN.B.  This message was generated automatically. Please do not reply to this address.";
 				emailContent = emailContent.replace("%NAME%", user.name);
-				emailContent = emailContent.replace("%PASSWORD%", user.password);
-
+				emailContent = emailContent.replace("%PASSWORD%", crypto.decryptAES(user.password));
 				SendEmail sendEmail = new SendEmail("cosmic@do-not-respond.com", email, "Password recovery", emailContent);
 				sendEmail.send();
 
-				//message = "Email sent.";
-				validEmail = 1;
+				validEmail = 1;		// Email's valid (display "Email sent" message to user)
 			}
 			else {
-				//message = "Invalid email address.";
-				validEmail = 0;
+				validEmail = 0;		// Email's does not exist (display "Invalid email" message to user)
 			}
 		}
 
