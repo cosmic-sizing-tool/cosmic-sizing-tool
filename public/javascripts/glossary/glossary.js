@@ -53,10 +53,7 @@ angular.module('glossaryModule', [])
 
             $scope.searchText1 = null;
             $scope.searchText2 = null;
-            $scope.searchText3 = null;
             $scope.optRadio1 = null;
-            $scope.optRadio2 = null;
-
 
             $scope.filter = function () {
                 $scope.filtered = true;
@@ -66,9 +63,7 @@ angular.module('glossaryModule', [])
                 $scope.filtered = false;
                 $scope.searchText1 = null;
                 $scope.searchText2 = null;
-                $scope.searchText3 = null;
                 $scope.optRadio1 = null;
-                $scope.optRadio2 = null;
             };
 
 

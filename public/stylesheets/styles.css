@@ -20,6 +20,10 @@ body {
   margin-right: 10px;
 }
 
+button.btn-circle:focus { 
+  outline:0 !important; 
+}
+
 .btn-success {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -62,6 +66,7 @@ body {
   border-radius: 4px;
   outline: 0;
 }*/
+
 select.icon-menu{
   height: 30px;
 }

@@ -8,17 +8,18 @@
 
       <form class="form-inline" role="form">
 
-        <div class="row col-md-9 col-md-offset-1">
+        <div style="padding:10px" class="col-md-9 col-md-offset-1">
 
           <div class="row">
             <div class="form-group col-md-6">
               <label>{{labels.CONTAINS}}</label>
-              <input type="text" class="form-control" ng-model="searchText1">
+              <input type="text" class="form-control" name="test" ng-model="searchText1">
             </div>
-            <div class="radio-inline col-md-1">
+
+            <div style="padding:5px 0px" class="radio-inline form-group col-md-1">
               <label><input type="radio" ng-model="optRadio1" name="optRadio1" value="and">{{labels.AND}}</label>
             </div>
-            <div class="radio-inline col-md-1">
+            <div style="padding:5px 0px" class="radio-inline col-md-1">
               <label><input type="radio" ng-model="optRadio1" name="optRadio1" value="or">{{labels.OR}}</label>
             </div>
           </div>
@@ -28,20 +29,8 @@
               <label>{{labels.CONTAINS}}</label>
               <input type="text" class="form-control" ng-model="searchText2">
             </div>
-            <div class="radio-inline col-md-1">
-              <label><input type="radio" ng-model="optRadio2" name="optRadio2" value="and">{{labels.AND}}</label>
-            </div>
-            <div class="radio-inline col-md-1">
-              <label><input type="radio" ng-model="optRadio2" name="optRadio2" value="or">{{labels.OR}}</label>
-            </div>
           </div>
 
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label>{{labels.CONTAINS}}</label>
-              <input type="text" class="form-control" ng-model="searchText3">
-            </div>
-          </div>
         </div>
 
         <div class="row col-md-2 col-md-pull-1">
@@ -60,18 +49,16 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="row">
 
-        <div class="col-md-1">
+        <div class="col-md-1 btn-filter" style="margin-right:20px;">
           <button type="button" ng-click="collapsed=!collapsed" ng-attr-class="{{filtered && 'btn btn-danger btn-circle' || 'btn btn-primary btn-circle'}}">
               <span class="glyphicon glyphicon-filter"></span>
             </button>
         </div>
 
-        <div class="col-md-offset-1 col-md-10 panel panel-default">
-
-          <a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'} " 
-          ng-click="inactive(letter) || filterByLetter(letter)" ng-repeat="letter in letters">{{letter}} </a>
-
-          <span>| <a href="#" ng-click="filterByLetter()">{{labels.ALL}}</a></span> 
+        <div class="col-md-10 panel panel-default" style="padding:5px 15px;">
+          <a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'} " ng-click="inactive(letter) || filterByLetter(letter)"
+            ng-repeat="letter in letters">{{letter}} </a>
+          <span>| <a href="#" ng-click="filterByLetter()">{{labels.ALL}}</a></span>
         </div>
 
       </div>
