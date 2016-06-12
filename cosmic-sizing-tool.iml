@@ -8,6 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="org.nanoko.playframework:play2-maven-plugin:1.2.5" level="project" />
+    <orderEntry type="library" name="play" level="project" />
   </component>
 </module>
