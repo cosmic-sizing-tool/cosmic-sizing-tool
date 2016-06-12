@@ -17,10 +17,10 @@
             </div>
 
             <div style="padding:5px 0px" class="radio-inline form-group col-md-1">
-              <label><input type="radio" ng-model="optRadio1" name="optRadio1" value="and">{{labels.AND}}</label>
+              <label><input type="radio" ng-model="optFilter" name="optFilter" value="and">{{labels.AND}}</label>
             </div>
             <div style="padding:5px 0px" class="radio-inline col-md-1">
-              <label><input type="radio" ng-model="optRadio1" name="optRadio1" value="or">{{labels.OR}}</label>
+              <label><input type="radio" ng-model="optFilter" name="optFilter" value="or">{{labels.OR}}</label>
             </div>
           </div>
 
@@ -35,7 +35,7 @@
 
         <div class="row col-md-2 col-md-pull-1">
           <div class="row">
-            <button type="button" class="btn btn-default" tabindex="-1" ng-click="clear()">{{labels.CLEAR_FILTER}}</button>
+            <button type="button" class="btn btn-default" tabindex="-1" ng-click="clearFilter()">{{labels.CLEAR_FILTER}}</button>
           </div>
           <br/>
           <div class="row">
@@ -50,15 +50,14 @@
       <div class="row">
 
         <div class="col-md-1 btn-filter" style="margin-right:20px;">
-          <button type="button" ng-click="collapsed=!collapsed" ng-attr-class="{{filtered && 'btn btn-danger btn-circle' || 'btn btn-primary btn-circle'}}">
+          <button type="button" ng-click="collapsed=!collapsed" ng-attr-class="{{activeFilter && 'btn btn-danger btn-circle' || 'btn btn-primary btn-circle'}}">
               <span class="glyphicon glyphicon-filter"></span>
             </button>
         </div>
 
-        <div class="col-md-10 panel panel-default" style="padding:5px 15px;">
-          <a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'} " ng-click="inactive(letter) || filterByLetter(letter)"
-            ng-repeat="letter in letters">{{letter}} </a>
-          <span>| <a href="#" ng-click="filterByLetter()">{{labels.ALL}}</a></span>
+        <div class="col-md-10 panel panel-default" style="padding:4px 15px;">
+          <span ng-repeat="letter in letters"><a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'} " ng-click="inactive(letter) || filterByLetter(letter)">{{letter}}</a> </span>
+          <span> | <a href="#" ng-click="filterByLetter()">{{labels.ALL}}</a></span>
         </div>
 
       </div>
@@ -73,7 +72,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="entry in filteredGlossary | orderBy: 'term' ">
+          <tr class="text-center" ng-hide="glossary.length">
+            <td colspan="2" ><span><strong>{{labels.NO_MATCH}}</strong></span></td>
+          </tr>
+          <tr ng-repeat="entry in glossary | orderBy: 'term' ">
             <td>{{entry.term}}</td>
             <td>{{entry.definition}}</td>
           </tr>

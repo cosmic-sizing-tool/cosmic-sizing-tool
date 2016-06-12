@@ -16,7 +16,8 @@ body {
   font-size: 12px;
   line-height: 1.42;
   border-radius: 15px;
-  border-color: black;
+  /*border-color: black;*/
+  border-color: #ddd;
   margin-right: 10px;
 }
 

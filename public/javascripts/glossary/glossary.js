@@ -1,6 +1,6 @@
 angular.module('glossaryModule', [])
-    .controller('glossaryCtrl', ['$scope', '$http',
-        function ($scope, $http) {
+    .controller('glossaryCtrl', ['$scope', '$http', 'filterFilter',
+        function ($scope, $http, filterFilter) {
             'use strict';
 
             $scope.letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
@@ -8,22 +8,30 @@ angular.module('glossaryModule', [])
 
             $scope.activeLetters = [];
 
-            $scope.loadGlossary = function (lang) {
-                var glossaryfile = "assets/json/glossary_" + lang + ".json";
-                $http.get(glossaryfile).then(function (success) {
-                    $scope.filteredGlossary = $scope.glossary = success.data;
-                    $scope.getActiveLetters($scope.filteredGlossary);
-                });
-            };
+            $scope.optFilter = "and";
 
-            $scope.loadGlossary("fr");
+            var initGlossaryToDisplay = function () {
+                $scope.glossary = $scope.activeFilter ? $scope.filteredGlossary : $scope.loadedGlossary;
+                $scope.getActiveLetters();
+            };
 
             var notExist = function (letter) {
                 return $scope.activeLetters.indexOf(letter) == -1;
             };
 
-            $scope.getActiveLetters = function (glossary) {
-                angular.forEach(glossary, function (entry) {
+            $scope.loadGlossary = function (lang) {
+                var glossaryfile = "assets/json/glossary_" + lang + ".json";
+                $http.get(glossaryfile).then(function (success) {
+                    $scope.loadedGlossary = success.data;
+                    initGlossaryToDisplay();
+                });
+            };
+
+            $scope.loadGlossary("en");
+
+            $scope.getActiveLetters = function () {
+                $scope.activeLetters = [];
+                angular.forEach($scope.glossary, function (entry) {
                     var firstLetter = entry.term[0].toUpperCase();
                     if (notExist(firstLetter)) {
                         $scope.activeLetters.push(firstLetter);
@@ -37,6 +45,8 @@ angular.module('glossaryModule', [])
 
             $scope.filterByLetter = function (letter) {
                 var filteredGlossary = [];
+                initGlossaryToDisplay();
+
                 if (letter) {
                     angular.forEach($scope.glossary, function (entry) {
                         if (angular.equals(entry.term[0].toUpperCase(), letter)) {
@@ -44,29 +54,51 @@ angular.module('glossaryModule', [])
                         }
                     });
 
-                    $scope.filteredGlossary = filteredGlossary;
+                    $scope.glossary = filteredGlossary;
 
                 } else {
-                    $scope.filteredGlossary = $scope.glossary;
+                    initGlossaryToDisplay();
                 }
             };
 
-            $scope.searchText1 = null;
-            $scope.searchText2 = null;
-            $scope.optRadio1 = null;
-
             $scope.filter = function () {
-                $scope.filtered = true;
+                $scope.activeFilter = $scope.searchText1 || $scope.searchText2;
+
+                if ($scope.searchText1 && $scope.searchText2) {
+                    if ($scope.optFilter == "and") {
+                        $scope.filteredGlossary = filterFilter(filterFilter($scope.loadedGlossary, $scope.searchText1), $scope.searchText2);
+                    } else {
+                        var firstResults = filterFilter($scope.loadedGlossary, $scope.searchText1);
+                        var secondtResults = filterFilter($scope.loadedGlossary, $scope.searchText2);
+
+                        angular.forEach(firstResults, function(result) {
+                            var index = secondtResults.indexOf(result);
+                            if (index >= 0) {
+                                secondtResults.splice(index,1);
+                            }
+                        });
+                        $scope.filteredGlossary = firstResults.concat(secondtResults);
+                    }
+
+                    initGlossaryToDisplay();
+
+                } else if ($scope.searchText1 || $scope.searchText2) {
+                    var searchText = $scope.searchText1 ? $scope.searchText1 : $scope.searchText2;
+                    $scope.filteredGlossary = filterFilter($scope.loadedGlossary, searchText);
+                    initGlossaryToDisplay();
+                }
             };
 
-            $scope.clear = function () {
-                $scope.filtered = false;
+            $scope.clearFilter = function () {
+                $scope.filteredGlossary = null;
+                $scope.activeFilter = false;
                 $scope.searchText1 = null;
                 $scope.searchText2 = null;
-                $scope.optRadio1 = null;
+                $scope.optFilter = "and";
+                initGlossaryToDisplay();
             };
 
-
+            // Chargement des labels    
             $http.get('assets/json/ressources_en.json').then(function (ressources) {
                 $scope.labels = ressources.data;
             });
