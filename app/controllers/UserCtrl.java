@@ -188,7 +188,7 @@ public class UserCtrl extends Controller {
     	return ok(reset_pwd.render(validEmail));
     }
 
-    public Result resetPassword(String email, String recaptcha) {
+    public CompletionStage<Result> resetPassword(String email, String recaptcha) {
 		int validEmail = -1;	// No email specified (do not display message to user)
 
 		if (email != null) {
