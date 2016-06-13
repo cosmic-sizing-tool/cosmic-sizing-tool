@@ -177,7 +177,7 @@ public class UserCtrl extends Controller {
 				String emailContent = "Hello %NAME%,\n\nWe have received a password recovery request for this email address.\n\nYour password is : %PASSWORD%\n\nIf you did not request your password, please ignore this message.\n\nThank you,\nThe COSMIC-sizing-tool team.\n\nN.B.  This message was generated automatically. Please do not reply to this address.";
 				emailContent = emailContent.replace("%NAME%", user.name);
 				emailContent = emailContent.replace("%PASSWORD%", crypto.decryptAES(user.password));
-				SendEmail sendEmail = new SendEmail("cosmic@do-not-respond.com", email, "Password recovery", emailContent);
+				SendEmail sendEmail = new SendEmail(Play.application().configuration().getString("smtp.sender"), email, "Password recovery", emailContent);
 				sendEmail.send();
 
 				validEmail = 1;		// Email's valid (display "Email sent" message to user)

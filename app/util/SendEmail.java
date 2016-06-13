@@ -1,11 +1,12 @@
 package util;
 
-//import play.libs.Mail.*;
 import org.apache.commons.mail.*;
+import play.Play;
+import play.Configuration;
+import javax.inject.Inject;
 
 public class SendEmail {
 
-    //final private String sender = "cosmic@do-not-respond.com";
     private String  from,
                     to,
                     subject,
@@ -22,8 +23,8 @@ public class SendEmail {
     public boolean send() {
         Email email = new SimpleEmail();
         try {
-            email.setHostName("mail.uqam.ca");
-            email.setSmtpPort(25);
+            email.setHostName(Play.application().configuration().getString("smtp.host"));
+            email.setSmtpPort(Integer.parseInt(Play.application().configuration().getString("smtp.port")));
 
             email.setFrom(from);
             email.addTo(to);
