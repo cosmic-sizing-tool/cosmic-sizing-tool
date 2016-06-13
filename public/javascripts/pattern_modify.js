@@ -93,6 +93,7 @@ function displayPatternTable(pattern) {
   var table = $("#patternTable tbody").html("");
   for (var i = 0; i < fps.length; i++) {
     var fp = fps[i];
+    var patternId = fp.Pattern_ID;
     var dgdms = fp.Pattern_DGDM;
     var fpSize = 0;
     for (var j = 0; j < dgdms.length; j++) {
@@ -126,18 +127,32 @@ function displayPatternTable(pattern) {
     }
     var row = $("<tr/>").append(
       $("<td/>"),
-      $("<td/>").append(generateNewDataGroupButton()),
+      $("<td/>").append($(generateNewDataGroupButton()).attr('data-id', patternId)),
       $("<td/>"),
       $("<td/>")
     ).attr("class", "ignore");
     if (i % 2 === 0)
       row.addClass("even");
     table.append(row);
+    bindNewDataGroupButton();
   }
 }
 
 function generateNewDataGroupButton() {
-  return "<button id='' class='btn btn-primary'>Add data group</button>";
+  return "<button class='btn btn-primary addDataGroup'>Add data group</button>";
+}
+
+var test;
+
+function bindNewDataGroupButton() {
+  $(".addDataGroup").on("click", function(e) {
+    var patternId = $(e.target).attr('data-id');
+    var pattern = collectPattern();
+    var fps = pattern.Pattern_FP;
+    for( var i = 0 ; i < fps.length ; i++){
+      var fp = fps[i];
+    }
+  });
 }
 
 function bindNewRowButton() {
@@ -231,7 +246,7 @@ function collectPattern() {
   var rows = $("#patternTable tbody tr");
   for (var i = 0; i < rows.length; i++) {
     var row = $(rows[i]);
-    if( row.hasClass("ignore") ) continue;
+    if (row.hasClass("ignore")) continue;
     var input1 = row.find("td:eq(0) input");
     if (input1.length > 0) {
       if (i > 0)
@@ -289,7 +304,7 @@ function validatePattern(updatedPattern) {
   for (var i = 0; i < fps.length; i++) {
     var fp = fps[i];
     var fpName = fp.Pattern_FP_ID;
-    if( fpNames.indexOf(fpName) > -1){
+    if (fpNames.indexOf(fpName) > -1) {
       alert("All functional processes must be unique.");
       isValid = false;
       break;

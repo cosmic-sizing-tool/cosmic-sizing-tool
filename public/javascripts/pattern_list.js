@@ -1,29 +1,29 @@
 /* Test pattern, until we can work with a pattern coming from database */
-function Pattern (id, name, desc, user, isValid, patternFps, date) {
-    this.id = id;
-    this.name = name;
-    this.desc = desc;
-    this.user = user;
-    this.isValid = isValid;
-    this.patternFps = patternFps;
-    this.date = date;
+function Pattern(id, name, desc, user, isValid, patternFps, date) {
+  this.id = id;
+  this.name = name;
+  this.desc = desc;
+  this.user = user;
+  this.isValid = isValid;
+  this.patternFps = patternFps;
+  this.date = date;
 }
 
-function PatternFp(id, patternId, name, dataGroups){
-    this.id = id;
-    this.patternId = patternId;
-    this.name = name;
-    this.dataGroups = dataGroups;
+function PatternFp(id, patternId, name, dataGroups) {
+  this.id = id;
+  this.patternId = patternId;
+  this.name = name;
+  this.dataGroups = dataGroups;
 }
 
-function PatternDg(id, fpId, name, dmE, dmX, dmR, dmW){
-    this.id = id;
-    this.fpId = fpId;
-    this.name = name;
-    this.dmE = dmE;
-    this.dmX = dmX;
-    this.dmR = dmR;
-    this.dmW = dmW;
+function PatternDg(id, fpId, name, dmE, dmX, dmR, dmW) {
+  this.id = id;
+  this.fpId = fpId;
+  this.name = name;
+  this.dmE = dmE;
+  this.dmX = dmX;
+  this.dmR = dmR;
+  this.dmW = dmW;
 }
 
 var dataGroup1 = new PatternDg("DataGroup1", null, null, 1, 1, 1, 1);
@@ -46,138 +46,78 @@ patterns.push(new Pattern(5, "CRUDL-4", "Crud+List w/ 4 variables", "User4", 0, 
 patterns.push(new Pattern(6, "CRUDL-5", "Crud+List w/ 5 variables", "STrudel", 0, [functionalProcess1, functionalProcess2, functionalProcess3], "2016-06-02"));
 patterns.push(new Pattern(7, "CRUDL-4", "Crud+List w/ 4 variables", "User2", 1, [functionalProcess1, functionalProcess2, functionalProcess3], "2016-06-01"));
 
-function initPage(){
-    $('#btnNewPattern').click(function() {
-        window.location = "modify";
-    });
+function initPage() {
+  $('#btnNewPattern').click(function() {
+    window.location = "modify";
+  });
 
-    $('#btnDeleteSelected').click(function() {
-        deleteSelected();
-    });
+  $('#btnDeleteSelected').click(function() {
+    deleteSelected();
+  });
 
-    initTable();
+  initTable();
 }
 
-function initTable(){
-    createTable();
+function initTable() {
+  createTable();
 
-    $("#patternTable>tbody").selectable({
-        cancel: 'a',
-        selecting: function(e, ui) { // on select
-            var curr = $(ui.selecting.tagName, e.target).index(ui.selecting); // get selecting item index
-            if(e.shiftKey && prev > -1) { // if shift key was pressed and there is previous - select them all
-                $(ui.selecting.tagName, e.target).slice(Math.min(prev, curr), 1 + Math.max(prev, curr)).addClass('ui-selected');
-                prev = -1; // and reset prev
-            } else {
-                prev = curr; // othervise just save prev
-            }
-        }
-    });
-}
-
-function createTable(){
-    var trHtml;
-    var sizeFp;
-    for(var i=0; i< patterns.length; i++){
-        var pattern = patterns[i];
-        sizeFp = 0;
-
-        trHtml = "<tr class='" + (i%2 === 0 ? "" : "alt ") + (pattern.isValid ? "" : "notValid") +"'>";
-        trHtml += "<td style='display:none;'>" + pattern.id + "</td>";
-        trHtml += "<td><a href='modify?patternId=" + pattern.id + "'>" + pattern.name + "</a></td>";
-        trHtml += "<td>" + pattern.desc + "</td>";
-        trHtml += "<td>" + pattern.patternFps.length + "</td>";
-
-
-        for (var ii = 0; ii < pattern.patternFps.length; ii++) {
-            sizeFp += getFpSize(pattern.patternFps[ii].dataGroups);
-        }
-
-        trHtml += "<td>" + sizeFp + "</td>";
-        trHtml += "<td>" + pattern.date + "</td>";
-        trHtml += "</tr>";
-        $("#patternTable tbody").append(trHtml);
+  $("#patternTable>tbody").selectable({
+    cancel: 'a',
+    selecting: function(e, ui) { // on select
+      var curr = $(ui.selecting.tagName, e.target).index(ui.selecting); // get selecting item index
+      if (e.shiftKey && prev > -1) { // if shift key was pressed and there is previous - select them all
+        $(ui.selecting.tagName, e.target).slice(Math.min(prev, curr), 1 + Math.max(prev, curr)).addClass('ui-selected');
+        prev = -1; // and reset prev
+      } else {
+        prev = curr; // othervise just save prev
+      }
     }
+  });
 }
 
-function getFpSize(dataGroups){
-    var size = 0;
-    for (var i = 0; i < dataGroups.length; i++) {
-        var dataGroup = dataGroups[i];
-        if (dataGroup.dmE) size++;
-        if (dataGroup.dmX) size++;
-        if (dataGroup.dmR) size++;
-        if (dataGroup.dmW) size++;
+function createTable() {
+  var trHtml;
+  var sizeFp;
+  for (var i = 0; i < patterns.length; i++) {
+    var pattern = patterns[i];
+    sizeFp = 0;
+
+    trHtml = "<tr class='" + (i % 2 === 0 ? "" : "alt ") + (pattern.isValid ? "" : "notValid") + "'>";
+    trHtml += "<td style='display:none;'>" + pattern.id + "</td>";
+    trHtml += "<td><a href='modify?patternId=" + pattern.id + "'>" + pattern.name + "</a></td>";
+    trHtml += "<td>" + pattern.desc + "</td>";
+    trHtml += "<td>" + pattern.patternFps.length + "</td>";
+
+
+    for (var ii = 0; ii < pattern.patternFps.length; ii++) {
+      sizeFp += getFpSize(pattern.patternFps[ii].dataGroups);
     }
 
-    return size;
+    trHtml += "<td>" + sizeFp + "</td>";
+    trHtml += "<td>" + pattern.date + "</td>";
+    trHtml += "</tr>";
+    $("#patternTable tbody").append(trHtml);
+  }
 }
 
-function deleteSelected(){
-    var patternIds = []
-    $(".ui-selected").each(function(index, elem) {
-        patternIds.push(elem.childNodes[0].textContent);
-    });
+function getFpSize(dataGroups) {
+  var size = 0;
+  for (var i = 0; i < dataGroups.length; i++) {
+    var dataGroup = dataGroups[i];
+    if (dataGroup.dmE) size++;
+    if (dataGroup.dmX) size++;
+    if (dataGroup.dmR) size++;
+    if (dataGroup.dmW) size++;
+  }
 
-    // Call delete avec le tableau des ID
+  return size;
 }
 
-var testPattern = {
-  Pattern_Name: "CRUDL-3",
-  Pattern_Desc: "Crud+List w/ 3 variables",
-  User_ID: "STrudel",
-  isAValidPattern: true,
-  dateCreated: new Date(),
+function deleteSelected() {
+  var patternIds = []
+  $(".ui-selected").each(function(index, elem) {
+    patternIds.push(elem.childNodes[0].textContent);
+  });
 
-  Pattern_FP: [{
-    Pattern_ID: "111",
-    Pattern_FP_ID: "Create/modify a <DataGroup1>",
-    Pattern_DGDM: [{
-      Pattern_FP_ID: "1111",
-      Pattern_DG: "<DataGroup1>",
-      Pattern_DM_E: 1,
-      Pattern_DM_X: 1,
-      Pattern_DM_R: 1,
-      Pattern_DM_W: 1,
-    }, {
-      Pattern_FP_ID: "1222",
-      Pattern_DG: "<DataGroup2>",
-      Pattern_DM_E: 0,
-      Pattern_DM_X: 0,
-      Pattern_DM_R: 1,
-      Pattern_DM_W: 1,
-    }, {
-      Pattern_FP_ID: "1333",
-      Pattern_DG: "<DataGroup3>",
-      Pattern_DM_E: 0,
-      Pattern_DM_X: 0,
-      Pattern_DM_R: 1,
-      Pattern_DM_W: 1,
-    }]
-  }, {
-    Pattern_ID: "222",
-    Pattern_FP_ID: "Show details of <DataGroup1>",
-    Pattern_DGDM: [{
-      Pattern_FP_ID: "2111",
-      Pattern_DG: "<DataGroup1>",
-      Pattern_DM_E: 1,
-      Pattern_DM_X: 1,
-      Pattern_DM_R: 1,
-      Pattern_DM_W: 0,
-    }, {
-      Pattern_FP_ID: "2222",
-      Pattern_DG: "<DataGroup2>",
-      Pattern_DM_E: 0,
-      Pattern_DM_X: 1,
-      Pattern_DM_R: 1,
-      Pattern_DM_W: 0,
-    }, {
-      Pattern_FP_ID: "2333",
-      Pattern_DG: "<DataGroup3>",
-      Pattern_DM_E: 0,
-      Pattern_DM_X: 1,
-      Pattern_DM_R: 1,
-      Pattern_DM_W: 0,
-    }]
-  }],
+  // Call delete avec le tableau des ID
 }
