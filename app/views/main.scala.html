@@ -63,13 +63,18 @@
                                 <img style="float:left; margin-top: 30px; cursor: pointer; width: 50x; height:70px " src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
                             </div>
                             <ul class="dropdown-menu" style="float: right; opacity:0.8; margin-top: 30px ">
-                                <li><a href="@routes.Glossary.glossary()"><h5>{{'MAIN.COSMIC_GLOSSARY' | translate }}</h5></a></li>
+                                <li><a href="#">{{'MAIN.ABOUT_THIS_TOOL' | translate }}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="@routes.Measures.add()"><h5>{{'MAIN.FIND_A_MEASURER' | translate }}</h5></a></li>
+                                <li><a target ="_blank" href="http://cosmic-sizing.org">{{'MAIN.GO_TO_COSMIC_SITE' | translate }}</a></li>
                                 <li class="divider"></li>
-                                <li><a target ="_blank" href="http://cosmic-sizing.org"><h5>{{'MAIN.GO_TO_COSMIC_SITE' | translate }}</h5></a></li>
+                                <li><a href="@routes.Glossary.glossary()">{{'MAIN.COSMIC_GLOSSARY' | translate }}</a></li>
                                 <li class="divider"></li>
-                                <li class><a href="#"><h5>{{'MAIN.ABOUT_THIS_TOOL' | translate }}</h5></a></li>
+                                <li><a href="@routes.Measures.add()">{{'MAIN.FIND_A_MEASURER' | translate }}</a></li>
+                                <li><a href="@routes.Application.index()">Home</a></li>
+                                <li><a href="@routes.Application.team()">Team</a></li>
+                                <li><a href="@routes.Application.patternList()">Pattern List</a></li>
+                                <li><a href="@routes.Application.counter()">Counter</a></li>
+                                <li><a href="@routes.UserCtrl.show()">User Profil</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -149,4 +154,3 @@
     });
   </script>
 </body>
-

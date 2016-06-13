@@ -2,72 +2,53 @@ package models;
 
 import com.avaje.ebean.Model;
 
-import java.util.Date;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+import javax.persistence.*;
 
+@Entity
 public class FunctionalProcess extends Model {
-    Date timeStamp;
-    UUID uniqueId;
-    String documentId;
-    String sectionId;
-    int order;
-    enum QualityRating { NONE, A, B, C, D, E };
-    QualityRating qualityRating;
-    String description;
-    public Set<DataGroup> dataGroups;
+    @Id
+    private Long id;
+    private String name;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<DataGroup> dataGroupSet = new HashSet<>();
 
-    public FunctionalProcess(String documentId, String sectionId, String description) {
-        this.timeStamp = new Date();
-        this.uniqueId = UUID.randomUUID();
-        this.documentId = documentId;
-        this.sectionId = sectionId;
-        this.description = description;
+    public FunctionalProcess(String name) {
+        this.name = name;
     }
 
-    public Date getTimeStamp() {
-        return timeStamp;
+    public Set<DataGroup> getDataGroupSet() {
+        return dataGroupSet;
     }
 
-
-    public String getDocumentId() {
-        return documentId;
+    public void setDataGroups(Set<DataGroup> dataGroupSet) {
+        this.dataGroupSet = dataGroupSet;
     }
 
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
+    public Long getId() {
+        return id;
     }
 
-    public String getSectionId() {
-        return sectionId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSectionId(String sectionId) {
-        this.sectionId = sectionId;
+    public String getName() {
+        return name;
     }
 
-    public QualityRating getQualityRating() {
-        return qualityRating;
+    public void setName(String name) {
+        this.name = name;
     }
-
-
-    public void setQualityRating(int qualityRating) {
-
-       //this.qualityRating = qualityRating;
+    
+    
+    
+    public int getCFPSize() {
+        int total = 0;
+        for(DataGroup dataGroup : dataGroupSet) {
+            total += dataGroup.getCFPSize();
+        }
+        return total;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-
-    @Override
-    public int hashCode() {
-        return uniqueId.hashCode();
-    }
-
 }
