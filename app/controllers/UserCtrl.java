@@ -158,17 +158,18 @@ public class UserCtrl extends Controller {
     /*
     contact google recaptcha endpoint to test the recaptcha response key
     */
-    private CompletionStage<Result> valider(String feedUrl, String secretKey, String recaptcha){
-    	return WS.url(feedUrl).setQueryParameter("secret", secretKey).setQueryParameter("response", recaptcha).post("").thenApply(response -> continuer(response)
+    private CompletionStage<Result> valider(String feedUrl, String secretKey, String recaptcha, String email){
+    	return WS.url(feedUrl).setQueryParameter("secret", secretKey).setQueryParameter("response", recaptcha).post("").thenApply(response -> continuer(response, email)
     );
     }
     
     /*
     Check if the recaptcha is ok then send the email
     */
-    private  Result continuer(WSResponse response){
+    private  Result continuer(WSResponse response, String email){
 	int validEmail = -1;	// No email specified (do not display message to user)
-    	if(response.asJson().findPath("success").asText().equals("true")){
+        //check the success state of google response and check if the email is not null
+    	if(response.asJson().findPath("success").asText().equals("true") && email != null){
             CosmicUser user = findUser(email);
 
 			if (user != null) {
@@ -189,16 +190,9 @@ public class UserCtrl extends Controller {
     }
 
     public CompletionStage<Result> resetPassword(String email, String recaptcha) {
-		int validEmail = -1;	// No email specified (do not display message to user)
-
-		if (email != null) {
-                        this.email = email;
-                        String feedUrl = "https://www.google.com/recaptcha/api/siteverify";
-                        String secretKey = "6LeEWyITAAAAANZa927LsjU9xmbvfIQi9x9cjr_y";
-                        return(valider(feedUrl, secretKey, recaptcha));
-		}
-
-        return ok(reset_pwd.render(validEmail));
+        String feedUrl = "https://www.google.com/recaptcha/api/siteverify";
+        String secretKey = "6LeEWyITAAAAANZa927LsjU9xmbvfIQi9x9cjr_y";
+        return(valider(feedUrl, secretKey, recaptcha, email));
     }
 
 	public Result updatePassword() {
