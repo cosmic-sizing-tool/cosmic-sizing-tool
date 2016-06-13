@@ -12,7 +12,7 @@
    {
       "id":"3",
       "term":"Base functional component (BFC)",
-      "definition":"<div>An elementary unit of the Functional User Requirements defined by an FSM method for measurement purposes <div>NOTE: The COSMIC method defines a data movement type as a BFC.</div>"
+      "definition":"<div>An elementary unit of the Functional User Requirements defined by an FSM method for measurement purposes</div> <br><div>NOTE: The COSMIC method defines a data movement type as a BFC.</div>"
    },
    {
       "id":"4",

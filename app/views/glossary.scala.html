@@ -10,10 +10,12 @@
 
   <div class="container">
 
+    <div>
+      <select name="languages" ng-model="selected_language" ng-options="o.id as o.name for o in languages" ng-change="changeLanguage(selected_language)"></select>
+    </div>
+
     <div ng-show="collapsed" class="well text-center col-md-10 col-md-offset-1">
-
       <form class="form-inline" role="form">
-
         <div class="col-md-9 col-md-offset-1">
 
           <div class="row">
@@ -36,23 +38,22 @@
               <input type="text" class="form-control" ng-model="searchText2">
             </div>
           </div>
-
         </div>
 
-          <div class="col-md-2 col-md-pull-1">
-            <div class="row">
-              <button type="button" class="btn btn-default" tabindex="-1" ng-click="clearFilter()">{{labels.GLOSSARY.CLEAR_FILTER}}</button>
-            </div> <br>
-            <div class="row">
-              <button type="button" class="btn btn-success" ng-click="filter()">{{labels.GLOSSARY.FILTER}}</button>
-            </div>
+        <div class="col-md-2 col-md-pull-1">
+          <div class="row">
+            <button type="button" class="btn btn-default" tabindex="-1" ng-click="clearFilter()">{{labels.GLOSSARY.CLEAR_FILTER}}</button>
+          </div> <br>
+          <div class="row">
+            <button type="button" class="btn btn-success" ng-click="filter()">{{labels.GLOSSARY.FILTER}}</button>
           </div>
+        </div>
 
       </form>
     </div>
 
     <div class="col-md-6 col-md-offset-3">
-      <div class="row">
+      <div class="row ">
 
         <div class="col-md-1 btn-filter" style="margin-right:20px;">
           <button type="button" ng-click="collapsed=!collapsed" ng-attr-class="{{activeFilter && 'btn btn-danger btn-circle' || 'btn btn-primary btn-circle'}}">
@@ -60,13 +61,14 @@
             </button>
         </div>
 
-        <div class="col-md-10 panel panel-default" style="padding:4px 15px;">
+        <div class="col-md-10 text-center panel panel-default" style="padding:4px;">
           <span ng-repeat="letter in letters"><a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'}" ng-click="inactive(letter) || filterByLetter(letter)">{{letter}}</a> </span>
-          <span> | <a href="#" ng-style="!glossary.length && {'text-decoration':'none', 'color':'black', 'cursor':'default'}"ng-click="filterByLetter()">{{labels.GLOSSARY.ALL | uppercase}}</a></span>
+          <span> | <a href="#" ng-style="!glossary.length && {'text-decoration':'none', 'color':'black', 'cursor':'default'}" ng-click="filterByLetter()">{{labels.GLOSSARY.ALL | uppercase}}</a></span>
         </div>
 
       </div>
     </div>
+
 
     <div class="table-responsive col-md-12 container">
       <table class="table table-striped table-bordered well">

@@ -71,10 +71,10 @@ angular.module('glossaryModule', ['ngSanitize'])
                         var firstResults = filterFilter($scope.loadedGlossary, $scope.searchText1);
                         var secondtResults = filterFilter($scope.loadedGlossary, $scope.searchText2);
 
-                        angular.forEach(firstResults, function(result) {
+                        angular.forEach(firstResults, function (result) {
                             var index = secondtResults.indexOf(result);
                             if (index >= 0) {
-                                secondtResults.splice(index,1);
+                                secondtResults.splice(index, 1);
                             }
                         });
                         $scope.filteredGlossary = firstResults.concat(secondtResults);
@@ -98,10 +98,27 @@ angular.module('glossaryModule', ['ngSanitize'])
                 initGlossaryToDisplay();
             };
 
-            // Chargement des labels    
-            $http.get('assets/json/glossary/glossaryLabels_en.json').then(function (ressources) {
-                $scope.labels = ressources.data;
-            });
 
+            // Solution temporaire pour changer la langue du glossaire et labels
+            $scope.loadLabels = function (lang) {
+                var labelsFile = 'assets/json/glossary/glossaryLabels_' + lang + '.json';
+                $http.get(labelsFile).then(function (ressources) {
+                    $scope.labels = ressources.data;
+                });
+            };
 
+            $scope.loadLabels("en");
+
+            $scope.changeLanguage = function (lang) {
+                $scope.loadLabels(lang);
+                $scope.loadGlossary(lang);
+            };
+
+            $scope.languages = [
+                { id: "en", name: 'English' },
+                { id: "fr", name: 'Francais' }
+            ];
+
+            $scope.selected_language = 'en';
+            //
         }]);
