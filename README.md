@@ -1,4 +1,4 @@
-# cosmic-sizing-tool
+﻿# cosmic-sizing-tool
 
 # OVERVIEW #
 
@@ -25,9 +25,16 @@ This README documents the steps necessary to get your application up and running
 
 The Play framework is needed in order to run this program.
 
-#### Configuration ####
+#### Database configuration ####
 
-Write config info here.
+* Install PostgreSQL on your machine
+1. Follow instructions to install a Postgres Server on your machine
+2. Run postgres "createdb" util and Create Database "default" using your postgres user
+using ``createdb -U postgres default`` or ``CREATE DATABASE "default";`` inside the postgres console
+3. Create user "cosmic" with password "cosmic123" as per application config;
+run ``CREATE USER cosmic PASSWORD 'cosmic123';`` inside the database console
+4. Your server should now be running and deploying in development with "Activator run" should connect to local DB
+running at "postgres://localhost/default"
 
 #### Dependencies ####
 
@@ -84,21 +91,11 @@ Write config info here.
  .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
  ```
 
-#### Database configuration ####
-
-Manual configuration is not needed. An sql script will be executed to create the missing tables when the server is run.
-
-You may get the message `Database 'default' is in an inconsistent state!`. This is because Sqlite3 doesn't seem to work with foreign keys. Just click on *Mark it resolved*.
-
-#### How to run tests ####
-
-Write content here.
-
 #### Deployment instructions ###
 
-To build and run the application in the Play server, execute `make server`. It may take some time to download some missing packages the first time if you have installed *activator-minimal*.
+To build and run the application in the Play server, execute `activator run`. It may take some time to download some missing packages the first time if you have installed *activator-minimal*.
 
-Once the server is running you can connect to the application's webpage by entering ``http://127.0.0.1:9000`` in your browser's address bar. The first time you access the application, it may take a while because of the compilation process.
+Once the server is running you can connect to the application's webpage by entering ``http://localhost:9000`` in your browser's address bar. The first time you access the application, it may take a while because of the compilation process.
 
 Use ``Ctrl + D`` to stop the server and go back to the console.
 
