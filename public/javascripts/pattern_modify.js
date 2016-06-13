@@ -1,15 +1,3 @@
-/* 
-Notes for back-end
-
-  1. Du côté back-end, ne pas sauvegarder le nom d'utilisateur,
-    car malgré le 'disabled' sur l'input, ça peut être manipulé 
-    via les outils de développeurs
-
-  2. Il faut trouver un moyen de se protéger contre les utilisateurs
-    malicieux qui pourraient tenter de truquer le pattern ID afin de
-    modifier ou supprimer des patterns qui ne lui appartiennent pas.
-*/
-
 $(window).resize(windowResize);
 
 function windowResize() {
@@ -72,7 +60,7 @@ function displayPatternSizeW(size) {
 }
 
 function displayPatternDateCreated(date) {
-  $("#patternDateCreated").text(formatDate(date));
+  $("#patternDateCreated").text(date);
 }
 
 
@@ -145,13 +133,19 @@ function generateNewDataGroupButton() {
 var test;
 
 function bindNewDataGroupButton() {
-  $(".addDataGroup").on("click", function(e) {
+  $(".addDataGroup").unbind().on("click", function(e) {
     var patternId = $(e.target).attr('data-id');
     var pattern = collectPattern();
     var fps = pattern.Pattern_FP;
     for( var i = 0 ; i < fps.length ; i++){
       var fp = fps[i];
+      if( fp.Pattern_ID === patternId ){
+        fp.Pattern_DGDM.push({
+          Pattern_FP_ID: fp.Pattern_FP_ID,
+        });
+      }
     }
+    displayPattern(pattern);
   });
 }
 
@@ -347,7 +341,7 @@ var testPattern = {
   Pattern_Desc: "Crud+List w/ 3 variables",
   User_ID: "STrudel",
   isAValidPattern: true,
-  dateCreated: new Date(),
+  dateCreated: "2016-06-09",
 
   Pattern_FP: [{
     Pattern_ID: "111",
