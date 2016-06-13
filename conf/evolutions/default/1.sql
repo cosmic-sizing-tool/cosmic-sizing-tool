@@ -34,13 +34,12 @@ create table cosmic_user (
 
 create table data_group (
   id                            bigserial not null,
-  name                          varchar(255) not null,
-  comment                       varchar(255) not null,
-  process                       bigint not null,
-  entry                         integer not null,
-  exit                          integer not null,
-  read                          integer not null,
-  write                         integer not null,
+  functional_process_id         bigint not null,
+  name                          varchar(255),
+  entry                         integer,
+  exit                          integer,
+  read                          integer,
+  write                         integer,
   constraint pk_data_group primary key (id)
 );
 
@@ -53,6 +52,13 @@ create table email (
   user_id                       bigint,
   constraint uq_email_addresse unique (addresse),
   constraint pk_email primary key (id)
+);
+
+create table functional_process (
+  id                            bigserial not null,
+  pattern_id                    bigint not null,
+  name                          varchar(255),
+  constraint pk_functional_process primary key (id)
 );
 
 create table organisation (
@@ -87,25 +93,12 @@ create table organization (
 
 create table pattern (
   id                            bigserial not null,
-  name                          varchar(20) not null,
-  description_courte            varchar(30) not null,
-  description_longue            varchar(250) not null,
+  name                          varchar(255),
+  description                   varchar(255),
+  date_last_modified            timestamp,
+  date_created                  timestamp,
+  is_valid                      boolean,
   constraint pk_pattern primary key (id)
-);
-
-create table pattern_data_group (
-  id                            bigserial not null,
-  name                          varchar(50) not null,
-  mouvement                     varchar(4) not null,
-  process                       bigint not null,
-  constraint pk_pattern_data_group primary key (id)
-);
-
-create table pattern_process (
-  id                            bigserial not null,
-  name                          varchar(50) not null,
-  pattern                       bigint not null,
-  constraint pk_pattern_process primary key (id)
 );
 
 create table process (
@@ -243,8 +236,14 @@ create table timer (
 alter table certification add constraint fk_certification_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_certification_user_id on certification (user_id);
 
+alter table data_group add constraint fk_data_group_functional_process_id foreign key (functional_process_id) references functional_process (id) on delete restrict on update restrict;
+create index ix_data_group_functional_process_id on data_group (functional_process_id);
+
 alter table email add constraint fk_email_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_email_user_id on email (user_id);
+
+alter table functional_process add constraint fk_functional_process_pattern_id foreign key (pattern_id) references pattern (id) on delete restrict on update restrict;
+create index ix_functional_process_pattern_id on functional_process (pattern_id);
 
 alter table organisation_cosmic_user add constraint fk_organisation_cosmic_user_organisation foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
 create index ix_organisation_cosmic_user_organisation on organisation_cosmic_user (organisation_id);
@@ -258,8 +257,14 @@ create index ix_organisation_cosmic_user_cosmic_user on organisation_cosmic_user
 alter table if exists certification drop constraint if exists fk_certification_user_id;
 drop index if exists ix_certification_user_id;
 
+alter table if exists data_group drop constraint if exists fk_data_group_functional_process_id;
+drop index if exists ix_data_group_functional_process_id;
+
 alter table if exists email drop constraint if exists fk_email_user_id;
 drop index if exists ix_email_user_id;
+
+alter table if exists functional_process drop constraint if exists fk_functional_process_pattern_id;
+drop index if exists ix_functional_process_pattern_id;
 
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_organisation;
 drop index if exists ix_organisation_cosmic_user_organisation;
@@ -275,6 +280,8 @@ drop table if exists data_group cascade;
 
 drop table if exists email cascade;
 
+drop table if exists functional_process cascade;
+
 drop table if exists organisation cascade;
 
 drop table if exists organisation_cosmic_user cascade;
@@ -282,10 +289,6 @@ drop table if exists organisation_cosmic_user cascade;
 drop table if exists organization cascade;
 
 drop table if exists pattern cascade;
-
-drop table if exists pattern_data_group cascade;
-
-drop table if exists pattern_process cascade;
 
 drop table if exists process cascade;
 

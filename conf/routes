@@ -57,8 +57,9 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Gestion des patrons
 # Appel par le menu de navigation du site ##################################
-GET     /pattern                                    controllers.Pattern.index()
-GET    /pattern/:id_pattern                        controllers.Pattern.modification(id_pattern: Long)
+# GET     /pattern                                    controllers.Pattern.index()
+# GET    /pattern/:id_pattern                        controllers.Pattern.modification(id_pattern: Long)
+
 ############################################################################
 # API de l'interface REST (appels AJAX)
 POST    /api/pattern/new               controllers.Pattern.create()
@@ -70,7 +71,6 @@ PUT     /api/pattern/:id_pattern       controllers.Pattern.update(id_pattern: Lo
 
 # Counter page
 GET     /counter                    controllers.Application.counter()
-
 
 
 #Project page
@@ -85,10 +85,14 @@ GET     /measures/add		        controllers.Measures.add()
 POST    /measures/savetemp	        controllers.Measures.postSaveTemp()
 
 
-
 # Emails
 GET     /emails                     controllers.EmailCtrl.emails()
 POST    /email                      controllers.EmailCtrl.addEmail()
 GET     /emails/test                controllers.EmailCtrl.test()
 GET     /email/current/emails       controllers.EmailCtrl.getUserEmails()
 GET     /email/delete/:id           controllers.EmailCtrl.deleteEmail(id: Long)
+
+
+# Patterns pages
+GET     /pattern/list                     controllers.Application.patternList()
+GET     /pattern/modify                   controllers.Application.patternModify()

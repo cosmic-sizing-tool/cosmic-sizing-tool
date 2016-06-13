@@ -76,8 +76,6 @@ public class Process extends Model implements JsonSerializable{
 		json.add("delete", fDelete);
 		json.add("unknown", fUnknown);
 		json.add("quality", getQualityRating());
-		json.add("data_groups", getDataGroup());
-
 
 		return json.toString();
 	}
@@ -130,10 +128,6 @@ public class Process extends Model implements JsonSerializable{
 
 	public String getQualityRating(){ return qualityRating; }
 
-	public List<DataGroup> getDataGroup()
-	{
-		return DataGroup.find.where().eq("process", id).findList();
-	}
 
 	public static Finder<Long,Process> find = new Finder<Long,Process>(Long.class, Process.class);
 }
