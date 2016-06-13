@@ -1,7 +1,11 @@
 @main("Glossary") {
-<script src='@routes.Assets.versioned("javascripts/lib/angular/angular-sanitize/angular-sanitize.min.js")'></script>
-<script src='@routes.Assets.versioned("javascripts/glossary/glossary.js")'></script>
 <br/><br/><br/><br/><br/><br/>
+
+<script src='@routes.Assets.versioned("javascripts/lib/angular/angular-sanitize.min.js")'></script>
+<script src='@routes.Assets.versioned("javascripts/glossary/glossary.js")'></script>
+
+<link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/glossary.css")'>
+
 <div ng-app="glossaryModule" ng-controller="glossaryCtrl">
 
   <div class="container">
@@ -10,40 +14,39 @@
 
       <form class="form-inline" role="form">
 
-        <div style="padding:10px" class="col-md-9 col-md-offset-1">
+        <div class="col-md-9 col-md-offset-1">
 
           <div class="row">
             <div class="form-group col-md-6">
-              <label>{{labels.CONTAINS}}</label>
+              <label>{{labels.GLOSSARY.CONTAINS}}</label>
               <input type="text" class="form-control" name="test" ng-model="searchText1">
             </div>
 
-            <div style="padding:5px 0px" class="radio-inline form-group col-md-1">
-              <label><input type="radio" ng-model="optFilter" name="optFilter" value="and">{{labels.AND}}</label>
+            <div style="padding:10px 0" class="radio-inline form-group col-md-1">
+              <label><input type="radio" ng-model="optFilter" name="optFilter" value="and">{{labels.GLOSSARY.AND}}</label>
             </div>
-            <div style="padding:5px 0px" class="radio-inline col-md-1">
-              <label><input type="radio" ng-model="optFilter" name="optFilter" value="or">{{labels.OR}}</label>
+            <div style="padding:10px 0" class="radio-inline col-md-1">
+              <label><input type="radio" ng-model="optFilter" name="optFilter" value="or">{{labels.GLOSSARY.OR}}</label>
             </div>
           </div>
 
           <div class="row">
             <div class="form-group col-md-6">
-              <label>{{labels.CONTAINS}}</label>
+              <label>{{labels.GLOSSARY.CONTAINS}}</label>
               <input type="text" class="form-control" ng-model="searchText2">
             </div>
           </div>
 
         </div>
 
-        <div class="row col-md-2 col-md-pull-1">
-          <div class="row">
-            <button type="button" class="btn btn-default" tabindex="-1" ng-click="clearFilter()">{{labels.CLEAR_FILTER}}</button>
+          <div class="col-md-2 col-md-pull-1">
+            <div class="row">
+              <button type="button" class="btn btn-default" tabindex="-1" ng-click="clearFilter()">{{labels.GLOSSARY.CLEAR_FILTER}}</button>
+            </div> <br>
+            <div class="row">
+              <button type="button" class="btn btn-success" ng-click="filter()">{{labels.GLOSSARY.FILTER}}</button>
+            </div>
           </div>
-          <br/>
-          <div class="row">
-            <button type="button" class="btn btn-success" ng-click="filter()">{{labels.FILTER}}</button>
-          </div>
-        </div>
 
       </form>
     </div>
@@ -59,7 +62,7 @@
 
         <div class="col-md-10 panel panel-default" style="padding:4px 15px;">
           <span ng-repeat="letter in letters"><a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'}" ng-click="inactive(letter) || filterByLetter(letter)">{{letter}}</a> </span>
-          <span> | <a href="#" ng-style="!glossary.length && {'text-decoration':'none', 'color':'black', 'cursor':'default'}"ng-click="filterByLetter()">{{labels.ALL}}</a></span>
+          <span> | <a href="#" ng-style="!glossary.length && {'text-decoration':'none', 'color':'black', 'cursor':'default'}"ng-click="filterByLetter()">{{labels.GLOSSARY.ALL | uppercase}}</a></span>
         </div>
 
       </div>
@@ -69,13 +72,13 @@
       <table class="table table-striped table-bordered well">
         <thead>
           <tr>
-            <th class="col-md-3 ">{{labels.TERM}}</th>
-            <th class="col-md-9 ">{{labels.DEFINITION}}</th>
+            <th class="col-md-3 ">{{labels.GLOSSARY.TERM | uppercase}}</th>
+            <th class="col-md-9 ">{{labels.GLOSSARY.DEFINITION | uppercase}}</th>
           </tr>
         </thead>
         <tbody>
           <tr class="text-center" ng-hide="glossary.length">
-            <td colspan="2"><span><strong>{{labels.NO_MATCH}}</strong></span></td>
+            <td colspan="2"><span><strong>{{labels.GLOSSARY.NO_MATCH}}</strong></span></td>
           </tr>
           <tr ng-repeat="entry in glossary | orderBy: 'term' ">
             <td><span><strong>{{entry.term}}</strong></span></td>

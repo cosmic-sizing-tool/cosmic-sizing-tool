@@ -1,0 +1,20 @@
+{
+ "ACCOUNT_SETTINGS":
+	{
+		"PERSONAL_SETTINGS": "Personal settings",
+		"PROFILE": "Profile",
+		"ACCOUNT_SETTINGS": "Account settings",
+		"MY_EMAILS": "My emails",
+		"CHANGE_PASSWORD": "Change password",
+		"OLD_PASSWORD": "Old password",
+		"NEW_PASSWORD": "New password",
+		"CONFIRM_NEW_PASSWORD": "Confirm new password",
+		"UPDATE_PASSWORD": "Update password",
+		"I_FORGOT_MY_PASSWORD": "I forgot my password",
+		"CHANGE_USERNAME": "Change username",
+		"UPDATE": "Update",
+		"DELETE_ACCOUNT": "Delete account",
+		"DELETION_MSG": "Once you delete your account,there is no going back. Please be certain.",
+		"DELETE_YOUR_ACCOUNT": "Delete your account"
+	}
+}

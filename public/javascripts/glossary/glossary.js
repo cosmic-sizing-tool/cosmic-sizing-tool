@@ -20,7 +20,7 @@ angular.module('glossaryModule', ['ngSanitize'])
             };
 
             $scope.loadGlossary = function (lang) {
-                var glossaryfile = "assets/json/glossary_" + lang + ".json";
+                var glossaryfile = "assets/json/glossary/glossary_" + lang + ".json";
                 $http.get(glossaryfile).then(function (success) {
                     $scope.loadedGlossary = success.data;
                     initGlossaryToDisplay();
@@ -99,7 +99,7 @@ angular.module('glossaryModule', ['ngSanitize'])
             };
 
             // Chargement des labels    
-            $http.get('assets/json/ressources_en.json').then(function (ressources) {
+            $http.get('assets/json/glossary/glossaryLabels_en.json').then(function (ressources) {
                 $scope.labels = ressources.data;
             });
 

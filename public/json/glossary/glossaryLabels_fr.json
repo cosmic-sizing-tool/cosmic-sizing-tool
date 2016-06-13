@@ -1,0 +1,16 @@
+{
+ "GLOSSARY":
+   {
+      "AND": "Et",
+	  "OR": "Ou",
+	  "CONTAINS": "Contient",
+	  "FILTER": "Filtrer",
+	  "ALL": "Tous",
+	  "CLEAR_FILTER": "Vider le filtre",
+	  "NO_MATCH": "No match",
+	  "TERM": "Terme",
+	  "DEFINITION": "Définition",
+	  "TOP_OF_PAGE": "Haut de page"
+   }
+}
+
