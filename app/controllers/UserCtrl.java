@@ -12,6 +12,8 @@ import play.db.ebean.Transactional;
 import play.libs.Json;
 import play.mvc.*;
 import views.html.*;
+import play.libs.ws.*;
+import java.util.concurrent.*;
 import play.mvc.Http.RequestBody;
 import play.mvc.Http.MultipartFormData.FilePart;
 import java.util.*;
@@ -22,9 +24,11 @@ import com.avaje.ebean.*;
 public class UserCtrl extends Controller {
 
 	@Inject Crypto crypto;
+        @Inject WSClient WS;
 
 
 	CosmicUser userGlobal;
+        String email;
 
 	public Result show() {
 		Long id = 15L;
@@ -150,12 +154,22 @@ public class UserCtrl extends Controller {
         }
         return redirect(routes.UserCtrl.show());
     }
-
-    public Result resetPassword(String email) {
-		int validEmail = -1;	// No email specified (do not display message to user)
-
-		if (email != null) {
-			CosmicUser user = findUser(email);
+    
+    /*
+    contact google recaptcha endpoint to test the recaptcha response key
+    */
+    private CompletionStage<Result> valider(String feedUrl, String secretKey, String recaptcha){
+    	return WS.url(feedUrl).setQueryParameter("secret", secretKey).setQueryParameter("response", recaptcha).post("").thenApply(response -> continuer(response)
+    );
+    }
+    
+    /*
+    Check if the recaptcha is ok then send the email
+    */
+    private  Result continuer(WSResponse response){
+	int validEmail = -1;	// No email specified (do not display message to user)
+    	if(response.asJson().findPath("success").asText().equals("true")){
+            CosmicUser user = findUser(email);
 
 			if (user != null) {
 				// Send email
@@ -170,6 +184,18 @@ public class UserCtrl extends Controller {
 			else {
 				validEmail = 0;		// Email's does not exist (display "Invalid email" message to user)
 			}
+        }
+    	return ok(reset_pwd.render(validEmail));
+    }
+
+    public Result resetPassword(String email, String recaptcha) {
+		int validEmail = -1;	// No email specified (do not display message to user)
+
+		if (email != null) {
+                        this.email = email;
+                        String feedUrl = "https://www.google.com/recaptcha/api/siteverify";
+                        String secretKey = "6LeEWyITAAAAANZa927LsjU9xmbvfIQi9x9cjr_y";
+                        return(valider(feedUrl, secretKey, recaptcha));
 		}
 
         return ok(reset_pwd.render(validEmail));
