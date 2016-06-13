@@ -33,6 +33,7 @@
     <script src='@routes.Assets.versioned("javascripts/app/app.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate.min.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate-loader-static-files.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/registration.js")'></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href='@routes.Assets.versioned("bootstrap/dist/css/bootstrap.min.css")'>
@@ -62,19 +63,13 @@
                                 <img style="float:left; margin-top: 30px; cursor: pointer; width: 50x; height:70px " src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
                             </div>
                             <ul class="dropdown-menu" style="float: right; opacity:0.8; margin-top: 30px ">
-                                <li class><a href="#"><h5>About the COSMIC-sizing-tool</h5></a></li>
+                                <li><a href="@routes.Glossary.glossary()"><h5>{{'MAIN.COSMIC_GLOSSARY' | translate }}</h5></a></li>
                                 <li class="divider"></li>
-                                <li><a href="http://cosmic-sizing.org"><h5>COSMIC site</h5></a></li>
+                                <li><a href="@routes.Measures.add()"><h5>{{'MAIN.FIND_A_MEASURER' | translate }}</h5></a></li>
                                 <li class="divider"></li>
-                                <li><a href="@routes.Glossary.glossary()"><h5>COSMIC Glossary</h5></a></li>
+                                <li><a target ="_blank" href="http://cosmic-sizing.org"><h5>{{'MAIN.GO_TO_COSMIC_SITE' | translate }}</h5></a></li>
                                 <li class="divider"></li>
-                                <li><a href="@routes.Measures.add()"><h5>Find a measurer</h5></a></li>
-                                <li><a href="@routes.Application.index()">Home</a></li>
-                                <li><a href="@routes.Application.team()">Team</a></li>
-                                <li><a href="@routes.Glossary.glossary()">Glossary</a></li>
-                                <li><a href="@routes.Measures.add()">Add Measure</a></li>
-                                <li><a href="@routes.Application.counter()">Counter</a></li>
-                                <li><a href="@routes.UserCtrl.show()">User Profil</a></li>
+                                <li class><a href="#"><h5>{{'MAIN.ABOUT_THIS_TOOL' | translate }}</h5></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -129,7 +124,7 @@
 <footer style="background-color: #F5F5F5" class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-text pull-left">
-            <p>© 2016 COSMIC</p>
+            <p>© 2016 COSMIC{{2+4}}</p>
         </div>
         <div class="navbar-text pull-right">
             <a href="#" style="margin-left: 2em">{{ 'MAIN.TERMS_AND_CONDITIONS' | translate}}</a>

@@ -40,13 +40,13 @@ Write config info here.
 * SQLite 3
  1. Download and install SQLite 3 for your platform at https://www.sqlite.org/.
 
-#### Internationlization insctructions ####
+#### Internationalization instructions ####
 
-* HOW TO ADD NEW LANGUAGE</br>
- 1. Create a file in public/resources called **xx.json** where **xx** is the code of the language you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
- 2. Add you language to the following section of public/javascript/app/app.js :
+* HOW TO ADD A NEW LANGUAGE</br>
+ 1. Create a file in public/resources called **xx.json** where **xx** is the language code you're trying to add according to ISO 639-1. https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+ 2. Add your language to the following section of public/javascript/app/app.js :
  ```javascript  
- $socpe.languages = [
+ $scope.languages = [
     {id:'en', name:'English'},
     {id:'fr', name:'Français'},
     {id:'xx', name:'NewLanguage'}
@@ -76,10 +76,10 @@ Write config info here.
    
   ii. Add filter and ID in your html tag :
   ```html
-   <p>WEBSITE_SECTION.RESOURCE_NAME | translate</p>
+   <p>'WEBSITE_SECTION.RESOURCE_NAME' | translate</p>
    ```
 
-* ANY MODULE THAT YOU ADD MUST HAVE in its controler :
+* ANY MODULE THAT YOU ADD MUST INJECT THE $translate MODULE AS SHOWN IN THE FOLLOWING EXAMPLE :
  ```javascript
  .controller('RegistrationCtrl', ['$scope', '$translate', function ($scope, $translate) {
  ```

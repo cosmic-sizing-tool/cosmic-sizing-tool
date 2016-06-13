@@ -29,33 +29,33 @@
             <section class="card" ng-app="registrationForm" ng-controller="RegistrationCtrl">
 
                 <form name="profil" method="post" ng-submit="register()" novalidate>
-                    <h3 class="" style="margin-top: 100px; padding-left:2em; color:#000000 ">Join COSMIC Sizing Tool</h3>
+                    <h3 class="" style="margin-top: 100px; padding-left:2em; color:#000000 ">{{ 'SIGNUP.JOIN_COSMIC' | translate}}</h3>
                     <!--h4 class=""style=" color:#3366FF">Create your personnal account</h4-->
-                    <label style="margin: 0; color:#3366FF " for="username">Username</label>
-                    <input style="margin: 0" type="text" class="text" id="username" name="username" placeholder="Pick a username" value="" ng-model="user.username" ng-required="true">
-                    <h6 class="small-text">This will be your username - you can enter your organisation's username next.</h6>
+                    <label style="margin: 0; color:#3366FF " for="username">{{ 'SIGNUP.USERNAME' | translate}}</label>
+                    <input style="margin: 0" type="text" class="text" id="username" name="username" placeholder="{{ 'SIGNUP.PICK_A_USERNAME' | translate}}" value="" ng-model="user.username" ng-required="true">
+                    <h6 class="small-text">{{ 'SIGNUP.THIS_WILL_BE_YOUR' | translate}}</h6>
 
-                    <label style="margin: 0; color:#3366FF " for="email">Email address</label>
-                    <input style="margin: 0" type="email" id="email" placeholder="Your email" ng-model="user.email" ng-required="true">
-                    <h6 class="small-text">You will occasionally receive account related emails. We promise not to share your email with anyone.</h6>
+                    <label style="margin: 0; color:#3366FF " for="email">{{ 'SIGNUP.EMAIL_ADRESS' | translate}}</label>
+                    <input style="margin: 0" type="email" id="email" placeholder="{{ 'SIGNUP.YOUR_EMAIL' | translate}}" ng-model="user.email" ng-required="true">
+                    <h6 class="small-text">{{ 'SIGNUP.YOU_WILL_OCCASIONALLY' | translate}}</h6>
 
-                    <label style="margin: 0; color:#3366FF " for="password">Password</label>
-                    <input style="margin: 0" type="password" id="password" placeholder="Create a password" ng-model="user.password"
+                    <label style="margin: 0; color:#3366FF " for="password">{{ 'SIGNUP.PASSWORD' | translate}}</label>
+                    <input style="margin: 0" type="password" id="password" placeholder="{{ 'SIGNUP.CREATE_A_PASSWORD' | translate}}" ng-model="user.password"
                            ng-minlength="8" ng-pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/" ng-required="true">
-                    <h6 class="small-text">Use at least one letter, one numeral. Minimum 8 characters and maximum 20.</h6>
+                    <h6 class="small-text">{{ 'SIGNUP.USE_AT_LEAST' | translate}}</h6>
 
                     <select style="width: 100%; margin: 0" name="languages" class="languages icon-menu" ng-model="user.language" ng-required="true">
                         <option value="en" selected>English</option>
                         <option value="fr">Français</option>
                     </select>
-                    <h6 class="small-text">This will be your default language.</h6>
+                    <h6 class="small-text">{{ 'SIGNUP.THIS_WILL_BE_YOUR' | translate}}</h6>
                     <hr>
-                    <h6 class="small-text">By clicking on "Register to the COSMIC-sizing-tool", you are agreeing to the
-                        <br><a href="#" style="color: #3366FF">Terms and Conditions</a> and the <a href="#" style="color: #3366FF">Privacy Policy</a>.
+                    <h6 class="small-text">{{ 'SIGNUP.BY_CLICKING_ON' | translate}}
+                        <br><a href="#" style="color: #3366FF">{{ 'SIGNUP.TERMS_AND_CONDITIONS' | translate}}</a> {{ 'SIGNUP.AND_THE' | translate}} <a href="#" style="color: #3366FF">Privacy Policy</a>.
                     </h6>
                     <hr>
                     <div class="text-center">
-                    <button style="margin: 0 auto;" type="submit" class="btn btn-success navbar-btn btn-submit">Create an account</button>
+                    <button style="margin: 0 auto;" type="submit" class="btn btn-success navbar-btn btn-submit">{{ 'SIGNUP.CREATE_AN_ACCOUNT' | translate}}</button>
                     </div>
                     <div style="margin: 0 0 30px 0" class="row">
                        <hr>

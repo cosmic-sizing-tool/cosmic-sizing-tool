@@ -1,26 +1,54 @@
-﻿{
-  "MAIN" : {
-    "REGISTER" : "Register",
-    "LOGIN" : "Log In",
-    "TERMS_AND_CONDITIONS" : "Terms and Conditions",
-    "CONTACT" : "Contact",
-    "HELP" : "Help"
+{
+  "GENERAL": {
+    "YES": "Oui",
+    "NO" : "Non"
   },
-  "HOME" : {
-    "WHERE_SOFTWARE_FUNCTIONAL" : "Where software functional",
-    "SIZE_IS_MEASURED" : "size is Measured!",
-    "OPEN_SOURCE_COSMIC" : "Open-source COSMIC software functional size measurement support tool",
-    "FREE_TO_USE" : "Free to use",
+
+  "MAIN": {
+    "REGISTER": "Register",
+    "LOGIN": "Log In",
+    "TERMS_AND_CONDITIONS": "Terms and Conditions",
+    "CONTACT": "Contact",
+    "HELP": "Help",
+    "COSMIC_GLOSSARY": "COSMIC Glossary",
+    "FIND_A_MEASURER": "Find a measurer",
+    "GO_TO_COSMIC_SITE": "Go to COSMIC site",
+    "ABOUT_THIS_TOOL": "About this tool"
+  },
+
+  "HOME": {
+    "WHERE_SOFTWARE_FUNCTIONAL": "Where software functional",
+    "SIZE_IS_MEASURED": "size is Measured!",
+    "OPEN_SOURCE_COSMIC": "Open-source COSMIC software functional size measurement support tools",
+    "FREE_TO_USE": "Free to use",
+    "PICK_A_USERNAME": "Pick a username",
+    "YOUR_EMAIL": "Your email",
+    "CREATE_PASSWORD": "Create a password",
+    "USE_AT_LEAST": "Use at least one letter and one numeral.",
+    "MINIMUM_8_CHARACTERS": "At least 8 characters and maximum 20.",
+    "REGISTER_TO_THE_COSMIC": "Register to the COSMIC-sizing-tool",
+    "BY_CLICKING_ON": "By clicking on \"Register to the COSMIC-sizing-tool\", you agree to our",
+    "TERMS": "Terms",
+    "CONDITIONS": "and conditions",
+    "AND_THE": "and the",
+    "PRIVACY_POLICY": "Privacy Policy"
+  },
+  "SIGNUP": {
+    "JOIN_COSMIC" : "Join COSMIC Sizing Tool",
+    "USERNAME" : "Username",
     "PICK_A_USERNAME" : "Pick a username",
+    "THIS_WILL_BE_YOUR" : "This will be your username - you can enter your organisation's username next.",
+    "EMAIL_ADRESS" : "Email address",
     "YOUR_EMAIL" : "Your email",
-    "CREATE_PASSWORD" : "Create a password",
-    "USE_AT_LEAST" : "Use at least one letter and one numeral.",
-    "MINIMUM_8_CHARACTERS" : "Minimum 8 characters and maximum 20.",
-    "REGISTER_TO_THE_COSMIC" : "Register to the COSMIC-sizing-tool",
-    "BY_CLICKING_ON" : "By clicking on \"Register to the COSMIC-sizing-tool\", you are agree to our",
-    "TERMS" : "Terms",
-    "CONDITIONS" : "et Conditions",
+    "YOU_WILL_OCCASIONALLY" : "You will occasionally receive account related emails. We promise not to share your email with anyone.",
+    "PASSWORD" : "Password",
+    "CREATE_A_PASSWORD" : "Create a password",
+    "USE_AT_LEAST" : "Use at least one letter, one numeral. Minimum 8 characters and maximum 20.",
+    "THIS_WILL_BE_YOUR" : "This will be your default language.",
+    "BY_CLICKING_ON" : "By clicking on \"Register to the COSMIC-sizing-tool\", you are agreeing to the",
+    "TERMS_AND_CONDITIONS" : "Terms and Conditions",
     "AND_THE" : "and the",
-    "PRIVACY_POLICY" : "Privacy Policy"
+    "PRIVACY_POLICY" : "Privacy Policy",
+    "CREATE_AN_ACCOUNT" : "Create an account"
   }
 }
