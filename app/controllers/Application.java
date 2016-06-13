@@ -4,6 +4,7 @@ import com.lambdaworks.crypto.SCrypt;
 import com.lambdaworks.crypto.SCryptUtil;
 // Are you serious with these imports bro?
 import play.*;
+import play.api.libs.Crypto;
 import play.data.*;
 import play.mvc.*;
 import views.html.*;
@@ -19,18 +20,24 @@ public class Application extends Controller {
 
     @Inject
     FormFactory formFactory;
+    
+    @Inject
+    Crypto crypto;
 
     public Result registerUser() {
+      System.out.println("Registering new user");
+
       // Get form from POST request
-      Form<BasicUser> bUserForm = formFactory.form(BasicUser.class);
-      BasicUser bUser = bUserForm.bindFromRequest().get();
+      Form<CosmicUser> bUserForm = formFactory.form(CosmicUser.class);
+      CosmicUser bUser = bUserForm.bindFromRequest().get();
+      
+      String hashedPw = crypto.encryptAES(bUser.password);
+      bUser.setPassword(hashedPw);
 
       // Debug purposes
-      System.out.println("Got user " + bUser + " from request");
-      System.out.println("User info: ");
+      System.out.println("Got user " + bUser.getAlias() + " from request");
       System.out.println("Email: " + bUser.getEmail());
-      System.out.println("Username: " + bUser.getUsername());
-      System.out.println("Pass: " + bUser.getPassword());
+      System.out.println("Pass: " + crypto.decryptAES(bUser.getPassword()));
 
       try {
         bUser.save();
@@ -40,7 +47,7 @@ public class Application extends Controller {
 
         // Handle error in a better way
         // Maybe show an update message
-        return ok(mainPage.render());
+        return unauthorized(index.render("L'utilisateur n'existe pas."));
       }
       // Should probably return to user page
       return ok(mainPage.render());

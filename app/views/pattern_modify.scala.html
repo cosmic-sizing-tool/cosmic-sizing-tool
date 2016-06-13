@@ -26,11 +26,11 @@
   <div id="patternDescription">
     <label>Pattern
       <br/>
-      <input type="text" id="Pattern_Name">
+      <input type="text" id="Pattern_Name" tab-index="1">
     </label>
     <label>Description
       <br/>
-      <input type="text" id="Pattern_Desc">
+      <input type="text" id="Pattern_Desc" tab-index="2">
     </label>
   </div>
   <table id="patternTable">
@@ -43,18 +43,23 @@
       </tr>
     </thead>
     <tbody></tbody>
+    <tfoot>
+      <tr>
+        <td><button class='btn btn-primary' id='createNewRow'>Add functional process</button></td>
+        <td></td>
+        <td></td>
+        <td><button type="button" class="btn btn-success" id="patternSave">Save</button></td>
+      </tr>
+    </tfoot>
   </table>
-  <div id="patternFooter">
-    <button type="button" class="btn btn-success" id="patternSave">Save</button>
-  </div>
 </div>
 <script type="text/javascript">
 /* Test */
 displayPattern(testPattern);
 
 
+bindNewRowButton();
 bindSaveButton();
-bindInputs();
 windowResize();
 </script>
 }

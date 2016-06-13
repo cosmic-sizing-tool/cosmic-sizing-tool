@@ -305,6 +305,7 @@ public class UserCtrl extends Controller {
         return mail.matches(regex);
     }
 
+<<<<<<< HEAD
     public static boolean isNumeric(String str) {
         try {
             Long id = Long.parseLong(str);
@@ -328,4 +329,14 @@ public class UserCtrl extends Controller {
 
         return userInfoList;
     }
+=======
+	public static boolean isNumeric(String str) {
+		try {
+			Long id = Long.parseLong(str);
+		} catch (NumberFormatException nfe) {
+			return false;
+		}
+		return true;
+	}
+>>>>>>> master
 }

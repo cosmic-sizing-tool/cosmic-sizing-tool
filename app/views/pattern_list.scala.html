@@ -4,9 +4,37 @@
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="/assets/javascripts/jquery-ui.min.js"></script>
 <script src='@routes.Assets.versioned("javascripts/pattern_list.js")'></script>
 <link rel="stylesheet" href=/assets/stylesheets/pattern_list.css>
+<link rel="stylesheet" href=/assets/stylesheets/jquery-ui.min.css>
 
+<div id="patternContainer">
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                        <h3>Manage my patterns</h3>
+                </div>
+                <div class="panel-body">
+                        <div class="datagrid">
+                                <table id="patternTable">
+                                <thead><tr>
+                                        <th>Pattern</th>
+                                        <th>Description</th>
+                                        <th>Function points</th>
+                                        <th>Size(CFP)</th>
+                                        <th>Date created</th>
+                                </tr></thead>
+                                <!-- <tfoot><tr><td colspan="5"><div id="paging"><ul><li><a href="#"><span>Previous</span></a></li><li><a href="#" class="active"><span>1</span></a></li><li><a href="#"><span>2</span></a></li><li><a href="#"><span>3</span></a></li><li><a href="#"><span>4</span></a></li><li><a href="#"><span>5</span></a></li><li><a href="#"><span>Next</span></a></li></ul></div></tr></tfoot> -->
+                                <tbody>
+                                </tbody>
+                        </table></div>
+                </div>
+        </div>
+</div>
+<div id="patternFooter">
+        <button id="btnNewPattern" class="btn btn-primary" ng-click="save()">New pattern</button>
+        <button id="btnDeleteSelected" class="btn btn-primary" ng-click="save()">Delete selected</button>
+</div>
 
-
+<script>initPage();</script>
 }
