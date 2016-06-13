@@ -1,4 +1,4 @@
-angular.module('glossaryModule', [])
+angular.module('glossaryModule', ['ngSanitize'])
     .controller('glossaryCtrl', ['$scope', '$http', 'filterFilter',
         function ($scope, $http, filterFilter) {
             'use strict';

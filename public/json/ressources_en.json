@@ -6,6 +6,6 @@
   "ALL": "ALL",
   "FILTER": "Filter",
   "NO_MATCH": "No match",
-  "TERM": "Term",
-  "DEFINITION": "Definition"
+  "TERM": "TERM",
+  "DEFINITION": "DEFINITION"
 }

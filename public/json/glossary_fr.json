@@ -2,281 +2,281 @@
    {
       "id":"1",
       "term":"Application-données générales",
-      "definition":"Toutes les données relatives à une application en général et qui ne sont pas liées à un objet d'intérêt d'un processus fonctionnel spécifique."
+      "definition":"<div>Toutes les données relatives à une application en général et qui ne sont pas liées à un objet d'intérêt d'un processus fonctionnel spécifique.</div>"
    },
    {
       "id":"2",
       "term":"Application",
-      "definition":"Un système de logiciel pour la collecte, l'enregistrement, traitement et présentation de données au moyen d'un ordinateur. Remarque : C'est une adaptation de la définition fournie par  'ISO/IEC 24570:2005 Software engineering—NESMA functional size measurement method version 2.1'. (Définition alternative pour 'application logicielle'). Logiciel conçu pour aider les utilisateurs à effectuer des tâches particulières ou pour traiter certains types de problèmes, par opposition à un logiciel qui contrôle l'ordinateur lui-même. Remarque: Il s'agit d'une légère adaptation de la définition fournie par  'ISO/IEC 24765:2010 Systems and software engineering-vocabulary, 4.5')."
+      "definition":"<div>Un système de logiciel pour la collecte, l'enregistrement, traitement et présentation de données au moyen d'un ordinateur.</div><br> <div>Remarque : C'est une adaptation de la définition fournie par 'ISO/IEC 24570:2005 Software engineering—NESMA functional size measurement method version 2.1'.</div><br> <div>(Définition alternative pour 'application logicielle'). Logiciel conçu pour aider les utilisateurs à effectuer des tâches particulières ou pour traiter certains types de problèmes, par opposition à un logiciel qui contrôle l'ordinateur lui-même.</div><br> <div>Remarque: Il s'agit d'une légère adaptation de la définition fournie par  'ISO/IEC 24765:2010 Systems and software engineering-vocabulary, 4.5').</div>"
    },
    {
       "id":"3",
       "term":"Attribut de données (synonyme d'élément de données type)",
-      "definition":"La plus petite parcelle d'information codée, dans un groupe de données, possédant une signification dans la perspective des Fonctionnalités Utilisateurs Requises (FUR) du logiciel."
+      "definition":"<div>La plus petite parcelle d'information codée, dans un groupe de données, possédant une signification dans la perspective des Fonctionnalités Utilisateurs Requises (FUR) du logiciel.</div>"
    },
    {
       "id":"4",
       "term":"C",
-      "definition":"Abréviation pour 'éCriture type'."
+      "definition":"<div>Abréviation pour 'éCriture type'.</div>"
    },
    {
       "id":"5",
       "term":"Commande de contrôle",
-      "definition":"Une commande qui permet à un utilisateur fonctionnel de contrôler l'utilisation du logiciel mais qui n'implique pas de mouvement de données à propos d'un objet d'intérêt de la FUR du logiciel à mesurer. Remarque: Une commande de contrôle n'est pas un mouvement de données parce que la commande ne déplace pas des données d'un objet d'intérêt. Exemples: commande de 'page haut/bas', presser sur Tab ou la clef Enter (Entrée), cliquer sur 'OK' pour confirmer une action précédente, presser un bouton pour continuer, etc."
+      "definition":"<div>Une commande qui permet à un utilisateur fonctionnel de contrôler l'utilisation du logiciel mais qui n'implique pas de mouvement de données à propos d'un objet d'intérêt de la FUR du logiciel à mesurer.</div><br> <div>Remarque: Une commande de contrôle n'est pas un mouvement de données parce que la commande ne déplace pas des données d'un objet d'intérêt. Exemples: commande de 'page haut/bas', presser sur Tab ou la clef Enter (Entrée), cliquer sur 'OK' pour confirmer une action précédente, presser un bouton pour continuer, etc.</div>"
    },
    {
       "id":"6",
       "term":"Composant fonctionnel de base (CFB)",
-      "definition":"Unité élémentaire des Fonctionnalités Utilisateurs Requises (FUR), définie par la méthode de mesure de la taille fonctionnelle (MTF) pour les fins du mesurage. Remarque: La méthode COSMIC définit un type de mouvement de données comme un CFB."
+      "definition":"<div>Unité élémentaire des Fonctionnalités Utilisateurs Requises (FUR), définie par la méthode de mesure de la taille fonctionnelle (MTF) pour les fins du mesurage.</div><br> <div>Remarque: La méthode COSMIC définit un type de mouvement de données comme un CFB.</div>"
    },
    {
       "id":"7",
       "term":"Composant fonctionnel de base (ou type de CFB)",
-      "definition":"Une catégorie définie de CFB. La méthode COSMIC a 4 types de CFB, Entrée, Sortie, Lecture et éCriture (types)."
+      "definition":"<div>Une catégorie définie de CFB. La méthode COSMIC a 4 types de CFB, Entrée, Sortie, Lecture et éCriture (types).</div>"
    },
    {
       "id":"8",
       "term":"Composant",
-      "definition":"Toute partie d'un système logiciel qui est séparé pour des raisons d'architecture du logiciel, et/ou qui a été spécifié, conçu ou mis au point séparément."
+      "definition":"<div>Toute partie d'un système logiciel qui est séparé pour des raisons d'architecture du logiciel, et/ou qui a été spécifié, conçu ou mis au point séparément.</div>"
    },
    {
       "id":"9",
       "term":"Couche",
-      "definition":"Une partition fonctionnelle d'une architecture d'un système logiciel."
+      "definition":"<div>Une partition fonctionnelle d'une architecture d'un système logiciel.</div>"
    },
    {
       "id":"10",
       "term":"E",
-      "definition":"Abréviation pour 'Entrée' (type)."
+      "definition":"<div>Abréviation pour 'Entrée' (type).</div>"
    },
    {
       "id":"11",
       "term":"ECriture (type)",
-      "definition":"Un mouvement de données qui déplace un groupe de données depuis un processus fonctionnel vers un stockage persistant. Remarque : Une éCriture est considérée comme prenant en compte certaines manipulations de données associées (voir le Manuel de mesurage sous-section 3.3.5 pour plus de détails)."
+      "definition":"<div>Un mouvement de données qui déplace un groupe de données depuis un processus fonctionnel vers un stockage persistant.</div><br><div>Remarque : Une éCriture est considérée comme prenant en compte certaines manipulations de données associées (voir le Manuel de mesurage sous-section 3.3.5 pour plus de détails).</div>"
    },
    {
       "id":"12",
       "term":"Entrée (type)",
-      "definition":"Un type de mouvement de données qui déplace, à travers la frontière, un groupe de données depuis un utilisateur fonctionnel vers le processus fonctionnel où il est requis. Remarque: Un type d'Entrée tient aussi compte de certaines manipulations de données associées - voir le Manuel de Mesurage pour plus de détails)."
+      "definition":"<div>Un type de mouvement de données qui déplace, à travers la frontière, un groupe de données depuis un utilisateur fonctionnel vers le processus fonctionnel où il est requis.</div><br> <div>Remarque: Un type d'Entrée tient aussi compte de certaines manipulations de données associées - voir le Manuel de Mesurage pour plus de détails).</div>"
    },
    {
       "id":"13",
       "term":"Entrée de déclenchement (type)",
-      "definition":"Un mouvement de donnée 'Entrée' d'un processus fonctionnel qui déplace un groupe de données, généré par un utilisateur fonctionnel, nécessaire au processus fonctionnel pour son démarrage. Remarque: La FUR d'un processus fonctionnel peut exiger une ou plusieurs autres Entrées en plus de l'Entrée de déclenchement."
+      "definition":"<div>Un mouvement de donnée 'Entrée' d'un processus fonctionnel qui déplace un groupe de données, généré par un utilisateur fonctionnel, nécessaire au processus fonctionnel pour son démarrage.</div><br> <div>Remarque: La FUR d'un processus fonctionnel peut exiger une ou plusieurs autres Entrées en plus de l'Entrée de déclenchement.</div>"
    },
    {
       "id":"14",
       "term":"Environnement opérationnel (logiciel)",
-      "definition":"L'ensemble des logiciels fonctionnant simultanément sur un ordinateur spécifié sur lequel l'application logicielle dépend."
+      "definition":"<div>L'ensemble des logiciels fonctionnant simultanément sur un ordinateur spécifié sur lequel l'application logicielle dépend.</div>"
    },
    {
       "id":"15",
       "term":"Evènement déclencheur (type)",
-      "definition":"Un évènement, reconnu dans les Fonctionnalités Utilisateur Requises du logiciel à mesurer, qui cause un ou plusieurs utilisateurs fonctionnels du logiciel à mesurer, la génération d'un ou plusieurs groupes de données, chacun d'eux sera par la suite déplacé par une Entrée de déclenchement. Un évènement déclencheur ne peut pas être subdivisé et ou bien il s'est produit ou bien il ne s'est pas produit. Remarque: L'horloge et les évènements de calendrier peuvent être de évènements déclencheurs."
+      "definition":"<div>Un évènement, reconnu dans les Fonctionnalités Utilisateur Requises du logiciel à mesurer, qui cause un ou plusieurs utilisateurs fonctionnels du logiciel à mesurer, la génération d'un ou plusieurs groupes de données, chacun d'eux sera par la suite déplacé par une Entrée de déclenchement. Un évènement déclencheur ne peut pas être subdivisé et ou bien il s'est produit ou bien il ne s'est pas produit.</div><br> <div>Remarque: L'horloge et les évènements de calendrier peuvent être de évènements déclencheurs.</div>"
    },
    {
       "id":"16",
       "term":"Exigences non fonctionnelles",
-      "definition":"Toute exigence sur la partie logicielle d'un système (équipement/logiciel) ou sur un produit logiciel, incluant comment il devrait être développé et maintenu, et comment il devrait se comporter lors de son fonctionnement, sauf la Fonctionnalité Utilisateur Requise d'un logiciel. Les exigences Non-Fonctionnelles concernent : * la qualité du logiciel; * l'environnement dans lequel le logiciel doit être réalisé et qu'il doit servir; * les processus et technologies qui doivent être utilisés pour développer et maintenir le logiciel * la technologie qui doit être utilisée pour exécuter le logiciel. Remarque : Les exigences système ou logiciel, initialement exprimés comme non fonctionnelles, peuvent évoluer, au fur et à mesure que le projet progresse, en FUR pour le logiciel."
+      "definition":"<div>Toute exigence sur la partie logicielle d'un système (équipement/logiciel) ou sur un produit logiciel, incluant comment il devrait être développé et maintenu, et comment il devrait se comporter lors de son fonctionnement, sauf la Fonctionnalité Utilisateur Requise d'un logiciel.</div><br> <div>Les exigences Non-Fonctionnelles concernent :</div><div> <ul><li>la qualité du logiciel;</li> <li>l'environnement dans lequel le logiciel doit être réalisé et qu'il doit servir;</li> <li>les processus et technologies qui doivent être utilisés pour développer et maintenir le logiciel</li> <li>la technologie qui doit être utilisée pour exécuter le logiciel.</li></ul></div> <div>Remarque : Les exigences système ou logiciel, initialement exprimés comme non fonctionnelles, peuvent évoluer, au fur et à mesure que le projet progresse, en FUR pour le logiciel.</div>"
    },
    {
       "id":"17",
       "term":"Extrant (Output)",
-      "definition":"Toutes données déplacées par les Sorties d'un processus fonctionnel donné."
+      "definition":"<div>Toutes données déplacées par les Sorties d'un processus fonctionnel donné.</div>"
    },
    {
       "id":"18",
       "term":"Fonctionnalité Utilisateur Requise (FUR)",
-      "definition":"Un sous-ensemble des besoins de l'utilisateur. Les besoins qui décrivent ce que le logiciel doit accomplir, en termes de tâches et service. Remarque : La Fonctionnalité Utilisateur Requise inclut (mais n'est pas limitée au) : - Transfert de données (exemple: données d'entrée du client, envoyer un signal de contrôle); - Transformation de données (exemple: calculer l'intérêt bancaire, déterminer la température moyenne); - Stockage de données (exemple: emmagasiner la commande de l'usager, enregistrer la température ambiante sur une période); - Extraction des données (exemple : liste (actuelle) des employés actuels, récupérer la position de l'avion). Exemples de Requis Utilisateur qui ne sont pas des Fonctionnalités Utilisateur Requises incluent, mais ne sont pas limités (sauf exception - voir la sous section 1.2.3 du présent Manuel de mesurage pour plus d'information) à des : - contraintes de qualité (exemple : utilisabilité, fiabilité, efficience et portabilité); - contraintes organisationnelles (exemple: locations pour opération, matériel cible et conformité aux normes); - contraintes environnementales (exemple: interopérabilité, sécurité, protection de la vie privée et sécurité); - contraintes d'implémentation (exemple: langage de développement, cédule de livraison)."
+      "definition":"<div>Un sous-ensemble des besoins de l'utilisateur. Les besoins qui décrivent ce que le logiciel doit accomplir, en termes de tâches et service.</div><br> <div>Remarque : La Fonctionnalité Utilisateur Requise inclut (mais n'est pas limitée au) :</div><div> <ul><li>Transfert de données (exemple: données d'entrée du client, envoyer un signal de contrôle);</li> <li>Transformation de données (exemple: calculer l'intérêt bancaire, déterminer la température moyenne);</li> <li>Stockage de données (exemple: emmagasiner la commande de l'usager, enregistrer la température ambiante sur une période);</li> <li>Extraction des données (exemple : liste (actuelle) des employés actuels, récupérer la position de l'avion).</li></ul></div> <div>Exemples de Requis Utilisateur qui ne sont pas des Fonctionnalités Utilisateur Requises incluent, mais ne sont pas limités (sauf exception - voir la sous section 1.2.3 du présent Manuel de mesurage pour plus d'information) à des :</div><div> <ul><li>contraintes de qualité (exemple : utilisabilité, fiabilité, efficience et portabilité);</li> <li>contraintes organisationnelles (exemple: locations pour opération, matériel cible et conformité aux normes);</li> <li>contraintes environnementales (exemple: interopérabilité, sécurité, protection de la vie privée et sécurité);</li> <li>contraintes d'implémentation (exemple: langage de développement, cédule de livraison).</li></ul></div>"
    },
    {
       "id":"19",
       "term":"Frontière",
-      "definition":"Une interface conceptuelle entre le logiciel à mesurer et ses utilisateurs fonctionnels. Remarque: Il découle de la définition qu'il y a une limite entre n'importe lequel des deux morceaux de logiciel d'une même couche ou de différentes couches qui échangent des données, lorsqu'un morceau de logiciel est un utilisateur fonctionnel de l'autre et/ou vice versa."
+      "definition":"<div>Une interface conceptuelle entre le logiciel à mesurer et ses utilisateurs fonctionnels.</div><br><div>Remarque: Il découle de la définition qu'il y a une limite entre n'importe lequel des deux morceaux de logiciel d'une même couche ou de différentes couches qui échangent des données, lorsqu'un morceau de logiciel est un utilisateur fonctionnel de l'autre et/ou vice versa.</div>"
    },
    {
       "id":"20",
       "term":"Groupe de données (type)",
-      "definition":"Tout ensemble distinct, non vide, et non ordonné de types d'attributs de données où chaque type d'attribut de donnée décrit un aspect complémentaire du même objet d'intérêt."
+      "definition":"<div>Tout ensemble distinct, non vide, et non ordonné de types d'attributs de données où chaque type d'attribut de donnée décrit un aspect complémentaire du même objet d'intérêt.</div>"
    },
    {
       "id":"21",
       "term":"Input",
-      "definition":"Les données déplacées par toutes les Entrées d'un processus fonctionnel donné."
+      "definition":"<div>Les données déplacées par toutes les Entrées d'un processus fonctionnel donné.</div>"
    },
    {
       "id":"22",
       "term":"L",
-      "definition":"Abréviation pour Lecture type."
+      "definition":"<div>Abréviation pour Lecture type.</div>"
    },
    {
       "id":"23",
       "term":"Lecture (type)",
-      "definition":"Un mouvement de données qui déplace un groupe de données depuis sa partie de stockage persistant pour le mettre à la portée du processus fonctionnel (type) qui le requiert. Remarque : Un type Lecture inclut certaines manipulations associées de données - voir le Manuel de mesurage pour plus de détails."
+      "definition":"<div>Un mouvement de données qui déplace un groupe de données depuis sa partie de stockage persistant pour le mettre à la portée du processus fonctionnel (type) qui le requiert.</div><br> <div>Remarque : Un type Lecture inclut certaines manipulations associées de données - voir le Manuel de mesurage pour plus de détails.</div>"
    },
    {
       "id":"24",
       "term":"Logiciel",
-      "definition":"Un ensemble d'instructions informatiques, de données, de procédures et éventuellement de documentations opérées comme un tout, pour répondre à un ensemble de buts spécifiques, lesquels peuvent être décrits dans une perspective fonctionnelle via un ensemble fini de Fonctionnalités Utilisateurs Requises (FUR) ainsi que d'exigences techniques et qualitatives."
+      "definition":"<div>Un ensemble d'instructions informatiques, de données, de procédures et éventuellement de documentations opérées comme un tout, pour répondre à un ensemble de buts spécifiques, lesquels peuvent être décrits dans une perspective fonctionnelle via un ensemble fini de Fonctionnalités Utilisateurs Requises (FUR) ainsi que d'exigences techniques et qualitatives.</div>"
    },
    {
       "id":"25",
       "term":"Manipulation des données",
-      "definition":"Tout ce qui survient aux données autres qu'un mouvement de données vers l'intérieur ou l'extérieur d'un processus fonctionnel, ou entre un processus fonctionnel et le stockage persistant."
+      "definition":"<div>Tout ce qui survient aux données autres qu'un mouvement de données vers l'intérieur ou l'extérieur d'un processus fonctionnel, ou entre un processus fonctionnel et le stockage persistant.</div>"
    },
    {
       "id":"26",
       "term":"Message erreur/confirmation",
-      "definition":"C'est une Sortie émise par un processus fonctionnel à l'attention d'un utilisateur humain qui soit, confirme que les données saisies ont été acceptées, ou confirme qu'il y a une erreur dans les données saisies. Remarque : Toute Sortie qui pourrait inclure une indication de faute, mais qui n'est pas faite à l'intention d'un utilisateur fonctionnel humain, n'est pas un message d'erreur/confirmation."
+      "definition":"<div>C'est une Sortie émise par un processus fonctionnel à l'attention d'un utilisateur humain qui soit, confirme que les données saisies ont été acceptées, ou confirme qu'il y a une erreur dans les données saisies.</div> <br><div>Remarque : Toute Sortie qui pourrait inclure une indication de faute, mais qui n'est pas faite à l'intention d'un utilisateur fonctionnel humain, n'est pas un message d'erreur/confirmation.</div>"
    },
    {
       "id":"27",
       "term":"Mesurage de la taille fonctionnelle (MTF)",
-      "definition":"Le processus de mesurage de la taille fonctionnelle."
+      "definition":"<div>Le processus de mesurage de la taille fonctionnelle.</div>"
    },
    {
       "id":"28",
       "term":"Méthode de mesurage",
-      "definition":"Une suite logique d'opérations, décrite de manière générique, utilisée pour l'exécution du mesurage."
+      "definition":"<div>Une suite logique d'opérations, décrite de manière générique, utilisée pour l'exécution du mesurage.</div>"
    },
    {
       "id":"29",
       "term":"Méthode de mesurage de la taille fonctionnelle (MMTF)",
-      "definition":"Une implémentation spécifique de la MTF définie par un ensemble de règles, qui sont conformes aux caractéristiques obligatoires de la norme ISO/IEC 14143-1:1998."
+      "definition":"<div>Une implémentation spécifique de la MTF définie par un ensemble de règles, qui sont conformes aux caractéristiques obligatoires de la norme ISO/IEC 14143-1:1998.</div>"
    },
    {
       "id":"30",
       "term":"Mise à l'échelle (du mesurage)",
-      "definition":"Le processus de conversion d'un mesurage de la taille d'une unité de mesure à une mesure d'une autre unité de mesure."
+      "definition":"<div>Le processus de conversion d'un mesurage de la taille d'une unité de mesure à une mesure d'une autre unité de mesure.</div>"
    },
    {
       "id":"31",
       "term":"Modèle",
-      "definition":"Une description ou une analogie utilisée pour aider à visualiser un concept qui ne peut être observé directement."
+      "definition":"<div>Une description ou une analogie utilisée pour aider à visualiser un concept qui ne peut être observé directement.</div>"
    },
    {
       "id":"32",
       "term":"Modèle de stratégie du mesurage",
-      "definition":"Un modèle normalisé qui peut-être être appliqué lors du mesurage d'un morceau de logiciel provenant d'un domaine fonctionnel du logiciel donné, qui définit les types d'utilisateurs fonctionnels et qui peut interagir avec le logiciel, le niveau de décomposition du logiciel et les types de mouvements de données que le logiciel peut manipuler."
+      "definition":"<div>Un modèle normalisé qui peut-être être appliqué lors du mesurage d'un morceau de logiciel provenant d'un domaine fonctionnel du logiciel donné, qui définit les types d'utilisateurs fonctionnels et qui peut interagir avec le logiciel, le niveau de décomposition du logiciel et les types de mouvements de données que le logiciel peut manipuler.</div>"
    },
    {
       "id":"33",
       "term":"Modification (de la fonctionnalité d'un mouvement de données)",
-      "definition":"a) Un mouvement de données est considéré fonctionnellement modifié si au moins une des conditions suivantes s'applique: * le groupe de données déplacé est modifié, * la manipulation de données associée est modifiée. b) Un groupe de données est modifié, si au moins une des conditions suivantes s'applique : * un ou plusieurs nouveaux attributs sont ajoutés au groupe de données, * un ou plusieurs attributs existants sont supprimés du groupe de données, * un ou plusieurs attributs existants sont modifiés, par exemple la présentation ou le format (le changement des valeurs ne compte pas) c) une manipulation de données est modifiée, si elle est, de quelque façon, fonctionnellement changée."
+      "definition":"<div>a) Un mouvement de données est considéré fonctionnellement modifié si au moins une des conditions suivantes s'applique:</div> <div><ul><li>le groupe de données déplacé est modifié,</li> <li>la manipulation de données associée est modifiée.</li></ul></div> <div>b) Un groupe de données est modifié, si au moins une des conditions suivantes s'applique :</div><div> <ul><li>un ou plusieurs nouveaux attributs sont ajoutés au groupe de données,</li> <li>un ou plusieurs attributs existants sont supprimés du groupe de données, </li> <li>un ou plusieurs attributs existants sont modifiés, par exemple la présentation ou le format (le changement des valeurs ne compte pas)</li></ul></div> <div>c) une manipulation de données est modifiée, si elle est, de quelque façon, fonctionnellement changée.</div>"
    },
    {
       "id":"34",
       "term":"Morceau de logiciel",
-      "definition":"N'importe quel élément discret du logiciel à n'importe quel niveau de décomposition à partir d'un système logiciel entier jusqu'à un élément se trouvant au niveau du plus petit composant d'un système logiciel."
+      "definition":"<div>N'importe quel élément discret du logiciel à n'importe quel niveau de décomposition à partir d'un système logiciel entier jusqu'à un élément se trouvant au niveau du plus petit composant d'un système logiciel.</div>"
    },
    {
       "id":"35",
       "term":"Morceaux de logiciel de même niveau",
-      "definition":"Deux morceaux d'un logiciel sont de même niveau si chacun réside dans la même couche."
+      "definition":"<div>Deux morceaux d'un logiciel sont de même niveau si chacun réside dans la même couche.</div>"
    },
    {
       "id":"36",
       "term":"Mouvement de données (type)",
-      "definition":"Un composant fonctionnel de base qui déplace un seul type de groupe de données. Remarque 1: Il y a quatre sous-types de mouvements de données: Entrée (E), Sortie (S), Lecture (L), éCriture (C). Remarque 2 : Pour le besoin de la mesure, chaque sous-type de mouvement de données est considéré comme tenant compte d'un certain nombre de manipulation de données qui y sont associées – voir le Manuel de Mesurage pour plus de détails. Remarque 3 : Pour préciser, c'est l'occurrence d'un mouvement de données, non son type, qui en pratique déplace les occurrences d'un groupe de données. Cette remarque s'applique aussi aux définitions de: Entrée (E), Sortie (S), Lecture (L), éCriture (C)."
+      "definition":"<div>Un composant fonctionnel de base qui déplace un seul type de groupe de données.</div><br> <div>Remarque 1: Il y a quatre sous-types de mouvements de données: Entrée (E), Sortie (S), Lecture (L), éCriture (C). </div><br> <div>Remarque 2 : Pour le besoin de la mesure, chaque sous-type de mouvement de données est considéré comme tenant compte d'un certain nombre de manipulation de données qui y sont associées – voir le Manuel de Mesurage pour plus de détails.</div><br> <div>Remarque 3 : Pour préciser, c'est l'occurrence d'un mouvement de données, non son type, qui en pratique déplace les occurrences d'un groupe de données. Cette remarque s'applique aussi aux définitions de: Entrée (E), Sortie (S), Lecture (L), éCriture (C).</div>"
    },
    {
       "id":"37",
       "term":"Niveau de décomposition",
-      "definition":"N'importe quel niveau résultant de la division d'un morceau de logiciel en composants (nommé 'niveau 1', par exemple), puis diviser les composants en sous-composants ('niveau 2'), et ensuite diviser les sous-composants en sous-sous composants ('niveau 3'), etc... Remarque 1: Ne pas confondre avec 'niveau de granularité'. Remarque 2: Le mesurage de la taille des composants d'un morceau du logiciel peut être comparé directement seulement aux composants d'un même niveau de décomposition."
+      "definition":"<div>N'importe quel niveau résultant de la division d'un morceau de logiciel en composants (nommé 'niveau 1', par exemple), puis diviser les composants en sous-composants ('niveau 2'), et ensuite diviser les sous-composants en sous-sous composants ('niveau 3'), etc... </div> <br><div>Remarque 1: Ne pas confondre avec 'niveau de granularité'. </div> <br><div>Remarque 2: Le mesurage de la taille des composants d'un morceau du logiciel peut être comparé directement seulement aux composants d'un même niveau de décomposition.</div>"
    },
    {
       "id":"38",
       "term":"Niveau de granularité du processus fonctionnel.",
-      "definition":"Un niveau de granularité de la description d'un morceau de logiciel pour lequel : - les utilisateurs fonctionnels sont des individus humains ou des objets d'ingénierie ou d'autres morceaux de logiciel (et non pas de quelconques groupes de ceux-ci) ET; - des évènements spécifiques surviennent auxquels un morceau du logiciel doit répondre (et pas à un quelconque niveau de granularité où seulement des groupes d'évènements seraient définis). Voir la remarque 3 ci-après. REMARQUE 1: En pratique, la documentation du logiciel et donc les FUR décrivent souvent les fonctionnalités à divers niveaux de granularité, plus particulièrement quand la documentation est toujours en cours d'élaboration. REMARQUE 2: Les 'Groupes ciblés (utilisateurs fonctionnels) peuvent être, par exemple, est un 'département' dont les membres peuvent effectuer plusieurs types de processus fonctionnels, ou un 'panneau de contrôle' qui a plusieurs types d'instruments, ou des 'systèmes centraux'. REMARQUE 3: Les 'Groupes d'évènements' peuvent, par exemple, être exprimés dans l'énoncé d'une FUR à un haut niveau de granularité par un flux d'intrants pour un système comptable nommé 'transactions de vente' ou par un flux d'intrants à un logiciel avionique appelée 'commande de pilotage'."
+      "definition":"<div>Un niveau de granularité de la description d'un morceau de logiciel pour lequel :</div><div><ul><li>les utilisateurs fonctionnels sont des individus humains ou des objets d'ingénierie ou d'autres morceaux de logiciel (et non pas de quelconques groupes de ceux-ci) ET;</li> <li>des évènements spécifiques surviennent auxquels un morceau du logiciel doit répondre (et pas à un quelconque niveau de granularité où seulement des groupes d'évènements seraient définis). Voir la remarque 3 ci-après.</li></ul></div> <div>REMARQUE 1: En pratique, la documentation du logiciel et donc les FUR décrivent souvent les fonctionnalités à divers niveaux de granularité, plus particulièrement quand la documentation est toujours en cours d'élaboration. </div><br> <div>REMARQUE 2: Les 'Groupes ciblés (utilisateurs fonctionnels) peuvent être, par exemple, est un 'département' dont les membres peuvent effectuer plusieurs types de processus fonctionnels, ou un 'panneau de contrôle' qui a plusieurs types d'instruments, ou des 'systèmes centraux'. </div><br> <div>REMARQUE 3: Les 'Groupes d'évènements' peuvent, par exemple, être exprimés dans l'énoncé d'une FUR à un haut niveau de granularité par un flux d'intrants pour un système comptable nommé 'transactions de vente' ou par un flux d'intrants à un logiciel avionique appelée 'commande de pilotage'.</div>"
    },
    {
       "id":"39",
       "term":"Niveau de granularité",
-      "definition":"Tout niveau d'expansion de la description d'un seul morceau de logiciel (c.-à-d. un énoncé d'une exigence, ou la description d'une structure d'un morceau de logiciel) tel que chaque niveau supérieur d'expansion, la description de la fonctionnalité du morceau du logiciel est à un niveau supérieur et uniforme de détails. REMARQUE: Les mesureurs doivent tenir compte de l'évolution précoce des exigences dans le cycle de vie d'un projet. À tout moment, différentes parties des fonctionnalités requises du logiciel seront typiquement documentées à différents niveaux de granularité."
+      "definition":"<div>Tout niveau d'expansion de la description d'un seul morceau de logiciel (c.-à-d. un énoncé d'une exigence, ou la description d'une structure d'un morceau de logiciel) tel que chaque niveau supérieur d'expansion, la description de la fonctionnalité du morceau du logiciel est à un niveau supérieur et uniforme de détails.</div> <br><div>REMARQUE: Les mesureurs doivent tenir compte de l'évolution précoce des exigences dans le cycle de vie d'un projet. À tout moment, différentes parties des fonctionnalités requises du logiciel seront typiquement documentées à différents niveaux de granularité.</div>"
    },
    {
       "id":"40",
       "term":"Object d'intérêt (type)",
-      "definition":"Toute 'chose' qui est identifiée du point de vue d'un utilisateur fonctionnel qui est identifiée dans les Fonctionnalités Utilisateurs Requises (FUR) au sujet desquelles le logiciel est requis pour traiter et/ou stocker des données. Ce peut être toute chose physique, aussi bien que tout objet conceptuel ou partie d'un objet conceptuel. Remarque 1 : Dans la définition ci-dessus, 'processus' peut signifier toute opération de déplacer et/ou manipuler des données. Remarque 2 : Dans la méthode COSMIC, le terme 'objet d'intérêt' est utilisé pour éviter d'utiliser des termes reliés à des méthodologies spécifiques du génie logiciel. Le terme ne correspond pas nécessairement au terme 'objet' selon le sens utilisé dans les méthodes orientées objets."
+      "definition":"<div>Toute 'chose' qui est identifiée du point de vue d'un utilisateur fonctionnel qui est identifiée dans les Fonctionnalités Utilisateurs Requises (FUR) au sujet desquelles le logiciel est requis pour traiter et/ou stocker des données. Ce peut être toute chose physique, aussi bien que tout objet conceptuel ou partie d'un objet conceptuel.</div><br> <div>Remarque 1 : Dans la définition ci-dessus, 'processus' peut signifier toute opération de déplacer et/ou manipuler des données. </div><br> <div>Remarque 2 : Dans la méthode COSMIC, le terme 'objet d'intérêt' est utilisé pour éviter d'utiliser des termes reliés à des méthodologies spécifiques du génie logiciel. Le terme ne correspond pas nécessairement au terme 'objet' selon le sens utilisé dans les méthodes orientées objets.</div>"
    },
    {
       "id":"41",
       "term":"Périmètre (du mesurage)",
-      "definition":"C'est l'ensemble des Fonctionnalités Utilisateur Requises (FUR) qui doivent être incluses dans une occurrence spécifique du mesurage de taille fonctionnelle. REMARQUE : (spécifique à la méthode COSMIC) une distinction doit être faite entre le 'périmètre global', c.-à-d. tout le logiciel qui doit être mesuré selon la raison d'être du mesurage, et le 'périmètre, de chaque morceau de logiciel à l'intérieur de cette raison d'être globale, et pour lequel la taille doit être mesurée séparément. Dans le Manuel de mesurage, le terme 'périmètre' (ou l'expression 'périmètre du mesurage') sera relié à tout morceau de logiciel individuel dont la taille doit être mesurée séparément."
+      "definition":"<div>C'est l'ensemble des Fonctionnalités Utilisateur Requises (FUR) qui doivent être incluses dans une occurrence spécifique du mesurage de taille fonctionnelle.</div><br> <div>REMARQUE : (spécifique à la méthode COSMIC) une distinction doit être faite entre le 'périmètre global', c.-à-d. tout le logiciel qui doit être mesuré selon la raison d'être du mesurage, et le 'périmètre, de chaque morceau de logiciel à l'intérieur de cette raison d'être globale, et pour lequel la taille doit être mesurée séparément. Dans le Manuel de mesurage, le terme 'périmètre' (ou l'expression 'périmètre du mesurage') sera relié à tout morceau de logiciel individuel dont la taille doit être mesurée séparément.</div>"
    },
    {
       "id":"42",
       "term":"Processus fonctionnel (type)",
-      "definition":"a) Un ensemble de mouvements de données représentant une partie élémentaire des FUR pour le logiciel à mesurer, qui est unique dans cette FUR et qui peut être défini indépendamment de tout autre processus fonctionnel dans cette FUR. b) Un processus fonctionnel a seulement une seule Entrée de déclenchement.. Chaque processus fonctionnel démarre le traitement dès réception d'un groupe de données déplacé par un mouvement de données Entrée de déclenchement du processus fonctionnel. c) L'ensemble de tous les mouvements de données d'un processus fonctionnel est l'ensemble qui est nécessaire pour satisfaire sa FUR pour toutes les réponses possibles par l'Entrée de déclenchement. Remarque 1: Lors de l'implémentation, c'est une occurrence d'un processus fonctionnel qui déclenche l'exécution, et ce à la réception d'une occurrence d'un groupe de données déplacé par une occurrence de l'Entrée de déclenchement. Remarque 2: La FUR pour un processus fonctionnel peut exiger une ou plusieurs autres Entrées en plus de l'Entrée de déclenchement. Remarque 3: Si un utilisateur fonctionnel envoie un groupe de données avec des erreurs, par exemple parce qu'un capteur-usager a un mauvais fonctionnement ou une commande d'entrée par un être humain comporte des erreurs, c'est habituellement la tâche du processus fonctionnel de déterminer si l'évènement a vraiment eu lieu et/ou les données entrées sont vraiment valables. Le processus fonctionnel indique aussi comment répondre."
+      "definition":"<div>a) Un ensemble de mouvements de données représentant une partie élémentaire des FUR pour le logiciel à mesurer, qui est unique dans cette FUR et qui peut être défini indépendamment de tout autre processus fonctionnel dans cette FUR.</div><br> <div>b) Un processus fonctionnel a seulement une seule Entrée de déclenchement.. Chaque processus fonctionnel démarre le traitement dès réception d'un groupe de données déplacé par un mouvement de données Entrée de déclenchement du processus fonctionnel. </div><br><div>c) L'ensemble de tous les mouvements de données d'un processus fonctionnel est l'ensemble qui est nécessaire pour satisfaire sa FUR pour toutes les réponses possibles par l'Entrée de déclenchement. </div><br> <div>Remarque 1: Lors de l'implémentation, c'est une occurrence d'un processus fonctionnel qui déclenche l'exécution, et ce à la réception d'une occurrence d'un groupe de données déplacé par une occurrence de l'Entrée de déclenchement. </div><br> <div>Remarque 2: La FUR pour un processus fonctionnel peut exiger une ou plusieurs autres Entrées en plus de l'Entrée de déclenchement. </div><br> <div>Remarque 3: Si un utilisateur fonctionnel envoie un groupe de données avec des erreurs, par exemple parce qu'un capteur-usager a un mauvais fonctionnement ou une commande d'entrée par un être humain comporte des erreurs, c'est habituellement la tâche du processus fonctionnel de déterminer si l'évènement a vraiment eu lieu et/ou les données entrées sont vraiment valables. Le processus fonctionnel indique aussi comment répondre."
    },
    {
       "id":"43",
       "term":"Raison d'être du mesurage",
-      "definition":"Un énoncé qui indique pourquoi une mesure est exigée, et comment le résultat sera employé."
+      "definition":"<div>Un énoncé qui indique pourquoi une mesure est exigée, et comment le résultat sera employé.</div>"
    },
    {
       "id":"44",
       "term":"S",
-      "definition":"Abréviation pour Sortie (type)."
+      "definition":"<div>Abréviation pour Sortie (type).</div>"
    },
    {
       "id":"45",
       "term":"Sous-processus (type)",
-      "definition":"Une partie d'un processus fonctionnel qui soit, déplace des données (dans le logiciel d'un utilisateur fonctionnel ou hors le logiciel pour un utilisateur fonctionnel, ou à partir ou depuis du stockage persistant) ou manipule des données."
+      "definition":"<div>Une partie d'un processus fonctionnel qui soit, déplace des données (dans le logiciel d'un utilisateur fonctionnel ou hors le logiciel pour un utilisateur fonctionnel, ou à partir ou depuis du stockage persistant) ou manipule des données.</div>"
    },
    {
       "id":"46",
       "term":"Stockage persistant",
-      "definition":"Un type de stockage qui permet à un processus fonctionnel de conserver des données au-delà de la vie du processus fonctionnel et/ou qui permet à un processus fonctionnel de retrouver une donnée stockée par un autre processus fonctionnel, ou stockée plus tôt au cours d'une occurrence du même processus fonctionnel ou stockée par un autre processus. Remarque 1 : Dans le modèle COSMIC, le stockage persistant est un concept qui existe seulement à l'intérieur de la frontière du logiciel à mesurer, il ne peut donc être considéré comme un utilisateur fonctionnel du logiciel à mesurer. Remarque 2 : Un exemple pour 'un autre processus' serait la fabrication de mémoires à lecture seulement."
+      "definition":"<div>Un type de stockage qui permet à un processus fonctionnel de conserver des données au-delà de la vie du processus fonctionnel et/ou qui permet à un processus fonctionnel de retrouver une donnée stockée par un autre processus fonctionnel, ou stockée plus tôt au cours d'une occurrence du même processus fonctionnel ou stockée par un autre processus.</div><br> <div>Remarque 1 : Dans le modèle COSMIC, le stockage persistant est un concept qui existe seulement à l'intérieur de la frontière du logiciel à mesurer, il ne peut donc être considéré comme un utilisateur fonctionnel du logiciel à mesurer. </div> <br><div>Remarque 2 : Un exemple pour 'un autre processus' serait la fabrication de mémoires à lecture seulement.</div>"
    },
    {
       "id":"47",
       "term":"Système logiciel",
-      "definition":"Un système composé uniquement de logiciels."
+      "definition":"<div>Un système composé uniquement de logiciels.</div>"
    },
    {
       "id":"48",
       "term":"Système",
-      "definition":"Une combinaison de matériel, de logiciels et de procédures manuelles organisé pour répondre à des fins établies à l'avance. Remarque: La définition ci-dessus est une adaptation de la définition de la norme ISO/IEC 15288:2008. Dans la définition COSMIC, 'matériel, logiciel et manuel de procédures' remplacent 'éléments qui interagissent' dans la définition de la norme ISO/IEC."
+      "definition":"<div>Une combinaison de matériel, de logiciels et de procédures manuelles organisé pour répondre à des fins établies à l'avance.</div><br> <div>Remarque: La définition ci-dessus est une adaptation de la définition de la norme ISO/IEC 15288:2008. Dans la définition COSMIC, 'matériel, logiciel et manuel de procédures' remplacent 'éléments qui interagissent' dans la définition de la norme ISO/IEC.</div>"
    },
    {
       "id":"49",
       "term":"Taille fonctionnelle",
-      "definition":"Une taille du logiciel dérivé en quantifiant les Fonctionnalités Utilisateurs Requises"
+      "definition":"<div>Une taille du logiciel dérivé en quantifiant les Fonctionnalités Utilisateurs Requises.</div>"
    },
    {
       "id":"50",
       "term":"Type d'évènement",
-      "definition":"Quelque chose qui arrive."
+      "definition":"<div>Quelque chose qui arrive.</div>"
    },
    {
       "id":"51",
       "term":"Sortie (type)",
-      "definition":"Un type de mouvement de données qui déplace, à travers la frontière, un groupe de données d'un processus fonctionnel vers l'utilisateur fonctionnel qui le requiert. Remarque : Une Sortie type tient aussi compte de certaines manipulations de données associées (voir le Manuel de Mesurage pour plus de détails)."
+      "definition":"<div>Un type de mouvement de données qui déplace, à travers la frontière, un groupe de données d'un processus fonctionnel vers l'utilisateur fonctionnel qui le requiert.<div><br> <div>Remarque : Une Sortie type tient aussi compte de certaines manipulations de données associées (voir le Manuel de Mesurage pour plus de détails).</div>"
    },
    {
       "id":"52",
       "term":"Unité de mesurage",
-      "definition":"Grandeur particulière, définie et adoptée par convention, à laquelle on compare les autres grandeurs de même nature pour les exprimer quantitativement par rapport à cette grandeur. Il doit être note que les unités de mesurage ont par convention été assignées des noms et des symboles. Voir aussi 'Unité de mesurage COSMIC'."
+      "definition":"<div>Grandeur particulière, définie et adoptée par convention, à laquelle on compare les autres grandeurs de même nature pour les exprimer quantitativement par rapport à cette grandeur. Il doit être note que les unités de mesurage ont par convention été assignées des noms et des symboles.</div><br> <div>Voir aussi 'Unité de mesurage COSMIC'.</div>"
    },
    {
       "id":"53",
       "term":"Unité de mesurage COSMIC",
-      "definition":"1 CFP (COSMIC Function Point ou Point de Fonction COSMIC), définit comme la taille d'un mouvement de données. Remarque : L'unité de mesurage COSMIC était connue sous le nom de 'Cfsu' (COSMIC functional size unit) avant v3.0 de la méthode."
+      "definition":"<div>1 CFP (COSMIC Function Point ou Point de Fonction COSMIC), définit comme la taille d'un mouvement de données.</div><br> <div>Remarque : L'unité de mesurage COSMIC était connue sous le nom de 'Cfsu' (COSMIC functional size unit) avant v3.0 de la méthode.</div>"
    },
    {
       "id":"54",
       "term":"Utilisateur",
-      "definition":"N'importe quelle personne ou chose qui communique or interagit avec le logiciel à n'importe quel moment. Remarque : les exemples de 'chose' incluent, mais ne sont pas limités à, des applications logicielles, des animaux, des senseurs or d'autre matériel."
+      "definition":"<div>N'importe quelle personne ou chose qui communique or interagit avec le logiciel à n'importe quel moment.</div><br> <div>Remarque : les exemples de 'chose' incluent, mais ne sont pas limités à, des applications logicielles, des animaux, des senseurs or d'autre matériel.</div>"
    },
    {
       "id":"55",
       "term":"Utilisateur fonctionnel",
-      "definition":"Un (type d') utilisateur qui est l'émetteur et/ou le récipient de données comme prévu par la Fonctionnalité Utilisateur Requise d'un morceau de logiciel."
+      "definition":"<div>Un (type d') utilisateur qui est l'émetteur et/ou le récipient de données comme prévu par la Fonctionnalité Utilisateur Requise d'un morceau de logiciel.</div>"
    },
    {
       "id":"56",
       "term":"Valeur (d'une grandeur)",
-      "definition":"Expression quantitative d'une grandeur particulière, généralement sous la forme d'un étalon de mesure multiplié par un nombre."
+      "definition":"<div>Expression quantitative d'une grandeur particulière, généralement sous la forme d'un étalon de mesure multiplié par un nombre.</div>"
    }
 ]

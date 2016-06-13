@@ -1,4 +1,6 @@
 @main("Glossary") {
+<script src='@routes.Assets.versioned("javascripts/lib/angular/angular-sanitize/angular-sanitize.min.js")'></script>
+<script src='@routes.Assets.versioned("javascripts/glossary/glossary.js")'></script>
 <br/><br/><br/><br/><br/><br/>
 <div ng-app="glossaryModule" ng-controller="glossaryCtrl">
 
@@ -56,8 +58,8 @@
         </div>
 
         <div class="col-md-10 panel panel-default" style="padding:4px 15px;">
-          <span ng-repeat="letter in letters"><a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'} " ng-click="inactive(letter) || filterByLetter(letter)">{{letter}}</a> </span>
-          <span> | <a href="#" ng-click="filterByLetter()">{{labels.ALL}}</a></span>
+          <span ng-repeat="letter in letters"><a href="#" ng-style="inactive(letter) && {'text-decoration':'none', 'color':'black', 'cursor':'default'}" ng-click="inactive(letter) || filterByLetter(letter)">{{letter}}</a> </span>
+          <span> | <a href="#" ng-style="!glossary.length && {'text-decoration':'none', 'color':'black', 'cursor':'default'}"ng-click="filterByLetter()">{{labels.ALL}}</a></span>
         </div>
 
       </div>
@@ -73,11 +75,13 @@
         </thead>
         <tbody>
           <tr class="text-center" ng-hide="glossary.length">
-            <td colspan="2" ><span><strong>{{labels.NO_MATCH}}</strong></span></td>
+            <td colspan="2"><span><strong>{{labels.NO_MATCH}}</strong></span></td>
           </tr>
           <tr ng-repeat="entry in glossary | orderBy: 'term' ">
-            <td>{{entry.term}}</td>
-            <td>{{entry.definition}}</td>
+            <td><span><strong>{{entry.term}}</strong></span></td>
+            <td>
+              <div ng-bind-html="entry.definition"></div>
+            </td>
           </tr>
         </tbody>
       </table>
