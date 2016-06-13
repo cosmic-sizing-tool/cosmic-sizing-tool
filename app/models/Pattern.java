@@ -29,18 +29,18 @@ public class Pattern extends Model implements JsonSerializable {
     private Date dateCreated;
     private boolean isValid;
     @ManyToOne
-    private BasicUser userId;
+    //private BasicUser userId;
     
     @OneToMany(cascade = CascadeType.ALL)
     private Set<FunctionalProcess> funcProcessSet = new HashSet<>();
 
-    public Pattern(String name, String description, Date dateLastModified, Date dateCreated, boolean isValid, BasicUser userId) {
+    //public Pattern(String name, String description, Date dateLastModified, Date dateCreated, boolean isValid, BasicUser userId) {
+    public Pattern(String name, String description, Date dateLastModified, Date dateCreated, boolean isValid) {
         this.name = name;
         this.description = description;
         this.dateLastModified = dateLastModified;
         this.dateCreated = dateCreated;
         this.isValid = isValid;
-        this.userId = userId;
     }
     
     public Set<FunctionalProcess> getFuncProcessSet() {
@@ -98,14 +98,16 @@ public class Pattern extends Model implements JsonSerializable {
     public void setIsValid(boolean isValid) {
         this.isValid = isValid;
     }
-
+/*
     public BasicUser getUserId() {
         return userId;
     }
-
+*/
+/*
     public void setUserId(BasicUser userId) {
         this.userId = userId;
     }
+*/
     
     
     
