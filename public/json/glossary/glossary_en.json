@@ -127,17 +127,17 @@
    {
       "id":"26",
       "term":"Layer",
-      "definition":"<div>A functional partition of a software system architecture.</div>"
+      "definition":"<div>A functional partition of a <u>software system</u> architecture.</div>"
    },
    {
       "id":"27",
       "term":"Level of decomposition",
-      "definition":"<div>Any level resulting from dividing a piece of software into components (named 'Level 1', for example), then from dividing components into sub-components ('Level 2'), then from dividing sub-components into sub-sub components (Level 3'), etc.<div><br><div>NOTE 1: Not to be confused with 'level of granularity'.</div> <br><div>NOTE 2: Size measurements of the components of a piece of software may only be directly comparable for components at the same level of decomposition.</div>"
+      "definition":"<div>Any level resulting from dividing a <u>piece of software</u> into <u>components</u> (named 'Level 1', for example), then from dividing </u>components</u> into sub-<u>components</u> ('Level 2'), then from dividing <u>components</u> into sub-sub <u>components</u> (Level 3'), etc.<div><br><div>NOTE 1: Not to be confused with '<u>level of granularity</u>'.</div> <br><div>NOTE 2: Size measurements of the <u>components</u> of a piece of software may only be directly comparable for components at the same <u>level of decomposition</u>.</div>"
    },
    {
       "id":"28",
       "term":"Level of granularity",
-      "definition":"<div>Any level of expansion of the description of a single piece of software (e.g. a statement of its requirements, or a description of the structure of the piece of software) such that at each increased level of expansion, the description of the functionality of the piece of software is at an increased and uniform level of detail.</div> <br><div>NOTE: Measurers should be aware that when requirements are evolving early in the life of a software project, at any moment different parts of the required software functionality will typically have been documented at different levels of granularity.</div>"
+      "definition":"<div>Any level of expansion of the description of a single <u>piece of software</u> (e.g. a statement of its requirements, or a description of the structure of the <u>piece of software</u>) such that at each increased level of expansion, the description of the functionality of the <u>piece of software</u> is at an increased and uniform level of detail.</div> <br><div>NOTE: Measurers should be aware that when requirements are evolving early in the life of a <u>software</u> project, at any moment different parts of the required <u>software</u> functionality will typically have been documented at different levels of granularity.</div>"
    },
    {
       "id":"29",
@@ -147,7 +147,7 @@
    {
       "id":"30",
       "term":"Measurement (Strategy) Pattern",
-      "definition":"<div>A standard template that may be applied when measuring a piece of software from a given software functional domain, that defines the types of functional user that may interact with the software, the level of decomposition of the software and the types of data movements that the software may handle.</div>"
+      "definition":"<div>A standard template that may be applied when measuring a <u>piece of software</u> from a given <u>software</u> functional domain, that defines the types of <u>functional user</u> that may interact with the <u>software</u>, the <u>level of decomposition</u> of the <u>software</u> and the types of <u>data movements</u> that the <u>software</u> may handle.</div>"
    },
    {
       "id":"31",
@@ -162,37 +162,37 @@
    {
       "id":"33",
       "term":"Non-Functional Requirement",
-      "definition":"<div>Any requirement for the software part of a hardware/software system or software product, including how it should be developed and maintained, and how it should perform in operation, except a functional user requirement for software. Non-functional requirements concern:</div> <div><ul><li> the software quality; </li> <li>the environment in which the software must be implemented and which it must serve;</li> <li>the processes and technology to be used to develop and maintain the software; </li> <li>the technology to be used for the software execution.</li></ul> </div> <div>NOTE: System or software requirements that are initially expressed as non-functional often evolve as a project progresses wholly or partly into FUR for software."
+      "definition":"<div>Any requirement for the software part of a hardware/software system or software product, including how it should be developed and maintained, and how it should perform in operation, except a functional user requirement for software. Non-functional requirements concern:</div> <div><ul><li> the software quality; </li> <li>the environment in which the software must be implemented and which it must serve;</li> <li>the processes and technology to be used to develop and maintain the software; </li> <li>the technology to be used for the software execution.</li></ul> </div> <div>NOTE: <u>System</u> or <u>software</u> requirements that are initially expressed as non-functional often evolve as a project progresses wholly or partly into <u>FUR</u> for <u>software</u>."
    },
    {
       "id":"34",
       "term":"Object of interest type",
-      "definition":"<div>Any 'thing' in the world of the functional user that is identified in the Functional User Requirements about which the software is required to process and/or store data. It may be any physical thing, as well as any conceptual object or part of a conceptual object.</div><br> <div>NOTE 1: In the above definition, 'process' can mean any operation to move and/or manipulate data. </div><br> <div>NOTE 2: In the COSMIC method, the term 'object of interest' is used in order to avoid terms related to specific software engineering methods. The term does not imply 'objects' in the sense used in Object Oriented methods.</div>"
+      "definition":"<div>Any 'thing' in the world of the <u>functional user</u> that is identified in the <u>Functional User Requirements</u> about which the <u>software</u> is required to process and/or store data. It may be any physical thing, as well as any conceptual object or part of a conceptual object.</div><br> <div>NOTE 1: In the above definition, 'process' can mean any operation to move and/or manipulate data. </div><br> <div>NOTE 2: In the COSMIC method, the term '<u>object of interest</u>' is used in order to avoid terms related to specific software engineering methods. The term does not imply 'objects' in the sense used in Object Oriented methods.</div>"
    },
    {
       "id":"35",
       "term":"Operating environment (software)",
-      "definition":"<div>The set of software operating concurrently on a specified computer system on which application software depends.</div>"
+      "definition":"<div>The set of <u>software</u> operating concurrently on a specified computer system on which application software depends.</div>"
    },
    {
       "id":"36",
       "term":"Output",
-      "definition":"<div>The data moved by all the Exits of a given functional process.</div>"
+      "definition":"<div>The data moved by all the <u>Exits</u> of a given <u>functional process</u>.</div>"
    },
    {
       "id":"37",
       "term":"Peer pieces of software",
-      "definition":"<div>Two pieces of software are peers of each other if they reside in the same layer.</div>"
+      "definition":"<div>Two pieces of <u>software</u> are peers of each other if they reside in the same <u>layer</u>.</div>"
    },
    {
       "id":"38",
       "term":"Persistent storage",
-      "definition":"<div>Storage which enables a functional process to store data beyond the life of the functional process and/or which enables a functional process to retrieve data stored by another functional process, or stored by an earlier occurrence of the same functional process or stored by some other process.</div><br> <div>NOTE 1: In the COSMIC model, persistent storage is a concept that exists only within the boundary of the software being measured, it cannot therefore be considered as a functional user of the software being measured. </div> <br><div>NOTE 2: An example of 'some other process' would be in the manufacture of read-only memory.</div>"
+      "definition":"<div>Storage which enables a <u>functional process</u>  to store data beyond the life of the <u>functional process</u> and/or which enables a <u>functional process</u>  to retrieve data stored by another <u>functional process</u> , or stored by an earlier occurrence of the same <u>functional process</u>  or stored by some other process.</div><br> <div>NOTE 1: In the COSMIC model, persistent storage is a concept that exists only within the <u>boundary</u> of the software being measured, it cannot therefore be considered as a <u>functional user</u> of the <u>software</u> being measured. </div> <br><div>NOTE 2: An example of 'some other process' would be in the manufacture of read-only memory.</div>"
    },
    {
       "id":"39",
       "term":"Piece of software",
-      "definition":"<div>Any discrete item of software at any level of decomposition from the level of a whole software system down to and including the level of the smallest component of a software system.</div>"
+      "definition":"<div>Any discrete item of software at any <u>level of decomposition</u> from the level of a whole <u>software system</u> down to and including the level of the smallest <u>component</u> of a software system.</div>"
    },
    {
       "id":"40",
@@ -202,67 +202,67 @@
    {
       "id":"41",
       "term":"R",
-      "definition":"<div>Abbreviation for 'Read type'.</div>"
+      "definition":"<div>Abbreviation for '<u>Read</u> type'.</div>"
    },
    {
       "id":"42",
       "term":"Read type",
-      "definition":"<div>A data movement that moves a data group from persistent storage into the functional process which requires it.</div><br> <div>NOTE: A Read type is considered to account for certain associated data manipulation – see the Measurement Manual for details.</div>"
+      "definition":"<div>A <u>data movement</u> that moves a <u>data group</u> from <u>persistent storage</u> into the <u>functional process</u> which requires it.</div><br> <div>NOTE: A <u>Read</u> type is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div>"
    },
    {
       "id":"43",
       "term":"Scaling (of a measurement)",
-      "definition":"<div>The process of converting a size measurement at one unit of measurement to a measurement at another unit of measurement.</div>"
+      "definition":"<div>The process of converting a size measurement at one <u>unit of measurement</u> to a measurement at another unit of measurement.</div>"
    },
    {
       "id":"44",
       "term":"Scope (of a measurement)",
-      "definition":"<div>The set of Functional User Requirements to be included in a specific functional size measurement instance.<div><br> <div>NOTE: (Specific to the COSMIC method.) A distinction should be made between the 'overall scope', i.e. all the software that should be measured according to the purpose, and the 'scope' of any individual piece of software within the overall scope, whose size should be measured separately. In the Measurement Manual, the term 'scope' (or the expression 'measurement scope') will relate to an individual piece of software whose size must be measured separately.</div>"
+    "definition":"<div>The set of <u>Functional User Requirements</u> to be included in a specific <u>functional size measurement</u> instance.<div><br> <div>NOTE: (Specific to the COSMIC method.) A distinction should be made between the 'overall scope', i.e. all the <u>software</u> that should be measured according to the <u>purpose</u>, and the 'scope' of any individual <u>piece of software</u> within the overall scope, whose size should be measured separately. In the Measurement Manual, the term 'scope' (or the expression 'measurement <u>scope</u>') will relate to an individual <u>piece of software</u> whose size must be measured separately.</div>"
    },
    {
       "id":"45",
       "term":"Software",
-      "definition":"<div>A set of computer instructions, data, procedures and maybe documentation operating as a whole, to fulfill a specific set of purposes, all of which can be described from a functional perspective through a finite set of Functional User Requirements, technical and quality requirements.</div>"
+      "definition":"<div>A set of computer instructions, data, procedures and maybe documentation operating as a whole, to fulfill a specific set of purposes, all of which can be described from a functional perspective through a finite set of <u>Functional User Requirements</u>, technical and quality requirements.</div>"
    },
    {
       "id":"46",
       "term":"Software System",
-      "definition":"<div>A system that consists only of software.</div>"
+      "definition":"<div>A <u>system</u> that consists only of <u>software</u>.</div>"
    },
    {
       "id":"47",
       "term":"Sub-process type",
-      "definition":"<div>A part of a functional process that either moves data (into the software from a functional user or out of the software to a functional user, or to or from persistent storage) or that manipulates data.</div>"
+      "definition":"<div>A part of a <u>functional process</u> that either moves data (into the software from a <u>functional user</u> or out of the software to a <u>functional user</u>, or to or from <u>persistent storage</u>) or that manipulates data.</div>"
    },
    {
       "id":"48",
       "term":"System",
-      "definition":"<div>A combination of hardware, software and manual procedures organized to achieve stated purposes.</div><br><div>NOTE: The above definition is an adaptation of the ISO/IEC 15288:2008 definition. In the COSMIC definition, 'hardware, software and manual procedures' replaces 'interacting elements' in the ISO/IEC definition.</div>"
+      "definition":"<div>A combination of hardware, <u>software</u> and manual procedures organized to achieve stated purposes.</div><br><div>NOTE: The above definition is an adaptation of the ISO/IEC 15288:2008 definition. In the COSMIC definition, 'hardware, software and manual procedures' replaces 'interacting elements' in the ISO/IEC definition.</div>"
    },
    {
       "id":"49",
       "term":"Triggering Entry type",
-      "definition":"<div>The Entry data movement of a functional process that moves a data group, generated by a functional user, that the functional process needs to start processing.</div><br><div>NOTE The FUR for a functional process may require one or more other Entries in addition to the triggering Entry.</div>"
+      "definition":"<div>The <u>Entry</u> <u>data movement</u> of a <u>functional process</u> that moves a <u>data group</u>, generated by a functional user, that the <u>functional process</u> needs to start processing.</div><br><div>NOTE The <u>FUR</u> for a <u>functional process</u> may require one or more other <u>Entries</u. in addition to the triggering Entry.</div>"
    },
    {
       "id":"50",
       "term":"Triggering event type",
-      "definition":"<div>An event, recognized in the Functional User Requirements of the software being measured, that causes one or more functional users of the software being measured to generate one or more data groups, each of which will subsequently be moved by a triggering Entry. A triggering event cannot be sub-divided and has either happened or not happened.</div><br> <div>NOTE: Clock and timing events can be triggering events.</div>"
+      "definition":"<div>An <u>event</u>, recognized in the <u>Functional User Requirements</u> of the <u>software</u> being measured, that causes one or more <u>functional users</u> of the <u>software</u> being measured to generate one or more <u>data groups</u>, each of which will subsequently be moved by a <u>triggering Entry</u>. A triggering event cannot be sub-divided and has either happened or not happened.</div><br> <div>NOTE: Clock and timing events can be triggering events.</div>"
    },
    {
       "id":"51",
       "term":"Unit of measurement",
-      "definition":"<div>A particular quantity, defined and adopted by convention, with which other quantities of the same kind are compared in order to express their magnitudes relative to that quantity. It is to be noted that units of measurement have conventionally assigned names and symbols.</div><br> <div>See also 'COSMIC unit of measurement'</div>"
+      "definition":"<div>A particular quantity, defined and adopted by convention, with which other quantities of the same kind are compared in order to express their magnitudes relative to that quantity. It is to be noted that units of measurement have conventionally assigned names and symbols.</div><br> <div>See also '<u>COSMIC unit of measurement</u>'</div>"
    },
    {
       "id":"52",
       "term":"User",
-      "definition":"<div>Any person or thing that communicates or interacts with the software at any time.</div><br> <div>NOTE: Examples of 'thing' include, but are not limited to, software applications, animals, sensors, or other hardware.</div>"
+      "definition":"<div>Any person or thing that communicates or interacts with the <u>software</u> at any time.</div><br> <div>NOTE: Examples of 'thing' include, but are not limited to, software applications, animals, sensors, or other hardware.</div>"
    },
    {
       "id":"53",
       "term":"Value (of a quantity)",
-      "definition":"<div>The magnitude of a particular quantity, generally expressed as a unit of measurement multiplied by a number.</div>"
+      "definition":"<div>The magnitude of a particular quantity, generally expressed as a <u>unit of measurement</u> multiplied by a number.</div>"
    },
    {
       "id":"54",
@@ -272,11 +272,11 @@
    {
       "id":"55",
       "term":"Write type",
-      "definition":"<div>A data movement that moves a data group lying inside a functional process to persistent storage.</div><br> <div>Note: a Write is considered to account for certain associated data manipulation – see the Measurement Manual for details.</div>"
+      "definition":"<div>A <u>data movement</u> that moves a <u>data group</u> lying inside a <u>functional process</u> to <u>persistent storage</u>.</div><br> <div>Note: a Write is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div>"
    },
    {
       "id":"56",
       "term":"X",
-      "definition":"<div>Abbreviation for 'Exit type'.</div>"
+      "definition":"<div>Abbreviation for '<u>Exit</u> type'.</div>"
    }
 ]
