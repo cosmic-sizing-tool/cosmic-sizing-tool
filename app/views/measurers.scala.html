@@ -6,6 +6,12 @@
     table.table-striped td{
         padding-left: 8px;
     }
+
+    select.form-control{
+        width:24%;
+        padding-right: 1px;
+        padding-left: 1px;
+    }
 </style>
 <div class="container" ng-controller="MeasurersController">
     <div style="margin-top: 110px">
@@ -16,21 +22,20 @@
                     <div id="ViewHeader" style="text-align: left; width: 50%"><h2>Find a measurer</h2></div>
                 </div>
                 <div class="panel body">
-                    <div class="form-group" style="background-color: #fafafa; padding-left: 10px; align-content: stretch">
+                    <div class="form-group" style="background-color: #fafafa; padding-left: 10px; padding-right: 10px; align-content: stretch">
                         <div id="DropDownControls" style="display: flex; justify-content: space-between;">
 
-                            <select class="form-control" id="SelectMethod" style="width: 25%; padding: 4px" ng-model="model.filters.method">
+                            <select class="form-control" id="SelectMethod" ng-model="model.filters.method">
                                 <option ng-repeat="method in model.methods" ng-selected="method.code == ''" value="{{method.code}}">{{method.name}}</option>
                             </select>
-                            <select class="form-control" id="SelectCountry" style="width: 25%; padding: 4px" ng-model="model.filters.country">
+                            <select class="form-control" id="SelectCountry" ng-model="model.filters.country">
                                 <option ng-repeat="country in model.countries" ng-selected="country.code == ''" value="{{country.code}}">{{country.name}}</option>
                              </select>
 
-                            <select class="form-control" id="SelectState" style="width: 25%; padding: 4px" ng-model="model.filters.state" ng-disabled="!model.filters.country" ng-class="{disabled : !model.filters.country}">
+                            <select class="form-control" id="SelectState" ng-model="model.filters.state" ng-disabled="!model.filters.country" ng-class="{disabled : !model.filters.country}">
                                 <option ng-repeat="state in model.states" ng-selected="state.code == ''" value="{{state.code}}">{{state.name}}</option>
                            </select>
-
-                            <select class="form-control" id="SelectCity" style="width: 25%; padding: 4px" ng-model="model.filters.city">
+                            <select class="form-control" id="SelectCity" ng-model="model.filters.city" ng-disabled="!model.filters.country || !model.filters.state">
                                 <option ng-repeat="city in model.cities" value="{{city.code}}">{{city.name}}</option>
                             </select>
                         </div>
