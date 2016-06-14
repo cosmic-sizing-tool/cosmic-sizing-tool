@@ -1,0 +1,54 @@
+﻿{
+  "GENERAL": {
+    "YES": "Yes",
+    "NO" : "No"
+  },
+
+  "MAIN": {
+    "REGISTER": "Inscription",
+    "LOGIN": "Acceder",
+    "TERMS_AND_CONDITIONS": "Termes et Conditions",
+    "CONTACT": "Contact",
+    "HELP": "Aide",
+    "COSMIC_GLOSSARY": "Glossaire COSMIC",
+    "FIND_A_MEASURER": "Trouver un mesureur",
+    "GO_TO_COSMIC_SITE": "Aller au site COSMIC",
+    "ABOUT_THIS_TOOL": "À propos de cet outil"
+  },
+
+  "HOME": {
+    "WHERE_SOFTWARE_FUNCTIONAL": "Là où la taille des logiciels",
+    "SIZE_IS_MEASURED": "se mesure!",
+    "OPEN_SOURCE_COSMIC": "COSMIC, un logiciel libre pour l'aide au calcul de grandeur des fonctionnalités d'un logiciel",
+    "FREE_TO_USE": "Gratuit",
+    "PICK_A_USERNAME": "Choisir un nom d'usager",
+    "YOUR_EMAIL": "Votre courriel",
+    "CREATE_PASSWORD": "Choisir un mot de passe",
+    "USE_AT_LEAST": "Le mot de passe doit avoir au moins une lettre et un chiffre.",
+    "MINIMUM_8_CHARACTERS": "Minimum de 8 caractères et maximum de 20.",
+    "REGISTER_TO_THE_COSMIC": "Inscription au COSMIC-sizing-tool",
+    "BY_CLICKING_ON": "En cliquant sur \"Inscription au COSMIC-sizing-tool\", vous acceptez nos",
+    "TERMS": "Termes",
+    "CONDITIONS": "et Conditions",
+    "AND_THE": "et l'",
+    "PRIVACY_POLICY": "Entente de Confidentialite"
+  },
+  "SIGNUP": {
+    "JOIN_COSMIC" : "S'inscrire a l'outil COSMIC",
+    "USERNAME" : "Nom d'usager",
+    "PICK_A_USERNAME" : "Choisir un nom d'usager",
+    "THIS_WILL_BE_YOUR" : "Ceci sera votre nom d'usager - vous pouvez entrer votre code d'organisation par la suite",
+    "EMAIL_ADRESS" : "Courriel",
+    "YOUR_EMAIL" : "Votre Courriel",
+    "YOU_WILL_OCCASIONALLY" : "Vous recevrez occasionnelement des courriels en lien avec votre compte COSMIC. Nous promettons de ne pas partager votre courriel",
+    "PASSWORD" : "Mot de Passe",
+    "CREATE_A_PASSWORD" : "Creer un Mot de Passe",
+    "USE_AT_LEAST" : "Utiliser au moins une lettre et un chiffre. Minimum de 8 caracteres et maximum de 20.",
+    "THIS_WILL_BE_YOUR" : "Ceci sera votre langue par defaut.",
+    "BY_CLICKING_ON" : "En cliquant sur \"Creer un compte\", vous acceptez les",
+    "TERMS_AND_CONDITIONS" : "Termes et Conditions",
+    "AND_THE" : "et la",
+    "PRIVACY_POLICY" : "Police de confidentialite",
+    "CREATE_AN_ACCOUNT" : "Creer un compte"
+  }
+}
