@@ -1,84 +1,85 @@
 @main("Homepage") {
-  <br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/>
       <!-- Debut container -->
       <div class="container">
-         <div class="row">
-            <div class="col-md-3">
-               <div class="panel panel-default">
-                  <div class="panel-heading"><strong> Paramètres personnels</strong></div>
-                  <div id="link-menu" class="panel-body">
-                     <a class="link" href="@routes.UserCtrl.show()">Profil</a><br>
-                     <a class="link" href="@routes.UserCtrl.settings()">Paramètres du compte</a><br>
-                      <a class="link" href="@routes.EmailCtrl.emails()">Mes courriels</a>
+            <div class="row">
+                  <div class="col-md-3">
+                        <div class="panel panel-default">
+                              <div class="panel-heading"><strong>{{ 'USER_SETTINGS.PERSONAL_SETTINGS' | translate }}</strong></div>
+                              <div id="link-menu" class="panel-body">
+                                    <a class="link" href="@routes.UserCtrl.show()">{{ 'USER_SETTINGS.PROFILE' | translate }}</a><br>
+                                    <a class="link" href="@routes.UserCtrl.settings()">{{ 'USER_SETTINGS.ACCOUNT_SETTINGS' | translate }}</a><br>
+                                    <a class="link" href="@routes.EmailCtrl.emails()">{{ 'USER_SETTINGS.MY_EMAILS' | translate }}</a>
+                              </div>
+                        </div>
                   </div>
-               </div>
-            </div>   <!-- fin du col-md-4 -->
+                  <!-- fin du col-md-4 -->
 
-            <div class="col-md-9">
-                  <div class="panel panel-default" style="width: 80%">
-                     <div class="panel-heading"><strong>Changez le mot de passe</strong></div>
-                     <div class="panel-body">
-                        <form role="form" method="post" action="@routes.UserCtrl.updatePassword()">
-                           <div class="col-xs-8" style="padding-bottom: 5px;">
-                              <label for="oldPassword">Ancien mot de passe</label>
-                              <input class="form-control" id="oldPassword" name="oldPassword" type="text">
-                           </div>
-                           <div class="col-xs-8" style="padding-bottom: 5px;">
-                              <label for="newPassword">Nouveau mot de passe</label>
-                              <input class="form-control" id="newPassword" name="newPassword" type="password">
-                           </div>
-                           <div class="col-xs-8">
-                              <label for="confirmationPassword">Confirmez nouveau mot de passe</label>
-                              <input class="form-control" id="confirmationPassword" name="confirmationPassword" type="password"> <br>
-                           </div>
-                           <div class="col-xs-8" style="padding-bottom: 5px;">
-                              <button type="submit" class="btn btn-success"><strong> Mettre à jour le mot de passe</strong></button><br/>
-                              <a href="@routes.UserCtrl.resetPassword()" style="font-size: 12px;"> j'ai oublié mon mot de passe</a>
-                           </div>
-                           <br>
-                        </form>
-                  </div> <!-- Fin du panel body -->
-            </div> <!-- Fin du panel -->
-         </div> <!-- Fin du col-md-8 -->
-         <div class="col-md-3"></div>
-         <div class="col-md-9">
-               <div class="panel panel-default" style="width: 80%;">
-                  <div class="panel-heading"><strong>Changer le nom d'utilisateur</strong></div>
-                  <div class="panel-body">
+                  <div class="col-md-9">
+                        <div class="panel panel-default" style="width: 80%">
+                              <div class="panel-heading"><strong>{{ 'USER_SETTINGS.CHANGE_PASSWORD' | translate }}</strong></div>
+                              <div class="panel-body">
+                                    <form role="form" method="post" action="@routes.UserCtrl.updatePassword()">
+                                          <div class="col-xs-8" style="padding-bottom: 5px;">
+                                                <label for="oldPassword">{{ 'USER_SETTINGS.OLD_PASSWORD' | translate }}</label>
+                                                <input class="form-control" id="oldPassword" name="oldPassword" type="text">
+                                          </div>
+                                          <div class="col-xs-8" style="padding-bottom: 5px;">
+                                                <label for="newPassword">{{ 'USER_SETTINGS.NEW_PASSWORD' | translate }}</label>
+                                                <input class="form-control" id="newPassword" name="newPassword" type="password">
+                                          </div>
+                                          <div class="col-xs-8">
+                                                <label for="confirmationPassword">{{ 'USER_SETTINGS.CONFIRM_NEW_PASSWORD' | translate }}</label>
+                                                <input class="form-control" id="confirmationPassword" name="confirmationPassword" type="password">                                                <br>
+                                          </div>
+                                          <div class="col-xs-8" style="padding-bottom: 5px;">
+                                                <button type="submit" class="btn btn-success"><strong> {{ 'USER_SETTINGS.UPDATE_PASSWORD' | translate }}</strong></button><br/>
+                                                <a href="@routes.UserCtrl.resetPassword()" style="font-size: 12px;">{{ 'USER_SETTINGS.I_FORGOT_MY_PASSWORD' | translate }}</a>
+                                          </div>
+                                          <br>
+                                    </form>
+                              </div>
+                              <!-- Fin du panel body -->
+                        </div>
+                        <!-- Fin du panel -->
+                  </div>
+                  <!-- Fin du col-md-8 -->
+                  <div class="col-md-3"></div>
+                  <div class="col-md-9">
+                        <div class="panel panel-default" style="width: 80%;">
+                              <div class="panel-heading"><strong>{{ 'USER_SETTINGS.CHANGE_USERNAME' | translate }}</strong></div>
+                              <div class="panel-body">
 
-                    <form role="form" method="post" action="@routes.UserCtrl.changeUsername()">
+                                    <form role="form" method="post" action="@routes.UserCtrl.changeUsername()">
 
-                     <div class="col-xs-8" style="padding-bottom: 5px;">
-                              <input class="form-control" id="newUsername" name="newUsername" type="text" style="width: 50%;">
-                           </div>
-                           <br>
-                           <div class="col-xs-8" style="padding-top: 10px;">
-                              <button type="submit" class="btn btn-success">Mettre à jour</button>
-                           </div>
-                    </form>
-
+                                          <div class="col-xs-8" style="padding-bottom: 5px;">
+                                                <input class="form-control" id="newUsername" name="newUsername" type="text" style="width: 50%;">
+                                          </div>
+                                          <br>
+                                          <div class="col-xs-8" style="padding-top: 10px;">
+                                                <button type="submit" class="btn btn-success">{{ 'USER_SETTINGS.UPDATE' | translate }}</button>
+                                          </div>
+                                    </form>
+                              </div>
+                        </div>
                   </div>
 
-               </div>
-         </div>
-
-           <div class="col-md-3"></div>
-         <div class="col-md-9">
-               <div class="panel panel-default" style="width: 80%;">
-                  <div class="panel-heading" style="color: #fff; background-color: #df3e3e;"><strong>Supprimer compte</strong></div>
-                  <div class="panel-body">
-                     <p style="color: grey;font-size: 11px; padding-top: 2px;">La suppression du compte est irréversible, voulez-vous vraiment supprimer votre compte?</p>
-                    <form role="form" method="post" action="@routes.UserCtrl.deleteUser()">
-                        <button type="submit" class="btn btn-default" style="color:#900;">
-                        <strong>Supprimer le compte</strong>
+                  <div class="col-md-3"></div>
+                  <div class="col-md-9">
+                        <div class="panel panel-default" style="width: 80%;">
+                              <div class="panel-heading" style="color: #fff; background-color: #df3e3e;"><strong>{{ 'USER_SETTINGS.DELETE_ACCOUNT' | translate }}</strong></div>
+                              <div class="panel-body">
+                                    <p style="color: grey;font-size: 11px; padding-top: 2px;">{{ 'USER_SETTINGS.DELETION_WARNING' | translate }}</p>
+                                    <form role="form" method="post" action="@routes.UserCtrl.deleteUser()">
+                                          <button type="submit" class="btn btn-default" style="color:#900;">
+                        <strong>{{ 'USER_SETTINGS.DELETE_YOUR_ACCOUNT' | translate }}</strong>
                         </button>
-                    </form>
+                                    </form>
+                              </div>
+                        </div>
                   </div>
-
-               </div>
-         </div>
-
-      </div> <!-- fin du row -->
-
-      </div><!-- fin container-->
+            </div>
+            <!-- fin du row -->
+      </div>
+      <!-- fin container-->
 }

@@ -1,9 +1,8 @@
 ﻿{
   "GENERAL": {
-    "YES": "Yes",
-    "NO" : "No"
+    "YES": "Oui",
+    "NO": "Non"
   },
-
   "MAIN": {
     "REGISTER": "Inscription",
     "LOGIN": "Acceder",
@@ -15,7 +14,6 @@
     "GO_TO_COSMIC_SITE": "Aller au site COSMIC",
     "ABOUT_THIS_TOOL": "À propos de cet outil"
   },
-
   "HOME": {
     "WHERE_SOFTWARE_FUNCTIONAL": "Là où la taille des logiciels",
     "SIZE_IS_MEASURED": "se mesure!",
@@ -34,21 +32,52 @@
     "PRIVACY_POLICY": "Entente de Confidentialite"
   },
   "SIGNUP": {
-    "JOIN_COSMIC" : "S'inscrire a l'outil COSMIC",
-    "USERNAME" : "Nom d'usager",
-    "PICK_A_USERNAME" : "Choisir un nom d'usager",
-    "THIS_WILL_BE_YOUR" : "Ceci sera votre nom d'usager - vous pouvez entrer votre code d'organisation par la suite",
-    "EMAIL_ADRESS" : "Courriel",
-    "YOUR_EMAIL" : "Votre Courriel",
-    "YOU_WILL_OCCASIONALLY" : "Vous recevrez occasionnelement des courriels en lien avec votre compte COSMIC. Nous promettons de ne pas partager votre courriel",
-    "PASSWORD" : "Mot de Passe",
-    "CREATE_A_PASSWORD" : "Creer un Mot de Passe",
-    "USE_AT_LEAST" : "Utiliser au moins une lettre et un chiffre. Minimum de 8 caracteres et maximum de 20.",
-    "THIS_WILL_BE_YOUR" : "Ceci sera votre langue par defaut.",
-    "BY_CLICKING_ON" : "En cliquant sur \"Creer un compte\", vous acceptez les",
-    "TERMS_AND_CONDITIONS" : "Termes et Conditions",
-    "AND_THE" : "et la",
-    "PRIVACY_POLICY" : "Police de confidentialite",
-    "CREATE_AN_ACCOUNT" : "Creer un compte"
-  }
+    "JOIN_COSMIC": "S'inscrire a l'outil COSMIC",
+    "USERNAME": "Nom d'usager",
+    "PICK_A_USERNAME": "Choisir un nom d'usager",
+    "THIS_WILL_BE_YOUR": "Ceci sera votre nom d'usager - vous pouvez entrer votre code d'organisation par la suite",
+    "EMAIL_ADRESS": "Courriel",
+    "YOUR_EMAIL": "Votre Courriel",
+    "YOU_WILL_OCCASIONALLY": "Vous recevrez occasionnelement des courriels en lien avec votre compte COSMIC. Nous promettons de ne pas partager votre courriel",
+    "PASSWORD": "Mot de Passe",
+    "CREATE_A_PASSWORD": "Creer un Mot de Passe",
+    "USE_AT_LEAST": "Utiliser au moins une lettre et un chiffre. Minimum de 8 caracteres et maximum de 20.",
+    "THIS_WILL_BE_YOUR": "Ceci sera votre langue par defaut.",
+    "BY_CLICKING_ON": "En cliquant sur \"Creer un compte\", vous acceptez les",
+    "TERMS_AND_CONDITIONS": "Termes et Conditions",
+    "AND_THE": "et la",
+    "PRIVACY_POLICY": "Police de confidentialite",
+    "CREATE_AN_ACCOUNT": "Creer un compte"
+  },
+  "GLOSSARY": {
+    "AND": "Et",
+    "OR": "Ou",
+    "CONTAINS": "Contient",
+    "FILTER": "Filtrer",
+    "CLEAR_FILTER": "Vider le filtre",
+    "ALL": "Tous",
+    "NO_MATCH": "Aucun résultat",
+    "TERM": "Terme",
+    "DEFINITION": "Définition",
+    "TOP_OF_PAGE": "Haut de page"
+  },
+  "USER_SETTINGS":
+	{
+		"PERSONAL_SETTINGS": "Paramètres personnels",
+		"PROFILE": "Profil",
+		"ACCOUNT_SETTINGS": "Paramètres de compte",
+		"MY_EMAILS": "Mes courriels",
+		"CHANGE_PASSWORD": "Changer le mot de passe",
+		"OLD_PASSWORD": "Ancien mot de passe",
+		"NEW_PASSWORD": "Nouveau mot de passe",
+		"CONFIRM_NEW_PASSWORD": "Confirmer nouveau mot de passe",
+		"UPDATE_PASSWORD": "Mettre à jour le mot de passe",
+		"I_FORGOT_MY_PASSWORD": "J'ai oublié mon mot de passe",
+		"CHANGE_USERNAME": "Changez le nom de l'utilisateur",
+		"UPDATE": "Mettre à jour",
+		"DELETE_ACCOUNT": "Supprimer compte",
+		"DELETION_WARNING": "La suppression du compte est irréversible, voulez-vous vraiment supprimer votre compte?",
+		"DELETE_YOUR_ACCOUNT": "Supprimer votre compte"
+	}
+
 }

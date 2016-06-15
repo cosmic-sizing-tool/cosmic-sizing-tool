@@ -20,7 +20,7 @@ angular.module('glossaryModule', ['ngSanitize'])
             };
 
             $scope.loadGlossary = function (lang) {
-                var glossaryfile = "assets/json/glossary/glossary_" + lang + ".json";
+                var glossaryfile = "assets/resources/glossary/glossary_" + lang + ".json";
                 $http.get(glossaryfile).then(function (success) {
                     $scope.loadedGlossary = success.data;
                     initGlossaryToDisplay();
@@ -98,19 +98,7 @@ angular.module('glossaryModule', ['ngSanitize'])
                 initGlossaryToDisplay();
             };
 
-
-            // Solution temporaire pour changer la langue du glossaire et labels
-            $scope.loadLabels = function (lang) {
-                var labelsFile = 'assets/json/glossary/glossaryLabels_' + lang + '.json';
-                $http.get(labelsFile).then(function (ressources) {
-                    $scope.labels = ressources.data;
-                });
-            };
-
-            $scope.loadLabels("en");
-
             $scope.changeLanguage = function (lang) {
-                $scope.loadLabels(lang);
                 $scope.loadGlossary(lang);
             };
 
@@ -120,5 +108,4 @@ angular.module('glossaryModule', ['ngSanitize'])
             ];
 
             $scope.selected_language = 'en';
-            //
         }]);
