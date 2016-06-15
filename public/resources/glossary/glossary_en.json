@@ -1,0 +1,282 @@
+[
+   {
+      "id":"1",
+      "term":"Application",
+      "definition":"<div>A <u>software system</u> for collecting, saving, processing, and presenting data by means of a computer.</div> <br><div>NOTE: This is an adaptation of the definition given in ISO/IEC 24570:2005 Software engineering -- NESMA functional size measurement method version 2.1.</div> <br><div>(Alternative definition for 'application software'). Software designed to help users perform particular tasks or to handle particular types of problems, as distinct from software that controls the computer itself.</div><br><div>NOTE: This is a slight adaptation of the definition given in ISO/IEC 24765:2010 Systems and software engineering-vocabulary, 4.5).</div>"
+   },
+   {
+      "id":"2",
+      "term":"Application-general data",
+      "definition":"<div>Any data related to the application in general and not related to an object of interest of a specific functional process.</div>"
+   },
+   {
+      "id":"3",
+      "term":"Base functional component (BFC)",
+      "definition":"<div>An elementary unit of the Functional User Requirements defined by an FSM method for measurement purposes</div> <br><div>NOTE: The COSMIC method defines a data movement type as a BFC.</div>"
+   },
+   {
+      "id":"4",
+      "term":"Base functional component type (BFC type)",
+      "definition":"<div>A defined category of <u>BFC</u>'s. The COSMIC method has four BFC types, the <u>Entry</u>, <u>Exit</u>, <u>Read</u> and <u>Write</u> (-types).</div>"
+   },
+   {
+      "id":"5",
+      "term":"Boundary",
+      "definition":"<div>A conceptual interface between the <u>software</u> being measured and its <u>functional users</u>.</div><br><div>NOTE: It follows from the definition that there is a boundary between any two pieces of software in the same or different <u>layers</u> that exchange data where one <u>piece of software</u> is a <u>functional user</u> of the other, and/or vice versa.</div>"
+   },
+   {
+      "id":"6",
+      "term":"Component",
+      "definition":"<div>Any part of a <u>software system</u> that is separate for reasons of the software architecture, and/or that it was specified, designed or developed separately.</div>"
+   },
+   {
+      "id":"7",
+      "term":"Control command",
+      "definition":"<div>A command that enables human <u>functional users</u> to control their use of the software but which does not involve any movement of data about an <u>object of interest</u> of the FUR of the software being measured.</div><br> <div>NOTE: A <u>control command</u> is not a <u>data movement</u> because the command does not move data about an <u>object of interest</u>. Examples are 'page up/down' commands; hitting a Tab or Enter key, clicking on the 'OK' to confirm a previous action, pressing a button to continue, etc.</div>"
+   },
+   {
+      "id":"8",
+      "term":"COSMIC unit of measurement",
+      "definition":"<div>1 CFP (<u>C</u>osmic <u>F</u>unction <u>P</u>oint), which is defined as the size of one <u>data movement</u></div><br> <div>NOTE: The unit of measurement was known as a 'Cfsu' (COSMIC functional size unit) prior to v3.0 of the method.</div>"
+   },
+   {
+      "id":"9",
+      "term":"Data attribute type (synonym 'data element type')",
+      "definition":"<div>The smallest parcel of information, within an identified <u>data group</u> type, carrying a meaning from the perspective of the software's <u>Functional User Requirements</u>."
+   },
+   {
+      "id":"10",
+      "term":"Data group type",
+      "definition":"<div>A distinct, non-empty and non-ordered set of <u>data attribute</u> types where each included <u>data attribute</u> type describes a complementary aspect of the same one <u>object of interest</u>.</div>"
+   },
+   {
+      "id":"11",
+      "term":"Data manipulation",
+      "definition":"<div>Anything that happens to data other than a movement of the data into or out of a <u>functional process</u>, or between a <u>functional process</u> and <u>persistent storage</u>.</div>"
+   },
+   {
+      "id":"12",
+      "term":"Data movement type",
+      "definition":"<div>A <u>base functional component</u> which moves a single <u>data group</u> type.</div><br> <div>NOTE 1: There are four sub-types of a data movement type, namely: <u>Entry</u>, <u>Exit</u>, <u>Read</u> and <u>Write</u> (-types).</div> <br><div>NOTE 2: For measurement purposes, each data movement is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div><br> <div>NOTE 3: More precisely, it is an <em>occurrence</em> of a data movement, not a data movement <em>type</em>, that actually <em>moves</em> the <u>data group</u> occurrences (not <em>types</em>). This comment also applies to the definitions of <u>Entry</u>, <u>Exit</u>, <u>Read</u> and <u>Write</u>.</div>"
+   },
+   {
+      "id":"13",
+      "term":"E",
+      "definition":"Abbreviation for '<u>Entry</u> type'."
+   },
+   {
+      "id":"14",
+      "term":"Entry type",
+      "definition":"<div>A <u>data movement</u> that moves a <u>data group</u> from a <u>functional user</u> across the <u>boundary</u> into the <u>functional process</u> where it is required.</div><br> <div>NOTE: An Entry type is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div>"
+   },
+   {
+      "id":"15",
+      "term":"Error/confirmation message",
+      "definition":"<div>An <u>Exit</u> issued by a <u>functional process</u> to a human user that either confirms only that entered data has been accepted, or only that there is an error in the entered data.</div><br><div>NOTE: Any Exit that may include fault indications, but that is not intended for a human functional user, is not an error/confirmation message.</div>"
+   },
+   {
+      "id":"16",
+      "term":"Event type",
+      "definition":"<div>Something that happens.</div>"
+   },
+   {
+      "id":"17",
+      "term":"Exit type",
+      "definition":"<div>A <u>data movement</u> that moves a <u>data group</u> from a <u>functional process</u> across the <u>boundary</u> to the <u>functional user</u> that requires it.</div><br> <div>NOTE: An Exit type is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div>"
+   },
+   {
+      "id":"18",
+      "term":"Functional process type",
+      "definition":"<div>a) A set of data movements, representing an elementary part of the <u>Functional User Requirements</u> for the software being measured, that is unique within these <u>FUR</u> and that can be defined independently of any other functional process in these <u>FUR</u> </div><br> <div>b) A functional process may have only one triggering Entry. Each functional process starts processing on receipt of a <u>data group</u> moved by the <u>triggering Entry</u> <u>data movement</u> of the functional process.</div><br> <div>c) The set of all data movements of a functional process is the set that is needed to meet its FUR for all the possible responses to its triggering Entry.</div><br> <div>NOTE 1: When implemented, it is an <em>occurrence</em> of a functional process that starts <em>executing</em> on receipt of an <em>occurrence</em> of a <u>data group</u. moved by an occurrence of a <u>triggering Entry</u>.</div><br> <div>NOTE 2: The <u>FUR</u> for a functional process may require one or more other <u>Entries</u> in addition to the <u>triggering Entry</u>.</div><br> <div>NOTE 3: If a functional user sends a data group with errors, e.g. because a sensor-user is mal-functioning or an order entered by a human has errors, it is usually the task of the functional process to determine if the event really occurred and/or if the entered data are really valid, and how to respond.</div>"
+   },
+   {
+      "id":"19",
+      "term":"Functional process level of granularity",
+      "definition":"<div>A <u>level of granularity</u>. of the description of a <u>piece of software</u> at which</div> <div><ul><li>the <u>functional users</u> are individual humans or engineered devices or pieces of software (and not any groups of these) AND</li><li>single <u>events</u> occur that the <u>piece of software</u> must respond to (and not any level of granularity at which groups of <u>events</u> are defined). See Note 3 below.</li></ul></div> <div>NOTE 1: In practice, software documentation and hence <u>functional user requirements</u> often describe functionality at varying <u>levels of granularity</u>, especially when the documentation is still evolving.</div><br> <div>NOTE 2: 'Groups of these' (<u>functional users</u>) might, for example, be a 'department' whose members handle many types of functional processes, or a 'control panel' that has many types of instruments, or 'central systems'.</div><br> <div>NOTE 3: 'Groups of <u>events</u>' might, for example, be indicated in a statement of <u>FUR</u> at a high level of granularity by an <u>input</u> stream to an accounting <u>software system</u> labelled 'sales transactions' or by an <u>input</u> stream to an avionics software system labelled 'pilot commands'.</div>"
+   },
+   {
+      "id":"20",
+      "term":"Functional Size",
+      "definition":"<div>A size of the software derived by quantifying the <u>Functional User Requirements</u>.</div>"
+   },
+   {
+      "id":"21",
+      "term":"Functional Size Measurement (FSM)",
+      "definition":"<div>The process of measuring <u>functional size</u>.</div>"
+   },
+   {
+      "id":"22",
+      "term":"Functional Size Measurement Method",
+      "definition":"<div>A specific implementation of FSM defined by a set of rules, which conforms to the mandatory features of ISO/IEC 14143-1:1998.</div>"
+   },
+   {
+      "id":"23",
+      "term":"Functional User",
+      "definition":"<div>A (type of) <u>user</u> that is a sender and/or an intended recipient of data in the <u>Functional User Requirements</u> of a <u>piece of software</u>.</div>"
+   },
+   {
+      "id":"24",
+      "term":"Functional User Requirements (FUR)",
+      "definition":"<div>A sub-set of the user requirements. Requirements that describe what the <u>software</u> shall do, in terms of tasks and services.</div><br> <div>NOTE 1: Functional User Requirements relate to but are not limited to: </div> <div><ul><li>data transfer (for example Input customer data, Send control signal);</li> <li>data transformation (for example Calculate bank interest, Derive average temperature);</li> <li>data storage (for example Store customer order, Record ambient temperature over time);</li> <li>data retrieval (for example List current employees, Retrieve aircraft position).</li></ul></div> <div>Examples of user requirements that are not <u>Functional User Requirements</u> include but are not limited to (although some of these may become true FUR by the time the solution is fully defined):</div> <div><ul><li>quality constraints (for example usability, reliability, efficiency and portability);</li> <li>organizational constraints (for example locations for operation, target hardware and compliance to standards);</li> <li>environmental constraints (for example interoperability, security, privacy and safety);</li> <li>implementation constraints (for example development language, delivery schedule).</li></ul></div>"
+   },
+   {
+      "id":"25",
+      "term":"Input",
+      "definition":"<div>The data moved by all the <u>Entries</u> of a given <u>functional process</u>.</div>"
+   },
+   {
+      "id":"26",
+      "term":"Layer",
+      "definition":"<div>A functional partition of a <u>software system</u> architecture.</div>"
+   },
+   {
+      "id":"27",
+      "term":"Level of decomposition",
+      "definition":"<div>Any level resulting from dividing a <u>piece of software</u> into <u>components</u> (named 'Level 1', for example), then from dividing </u>components</u> into sub-<u>components</u> ('Level 2'), then from dividing <u>components</u> into sub-sub <u>components</u> (Level 3'), etc.<div><br><div>NOTE 1: Not to be confused with '<u>level of granularity</u>'.</div> <br><div>NOTE 2: Size measurements of the <u>components</u> of a piece of software may only be directly comparable for components at the same <u>level of decomposition</u>.</div>"
+   },
+   {
+      "id":"28",
+      "term":"Level of granularity",
+      "definition":"<div>Any level of expansion of the description of a single <u>piece of software</u> (e.g. a statement of its requirements, or a description of the structure of the <u>piece of software</u>) such that at each increased level of expansion, the description of the functionality of the <u>piece of software</u> is at an increased and uniform level of detail.</div> <br><div>NOTE: Measurers should be aware that when requirements are evolving early in the life of a <u>software</u> project, at any moment different parts of the required <u>software</u> functionality will typically have been documented at different levels of granularity.</div>"
+   },
+   {
+      "id":"29",
+      "term":"Measurement method",
+      "definition":"A logical sequence of operations, described generically, used in the performance of measurements."
+   },
+   {
+      "id":"30",
+      "term":"Measurement (Strategy) Pattern",
+      "definition":"<div>A standard template that may be applied when measuring a <u>piece of software</u> from a given <u>software</u> functional domain, that defines the types of <u>functional user</u> that may interact with the <u>software</u>, the <u>level of decomposition</u> of the <u>software</u> and the types of <u>data movements</u> that the <u>software</u> may handle.</div>"
+   },
+   {
+      "id":"31",
+      "term":"Model ",
+      "definition":"<div>A description or analogy used to help visualize a concept that cannot be directly observed.</div>"
+   },
+   {
+      "id":"32",
+      "term":"Modification (of the functionality of a data movement)",
+      "definition":"<div>a) A data movement is considered to be functionally modified if at least one of the following applies:</div> <div><ul><li>the data group moved is modified</li> <li>the associated data manipulation is modified</li></ul></div> <div>b) A data group is modified if at least one of the following applies:</div> <div><ul><li> one or more new attributes are added to the data group</li> <li>one or more existing attributes are removed from the data group</li> <li>one or more existing attributes are modified, e.g. in meaning or format (but not in their values)</li></ul></div> <div>c) A data manipulation is modified if it is functionally changed in any way.</div>"
+   },
+   {
+      "id":"33",
+      "term":"Non-Functional Requirement",
+      "definition":"<div>Any requirement for the software part of a hardware/software system or software product, including how it should be developed and maintained, and how it should perform in operation, except a functional user requirement for software. Non-functional requirements concern:</div> <div><ul><li> the software quality; </li> <li>the environment in which the software must be implemented and which it must serve;</li> <li>the processes and technology to be used to develop and maintain the software; </li> <li>the technology to be used for the software execution.</li></ul> </div> <div>NOTE: <u>System</u> or <u>software</u> requirements that are initially expressed as non-functional often evolve as a project progresses wholly or partly into <u>FUR</u> for <u>software</u>."
+   },
+   {
+      "id":"34",
+      "term":"Object of interest type",
+      "definition":"<div>Any 'thing' in the world of the <u>functional user</u> that is identified in the <u>Functional User Requirements</u> about which the <u>software</u> is required to process and/or store data. It may be any physical thing, as well as any conceptual object or part of a conceptual object.</div><br> <div>NOTE 1: In the above definition, 'process' can mean any operation to move and/or manipulate data. </div><br> <div>NOTE 2: In the COSMIC method, the term '<u>object of interest</u>' is used in order to avoid terms related to specific software engineering methods. The term does not imply 'objects' in the sense used in Object Oriented methods.</div>"
+   },
+   {
+      "id":"35",
+      "term":"Operating environment (software)",
+      "definition":"<div>The set of <u>software</u> operating concurrently on a specified computer system on which application software depends.</div>"
+   },
+   {
+      "id":"36",
+      "term":"Output",
+      "definition":"<div>The data moved by all the <u>Exits</u> of a given <u>functional process</u>.</div>"
+   },
+   {
+      "id":"37",
+      "term":"Peer pieces of software",
+      "definition":"<div>Two pieces of <u>software</u> are peers of each other if they reside in the same <u>layer</u>.</div>"
+   },
+   {
+      "id":"38",
+      "term":"Persistent storage",
+      "definition":"<div>Storage which enables a <u>functional process</u>  to store data beyond the life of the <u>functional process</u> and/or which enables a <u>functional process</u>  to retrieve data stored by another <u>functional process</u> , or stored by an earlier occurrence of the same <u>functional process</u>  or stored by some other process.</div><br> <div>NOTE 1: In the COSMIC model, persistent storage is a concept that exists only within the <u>boundary</u> of the software being measured, it cannot therefore be considered as a <u>functional user</u> of the <u>software</u> being measured. </div> <br><div>NOTE 2: An example of 'some other process' would be in the manufacture of read-only memory.</div>"
+   },
+   {
+      "id":"39",
+      "term":"Piece of software",
+      "definition":"<div>Any discrete item of software at any <u>level of decomposition</u> from the level of a whole <u>software system</u> down to and including the level of the smallest <u>component</u> of a software system.</div>"
+   },
+   {
+      "id":"40",
+      "term":"Purpose of a measurement",
+      "definition":"<div>A statement that defines why a measurement is being made, and what the result will be used for.</div>"
+   },
+   {
+      "id":"41",
+      "term":"R",
+      "definition":"<div>Abbreviation for '<u>Read</u> type'.</div>"
+   },
+   {
+      "id":"42",
+      "term":"Read type",
+      "definition":"<div>A <u>data movement</u> that moves a <u>data group</u> from <u>persistent storage</u> into the <u>functional process</u> which requires it.</div><br> <div>NOTE: A <u>Read</u> type is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div>"
+   },
+   {
+      "id":"43",
+      "term":"Scaling (of a measurement)",
+      "definition":"<div>The process of converting a size measurement at one <u>unit of measurement</u> to a measurement at another unit of measurement.</div>"
+   },
+   {
+      "id":"44",
+      "term":"Scope (of a measurement)",
+    "definition":"<div>The set of <u>Functional User Requirements</u> to be included in a specific <u>functional size measurement</u> instance.<div><br> <div>NOTE: (Specific to the COSMIC method.) A distinction should be made between the 'overall scope', i.e. all the <u>software</u> that should be measured according to the <u>purpose</u>, and the 'scope' of any individual <u>piece of software</u> within the overall scope, whose size should be measured separately. In the Measurement Manual, the term 'scope' (or the expression 'measurement <u>scope</u>') will relate to an individual <u>piece of software</u> whose size must be measured separately.</div>"
+   },
+   {
+      "id":"45",
+      "term":"Software",
+      "definition":"<div>A set of computer instructions, data, procedures and maybe documentation operating as a whole, to fulfill a specific set of purposes, all of which can be described from a functional perspective through a finite set of <u>Functional User Requirements</u>, technical and quality requirements.</div>"
+   },
+   {
+      "id":"46",
+      "term":"Software System",
+      "definition":"<div>A <u>system</u> that consists only of <u>software</u>.</div>"
+   },
+   {
+      "id":"47",
+      "term":"Sub-process type",
+      "definition":"<div>A part of a <u>functional process</u> that either moves data (into the software from a <u>functional user</u> or out of the software to a <u>functional user</u>, or to or from <u>persistent storage</u>) or that manipulates data.</div>"
+   },
+   {
+      "id":"48",
+      "term":"System",
+      "definition":"<div>A combination of hardware, <u>software</u> and manual procedures organized to achieve stated purposes.</div><br><div>NOTE: The above definition is an adaptation of the ISO/IEC 15288:2008 definition. In the COSMIC definition, 'hardware, software and manual procedures' replaces 'interacting elements' in the ISO/IEC definition.</div>"
+   },
+   {
+      "id":"49",
+      "term":"Triggering Entry type",
+      "definition":"<div>The <u>Entry</u> <u>data movement</u> of a <u>functional process</u> that moves a <u>data group</u>, generated by a functional user, that the <u>functional process</u> needs to start processing.</div><br><div>NOTE The <u>FUR</u> for a <u>functional process</u> may require one or more other <u>Entries</u. in addition to the triggering Entry.</div>"
+   },
+   {
+      "id":"50",
+      "term":"Triggering event type",
+      "definition":"<div>An <u>event</u>, recognized in the <u>Functional User Requirements</u> of the <u>software</u> being measured, that causes one or more <u>functional users</u> of the <u>software</u> being measured to generate one or more <u>data groups</u>, each of which will subsequently be moved by a <u>triggering Entry</u>. A triggering event cannot be sub-divided and has either happened or not happened.</div><br> <div>NOTE: Clock and timing events can be triggering events.</div>"
+   },
+   {
+      "id":"51",
+      "term":"Unit of measurement",
+      "definition":"<div>A particular quantity, defined and adopted by convention, with which other quantities of the same kind are compared in order to express their magnitudes relative to that quantity. It is to be noted that units of measurement have conventionally assigned names and symbols.</div><br> <div>See also '<u>COSMIC unit of measurement</u>'</div>"
+   },
+   {
+      "id":"52",
+      "term":"User",
+      "definition":"<div>Any person or thing that communicates or interacts with the <u>software</u> at any time.</div><br> <div>NOTE: Examples of 'thing' include, but are not limited to, software applications, animals, sensors, or other hardware.</div>"
+   },
+   {
+      "id":"53",
+      "term":"Value (of a quantity)",
+      "definition":"<div>The magnitude of a particular quantity, generally expressed as a <u>unit of measurement</u> multiplied by a number.</div>"
+   },
+   {
+      "id":"54",
+      "term":"W",
+      "definition":"<div>Abbreviation for 'Write type'.</div>"
+   },
+   {
+      "id":"55",
+      "term":"Write type",
+      "definition":"<div>A <u>data movement</u> that moves a <u>data group</u> lying inside a <u>functional process</u> to <u>persistent storage</u>.</div><br> <div>Note: a Write is considered to account for certain associated <u>data manipulation</u> – see the Measurement Manual for details.</div>"
+   },
+   {
+      "id":"56",
+      "term":"X",
+      "definition":"<div>Abbreviation for '<u>Exit</u> type'.</div>"
+   }
+]
