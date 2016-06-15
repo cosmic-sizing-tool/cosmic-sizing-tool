@@ -2,13 +2,9 @@
 <br/><br/><br/><br/><br/><br/>
 <link rel="stylesheet" href='@routes.Assets.versioned("stylesheets/glossary.css")'>
 
-<div ng-app="glossaryModule" ng-controller="glossaryCtrl">
+<div ng-controller="glossaryCtrl">
 
   <div class="container">
-
-    <div>
-      <select name="languages" ng-model="selected_language" ng-options="o.id as o.name for o in languages" ng-change="changeLanguage(selected_language)"></select>
-    </div>
 
     <div ng-show="collapsed" class="well text-center col-md-10 col-md-offset-1">
       <form class="form-inline" role="form">

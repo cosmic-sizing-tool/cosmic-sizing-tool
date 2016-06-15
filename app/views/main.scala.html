@@ -45,7 +45,7 @@
 
 </head>
 
-<body ng-app="app">
+<body ng-app="app" ng-controller="Ctrl">
 
     <!-- Cosmic header -->
     <header class="row">
@@ -93,7 +93,7 @@
                     <div class="col-md navbar-right" style="margin: 40px 50px 40px 0">
                         <ul class="list-inline" style="margin-right: 10px">
                             <li>
-                                <div ng-controller="Ctrl">
+                                <div>
                                     <select name="languages" class="languages icon-menu" ng-model="selected_language" ng-options="o.id as o.name for o in languages"
                                         ng-change="changeLanguage(selected_language)">
                                 </select>

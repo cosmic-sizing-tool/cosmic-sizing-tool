@@ -1,7 +1,7 @@
 (function () {
    'use strict';
 
-angular.module('app', ['pascalprecht.translate', 'registrationForm', 'ngCookies', 'glossaryModule'])
+angular.module('app', ['pascalprecht.translate', 'registrationForm', 'ngCookies', 'ngSanitize'])
 .config(['$translateProvider', function ($translateProvider) {
     translateConfig($translateProvider);
 }])

@@ -1,4 +1,4 @@
-angular.module('glossaryModule', ['ngSanitize'])
+angular.module('app')
     .controller('glossaryCtrl', ['$scope', '$http', 'filterFilter',
         function ($scope, $http, filterFilter) {
             'use strict';
@@ -19,7 +19,7 @@ angular.module('glossaryModule', ['ngSanitize'])
                 return $scope.activeLetters.indexOf(letter) == -1;
             };
 
-            $scope.loadGlossary = function (lang) {
+            var loadGlossary = function (lang) {
                 var glossaryfile = "assets/resources/glossary/glossary_" + lang + ".json";
                 $http.get(glossaryfile).then(function (success) {
                     $scope.loadedGlossary = success.data;
@@ -27,7 +27,15 @@ angular.module('glossaryModule', ['ngSanitize'])
                 });
             };
 
-            $scope.loadGlossary("en");
+            loadGlossary($scope.selected_language);
+
+            $scope.$watch(function (scope) {
+                return scope.selected_language
+            },
+                function (newValue, oldValue) {
+                    loadGlossary(newValue)
+                }
+            );
 
             $scope.getActiveLetters = function () {
                 $scope.activeLetters = [];
@@ -98,14 +106,5 @@ angular.module('glossaryModule', ['ngSanitize'])
                 initGlossaryToDisplay();
             };
 
-            $scope.changeLanguage = function (lang) {
-                $scope.loadGlossary(lang);
-            };
 
-            $scope.languages = [
-                { id: "en", name: 'English' },
-                { id: "fr", name: 'Francais' }
-            ];
-
-            $scope.selected_language = 'en';
         }]);

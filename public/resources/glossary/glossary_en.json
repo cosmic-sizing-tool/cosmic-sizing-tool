@@ -2,7 +2,7 @@
    {
       "id":"1",
       "term":"Application",
-      "definition":"<div><u>A software system</u> for collecting, saving, processing, and presenting data by means of a computer.</div> <br><div>NOTE: This is an adaptation of the definition given in ISO/IEC 24570:2005 Software engineering -- NESMA functional size measurement method version 2.1.</div> <br><div>(Alternative definition for 'application software'). Software designed to help users perform particular tasks or to handle particular types of problems, as distinct from software that controls the computer itself.</div><br><div>NOTE: This is a slight adaptation of the definition given in ISO/IEC 24765:2010 Systems and software engineering-vocabulary, 4.5).</div>"
+      "definition":"<div>A <u>software system</u> for collecting, saving, processing, and presenting data by means of a computer.</div> <br><div>NOTE: This is an adaptation of the definition given in ISO/IEC 24570:2005 Software engineering -- NESMA functional size measurement method version 2.1.</div> <br><div>(Alternative definition for 'application software'). Software designed to help users perform particular tasks or to handle particular types of problems, as distinct from software that controls the computer itself.</div><br><div>NOTE: This is a slight adaptation of the definition given in ISO/IEC 24765:2010 Systems and software engineering-vocabulary, 4.5).</div>"
    },
    {
       "id":"2",
