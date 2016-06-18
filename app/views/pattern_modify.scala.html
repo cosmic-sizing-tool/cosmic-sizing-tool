@@ -1,0 +1,65 @@
+@main("Pattern List"){
+<!DOCTYPE html>
+<!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src='@routes.Assets.versioned("javascripts/pattern_modify.js")'></script>
+<link rel="stylesheet" href=/assets/stylesheets/pattern_modify.css>
+<div id="patternModify">
+  <h2>Create/Modify Pattern</h2>
+  <hr>
+  <div id="patternOverview">
+    <span class="patternLabel">#FP:</span><span id="patternNFp" class="patternValue"></span>
+    <span class="patternLabel">Size (CFP):</span><span id="patternSize" class="patternValue"></span>
+    <br/>
+    <span id="cfpE" class="cfpTotal"><span class="patternLabel smaller">E:</span><span class="patternValue smaller"></span></span>
+    <span id="cfpX" class="cfpTotal"><span class="patternLabel smaller">X:</span><span class="patternValue smaller"></span></span>
+    <span id="cfpR" class="cfpTotal"><span class="patternLabel smaller">R:</span><span class="patternValue smaller"></span></span>
+    <span id="cfpW" class="cfpTotal"><span class="patternLabel smaller">W:</span><span class="patternValue smaller"></span></span>
+    &#x21B5;
+    <br/>
+    <span class="patternLabel">Created on </span><span id="patternDateCreated" class="patternValue"></span>
+    <span class="patternLabel">by</span><span id="patternUserID" class="patternValue"></span>
+    <br/>
+  </div>
+  <div id="patternDescription">
+    <label>Pattern
+      <br/>
+      <input type="text" id="Pattern_Name" tab-index="1">
+    </label>
+    <label>Description
+      <br/>
+      <input type="text" id="Pattern_Desc" tab-index="2">
+    </label>
+  </div>
+  <table id="patternTable">
+    <thead>
+      <tr>
+        <td width="35%">Functional process</td>
+        <td width="35%">Data groups</td>
+        <td width="15%">Data movements</td>
+        <td width="15%">Size (CFP)</td>
+      </tr>
+    </thead>
+    <tbody></tbody>
+    <tfoot>
+      <tr>
+        <td><button class='btn btn-primary' id='createNewRow'>Add functional process</button></td>
+        <td></td>
+        <td></td>
+        <td><button type="button" class="btn btn-success" id="patternSave">Save</button></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<script type="text/javascript">
+/* Test */
+displayPattern(testPattern);
+
+
+bindNewRowButton();
+bindSaveButton();
+windowResize();
+</script>
+}

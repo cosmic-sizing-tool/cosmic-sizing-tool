@@ -3,24 +3,6 @@
 
 # --- !Ups
 
-create table address (
-  id                            serial not null,
-  postal_code                   varchar(255),
-  street                        varchar(255),
-  appartment                    varchar(255),
-  city_id                       integer,
-  organisation_id               bigint,
-  constraint pk_address primary key (id)
-);
-
-create table basic_user (
-  username                      varchar(255),
-  email                         varchar(255),
-  password                      varchar(255),
-  constraint uq_basic_user_username unique (username),
-  constraint uq_basic_user_email unique (email)
-);
-
 create table certification (
   id_certification              bigserial not null,
   method                        varchar(255) not null,
@@ -30,66 +12,35 @@ create table certification (
   constraint pk_certification primary key (id_certification)
 );
 
-create table city (
-  id                            serial not null,
-  name                          varchar(255),
-  constraint pk_city primary key (id)
-);
-
 create table cosmic_user (
   id                            bigserial not null,
-  name                          varchar(255),
-  password                      varchar(255),
   alias                         varchar(255),
+  password                      varchar(255),
+  name                          varchar(255),
   deleted                       boolean,
   disponible                    boolean,
   email                         varchar(255),
   created_at                    timestamp,
   url                           varchar(255),
   company                       varchar(255),
+  country                       varchar(255),
+  state                         varchar(255),
+  city                          varchar(255),
   location                      varchar(255),
   constraint uq_cosmic_user_alias unique (alias),
   constraint uq_cosmic_user_email unique (email),
   constraint pk_cosmic_user primary key (id)
 );
 
-create table cosmic_user_measurement_method_version (
-  id                            serial not null,
-  measurement_method_version_id integer,
-  constraint pk_cosmic_user_measurement_method_version primary key (id)
-);
-
-create table cosmic_users_city (
-  city_id                       integer,
-  cosmic_user_id                bigint
-);
-
-create table country (
-  short_name                    varchar(255) not null,
-  name                          varchar(255),
-  constraint pk_country primary key (short_name)
-);
-
-create table country_division_type (
-  short_name                    varchar(255) not null,
-  name                          varchar(255),
-  constraint pk_country_division_type primary key (short_name)
-);
-
 create table data_group (
   id                            bigserial not null,
-  name                          varchar(255) not null,
-  comment                       varchar(255) not null,
-  process                       bigint not null,
-  entry                         integer not null,
-  exit                          integer not null,
-  read                          integer not null,
-  write                         integer not null,
+  functional_process_id         bigint not null,
+  name                          varchar(255),
+  entry                         integer,
+  exit                          integer,
+  read                          integer,
+  write                         integer,
   constraint pk_data_group primary key (id)
-);
-
-create table division_name (
-  name                          varchar(255)
 );
 
 create table email (
@@ -103,17 +54,11 @@ create table email (
   constraint pk_email primary key (id)
 );
 
-create table measurement_method (
-  id                            serial not null,
+create table functional_process (
+  id                            bigserial not null,
+  pattern_id                    bigint not null,
   name                          varchar(255),
-  constraint pk_measurement_method primary key (id)
-);
-
-create table measurement_method_version (
-  id                            serial not null,
-  method_number                 integer,
-  measurement_method_id         integer,
-  constraint pk_measurement_method_version primary key (id)
+  constraint pk_functional_process primary key (id)
 );
 
 create table organisation (
@@ -121,11 +66,16 @@ create table organisation (
   name                          varchar(255),
   description                   varchar(255),
   url_orgnisation               varchar(255),
+  url_image                     varchar(255),
   nom_contact                   varchar(255),
-  phone_number                  varchar(255),
+  tel_contact                   varchar(255),
   courriel_contact              varchar(255),
+  adresse1                      varchar(255),
+  adresse2                      varchar(255),
+  pays                          varchar(255),
+  etat                          varchar(255),
+  ville                         varchar(255),
   id_admin                      bigint,
-  photo                         varchar(255),
   constraint pk_organisation primary key (id)
 );
 
@@ -143,25 +93,12 @@ create table organization (
 
 create table pattern (
   id                            bigserial not null,
-  name                          varchar(20) not null,
-  description_courte            varchar(30) not null,
-  description_longue            varchar(250) not null,
+  name                          varchar(255),
+  description                   varchar(255),
+  date_last_modified            timestamp,
+  date_created                  timestamp,
+  is_valid                      boolean,
   constraint pk_pattern primary key (id)
-);
-
-create table pattern_data_group (
-  id                            bigserial not null,
-  name                          varchar(50) not null,
-  mouvement                     varchar(4) not null,
-  process                       bigint not null,
-  constraint pk_pattern_data_group primary key (id)
-);
-
-create table pattern_process (
-  id                            bigserial not null,
-  name                          varchar(50) not null,
-  pattern                       bigint not null,
-  constraint pk_pattern_process primary key (id)
 );
 
 create table process (
@@ -296,29 +233,17 @@ create table timer (
   constraint pk_timer primary key (timer_id)
 );
 
-alter table address add constraint fk_address_city_id foreign key (city_id) references city (id) on delete restrict on update restrict;
-create index ix_address_city_id on address (city_id);
-
-alter table address add constraint fk_address_organisation_id foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
-create index ix_address_organisation_id on address (organisation_id);
-
 alter table certification add constraint fk_certification_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_certification_user_id on certification (user_id);
 
-alter table cosmic_user_measurement_method_version add constraint fk_cosmic_user_measurement_method_version_measurement_met_1 foreign key (measurement_method_version_id) references measurement_method_version (id) on delete restrict on update restrict;
-create index ix_cosmic_user_measurement_method_version_measurement_met_1 on cosmic_user_measurement_method_version (measurement_method_version_id);
-
-alter table cosmic_users_city add constraint fk_cosmic_users_city_city_id foreign key (city_id) references city (id) on delete restrict on update restrict;
-create index ix_cosmic_users_city_city_id on cosmic_users_city (city_id);
-
-alter table cosmic_users_city add constraint fk_cosmic_users_city_cosmic_user_id foreign key (cosmic_user_id) references cosmic_user (id) on delete restrict on update restrict;
-create index ix_cosmic_users_city_cosmic_user_id on cosmic_users_city (cosmic_user_id);
+alter table data_group add constraint fk_data_group_functional_process_id foreign key (functional_process_id) references functional_process (id) on delete restrict on update restrict;
+create index ix_data_group_functional_process_id on data_group (functional_process_id);
 
 alter table email add constraint fk_email_user_id foreign key (user_id) references cosmic_user (id) on delete restrict on update restrict;
 create index ix_email_user_id on email (user_id);
 
-alter table measurement_method_version add constraint fk_measurement_method_version_measurement_method_id foreign key (measurement_method_id) references measurement_method (id) on delete restrict on update restrict;
-create index ix_measurement_method_version_measurement_method_id on measurement_method_version (measurement_method_id);
+alter table functional_process add constraint fk_functional_process_pattern_id foreign key (pattern_id) references pattern (id) on delete restrict on update restrict;
+create index ix_functional_process_pattern_id on functional_process (pattern_id);
 
 alter table organisation_cosmic_user add constraint fk_organisation_cosmic_user_organisation foreign key (organisation_id) references organisation (id) on delete restrict on update restrict;
 create index ix_organisation_cosmic_user_organisation on organisation_cosmic_user (organisation_id);
@@ -329,29 +254,17 @@ create index ix_organisation_cosmic_user_cosmic_user on organisation_cosmic_user
 
 # --- !Downs
 
-alter table if exists address drop constraint if exists fk_address_city_id;
-drop index if exists ix_address_city_id;
-
-alter table if exists address drop constraint if exists fk_address_organisation_id;
-drop index if exists ix_address_organisation_id;
-
 alter table if exists certification drop constraint if exists fk_certification_user_id;
 drop index if exists ix_certification_user_id;
 
-alter table if exists cosmic_user_measurement_method_version drop constraint if exists fk_cosmic_user_measurement_method_version_measurement_met_1;
-drop index if exists ix_cosmic_user_measurement_method_version_measurement_met_1;
-
-alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_city_id;
-drop index if exists ix_cosmic_users_city_city_id;
-
-alter table if exists cosmic_users_city drop constraint if exists fk_cosmic_users_city_cosmic_user_id;
-drop index if exists ix_cosmic_users_city_cosmic_user_id;
+alter table if exists data_group drop constraint if exists fk_data_group_functional_process_id;
+drop index if exists ix_data_group_functional_process_id;
 
 alter table if exists email drop constraint if exists fk_email_user_id;
 drop index if exists ix_email_user_id;
 
-alter table if exists measurement_method_version drop constraint if exists fk_measurement_method_version_measurement_method_id;
-drop index if exists ix_measurement_method_version_measurement_method_id;
+alter table if exists functional_process drop constraint if exists fk_functional_process_pattern_id;
+drop index if exists ix_functional_process_pattern_id;
 
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_organisation;
 drop index if exists ix_organisation_cosmic_user_organisation;
@@ -359,33 +272,15 @@ drop index if exists ix_organisation_cosmic_user_organisation;
 alter table if exists organisation_cosmic_user drop constraint if exists fk_organisation_cosmic_user_cosmic_user;
 drop index if exists ix_organisation_cosmic_user_cosmic_user;
 
-drop table if exists address cascade;
-
-drop table if exists basic_user cascade;
-
 drop table if exists certification cascade;
-
-drop table if exists city cascade;
 
 drop table if exists cosmic_user cascade;
 
-drop table if exists cosmic_user_measurement_method_version cascade;
-
-drop table if exists cosmic_users_city cascade;
-
-drop table if exists country cascade;
-
-drop table if exists country_division_type cascade;
-
 drop table if exists data_group cascade;
-
-drop table if exists division_name cascade;
 
 drop table if exists email cascade;
 
-drop table if exists measurement_method cascade;
-
-drop table if exists measurement_method_version cascade;
+drop table if exists functional_process cascade;
 
 drop table if exists organisation cascade;
 
@@ -394,10 +289,6 @@ drop table if exists organisation_cosmic_user cascade;
 drop table if exists organization cascade;
 
 drop table if exists pattern cascade;
-
-drop table if exists pattern_data_group cascade;
-
-drop table if exists pattern_process cascade;
 
 drop table if exists process cascade;
 

@@ -29,6 +29,10 @@
 
     <!-- Angular -->
     <script src='@routes.Assets.versioned("javascripts/lib/angular/angular.min.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-cookies.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/app/app.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate.min.js")'></script>
+    <script src='@routes.Assets.versioned("javascripts/lib/angular/angular-translate-loader-static-files.js")'></script>
     <script src='@routes.Assets.versioned("javascripts/lib/registration.js")'></script>
 
     <!-- Bootstrap -->
@@ -38,7 +42,7 @@
 
 </head>
 
-<body >
+<body ng-app="app">
 
 <!-- Cosmic header -->
 <header class="row">
@@ -59,15 +63,16 @@
                                 <img style="float:left; margin-top: 30px; cursor: pointer; width: 50x; height:70px " src='@routes.Assets.versioned("images/icon-cosmic-smaller.png")' alt="Cosmic-logo">
                             </div>
                             <ul class="dropdown-menu" style="float: right; opacity:0.8; margin-top: 30px ">
-                                <li class><a href="#"><h5>About the COSMIC-sizing-tool</h5></a></li>
+                                <li><a href="#">{{'MAIN.ABOUT_THIS_TOOL' | translate }}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="http://cosmic-sizing.org"><h5>COSMIC site</h5></a></li>
+                                <li><a target ="_blank" href="http://cosmic-sizing.org">{{'MAIN.GO_TO_COSMIC_SITE' | translate }}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="@routes.Glossary.glossary()"><h5>COSMIC Glossary</h5></a></li>
+                                <li><a href="@routes.Glossary.glossary()">{{'MAIN.COSMIC_GLOSSARY' | translate }}</a></li>
                                 <li class="divider"></li>
-                                <li><a href="@routes.Measures.add()"><h5>Find a measurer</h5></a></li>
+                                <li><a href="@routes.Measures.add()">{{'MAIN.FIND_A_MEASURER' | translate }}</a></li>
                                 <li><a href="@routes.Application.index()">Home</a></li>
                                 <li><a href="@routes.Application.team()">Team</a></li>
+                                <li><a href="@routes.Application.patternList()">Pattern List</a></li>
                                 <li><a href="@routes.Application.">Add Organisation</a></li>
                                 <li><a href="@routes.Glossary.glossary()">Glossary</a></li>
                                 <li><a href="@routes.Measures.add()">Add Measure</a></li>
@@ -87,20 +92,23 @@
                 <div class="col-md navbar-right" style="margin: 40px 50px 40px 0">
                     <ul class="list-inline" style="margin-right: 10px">
                         <li>
-                            <select name="languages" class="languages icon-menu">
-                                <option value="en" selected>English</option>
-                                <option value="fr">Français</option>
-                            </select>
+                            <div ng-controller="Ctrl">
+                                <select name="languages" class="languages icon-menu"
+                                    ng-model="selected_language"
+                                    ng-options="o.id as o.name for o in languages"
+                                    ng-change="changeLanguage(selected_language)">
+                                </select>
+                            </div>
                         </li>
                         <li>
                             <a href="@routes.Application.signup()">
-                                <button type="button" class="btn btn-success">Register</button>
+                                <button type="button" class="btn btn-success">{{ 'MAIN.REGISTER' | translate}}</button>
                             </a>
 
                         </li>
                         <li>
                             <a href="@routes.Application.login()">
-                                <button type="button" class="btn btn-default">Log in</button>
+                                <button type="button" class="btn btn-default">{{ 'MAIN.LOGIN' | translate}}</button>
                             </a>
                         </li>
                     </ul>
@@ -116,19 +124,20 @@
 <div class="container">
     <div class="jumbotron">
         <!-- Differents Html pages are call here -->
-    <div>@body</div>
+        @body
+    <div></div>
     </div>
 </div>
 <!-- Cosmic footer -->
 <footer style="background-color: #F5F5F5" class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-text pull-left">
-            <p>© 2016 COSMIC</p>
+            <p>© 2016 COSMIC{{2+4}}</p>
         </div>
         <div class="navbar-text pull-right">
-            <a href="#" style="margin-left: 2em">Terms & Conditions</a>
-            <a href="#" style="margin-left: 2em">Contact</a>
-            <a href="#" style="margin-left: 2em">Help</a>
+            <a href="#" style="margin-left: 2em">{{ 'MAIN.TERMS_AND_CONDITIONS' | translate}}</a>
+            <a href="#" style="margin-left: 2em">{{ 'MAIN.CONTACT' | translate}}</a>
+            <a href="#" style="margin-left: 2em">{{ 'MAIN.HELP' | translate}}</a>
         </div>
     </div>
 </footer>
