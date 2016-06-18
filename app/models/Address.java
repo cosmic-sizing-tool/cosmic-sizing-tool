@@ -13,7 +13,7 @@ import play.data.validation.*;
  */
 
 @Entity
-public class Addresse extends Model {
+public class Address extends Model {
 
     @Id
     public int id;
@@ -21,10 +21,9 @@ public class Addresse extends Model {
     public String street;
     public String appartment;
 
-    // @ManyToOne
-    // public List<City> city = new ArrayList<City>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    public City city;
 
-    // @ManyToOne
-    // public List<Organisation> orgs = new ArrayList<Organisation>();
-
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Organisation organisation;
 }

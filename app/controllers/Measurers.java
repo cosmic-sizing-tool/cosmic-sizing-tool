@@ -19,16 +19,38 @@ import views.html.*;
 
 import com.avaje.ebean.*;
 
-/**
- * Created by Mathieu on 6/11/2016.
- */
 public class Measurers extends Controller {
 
   public Result index() {
-      return ok("index!");
+
+      // send all methods and versions to this view
+
+      return ok(views.html.measurers.render());
   }
 
   public Result search() {
-    return ok("search!");
+    String method = Controller.request().queryString().get("method")[0];
+    String country = Controller.request().queryString().get("country")[0];
+    String state = Controller.request().queryString().get("state")[0];
+    String city = Controller.request().queryString().get("city")[0];
+
+
+    // {
+    //   users: [
+    //     cityCode: "",
+    //     email: "",
+    //     name: "",
+    //     certification_methods: [
+    //       {
+              //   method: "",
+              //   version: ""
+              // }
+    //     ]
+    //   ]
+    // }
+
+    //CosmicUser.
+
+    return ok();
   }
 }
