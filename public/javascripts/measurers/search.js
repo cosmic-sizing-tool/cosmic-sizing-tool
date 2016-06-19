@@ -4,13 +4,11 @@
 
 "use strict"
 
-measurersconfig.registerModule('measurers.search');
-
 angular
-    .module('measurers.search')
+    .module('app')
     .controller('MeasurersController',[
-        '$scope', '$http',
-        function ($scope, $http) {
+        '$scope', '$http', '$translate',
+        function ($scope, $http, $translate) {
             var SearchServiceRoute = '/measurers/search';
 
             //TODO: Bind country and regions on DB

@@ -1,8 +1,8 @@
-var myApp = angular.module('AddOrganisationModule', []);
+angular
+    .module('app')
+    .controller('AddOrganisationController', ['$scope', '$translate', function($scope, $translate) {
 
-myApp.controller('AddOrganisationController', ['$scope', function($scope) {
-
-    $scope.submitForm = function(){
-
-    }
+        $scope.submitForm = function(){
+    
+        }
 }]);

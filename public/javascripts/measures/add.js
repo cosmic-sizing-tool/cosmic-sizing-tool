@@ -1,12 +1,10 @@
 "use strict"
 
-measuresconfig.registerModule('measures_add');
-
 angular
-  .module('measures_add')
+  .module('app')
   .controller('MeasuresAddController',[
-    '$scope', '$window', '$http', 'jQuery',
-    function ($scope, $window, $http, jQuery) {
+    '$scope', '$window', '$http', '$translate',
+    function ($scope, $window, $http, $translate) {
 
       $scope.layers = [{
       	name: "Couche",
