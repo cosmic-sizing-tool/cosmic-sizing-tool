@@ -13,6 +13,7 @@ public class MeasurementMethodVersion extends Model {
   @Id
   public int id;
 
+  @Column
   int methodNumber;
 
   @ManyToOne(cascade = CascadeType.ALL)

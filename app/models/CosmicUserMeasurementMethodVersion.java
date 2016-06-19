@@ -11,7 +11,7 @@ import play.data.validation.*;
 public class CosmicUserMeasurementMethodVersion extends Model {
 
   @Id
-  public int id;
+  public UUID id;
 
   @ManyToOne(cascade = CascadeType.ALL)
   MeasurementMethodVersion measurementMethodVersion;

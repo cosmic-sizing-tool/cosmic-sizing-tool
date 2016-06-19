@@ -15,12 +15,15 @@ import play.data.validation.*;
 public class City extends Model{
 
     @Id
-    public int id;
+    public UUID id;
 
     public String name;
 
     public List<CountryDivisionType> divisionType = new ArrayList<CountryDivisionType>();
 
-    // @ManyToOne(cascade = CascadeType.ALL)
-    // public List<Adresse> adresses = new ArrayList<Adresse>();
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Address> adresses = new ArrayList<Address>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<CosmicUsersCity> cosmicUserCities = new ArrayList<CosmicUsersCity>();
 }

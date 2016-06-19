@@ -25,6 +25,7 @@ public class TeamMember extends Model {
  public String email;
 
  // Password is scrypted.
+ //                                                                                   ... SCRYPTING
  @Column(length = 255, nullable = false)
  @Constraints.MaxLength(255)
  @Constraints.Required

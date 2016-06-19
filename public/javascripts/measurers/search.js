@@ -50,7 +50,7 @@ angular
                     state : null,
                     city : null
                 },
-                //TODO: Bind methods on certifications in DB
+                //TODO: Bind methods on measurement methods in DB
                 methods : [ {code: "", name: "All Methods"}, {code: "COSMIC", name: "COSMIC"}, {code: "IFPUG", name: "IFPUG"}, {code: "NESMA", name: "NESMA"}, {code: "FISMA", name: "FISMA"}, {code: "Mark II", name: "Mark II"}],
                 countries : [],
                 states : [],
