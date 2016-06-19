@@ -1,0 +1,68 @@
+@(measurementMethodNames: List[String])
+@main("Search measurer"){
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+<script type="text/javascript" src="/assets/javascripts/measurers/search.js"></script>
+<style>
+    table.table-striped td{
+        padding-left: 8px;
+    }
+
+    select.form-control{
+        width:24%;
+        padding-right: 1px;
+        padding-left: 1px;
+    }
+</style>
+<div class="container" ng-controller="MeasurersController">
+    <div style="margin-top: 110px">
+    <div class="panel panel-default">
+        <div>
+            <div style="background-color: white; vertical-align: top" >
+                <div class="panel header" style="background-color: #f5f5f5; width: 100%; padding: 5px">
+                    <div id="ViewHeader" style="text-align: left; width: 50%"><h2>Find a measurer</h2></div>
+                </div>
+                <div class="panel body">
+                    <div class="form-group" style="background-color: #fafafa; padding-left: 10px; padding-right: 10px; align-content: stretch">
+                        <div id="DropDownControls" style="display: flex; justify-content: space-between;">
+
+                            <select class="form-control" id="SelectMethod" ng-model="model.filters.method">
+                                <option ng-repeat="method in model.methods" ng-selected="method.code == ''" value="{{method.code}}">{{method.name}}</option>
+                            </select>
+                            <select class="form-control" id="SelectCountry" ng-model="model.filters.country">
+                                <option ng-repeat="country in model.countries" ng-selected="country.code == ''" value="{{country.code}}">{{country.name}}</option>
+                             </select>
+
+                            <select class="form-control" id="SelectState" ng-model="model.filters.state" ng-disabled="!model.filters.country" ng-class="{disabled : !model.filters.country}">
+                                <option ng-repeat="state in model.states" ng-selected="state.code == ''" value="{{state.code}}">{{state.name}}</option>
+                           </select>
+                            <select class="form-control" id="SelectCity" ng-model="model.filters.city" ng-disabled="!model.filters.country || !model.filters.state">
+                                <option ng-repeat="city in model.cities" value="{{city.code}}">{{city.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="background-color: white">
+                        <div>
+                            <div id="ResultsTable" class="table-responsive">
+                                <table id="MeasurersTable" width="100%" class="table-striped" style="padding:10px">
+                                    <tr>
+                                        <th align="left" width="33%" style="padding-left: 5px">Name, Surname</th>
+                                        <th align="left" width="33%" style="padding-left: 5px">Email</th>
+                                        <th align="left" width="33%" style="padding-left: 5px">Certifications</th>
+                                    </tr>
+                                    <tr ng-repeat="measurer in model.filteredMeasurers">
+                                        <td>{{measurer.name}}</td>
+                                        <td><a href="{{measurer.email}}">{{measurer.email}}</a></td>
+                                        <td>{{measurer.certification}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" ng-click="actions.search()" class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+}

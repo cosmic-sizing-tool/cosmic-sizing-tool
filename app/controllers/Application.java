@@ -143,6 +143,11 @@ public class Application extends Controller {
          return ok(organisation_add.render());
      }
 
+    public Result modifyOrganisations(String idUser) {
+        return ok(organisation_put.render());
+    }
+
+
     public Result authenticate() {
         Form<Login> loginForm = form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
@@ -177,7 +182,6 @@ public class Application extends Controller {
 
 
     }
-
     public static class Login {
 
         public String email;

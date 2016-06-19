@@ -18,13 +18,14 @@ public class TeamMember extends Model {
  @Constraints.MaxLength(255)
  @Constraints.Required
  public String name;
- 
+
  @Column(length = 255, nullable = false)
  @Constraints.MaxLength(255)
  @Constraints.Required
  public String email;
 
  // Password is scrypted.
+ //                                                                                   ... SCRYPTING
  @Column(length = 255, nullable = false)
  @Constraints.MaxLength(255)
  @Constraints.Required
@@ -38,7 +39,7 @@ public class TeamMember extends Model {
   return this.password;
  }
 
- 
- public static Finder<Long,TeamMember> find = new Finder<Long,TeamMember>(Long.class, TeamMember.class); 
+
+ public static Finder<Long,TeamMember> find = new Finder<Long,TeamMember>(Long.class, TeamMember.class);
 
 }
