@@ -37,19 +37,6 @@ body {
   vertical-align: middle;
 }
 
-input {
-  width: 100%;
-  display: inline-block;
-  font-weight: 70%;
-  padding: 8px;
-  margin: 5px 0;
-  font-size: 1em;
-  font-weight: 100%;
-  color: #475B62;
-  border: 1px solid #C5C5C5;
-  border-radius: 4px;
-  outline: 0;
-}
 select.icon-menu{
   height: 30px;
 }
@@ -112,4 +99,13 @@ input.ng-valid.ng-touched {
 
 .small-text{
     font-size: 11px;
+}
+
+/*-----------*/
+
+.checkbox-primary input[type="checkbox"]:checked + label::before{
+  background-color: #337ab7;
+  border-color: #337ab7; }
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+  color: #fff;
 }

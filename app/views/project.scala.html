@@ -1,123 +1,386 @@
 @(project: models.Project)
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>COSMIC FORM</title>
-	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
+@main("Project") {
 
 
-
-
-
-
-<body>
-	
-	<div class="container" >
+	<div class="container" style="margin-top: 150px;" >
+		<p><font color="yellow">@project.projectID</font> </p>
 		<form role="form" action="/project/" method="post" accept-charset="utf-8">
 			
 
-
-
-
             <input type="hidden" name="id" value="@project.id" />
+				<!---------------------------------------------------------------- SECTION-A -------------------------------------------------------------------------------->
+
 			<div>
 				<button type="button"  style="border-color:#000000; color:black ;font-weight: bold" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionA">@Messages("project.sectionA")</button>
 
 				<div id="sectionA" class="collapse" style = " background-color:#D1E9F2" >
-					<div class = "table-responsive" >
-						@Messages("project.sectionA1")<br>
-						<table class = "table" style="width:40%" >
-							<tr>
-								<td><label for="note">@Messages("project.sectionA1_con")</label></td>
-								<td><input type="text" name="contact_person" id="contact_person" value="@project.contact_person" /><br></td>
-							</tr>
-							<tr>
-								<td><label for="note">@Messages("project.sectionA1_org")</label></td>
-								<td><input type="text" name="organisation" id="organisation" value="@project.organisation" /><br></td>
-							</tr>
-							<tr>
-								<td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
-								<td> <input type="text" name="country" id="country" value="@project.country" /><br></td>
-							</tr>
-							<tr>
-								<td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
-								<td><input type="text" name="email" id="email" value="@project.email"/><br><br></td>
-							</tr>
-						</table> 
-						
-					</div>
-					
-					
-					
-					<div class = "table-responsive" >
-						@Messages("project.sectionA2")<br>
-						<table class = "table" style="width:40%">
-							<tr>
-								<td><label for="note">@Messages("project.sectionA2_pro")</label></td>
-								<td> <input type="text" name="projectID" id="projectID" value="@project.projectID"/><br></td>
-							</tr>
-							<!-- should be shown only if not new project
-							<tr>
-								<td><label for="note">@Messages("project.sectionA2_dat")</label></td>
-								<td><input type="text" name="dateSubmitted" id="dateSubmitted"/><br><br></td>
-							</tr>
-							-->
-						</table> 
-						
-						
-					</div>
-					
-					@Messages("project.sectionA3")<br>
 
-					<div class="table-responsive">          
-						<table class="table" style="width:45%">
-							<tr>
-								<td> <input type="checkbox" name="role" value="analystProgrammer"> 
-									@Messages("project.sectionA3_ana")
-								</td>
-								<td>
-									<input type="checkbox" name="role" value="customerUser"  > @Messages("project.sectionA3_cus")
-								</td>
-								<td>
-									<input type="checkbox" name="role" value="developmentManager"> @Messages("project.sectionA3_dev")
-								</td>
-							</tr>
-							<tr>
-								<td>	   <input type="checkbox" name="role" value="independentReviewer"> @Messages("project.sectionA3_ind") </td>
+					<div class="row">
+						<div class="col-lg-1">
 
-								<td>	   <input type="checkbox" name="role" value="iTManager"> @Messages("project.sectionA3_itm")
-								</td>
-								<td>	   <input type="checkbox" name="role" value="metricsManager"> @Messages("project.sectionA3_met")
-								</td>
-								<tr>
-									<td>
-										<input type="checkbox" name="role" value="projectManager"> @Messages("project.sectionA3_pro")
-									</td>
-									<td>	   
+						</div>
+						<div class="col-lg-10" style="padding-top: 20px;">
+							<div class = "table-responsive" >
+								@Messages("project.sectionA1")<br>
+								<table class = "table" style="width:40%" >
+									<tr>
+										<td><label for="note">@Messages("project.sectionA1_con")</label></td>
+										<td><input type="text" name="contact_person" id="contact_person" required  value="@project.contact_person" /><br></td>
+									</tr>
+									<tr>
+										<td><label for="note">@Messages("project.sectionA1_org")</label></td>
+										<td><input type="text" name="organisation" id="organisation" required  value="@project.organisation" /><br></td>
+									</tr>
+									<tr>
+										<td> <label for="note">@Messages("project.sectionA1_cou") </label></td>
+										<td>
+											<select name="country" id="country" required style="width:180px;">
+												<option selected>@project.country</option>
+												<option>Afghanistan</option>
+												<option>Åland Islands</option>
+												<option >Albania</option>
+												<option>Algeria</option>
+												<option>American Samoa</option>
+												<option>Andorra</option>
+												<option>Angola</option>
+												<option>Anguilla</option>
+												<option>Antarctica</option>
+												<option>Antigua and Barbuda</option>
+												<option>Argentina</option>
+												<option>Armenia</option>
+												<option>Aruba</option>
+												<option>Australia</option>
+												<option>Austria</option>
+												<option>Azerbaijan</option>
+												<option>Bahamas</option>
+												<option>Bahrain</option>
+												<option>Bangladesh</option>
+												<option>Barbados</option>
+												<option>Belarus</option>
+												<option>Belgium</option>
+												<option>Belize</option>
+												<option>Benin</option>
+												<option>Bermuda</option>
+												<option>Bhutan</option>
+												<option>Bolivia, Plurinational State of</option>
+												<option>Bonaire, Sint Eustatius and Saba</option>
+												<option>Bosnia and Herzegovina</option>
+												<option>Botswana</option>
+												<option>Bouvet Island</option>
+												<option>Brazil</option>
+												<option>British Indian Ocean Territory</option>
+												<option>Brunei Darussalam</option>
+												<option>Bulgaria</option>
+												<option>Burkina Faso</option>
+												<option>Burundi</option>
+												<option>Cambodia</option>
+												<option>Cameroon</option>
+												<option>Canada</option>
+												<option>Cape Verde</option>
+												<option>Cayman Islands</option>
+												<option>Central African Republic</option>
+												<option>Chad</option>
+												<option>Chile</option>
+												<option>China</option>
+												<option>Christmas Island</option>
+												<option>Cocos (Keeling) Islands</option>
+												<option>Colombia</option>
+												<option>Comoros</option>
+												<option>Congo</option>
+												<option>Congo, the Democratic Republic of the</option>
+												<option>Cook Islands</option>
+												<option>Costa Rica</option>
+												<option>Côte d'Ivoire</option>
+												<option>Croatia</option>
+												<option>Cuba</option>
+												<option>Curaçao</option>
+												<option>Cyprus</option>
+												<option>Czech Republic</option>
+												<option>Denmark</option>
+												<option>Djibouti</option>
+												<option>Dominica</option>
+												<option>Dominican Republic</option>
+												<option>Ecuador</option>
+												<option>Egypt</option>
+												<option>El Salvador</option>
+												<option>Equatorial Guinea</option>
+												<option>Eritrea</option>
+												<option>Estonia</option>
+												<option>Ethiopia</option>
+												<option>Falkland Islands (Malvinas)</option>
+												<option>Faroe Islands</option>
+												<option>Fiji</option>
+												<option>Finland</option>
+												<option>France</option>
+												<option>French Guiana</option>
+												<option>French Polynesia</option>
+												<option>French Southern Territories</option>
+												<option>Gabon</option>
+												<option>Gambia</option>
+												<option>Georgia</option>
+												<option>Germany</option>
+												<option>Ghana</option>
+												<option>Gibraltar</option>
+												<option>Greece</option>
+												<option>Greenland</option>
+												<option>Grenada</option>
+												<option>Guadeloupe</option>
+												<option>Guam</option>
+												<option>Guatemala</option>
+												<option>Guernsey</option>
+												<option>Guinea</option>
+												<option>Guinea-Bissau</option>
+												<option>Guyana</option>
+												<option>Haiti</option>
+												<option>Heard Island and McDonald Islands</option>
+												<option>Holy See (Vatican City State)</option>
+												<option>Honduras</option>
+												<option>Hong Kong</option>
+												<option>Hungary</option>
+												<option>Iceland</option>
+												<option>India</option>
+												<option>Indonesia</option>
+												<option>Iran, Islamic Republic of</option>
+												<option>Iraq</option>
+												<option>Ireland</option>
+												<option>Isle of Man</option>
+												<option>Israel</option>
+												<option>Italy</option>
+												<option>Jamaica</option>
+												<option>Japan</option>
+												<option>Jersey</option>
+												<option>Jordan</option>
+												<option>Kazakhstan</option>
+												<option>Kenya</option>
+												<option>Kiribati</option>
+												<option>Korea, Democratic People's Republic of</option>
+												<option>Korea, Republic of</option>
+												<option>Kuwait</option>
+												<option>Kyrgyzstan</option>
+												<option>Lao People's Democratic Republic</option>
+												<option>Latvia</option>
+												<option>Lebanon</option>
+												<option>Lesotho</option>
+												<option>Liberia</option>
+												<option>Libya</option>
+												<option>Liechtenstein</option>
+												<option>Lithuania</option>
+												<option>Luxembourg</option>
+												<option>Macao</option>
+												<option>Macedonia, the former Yugoslav Republic of</option>
+												<option>Madagascar</option>
+												<option>Malawi</option>
+												<option>Malaysia</option>
+												<option>Maldives</option>
+												<option>Mali</option>
+												<option>Malta</option>
+												<option>Marshall Islands</option>
+												<option>Martinique</option>
+												<option>Mauritania</option>
+												<option>Mauritius</option>
+												<option>Mayotte</option>
+												<option>Mexico</option>
+												<option>Micronesia, Federated States of</option>
+												<option>Moldova, Republic of</option>
+												<option>Monaco</option>
+												<option>Mongolia</option>
+												<option>Montenegro</option>
+												<option>Montserrat</option>
+												<option>Morocco</option>
+												<option>Mozambique</option>
+												<option>Myanmar</option>
+												<option>Namibia</option>
+												<option>Nauru</option>
+												<option>Nepal</option>
+												<option>Netherlands</option>
+												<option>New Caledonia</option>
+												<option>New Zealand</option>
+												<option>Nicaragua</option>
+												<option>Niger</option>
+												<option>Nigeria</option>
+												<option>Niue</option>
+												<option>Norfolk Island</option>
+												<option>Northern Mariana Islands</option>
+												<option>Norway</option>
+												<option>Oman</option>
+												<option>Pakistan</option>
+												<option>Palau</option>
+												<option>Palestinian Territory, Occupied</option>
+												<option>Panama</option>
+												<option>Papua New Guinea</option>
+												<option>Paraguay</option>
+												<option>Peru</option>
+												<option>Philippines</option>
+												<option>Pitcairn</option>
+												<option>Poland</option>
+												<option>Portugal</option>
+												<option>Puerto Rico</option>
+												<option>Qatar</option>
+												<option>Réunion</option>
+												<option>Romania</option>
+												<option>Russian Federation</option>
+												<option>Rwanda</option>
+												<option>Saint Barthélemy</option>
+												<option>Saint Helena, Ascension and Tristan da Cunha</option>
+												<option>Saint Kitts and Nevis</option>
+												<option>Saint Lucia</option>
+												<option>Saint Martin (French part)</option>
+												<option>Saint Pierre and Miquelon</option>
+												<option>Saint Vincent and the Grenadines</option>
+												<option>Samoa</option>
+												<option>San Marino</option>
+												<option>Sao Tome and Principe</option>
+												<option>Saudi Arabia</option>
+												<option>Senegal</option>
+												<option>Serbia</option>
+												<option>Seychelles</option>
+												<option>Sierra Leone</option>
+												<option>Singapore</option>
+												<option>Sint Maarten (Dutch part)</option>
+												<option>Slovakia</option>
+												<option>Slovenia</option>
+												<option>Solomon Islands</option>
+												<option>Somalia</option>
+												<option>South Africa</option>
+												<option>South Georgia and the South Sandwich Islands</option>
+												<option>South Sudan</option>
+												<option>Spain</option>
+												<option>Sri Lanka</option>
+												<option>Sudan</option>
+												<option>Suriname</option>
+												<option>Svalbard and Jan Mayen</option>
+												<option>Swaziland</option>
+												<option>Sweden</option>
+												<option>Switzerland</option>
+												<option>Syrian Arab Republic</option>
+												<option>Taiwan, Province of China</option>
+												<option>Tajikistan</option>
+												<option>Tanzania, United Republic of</option>
+												<option>Thailand</option>
+												<option>Timor-Leste</option>
+												<option>Togo</option>
+												<option>Tokelau</option>
+												<option>Tonga</option>
+												<option>Trinidad and Tobago</option>
+												<option>Tunisia</option>
+												<option>Turkey</option>
+												<option>Turkmenistan</option>
+												<option>Turks and Caicos Islands</option>
+												<option>Tuvalu</option>
+												<option>Uganda</option>
+												<option>Ukraine</option>
+												<option>United Arab Emirates</option>
+												<option>United Kingdom</option>
+												<option>United States</option>
+												<option>United States Minor Outlying Islands</option>
+												<option>Uruguay</option>
+												<option>Uzbekistan</option>
+												<option>Vanuatu</option>
+												<option>Venezuela, Bolivarian Republic of</option>
+												<option>Viet Nam</option>
+												<option>Virgin Islands, British</option>
+												<option>Virgin Islands, U.S.</option>
+												<option>Wallis and Futuna</option>
+												<option>Western Sahara</option>
+												<option>Yemen</option>
+												<option>Zambia</option>
+												<option>Zimbabwe</option>
 
-										<input type="checkbox" name="role" value="projectOfficeSupport">
-										@Messages("project.sectionA3_pro1")
-									</td>
-									<td>
-										<label for="other">@Messages("project.sectionA3_oth")</label>
-										<input type="text" name="other" id="other"/>
-									</td>
-								</tr>
-						</table>
+											</select>
+
+
+
+										</td>
+
+
+									</tr>
+									<tr>
+										<td> <label for="note">@Messages("project.sectionA1_ema")</label></td>
+										<td><input type="email" required  name="email" id="email" value="@project.email"/><br><br></td>
+									</tr>
+
+								</table>
+
+							</div>
+							<!------------------------------------------------------------------------------------------>
+							<div class = "table-responsive" >
+								@Messages("project.sectionA2")<br>
+								<table class = "table" style="width:40%">
+									<tr>
+										<td><label style="width: 80px;" for="note">@Messages("project.sectionA2_pro")</label></td>
+										<td> <input type="text" style="width: 300px;" required name="projectID" id="projectID" value="@project.projectID"/><br></td>
+									</tr>
+
+								</table>
+
+							</div>
+
+
+							<!------------------------------------------------------------------------------------------>
+								<div class="row">
+									@Messages("project.sectionA3")<br>
+									<div class="col-lg-4">
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="analystProgrammer">
+											@Messages("project.sectionA3_ana")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="customerUser"  >
+											@Messages("project.sectionA3_cus")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="developmentManager"> @Messages("project.sectionA3_dev")
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="independentReviewer"> @Messages("project.sectionA3_ind")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="iTManager"> @Messages("project.sectionA3_itm")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="metricsManager"> @Messages("project.sectionA3_met")
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="projectManager"> @Messages("project.sectionA3_pro")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input type="checkbox" name="role" value="projectOfficeSupport">
+											@Messages("project.sectionA3_pro1")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<label for="other">@Messages("project.sectionA3_oth")</label>
+											<input type="text" name="other" id="other"/>
+										</div>
+									</div>
+
+								</div>
+							<!------------------------------------------------------------------------------------------>
+
+
+						</div>
+						<div class="col-lg-1">
+
+						</div>
+
+
 					</div>
+					<!-------------row1---->
+
+
+
 				</div>
 			</div>
-				
 
 
 
 
 
+
+				<!---------------------------------------------------------------- SECTION-B -------------------------------------------------------------------------------->
 
 
 
@@ -126,68 +389,90 @@
 
 					<div id="sectionB" class="collapse" style = "background-color:#ffd1b3" >
 					
-						@Messages("project.sectionB5")<br>
-						
-						<input type="checkbox" name="softwareType" value="newDevelopment"> @Messages("project.sectionB5_new")
-						<input type="checkbox" name="softwareType" value="reDevelopment"> @Messages("project.sectionB5_re-")
-						<input type="checkbox" name="softwareType" value="enhancement"> @Messages("project.sectionB5_enh")<br>
-						<label for="other">@Messages("project.sectionB5_oth")</label>
-						<input type="text" name="other" id="other"/><br><br>
 
-						@Messages("project.sectionB6")<br>
 
-						<input type="checkbox" name="description" value="businessApplication"> @Messages("project.sectionB6_bus")
-						<input type="checkbox" name="description" value="realTimeApplication"> @Messages("project.sectionB6_rea")
-						<input type="checkbox" name="description" value="mathIntensiveApplication"> @Messages("project.sectionB6_mat")	
-						<input type="checkbox" name="description" value="infrastructureSoftware"> @Messages("project.sectionB6_inf")<br><br>	
-						
-						@Messages("project.sectionB7")<br>
-						<input type="checkbox" name="reusability" value="custom"> @Messages("project.sectionB7_cus")
-						<input type="checkbox" name="reusability" value="reusable"> @Messages("project.sectionB7_reu")<br><br>	
-					
-					
-					
-					<div class = "table-responsive" >
-						@Messages("project.sectionB9")<br>
-						<table class = "table" style="width:40%">
-							<tr>
-								<td><label for="note">@Messages("project.sectionB9_num")</label></td>
-								<td> <input type="text" name="nbSprint" id="nbSprint"value="@project.nbSprint"/><br></td>
-							</tr>
-							<tr>
-								<td><label for="note">@Messages("project.sectionB9_len")</label></td>
-								<td><input type="text" name="lengthSprint" id="lengthSprint" value="@project.lengthSprint" />@Messages("project.sectionB9_day")<br><br></td>
-							</tr>
-							<tr>
-								<td><label for="note">@Messages("project.sectionB9_del")</label></td>
-								<td><input type="text" name="storyPoints" id="storyPoints" value="@project.storyPoints" />@Messages("project.sectionB9_sto")<br><br></td>
-							</tr>
-						</table> 	
-					</div>
+						<div class="row">
 
-					@Messages("project.sectionB12")<br>
-						<input type="checkbox" name="improvementProgram" value="yes"> @Messages("project.sectionB12_yes")
-						<input type="checkbox" name="improvementProgram" value="no"> @Messages("project.sectionB12_no")<br>
-					@Messages("project.sectionB12_whi")<br>
-						<input type="checkbox" name="softwareProcess" value="cmm"> @Messages("project.sectionB12_sof")
-						<input type="checkbox" name="softwareProcess" value="cmmi"> @Messages("project.sectionB12_cmm")<br>
-						<input type="checkbox" name="softwareProcess" value="spice"> @Messages("project.sectionB12_spi")
-						<input type="checkbox" name="softwareProcess" value="iso"> @Messages("project.sectionB12_iso")<br>
-						<input type="checkbox" name="softwareProcess" value="tickit"> @Messages("project.sectionB12_tic")
-						<input type="checkbox" name="softwareProcess" value="other"> @Messages("project.sectionB12_oth")<br>
+							<div class="col-lg-1">
+
+							</div>
+							<div class="col-lg-10" style="padding-top: 20px;">
+								@Messages("project.sectionB5")<br>
+
+								<input type="checkbox" name="softwareType" value="newDevelopment"> @Messages("project.sectionB5_new")
+								<input type="checkbox" name="softwareType" value="reDevelopment"> @Messages("project.sectionB5_re-")
+								<input type="checkbox" name="softwareType" value="enhancement"> @Messages("project.sectionB5_enh")<br>
+								<label for="other">@Messages("project.sectionB5_oth")</label>
+								<input type="text" name="other" id="other"/><br><br>
+
+								@Messages("project.sectionB6")<br>
+
+								<input type="checkbox" name="description" value="businessApplication"> @Messages("project.sectionB6_bus")
+								<input type="checkbox" name="description" value="realTimeApplication"> @Messages("project.sectionB6_rea")
+								<input type="checkbox" name="description" value="mathIntensiveApplication"> @Messages("project.sectionB6_mat")
+								<input type="checkbox" name="description" value="infrastructureSoftware"> @Messages("project.sectionB6_inf")<br><br>
+
+								@Messages("project.sectionB7")<br>
+								<input type="checkbox" name="reusability" value="custom"> @Messages("project.sectionB7_cus")
+								<input type="checkbox" name="reusability" value="reusable"> @Messages("project.sectionB7_reu")<br><br>
+
+
+
+								<div class = "table-responsive" >
+									@Messages("project.sectionB9")<br>
+									<table class = "table" style="width:40%">
+										<tr>
+											<td><label for="note">@Messages("project.sectionB9_num")</label></td>
+											<td> <input type="text" name="nbSprint" id="nbSprint"value="@project.nbSprint"/><br></td>
+										</tr>
+										<tr>
+											<td><label for="note">@Messages("project.sectionB9_len")</label></td>
+											<td><input type="text" name="lengthSprint" id="lengthSprint" value="@project.lengthSprint" />@Messages("project.sectionB9_day")<br><br></td>
+										</tr>
+										<tr>
+											<td><label for="note">@Messages("project.sectionB9_del")</label></td>
+											<td><input type="text" name="storyPoints" id="storyPoints" value="@project.storyPoints" />@Messages("project.sectionB9_sto")<br><br></td>
+										</tr>
+									</table>
+								</div>
+
+								@Messages("project.sectionB12")<br>
+								<input type="checkbox" name="improvementProgram" value="yes"> @Messages("project.sectionB12_yes")
+								<input type="checkbox" name="improvementProgram" value="no"> @Messages("project.sectionB12_no")<br>
+								@Messages("project.sectionB12_whi")<br>
+								<input type="checkbox" name="softwareProcess" value="cmm"> @Messages("project.sectionB12_sof")
+								<input type="checkbox" name="softwareProcess" value="cmmi"> @Messages("project.sectionB12_cmm")<br>
+								<input type="checkbox" name="softwareProcess" value="spice"> @Messages("project.sectionB12_spi")
+								<input type="checkbox" name="softwareProcess" value="iso"> @Messages("project.sectionB12_iso")<br>
+								<input type="checkbox" name="softwareProcess" value="tickit"> @Messages("project.sectionB12_tic")
+								<input type="checkbox" name="softwareProcess" value="other"> @Messages("project.sectionB12_oth")<br>
+
+							</div>
+							<div class="col-lg-1">
+
+							</div>
+
+						</div>
+
+
+
+
+						<!------->
+
 					
 
 					
 					</div>
 				</div>
 
-				
 
 
 
 
 
 
+
+				<!---------------------------------------------------------------- SECTION-C -------------------------------------------------------------------------------->
 
 
 
@@ -195,135 +480,355 @@
 					<button type="button" style = " background-color:#4de619 ; border-color:#000000 ; color:black ;font-weight: bold" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionC">@Messages("project.sectionC")</button>
 
 					<div id="sectionC" class="collapse" style = " background-color:#ccffcc"  >
-					
-						
-					
-					<div class = "table-responsive" >
-		@Messages("project.sectionC58")<br>
-	 <table class = "table" style="width:40%" >
-	 <thead>
-      <tr>
-        <th></th>
-        <th>@Messages("project.sectionC58_yes")</th>
-        <th>@Messages("project.sectionC58_no")</th>
-        <th>@Messages("project.sectionC58_pri")</th>
-        <th>@Messages("project.sectionC58_ver")</th>
-      </tr>
-    </thead>
-  <tr>
-    <td><label for="note">@Messages("project.sectionC58_pro")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
-    <td><input type="text" name="version" id="version" /></td>
-  </tr>
-  
-  <tr>
-    <td><label for="note">@Messages("project.sectionC58_ope")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version" /></td>
-  </tr>
-  
-  
-  <tr>
-    <td><label for="note">@Messages("project.sectionC58_int")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"  /></td>
-  </tr>
-  
-  <tr>
-    <td><label for="note">@Messages("project.sectionC58_deb")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
-    <td><input type="text" name="version" id="version" /></td>
-  </tr>
-  
-  <tr>
-    <td><label for="note">@Messages("project.sectionC58_dat")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
-    <td><input type="text" name="version" id="version" /></td>
-  </tr>
-  
-  <tr>
-    <td><label for="note">@Messages("project.sectionC58_obj")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
-  </tr>
-  
-    <tr>
-    <td><label for="note">@Messages("project.sectionC58_htm")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version"/></td>
-  </tr>
-  
-    <tr>
-    <td><label for="note">@Messages("project.sectionC58_ema")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
-    <td><input type="text" name="version" id="version" /></td>
-  </tr>
-  
-     <tr>
-    <td><label for="note">@Messages("project.sectionC58_oth")</label></td>
-    <td><input type="checkbox" name="YESNO" id="Yes"/></td>
-    <td><input type="checkbox" name="YESNO" id="No"/></td>
-    <td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
-    <td><input type="text" name="version" id="version" /></td>
-  </tr>
-  
-</table> 
-     </div>
-	   
-	  <div class = "table-responsive" >
-	  @Messages("project.sectionB60")<br>
-	    <table class = "table" style="width:40%">
-	   <tr>
-	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_pco") </td>
-	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mid") </td>
-        </tr>
-        
-       <tr>
-	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mai") </td>
-	   <td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mul") </td>
-        </tr>
-        </table>
-    
+					    <!--->
+						<div class="row">
+							<div class="col-lg-1">
 
-	  </div>
-					
+							</div>
+							<div class="col-lg-10" style="padding-top: 20px;">
+
+								<div class = "table-responsive" >
+									@Messages("project.sectionC58")<br>
+									<table class = "table" style="width:40%" >
+										<thead>
+											<tr>
+												<th></th>
+												<th>@Messages("project.sectionC58_yes")</th>
+												<th>@Messages("project.sectionC58_no")</th>
+												<th>@Messages("project.sectionC58_pri")</th>
+												<th>@Messages("project.sectionC58_ver")</th>
+											</tr>
+										</thead>
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_pro")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+											<td><input type="text" name="version" id="version" /></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_ope")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+											<td><input type="text" name="version" id="version" /></td>
+										</tr>
+
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_int")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+											<td><input type="text" name="version" id="version"  /></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_deb")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+											<td><input type="text" name="version" id="version" /></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_dat")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+											<td><input type="text" name="version" id="version" /></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_obj")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+											<td><input type="text" name="version" id="version"/></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_htm")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+											<td><input type="text" name="version" id="version"/></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_ema")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool"/></td>
+											<td><input type="text" name="version" id="version" /></td>
+										</tr>
+
+										<tr>
+											<td><label for="note">@Messages("project.sectionC58_oth")</label></td>
+											<td><input type="checkbox" name="YESNO" id="Yes"/></td>
+											<td><input type="checkbox" name="YESNO" id="No"/></td>
+											<td><input type="text" name="Primary Tool" id="Primary Tool" /></td>
+											<td><input type="text" name="version" id="version" /></td>
+										</tr>
+
+									</table>
+								</div>
+
+								<div class = "table-responsive" >
+									@Messages("project.sectionB60")<br>
+									<table class = "table" style="width:40%">
+										<tr>
+											<td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_pco") </td>
+											<td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mid") </td>
+										</tr>
+
+										<tr>
+											<td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mai") </td>
+											<td>	   <input type="checkbox" name="envi" value="value"> @Messages("project.sectionC60_mul") </td>
+										</tr>
+									</table>
+
+
+								</div>
+
+
+							</div>
+							<div class="col-lg-1">
+
+							</div>
+
+						</div>
+
+						<!---------->
+
+
+
 
 
 					
 					</div>
-				</div>	
+				</div>
+				<!---------------------------------------------------------------- SECTION-E -------------------------------------------------------------------------------->
 
 				<div>
-					<button type="button" style = " background-color:#cc3333 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionD">Section D</button>
+					<button type="button" style = " background-color:#cc3333 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionE">@Messages("project.sectionEProduct")</button>
 
-					<div id="sectionD" class="collapse" style = "background-color:#ff9999" >					
-						<p>À COMPLETER SECTION D</p>				
-					</div>
-				</div>		
-				
-				<div>
-					<button type="button" style = " background-color:#e6e619 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionE">Section E</button>
+					<div id="sectionE" class="collapse" style = "background-color:#ff9999" >
 
-					<div id="sectionE" class="collapse" style = "background-color:#ffff99" >					
-						<p>À COMPLETER SECTION E</p>				
+						<div class="row">
+
+							<div class="col-lg-1">
+
+							</div>
+								<!------------------------->
+							<div class="col-lg-10">
+								@Messages("project.sectionE87")<br>
+								<div class="row" >
+									<div class="col-lg-12" style="background-color: #9d9d9d;">
+										<h5>@Messages("project.sectionEBus_App")</h5>
+									</div>
+
+								</div>
+
+								<div class="row" >
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionECat_reg")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionECos_rel_mang")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEDoc_manag")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEFin_proc")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionELog_plan")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEOnl_rep")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEStock_cont")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEWork_supp")
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionECos_Bill")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEData_Wareh")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEElec_inter")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEJob_case")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEManag_perf")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" >@Messages("project.sectionERes_Sys")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionETrad")
+										</div>
+										<div class="checkbox checkbox-primary">
+											@Messages("project.sectionEOther_Bus") <input id="checkbox2" class="styled" type="text" >
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="row" >
+									<div class="col-lg-12" style="background-color: #9d9d9d;">
+										<h5>@Messages("project.sectionERea_time_App")</h5>
+									</div>
+
+								</div>
+								<div class="row" >
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEAuto_data_log")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionECmd_ctrl_sys")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionERobo_ctrl")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionETranspor_ctrl")
+										</div>
+
+									</div>
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEmbed_soft_simpl_devic_ctrl")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEComplex_process_ctrl")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionETel_network_managmt")
+										</div>
+										<div class="checkbox checkbox-primary">
+											@Messages("project.sectionEOther_realTime_app") <input id="checkbox2" class="styled" type="text" >
+										</div>
+									</div>
+
+								</div>
+
+
+
+								<div class="row" >
+									<div class="col-lg-12" style="background-color: #9d9d9d;">
+										<h5>@Messages("project.sectionEMath_intens_app")</h5>
+									</div>
+
+								</div>
+								<div class="row" >
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionE3D_model_or_Anim")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEImg_vid_sound_process")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEScient_engineer_app")
+										</div>
+
+
+									</div>
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEGeograph_spatial_info_sys")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEMath_model")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEStat_analysis")
+										</div>
+										<div class="checkbox checkbox-primary">
+											@Messages("project.sectionEOther") <input id="checkbox2" class="styled" type="text" >
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row" >
+									<div class="col-lg-12" style="background-color: #9d9d9d;">
+										<h5>@Messages("project.sectionEInfra_soft")</h5>
+									</div>
+
+								</div>
+								<div class="row" >
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEData_db_managmnt")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEGraph_pub_tool_sys")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEPerso_productivity")
+										</div>
+
+
+									</div>
+									<div class="col-lg-6">
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEDevice_interface_driver")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionEOs_soft_utility")
+										</div>
+										<div class="checkbox checkbox-primary">
+											<input id="checkbox2" class="styled" type="checkbox" > @Messages("project.sectionESoft_dev_tool")
+										</div>
+										<div class="checkbox checkbox-primary">
+											@Messages("project.sectionEOther_infra_soft") <input id="checkbox2" class="styled" type="text" >
+										</div>
+									</div>
+
+								</div>
+
+
+
+
+
+							</div>
+								<!------------------------->
+							<div class="col-lg-1">
+
+							</div>
+
+						</div>
+
+
+					</div> <!-->
+				</div>
+
+				<!---------------------------------------------------------------- SECTION-D -------------------------------------------------------------------------------->
+
+			<div>
+					<button type="button" style = " background-color:#e6e619 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionD">Section D</button>
+
+					<div id="sectionD" class="collapse" style = "background-color:#ffff99" >
+						<p>À COMPLETER SECTION D</p>
 					</div>
-				</div>		
+				</div>
+				<!---------------------------------------------------------------- SECTION-F-------------------------------------------------------------------------------->
 
 				<div>
 					<button type="button" style = " background-color:#19e6b3 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionF">Section F</button>
@@ -331,7 +836,8 @@
 					<div id="sectionF" class="collapse" style = "background-color:#99ffff" >					
 						<p>À COMPLETER SECTION F</p>				
 					</div>
-				</div>	
+				</div>
+				<!---------------------------------------------------------------- SECTION-G -------------------------------------------------------------------------------->
 
 				<div>
 					<button type="button" style = " background-color:#c639c6 ; border-color:#000000 ; color:black ;font-weight: bold"class="btn btn-primary btn-block" data-toggle="collapse" data-target="#sectionG">Section G</button>
@@ -349,11 +855,10 @@
 						
 			
 					
-					<p><input type="submit" value="Enregistrer" class="btn btn-success"/></p>
+					<p><button type="submit"  class="btn btn-success">Save</button></p>
 					
 
 		</form>
 				
 	</div>
-</body>
-</html>
+}
